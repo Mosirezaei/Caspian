@@ -31,7 +31,7 @@ function Content() {
           <CheckList items={[
             'پاسپورت معتبر با حداقل ۶ ماه اعتبار',
             'نامه پذیرش از دانشگاه اروپایی',
-            'اثبات توان مالی (حداقل ۷۰۰ یورو در ماه)',
+            'اثبات توان مالی — برای آلمان مبلغ حساب بلوکه‌شده (Sperrkonto) در سال ۲۰۲۶ معادل ۱۱,۹۰۴ یورو در سال (۹۹۲ یورو در ماه) است؛ برای سایر کشورهای شینگن معمولاً حدود ۷۰۰ تا ۱,۰۰۰ یورو در ماه',
             'بیمه درمانی معتبر در اروپا',
             'گواهی زبان (IELTS/TOEFL یا زبان کشور مقصد)',
             'رزرو بلیط و محل اقامت',
@@ -65,7 +65,7 @@ function Content() {
           <CheckList items={['Germany — Free tuition at public universities', 'France — Prestigious universities, low fees', 'Netherlands — Wide English-language programs', 'Italy — Art, architecture, fashion', 'Spain — Affordable living costs', 'Poland — Easier access and lower costs']} />
         </InfoBlock>
         <InfoBlock title="Required Documents">
-          <CheckList items={['Valid passport (6+ months)', 'University acceptance letter', 'Proof of financial means (€700+/month)', 'European health insurance', 'Language certificate (IELTS/TOEFL)', 'Flight reservation and accommodation', 'Police clearance certificate']} />
+          <CheckList items={['Valid passport (6+ months)', 'University acceptance letter', "Proof of financial means — for Germany, the 2026 blocked account (Sperrkonto) requirement is €11,904/year (€992/month); other Schengen countries typically require roughly €700-1,000/month", 'European health insurance', 'Language certificate (IELTS/TOEFL)', 'Flight reservation and accommodation', 'Police clearance certificate']} />
         </InfoBlock>
         <InfoBlock title="Benefits of Studying in Europe">
           <CheckList items={['Globally recognized degree', 'Part-time work during studies', 'Access to European job market', 'Path to residency after graduation']} />
@@ -79,7 +79,7 @@ function Content() {
           <CheckList items={['Германия — бесплатное обучение в госвузах', 'Франция — престижные университеты', 'Нидерланды — программы на английском', 'Польша — доступные цены']} />
         </InfoBlock>
         <InfoBlock title="Необходимые документы">
-          <CheckList items={['Действующий паспорт', 'Письмо о зачислении', 'Подтверждение финансов (€700+/мес)', 'Медицинская страховка', 'Языковой сертификат']} />
+          <CheckList items={['Действующий паспорт', 'Письмо о зачислении', 'Подтверждение финансов — для Германии в 2026 году требуется блокированный счёт (Sperrkonto) на 11 904 € в год (992 €/мес); для других стран Шенгена обычно от 700 €/мес', 'Медицинская страховка', 'Языковой сертификат']} />
         </InfoBlock>
       </>}
     </ServicePageLayout>
