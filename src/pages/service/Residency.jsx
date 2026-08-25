@@ -50,6 +50,21 @@ function Content() {
       </div>
 
       {lang === 'fa' && <>
+        <div className="glass-panel rounded-2xl p-6 mb-6 border border-amber-400/40 bg-gradient-to-br from-amber-400/10 to-transparent">
+          <span className="inline-block text-xs font-bold text-amber-400 bg-amber-400/15 rounded-full px-3 py-1 mb-3">📌 به‌روزرسانی مهم — قانون جدید اتباع خارجی</span>
+          <h2 className="text-lg font-black text-foreground mb-2">تغییرات قانون اقامت ارمنستان از ۱ نوامبر ۲۰۲۶</h2>
+          <p className="text-sm text-foreground/70 leading-relaxed mb-3">دولت ارمنستان اصلاحیه جدید «قانون اتباع خارجی» را تصویب کرده که اجرای آن از ۱ اوت به ۱ نوامبر ۲۰۲۶ موکول شده است. مهم‌ترین تغییرات:</p>
+          <CheckList items={[
+            'ثبت‌نام کاملاً الکترونیک و صدور کارت اقامت بیومتریک',
+            'افزایش هزینه‌های دولتی: اقامت یک‌ساله ۱۵۰,۰۰۰ درام، اقامت دائم ۵ساله ۲۵۰,۰۰۰ درام (غیرقابل استرداد در صورت رد درخواست)',
+            'سهمیه سالانه برای صدور هر نوع اقامت',
+            'برای اقامت از طریق فعالیت اقتصادی/ثبت شرکت، نیاز به گردش مالی یا موجودی حساب حداقل ۱ میلیون درام',
+            'الزام حضور فیزیکی؛ غیبت بیش از ۱۸۳ روز در سال می‌تواند به لغو اقامت منجر شود',
+            'اقامت دائم ۵ساله جایگزین وضعیت قبلی «اقامت ویژه ۱۰ساله» می‌شود و نیازمند ۳ سال سابقه اقامت موقت است',
+          ]} />
+          <p className="text-xs text-foreground/50 mt-3 italic">تا پیش از اجرای قانون جدید، روند فعلی (شرح‌داده‌شده در ادامه همین صفحه) هنوز ساده‌تر است — برای برنامه‌ریزی دقیق با کارشناسان کاسپین در واتساپ مشورت کنید.</p>
+        </div>
+
         <InfoBlock title="چرا اقامت ارمنستان؟">
           <p>ارمنستان یکی از بهترین گزینه‌ها برای اقامت خارج از کشور برای ایرانیان است. این کشور عضو اتحادیه اروپایی نیست، اما دارای روابط بسیار خوبی با اروپا، روسیه و کشورهای CIS است. هزینه زندگی پایین، مردم مهمان‌نواز، فرهنگ مشابه و محیط امن، ارمنستان را به مقصد ایده‌آلی برای ایرانیان تبدیل کرده است.</p>
         </InfoBlock>
@@ -86,6 +101,21 @@ function Content() {
         </InfoBlock>
       </>}
       {lang === 'en' && <>
+        <div className="glass-panel rounded-2xl p-6 mb-6 border border-amber-400/40 bg-gradient-to-br from-amber-400/10 to-transparent">
+          <span className="inline-block text-xs font-bold text-amber-400 bg-amber-400/15 rounded-full px-3 py-1 mb-3">📌 Important Update — New Law on Foreigners</span>
+          <h2 className="text-lg font-black text-foreground mb-2">Armenia Residency Law Changes from November 1, 2026</h2>
+          <p className="text-sm text-foreground/70 leading-relaxed mb-3">Armenia has approved amendments to its Law on Foreigners, with implementation delayed from August 1 to November 1, 2026. Key changes:</p>
+          <CheckList items={[
+            'Fully electronic application process and biometric residence cards',
+            'Higher government fees: 150,000 AMD for 1-year residency, 250,000 AMD for 5-year permanent residency (non-refundable if rejected)',
+            'Annual quotas introduced for each residency category',
+            'Business/entrepreneur-based residency now requires minimum turnover or account balance of 1,000,000 AMD',
+            'Physical presence requirement — absence of more than 183 days per year may result in revocation',
+            'The 5-year permanent residence permit replaces the former 10-year special-residence status and requires 3 years of prior temporary residence',
+          ]} />
+          <p className="text-xs text-foreground/50 mt-3 italic">Until the new law takes effect, the current process described below remains simpler — contact Caspian's team on WhatsApp for up-to-date guidance.</p>
+        </div>
+
         <InfoBlock title="Why Armenia Residency?">
           <p>Armenia is one of the best options for Iranians seeking residency abroad. Although not an EU member, it has excellent relations with Europe, Russia and CIS countries. Low cost of living, welcoming people, similar culture, and a safe environment make Armenia an ideal destination.</p>
         </InfoBlock>
@@ -110,6 +140,20 @@ function Content() {
         </InfoBlock>
       </>}
       {lang === 'ru' && <>
+        <div className="glass-panel rounded-2xl p-6 mb-6 border border-amber-400/40 bg-gradient-to-br from-amber-400/10 to-transparent">
+          <span className="inline-block text-xs font-bold text-amber-400 bg-amber-400/15 rounded-full px-3 py-1 mb-3">📌 Важное обновление — новый Закон об иностранцах</span>
+          <h2 className="text-lg font-black text-foreground mb-2">Изменения в законе о ВНЖ Армении с 1 ноября 2026 года</h2>
+          <p className="text-sm text-foreground/70 leading-relaxed mb-3">Правительство Армении утвердило поправки к Закону об иностранцах, вступление в силу перенесено с 1 августа на 1 ноября 2026 года. Основные изменения:</p>
+          <CheckList items={[
+            'Полностью электронная подача документов и биометрические карты ВНЖ',
+            'Повышение госпошлин: 150 000 драм за годовой ВНЖ, 250 000 драм за постоянный (5-летний) ВНЖ, без возврата при отказе',
+            'Введение ежегодных квот по каждой категории ВНЖ',
+            'Для ВНЖ через бизнес/ИП — требуется оборот или остаток на счёте не менее 1 000 000 драм',
+            'Отсутствие в стране более 183 дней в году может привести к аннулированию ВНЖ',
+            '5-летний постоянный ВНЖ заменяет прежний специальный статус на 10 лет и требует 3 года предыдущего временного ВНЖ',
+          ]} />
+        </div>
+
         <InfoBlock title="Почему ВНЖ Армении?">
           <p>Армения — один из лучших вариантов для иностранцев, желающих получить ВНЖ. Низкая стоимость жизни, безопасная обстановка и хорошие отношения с Европой и СНГ делают её привлекательным выбором.</p>
         </InfoBlock>
