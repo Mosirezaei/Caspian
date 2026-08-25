@@ -48,6 +48,15 @@ function Content() {
             'انتظار در فرودگاه برای رسیدگی به بار',
           ]} />
         </InfoBlock>
+        <InfoBlock title="مسیرهای پرتقاضای ترانسفر">
+          <CheckList items={[
+            'فرودگاه زوارتنوتس ⇄ مرکز ایروان (حدود ۱۵ تا ۲۵ دقیقه)',
+            'ایروان ⇄ دریاچه سوان و دیلیجان (برای تور یک‌روزه یا اقامت)',
+            'ایروان ⇄ گارنی، گقارد و خور ویراپ',
+            'ایروان ⇄ گیومری',
+            'ترانسفر مرزی ایروان ⇄ تفلیس (برای مسافران چندمقصدی)',
+          ]} />
+        </InfoBlock>
       </>}
       {lang === 'en' && <>
         <InfoBlock title="Caspian Group Transfer Service">
@@ -72,6 +81,15 @@ function Content() {
             'Luggage handling support',
           ]} />
         </InfoBlock>
+        <InfoBlock title="Popular Transfer Routes">
+          <CheckList items={[
+            'Zvartnots Airport ⇄ Yerevan city center (approx. 15-25 minutes)',
+            'Yerevan ⇄ Lake Sevan and Dilijan',
+            'Yerevan ⇄ Garni, Geghard and Khor Virap',
+            'Yerevan ⇄ Gyumri',
+            'Yerevan ⇄ Tbilisi border crossing (for multi-destination travelers)',
+          ]} />
+        </InfoBlock>
       </>}
       {lang === 'ru' && <>
         <InfoBlock title="Сервис трансфера Caspian Group">
@@ -85,6 +103,15 @@ function Content() {
             'Онлайн-бронирование с мгновенным подтверждением',
             'Водители, говорящие по-персидски',
             'VIP и стандартные автомобили',
+          ]} />
+        </InfoBlock>
+        <InfoBlock title="Популярные маршруты трансфера">
+          <CheckList items={[
+            'Аэропорт Звартноц ⇄ центр Еревана (около 15-25 минут)',
+            'Ереван ⇄ озеро Севан и Дилижан',
+            'Ереван ⇄ Гарни, Гегард и Хор Вирап',
+            'Ереван ⇄ Гюмри',
+            'Пограничный трансфер Ереван ⇄ Тбилиси',
           ]} />
         </InfoBlock>
       </>}
