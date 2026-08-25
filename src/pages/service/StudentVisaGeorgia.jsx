@@ -22,7 +22,7 @@ function Content() {
             'شهریه پایین (۲,۵۰۰ تا ۶,۰۰۰ دلار در سال)',
             'هزینه زندگی مناسب در تفلیس',
             'پذیرش آسان برای اتباع ایرانی',
-            'تدریس برنامه‌های پزشکی به زبان انگلیسی',
+            'تدریس برنامه‌های پزشکی به زبان انگلیسی، با تأیید بین‌المللی WHO، WFME و ECFMG که امکان شرکت در آزمون USMLE آمریکا را فراهم می‌کند',
             'محیط امن و دوستانه برای دانشجویان خارجی',
             'فاصله کوتاه تا ارمنستان (۳ ساعت)',
           ]} />
@@ -57,7 +57,7 @@ function Content() {
             'Low tuition fees ($2,500–$6,000/year)',
             'Affordable cost of living in Tbilisi',
             'Easy admission for Iranian nationals',
-            'Medical programs taught in English',
+            'Medical programs taught in English, internationally recognized by WHO, WFME and ECFMG — opening a pathway to the USMLE exam in the US',
             'Safe and welcoming environment for international students',
             'Short distance to Armenia (3 hours)',
           ]} />
@@ -82,7 +82,7 @@ function Content() {
             'Низкая стоимость обучения ($2 500–$6 000 в год)',
             'Доступная стоимость жизни в Тбилиси',
             'Простое поступление для граждан Ирана',
-            'Медицинские программы на английском языке',
+            'Медицинские программы на английском языке, признанные WHO, WFME и ECFMG — с возможностью сдачи экзамена USMLE в США',
             'Безопасная среда для иностранных студентов',
           ]} />
         </InfoBlock>
