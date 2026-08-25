@@ -27,10 +27,11 @@ function Content() {
           <CheckList items={[
             'پوشش کامل شهریه',
             'خوابگاه دولتی رایگان',
-            'کمک هزینه ماهانه ۱,۱۰۰ لیر ترکیه',
+            'کمک هزینه ماهانه: ۴,۵۰۰ لیر برای کارشناسی، ۶,۵۰۰ لیر برای کارشناسی‌ارشد و ۹,۰۰۰ لیر برای دکتری (رقم به‌روز)',
             'بلیط رفت و برگشت سالانه',
             'بیمه درمانی',
-            'دوره آموزش زبان ترکی',
+            'یک سال دوره آموزش زبان ترکی (تافل)',
+            'زمان ثبت‌نام معمولاً ۱۰ ژانویه تا ۲۰ فوریه هر سال از طریق سامانه tbbs.turkiyeburslari.gov.tr',
           ]} />
         </InfoBlock>
         <InfoBlock title="مدارک مورد نیاز">
@@ -52,7 +53,7 @@ function Content() {
           <CheckList items={['Istanbul University', 'Middle East Technical University (METU)', 'Bogazici University', 'Sabanci University', 'Koc University']} />
         </InfoBlock>
         <InfoBlock title="Turkey Scholarship (Türkiye Bursları)">
-          <CheckList items={['Full tuition coverage', 'Free state dormitory', 'Monthly stipend', 'Annual round-trip ticket', 'Health insurance', 'Turkish language course']} />
+          <CheckList items={['Full tuition coverage', 'Free state dormitory', 'Monthly stipend: 4,500 TL (bachelor), 6,500 TL (master), 9,000 TL (PhD) — current rates', 'Annual round-trip ticket', 'Health insurance', 'One-year Turkish language course', 'Applications typically open January 10 - February 20 each year via tbbs.turkiyeburslari.gov.tr']} />
         </InfoBlock>
       </>}
       {lang === 'ru' && <>
@@ -60,7 +61,7 @@ function Content() {
           <p>Турция располагает более чем 200 государственными и частными университетами. Многие из них предлагают программы на английском языке.</p>
         </InfoBlock>
         <InfoBlock title="Стипендия Турции (Türkiye Bursları)">
-          <CheckList items={['Полное покрытие обучения', 'Бесплатное общежитие', 'Ежемесячная стипендия', 'Авиабилет туда-обратно ежегодно', 'Медицинская страховка']} />
+          <CheckList items={['Полное покрытие обучения', 'Бесплатное общежитие', 'Ежемесячная стипендия: 4 500 TL (бакалавриат), 6 500 TL (магистратура), 9 000 TL (докторантура)', 'Авиабилет туда-обратно ежегодно', 'Медицинская страховка', 'Приём заявок обычно с 10 января по 20 февраля через tbbs.turkiyeburslari.gov.tr']} />
         </InfoBlock>
       </>}
     </ServicePageLayout>
