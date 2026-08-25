@@ -29,12 +29,19 @@ function Content() {
         </InfoBlock>
         <InfoBlock title="انواع اقامت امارات">
           <CheckList items={[
-            'ویزای طلایی (Golden Visa) ۵ یا ۱۰ ساله',
-            'اقامت از طریق سرمایه‌گذاری (حداقل ۲ میلیون درهم)',
-            'اقامت از طریق خرید ملک',
+            'ویزای طلایی (Golden Visa) ۱۰ ساله از طریق خرید ملک به ارزش حداقل ۲ میلیون درهم',
+            'ویزای سرمایه‌گذار ملکی ۲ ساله (جدید، از آوریل ۲۰۲۶) — بدون حداقل ارزش برای مالک منفرد، یا حداقل ۴۰۰,۰۰۰ درهم سهم هر مالک در ملک مشترک',
+            'اقامت از طریق سرمایه‌گذاری در کسب‌وکار (حداقل ۲ میلیون درهم)',
             'اقامت از طریق اشتغال در شرکت‌های امارات',
             'اقامت دانشجویی',
             'اقامت از طریق تأسیس شرکت در فری‌زون',
+          ]} />
+        </InfoBlock>
+        <InfoBlock title="تغییرات ۲۰۲۶ ویزای طلایی ملکی">
+          <CheckList items={[
+            'حذف الزام پرداخت ۵۰٪ پیش‌پرداخت برای ملک‌های در حال ساخت (پیش‌فروش)',
+            'ملک‌های رهنی (وام‌دار) نیز در صورت رسیدن ارزش کل به ۲ میلیون درهم واجد شرایط هستند',
+            'امکان ترکیب چند ملک برای رسیدن به سقف ۲ میلیون درهم',
           ]} />
         </InfoBlock>
         <InfoBlock title="مزایای اقامت امارات">
@@ -73,12 +80,19 @@ function Content() {
         </InfoBlock>
         <InfoBlock title="Types of UAE Residency">
           <CheckList items={[
-            'Golden Visa (5 or 10 years)',
-            'Investment Residency (minimum AED 2 million)',
-            'Residency through Property Purchase',
+            '10-year Golden Visa through property purchase worth at least AED 2 million',
+            'New 2-year Property Investor Visa (from April 2026) — no minimum for sole owners, or at least AED 400,000 per owner for jointly-owned property',
+            'Business Investment Residency (minimum AED 2 million)',
             'Employment Residency',
             'Student Residence Permit',
             'Free Zone Company Setup',
+          ]} />
+        </InfoBlock>
+        <InfoBlock title="2026 Golden Visa Property Updates">
+          <CheckList items={[
+            'The 50% upfront payment requirement for off-plan properties has been removed',
+            'Mortgaged properties now qualify once the certified value reaches AED 2 million',
+            'Multiple properties can be combined to reach the AED 2 million threshold',
           ]} />
         </InfoBlock>
         <InfoBlock title="Benefits of UAE Residency">
@@ -107,9 +121,9 @@ function Content() {
         </InfoBlock>
         <InfoBlock title="Виды ВНЖ ОАЭ">
           <CheckList items={[
-            'Золотая виза (5 или 10 лет)',
-            'ВНЖ через инвестиции',
-            'ВНЖ через покупку недвижимости',
+            'Золотая виза на 10 лет через покупку недвижимости от 2 млн дирхамов',
+            'Новая 2-летняя инвесторская виза (с апреля 2026) — без минимума для единственного владельца или от 400 000 дирхамов на совладельца',
+            'ВНЖ через инвестиции в бизнес',
             'ВНЖ через трудоустройство',
             'Студенческий ВНЖ',
           ]} />
