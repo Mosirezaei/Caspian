@@ -31,11 +31,14 @@ function Content() {
           <CheckList items={[
             'اقامت توریستی کوتاه‌مدت (Short-term Residence)',
             'اقامت بلندمدت از طریق سرمایه‌گذاری',
-            'اقامت از طریق خرید ملک',
+            'اقامت از طریق خرید ملک — حداقل ارزش ملک ۲۰۰,۰۰۰ دلار آمریکا که باید در سند رسمی (تاپو) ثبت شود',
             'اقامت دانشجویی',
             'اقامت خانوادگی (Family Residence)',
             'اقامت از طریق کار و اشتغال',
           ]} />
+        </InfoBlock>
+        <InfoBlock title="نکته مهم درباره اقامت از طریق ملک (به‌روز ۲۰۲۶)">
+          <p>در برخی محله‌های پرتقاضا (برای مثال بخش‌هایی از آلانیا، آنتالیا و استانبول)، وقتی نسبت جمعیت خارجی از ۲۰٪ عبور کند، آن محله برای ثبت اقامت جدید بسته می‌شود — حتی برای کسانی که از قبل ملک دارند. پیش از خرید ملک برای اقامت، حتماً وضعیت محله موردنظر را از طریق کاسپین گروه استعلام بگیرید.</p>
         </InfoBlock>
         <InfoBlock title="مزایای اقامت ترکیه">
           <CheckList items={[
@@ -74,11 +77,14 @@ function Content() {
           <CheckList items={[
             'Short-term Tourist Residence Permit',
             'Long-term Residency through Investment',
-            'Residency through Property Purchase',
+            'Residency through Property Purchase — minimum property value USD 200,000, recorded on the official title deed (tapu)',
             'Student Residence Permit',
             'Family Residence Permit',
             'Work Permit and Residency',
           ]} />
+        </InfoBlock>
+        <InfoBlock title="Important Note on Property-Based Residency (2026 Update)">
+          <p>In some high-demand neighborhoods (parts of Alanya, Antalya, and Istanbul, for example), once the share of foreign residents exceeds 20%, that district closes to new residency registrations — even for existing property owners. Always check the current status of a neighborhood with Caspian Group before purchasing property for residency purposes.</p>
         </InfoBlock>
         <InfoBlock title="Benefits of Turkey Residency">
           <CheckList items={[
@@ -107,7 +113,7 @@ function Content() {
           <CheckList items={[
             'Краткосрочный туристический ВНЖ',
             'Долгосрочный ВНЖ через инвестиции',
-            'ВНЖ через покупку недвижимости',
+            'ВНЖ через покупку недвижимости — минимальная стоимость объекта 200 000 USD, зафиксированная в тапу',
             'Студенческий ВНЖ',
             'Семейный ВНЖ',
             'ВНЖ через трудоустройство',
