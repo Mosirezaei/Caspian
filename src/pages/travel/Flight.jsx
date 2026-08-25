@@ -20,6 +20,15 @@ function FlightContent() {
         "مشاوره رایگان درباره قوانین بار، فرودگاه و مدارک سفر",
         "رزرو آسان و مستقیم بدون نیاز به ثبت‌نام‌های پیچیده"
       ],
+      infoTitle: "اطلاعات کلی پرواز تهران - ایروان",
+      infoItems: [
+        "مدت زمان پرواز مستقیم حدود ۲ ساعت است",
+        "فرود در فرودگاه بین‌المللی زوارتنوتس (EVN)، تنها فرودگاه بین‌المللی ارمنستان که در سال‌های اخیر نوسازی شده است",
+        "برای ورود به ارمنستان، اتباع ایرانی نیازی به ویزا ندارند (اقامت کوتاه‌مدت گردشگری)",
+        "پروازهای مستقیم معمولاً توسط ایرلاین‌های ایرانی (آسمان، ماهان، قشم‌ایر، ایران ایرتور) و ایرلاین‌های ارمنی ارائه می‌شود؛ فهرست پرواز‌های فعال روزانه تغییر می‌کند",
+        "بار مجاز معمول: حدود ۲۰ کیلوگرم در کلاس اکونومی و ۳۰ کیلوگرم در بیزینس (بسته به ایرلاین متفاوت است)",
+      ],
+      infoNote: "قیمت بلیط و برنامه دقیق پروازها روزانه تغییر می‌کند؛ برای گرفتن نرخ لحظه‌ای همین الان در واتساپ پیام بدهید.",
       ctaTitle: "استعلام قیمت لحظه‌ای و رزرو پرواز در واتساپ",
       ctaText: "برای دریافت جدول پروازی روزانه، اطلاع از قیمت دقیق بلیط هواپیما در مسیر تهران و ایروان و رزرو صندلی، همین حالا با کارشناسان ما در واتساپ در ارتباط باشید.",
       btnText: "استعلام قیمت و رزرو در واتساپ",
@@ -36,6 +45,15 @@ function FlightContent() {
         "Free consultation on luggage and airport rules",
         "Fast and easy booking via WhatsApp"
       ],
+      infoTitle: "Flight Facts: Tehran - Yerevan",
+      infoItems: [
+        "The direct flight takes roughly 2 hours",
+        "Flights land at Zvartnots International Airport (EVN), Armenia's only international airport, recently renovated",
+        "Iranian citizens do not need a visa for short tourist stays in Armenia",
+        "Direct flights are typically operated by Iranian carriers (Iran Aseman, Mahan Air, Qeshm Air, Iran Airtour) and Armenian airlines; the daily schedule changes",
+        "Typical baggage allowance: around 20kg in economy and 30kg in business (varies by airline)",
+      ],
+      infoNote: "Exact fares and schedules change daily — message us on WhatsApp for a live quote.",
       ctaTitle: "Instant Price Inquiry & Booking via WhatsApp",
       ctaText: "Contact our experts on WhatsApp to get daily flight schedules and exact ticket prices.",
       btnText: "Inquire & Book on WhatsApp",
@@ -52,6 +70,15 @@ function FlightContent() {
         "Бесплатная консультация по правилам перелета",
         "Быстрое бронирование через WhatsApp"
       ],
+      infoTitle: "Информация о рейсе Тегеран - Ереван",
+      infoItems: [
+        "Прямой перелёт занимает около 2 часов",
+        "Посадка выполняется в международном аэропорту Звартноц (EVN) — единственном международном аэропорту Армении, недавно реконструированном",
+        "Гражданам Ирана виза для краткосрочного туристического визита в Армению не требуется",
+        "Прямые рейсы обычно выполняют иранские авиакомпании (Iran Aseman, Mahan Air, Qeshm Air, Iran Airtour) и армянские перевозчики; ежедневное расписание может меняться",
+        "Обычная норма багажа: около 20 кг в эконом-классе и 30 кг в бизнес-классе (зависит от авиакомпании)",
+      ],
+      infoNote: "Точные тарифы и расписание меняются ежедневно — напишите нам в WhatsApp, чтобы узнать актуальную цену.",
       ctaTitle: "Запрос цен и бронирование через WhatsApp",
       ctaText: "Свяжитесь с нашими специалистами в WhatsApp для получения расписания и точной стоимости билетов.",
       btnText: "Забронировать в WhatsApp",
@@ -68,6 +95,15 @@ function FlightContent() {
         "Անվճար խորհրդատվություն ուղեբեռի և կանոնների վերաբերյալ",
         "Արագ ամրագրում WhatsApp-ի միջոցով"
       ],
+      infoTitle: "Չվերթի տեղեկություններ՝ Թեհրան - Երևան",
+      infoItems: [
+        "Ուղիղ չվերթը տևում է մոտավորապես 2 ժամ",
+        "Վայրէջքը կատարվում է Զվարթնոց միջազգային օդանավակայանում (EVN)՝ Հայաստանի միակ միջազգային օդանավակայանում, որը վերջերս վերանորոգվել է",
+        "Իրանի քաղաքացիներին կարճաժամկետ զբոսաշրջային այցի համար վիզա չի պահանջվում",
+        "Ուղիղ չվերթերն սովորաբար իրականացվում են իրանական (Iran Aseman, Mahan Air, Qeshm Air, Iran Airtour) և հայկական ավիաընկերությունների կողմից. ամենօրյա չվացուցակը կարող է փոփոխվել",
+        "Սովորական ուղեբեռի նորմա՝ մոտ 20 կգ էկոնոմ և 30 կգ բիզնես կարգում (կախված է ավիաընկերությունից)",
+      ],
+      infoNote: "Ճշգրիտ գները և չվացուցակը փոփոխվում են ամեն օր. գրեք մեզ WhatsApp-ով՝ ընթացիկ գինը իմանալու համար:",
       ctaTitle: "Անմիջական կապ և գների հարցում WhatsApp-ով",
       ctaText: "Կապ հաստատեք մեր մասնագետների հետ WhatsApp-ով՝ ամենօրյա չվացուցակը և տոմսերի գները ստանալու համար:",
       btnText: "Ամրագրել WhatsApp-ով",
@@ -113,6 +149,22 @@ function FlightContent() {
             <div className="prose prose-invert max-w-none text-gray-300 text-sm sm:text-base leading-relaxed">
               <p>{t.desc1}</p>
             </div>
+
+            {/* اطلاعات کلی پرواز */}
+            {t.infoItems && (
+              <div className="bg-[#1a1a1a] border border-white/10 rounded-xl p-6">
+                <h3 className="text-lg font-bold text-amber-300 mb-4">{t.infoTitle}</h3>
+                <ul className="space-y-3">
+                  {t.infoItems.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-sm text-gray-200">
+                      <span className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0 mt-1.5"></span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                {t.infoNote && <p className="text-xs text-gray-400 mt-4 italic">{t.infoNote}</p>}
+              </div>
+            )}
 
             {/* بخش ویژگی‌ها */}
             <div className="bg-[#1a1a1a] border border-amber-400/20 rounded-xl p-6">
