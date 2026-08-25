@@ -2,7 +2,40 @@ import React from 'react';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { useSEO } from '@/hooks/useSEO';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, PartyPopper, CalendarDays } from 'lucide-react';
+
+const EVENTS = {
+  fa: {
+    badge: '🎉 ویژه شهریور ۱۴۰۵ — فستیوال‌ها و کنسرت‌های ایروان',
+    title: 'تور ارمنستان، ویژه فستیوال‌ها و کنسرت‌های شهریور',
+    intro: 'ایروان در شهریور امسال میزبان دو رویداد بزرگ موسیقی است؛ کاسپین تور بسته‌های ویژه اقامت و ترانسفر هماهنگ با این دو تاریخ را برایتان طراحی کرده است.',
+    items: [
+      { date: 'چهارشنبه ۲۵ شهریور ۱۴۰۵ (۱۶ سپتامبر ۲۰۲۶)', name: 'کنسرت ابی — تور «پوست شیر»', place: 'مجموعه ورزشی و کنسرت کارن دمیرچیان، ایروان' },
+      { date: 'یکشنبه ۲۹ شهریور ۱۴۰۵ (۲۰ سپتامبر ۲۰۲۶)', name: 'فستیوال بزرگ Disco Legends (Retro Stars Fest)', place: 'مجموعه Aura by Adana، حومه ایروان — با اجرای هدوی، Mr. President، دکتر آلبان و بونی ام' },
+    ],
+    cta: 'برای بررسی تور در این تاریخ‌ها یا هر تاریخ دیگری، همین حالا به واتساپ ما پیام بدهید',
+  },
+  en: {
+    badge: '🎉 September 2026 Special — Yerevan Festivals & Concerts',
+    title: 'Armenia Tour — Special September Festivals & Concerts Edition',
+    intro: "Yerevan is hosting two major music events this September. Caspian Tour has built special stay-and-transfer packages timed around both dates.",
+    items: [
+      { date: 'Wednesday, September 16, 2026', name: 'Ebi Concert — "Pooste Shir" Tour', place: 'Karen Demirchyan Sports & Concerts Complex, Yerevan' },
+      { date: 'Sunday, September 20, 2026', name: 'Disco Legends Festival (Retro Stars Fest)', place: 'Aura by Adana Complex, near Yerevan — featuring Haddaway, Mr. President, Dr. Alban and Boney M.' },
+    ],
+    cta: 'Message us on WhatsApp now to check tour availability for these dates or any other date',
+  },
+  ru: {
+    badge: '🎉 Специально к сентябрю 2026 — фестивали и концерты в Ереване',
+    title: 'Тур по Армении — специальный выпуск к сентябрьским фестивалям и концертам',
+    intro: 'В сентябре Ереван примет два крупных музыкальных события. Caspian Tour подготовил специальные пакеты проживания и трансфера, приуроченные к этим датам.',
+    items: [
+      { date: 'Среда, 16 сентября 2026', name: 'Концерт Эби — тур «Pooste Shir»', place: 'Спортивно-концертный комплекс им. Карена Демирчяна, Ереван' },
+      { date: 'Воскресенье, 20 сентября 2026', name: 'Фестиваль Disco Legends (Retro Stars Fest)', place: 'Комплекс Aura by Adana, пригород Еревана — с участием Haddaway, Mr. President, Dr. Alban и Boney M.' },
+    ],
+    cta: 'Напишите нам в WhatsApp прямо сейчас, чтобы уточнить наличие тура на эти или любые другие даты',
+  },
+};
 
 const HIGHLIGHTS = {
   fa: [
@@ -96,6 +129,7 @@ function TourContent() {
   }[lang] || {};
 
   const highlights = HIGHLIGHTS[lang] || HIGHLIGHTS.fa;
+  const ev = EVENTS[lang] || EVENTS.fa;
 
   return (
     <ServicePageLayout
@@ -105,6 +139,31 @@ function TourContent() {
       subtitleRu="Групповые и индивидуальные туры с 2007 года"
       heroImage="https://images.unsplash.com/photo-1609669712881-d9bc36df5ab3?w=1200&q=80"
       serviceType="tour">
+
+      <div className="glass-panel rounded-2xl p-6 mb-6 border border-primary/30 bg-gradient-to-br from-primary/10 to-transparent">
+        <span className="inline-block text-xs font-bold text-primary bg-primary/15 rounded-full px-3 py-1 mb-3">{ev.badge}</span>
+        <h2 className="text-xl font-black text-foreground mb-2 flex items-center gap-2">
+          <PartyPopper className="w-5 h-5 text-primary flex-shrink-0" />
+          {ev.title}
+        </h2>
+        <p className="text-sm text-foreground/70 leading-relaxed mb-4">{ev.intro}</p>
+        <div className="space-y-3 mb-4">
+          {ev.items.map((it, i) => (
+            <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
+              <CalendarDays className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-sm font-bold text-foreground">{it.name}</p>
+                <p className="text-xs text-foreground/60 mt-0.5">{it.date} — {it.place}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <a href="https://wa.me/37433149327" target="_blank" rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 w-full py-3 px-5 rounded-xl bg-primary text-black font-bold text-sm hover:bg-yellow-500 transition-all duration-300">
+          <MessageCircle className="w-4 h-4" />
+          {ev.cta}
+        </a>
+      </div>
 
       <InfoBlock title={t.why}>
         <p>{t.whyBody}</p>
