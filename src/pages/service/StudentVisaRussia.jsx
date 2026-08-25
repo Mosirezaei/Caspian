@@ -48,6 +48,13 @@ function Content() {
             'عکس پرسنلی',
           ]} />
         </InfoBlock>
+        <InfoBlock title="نکات مهم درباره ویزا و ورود به روسیه">
+          <CheckList items={[
+            'ویزای دانشجویی معمولاً ابتدا برای حداکثر ۹۰ روز صادر و سپس توسط اداره مهاجرت روسیه (MIA) تا پایان مدت قرارداد تحصیلی (حداکثر یک سال هر بار) تمدید می‌شود',
+            'بیمه درمانی معتبر برای کل مدت اقامت الزامی است',
+            'پیش از ورود، ثبت اطلاعات در اپلیکیشن رسمی ruID توصیه می‌شود تا فرآیندهای اداری و دریافت سیم‌کارت ساده‌تر شود',
+          ]} />
+        </InfoBlock>
       </>}
       {lang === 'en' && <>
         <InfoBlock title="Why Study in Russia?">
@@ -59,6 +66,13 @@ function Content() {
         <InfoBlock title="Government Scholarship">
           <CheckList items={['Full tuition coverage', 'Free or subsidized dormitory', 'Monthly stipend', 'Health insurance', '15,000–18,000 scholarships available annually for foreigners']} />
         </InfoBlock>
+        <InfoBlock title="Visa & Entry Tips">
+          <CheckList items={[
+            'Student visas are usually issued for up to 90 days initially, then extended by Russia\'s Ministry of Internal Affairs (MIA) to match the enrollment contract (up to 1 year per extension)',
+            'Valid health insurance is mandatory for the entire stay',
+            'Registering in the official ruID app before arrival is recommended to simplify registration and getting a local SIM card',
+          ]} />
+        </InfoBlock>
       </>}
       {lang === 'ru' && <>
         <InfoBlock title="Почему учиться в России?">
@@ -69,6 +83,13 @@ function Content() {
         </InfoBlock>
         <InfoBlock title="Государственная стипендия">
           <CheckList items={['Полное покрытие обучения', 'Бесплатное общежитие', 'Ежемесячная стипендия', 'Медицинская страховка']} />
+        </InfoBlock>
+        <InfoBlock title="Важно о визе и въезде">
+          <CheckList items={[
+            'Студенческая виза выдаётся сначала на срок до 90 дней, затем продлевается МВД России на срок договора об обучении (до 1 года за раз)',
+            'Обязательна действующая медицинская страховка на весь период пребывания',
+            'Рекомендуется регистрация в приложении ruID до въезда',
+          ]} />
         </InfoBlock>
       </>}
     </ServicePageLayout>
