@@ -29,8 +29,8 @@ function Content() {
         </InfoBlock>
         <InfoBlock title="روش‌های اخذ اقامت عمان">
           <CheckList items={[
-            'اقامت از طریق سرمایه‌گذاری (حداقل ۵۰۰,۰۰۰ ریال عمانی)',
-            'اقامت از طریق خرید ملک در مناطق مجاز (ITC)',
+            'اقامت طلایی (Golden Residency) — اقامت ۵ ساله با سرمایه‌گذاری از ۲۵۰,۰۰۰ ریال عمانی یا اقامت ۱۰ ساله از ۵۰۰,۰۰۰ ریال عمانی',
+            'اقامت از طریق خرید ملک در مناطق مجاز (ITC) مانند The Wave Muscat و Muscat Hills',
             'اقامت از طریق اشتغال در شرکت‌های عمانی',
             'اقامت دانشجویی',
             'اقامت خانوادگی (وابسته به اقامت اصلی)',
@@ -72,8 +72,8 @@ function Content() {
         </InfoBlock>
         <InfoBlock title="Methods to Obtain Oman Residency">
           <CheckList items={[
-            'Investment Residency (minimum 500,000 Omani Rial)',
-            'Property Purchase in designated areas (ITC)',
+            'Golden Residency — 5-year residency from OMR 250,000 investment, or 10-year residency from OMR 500,000',
+            'Property Purchase in designated Integrated Tourism Complexes (ITCs) such as The Wave Muscat and Muscat Hills',
             'Employment at Omani companies',
             'Student Residence Permit',
             'Family Residence Permit',
@@ -95,8 +95,8 @@ function Content() {
         </InfoBlock>
         <InfoBlock title="Способы получения ВНЖ Омана">
           <CheckList items={[
-            'ВНЖ через инвестиции',
-            'ВНЖ через покупку недвижимости',
+            'Золотая резиденция — 5-летний ВНЖ от 250 000 оманских риалов или 10-летний ВНЖ от 500 000 риалов',
+            'ВНЖ через покупку недвижимости в разрешённых зонах (ITC)',
             'ВНЖ через трудоустройство',
             'Студенческий ВНЖ',
           ]} />
