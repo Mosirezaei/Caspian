@@ -11,7 +11,9 @@ interface Item {
   apartment_name?: string;
   check_in?: string;
   check_out?: string;
-  guests_count?: number;
+  adults_count?: number;
+  child_under_7?: number;
+  child_7_to_18?: number;
   transport_info?: string;
   payment_status?: string;
   deposit_amount?: string;
@@ -63,7 +65,9 @@ export default function TaskManager() {
   const [apartmentName, setApartmentName] = useState('');
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
-  const [guestsCount, setGuestsCount] = useState<number | ''>('');
+  const [adultsCount, setAdultsCount] = useState<number | ''>(1);
+  const [childUnder7, setChildUnder7] = useState<number | ''>(0);
+  const [child7To18, setChild7To18] = useState<number | ''>(0);
   const [transportInfo, setTransportInfo] = useState('');
   const [paymentStatus, setPaymentStatus] = useState('کل پرداخت شده');
   const [depositAmount, setDepositAmount] = useState('');
@@ -84,7 +88,9 @@ export default function TaskManager() {
   const [qApartmentName, setQApartmentName] = useState('');
   const [qCheckIn, setQCheckIn] = useState('');
   const [qCheckOut, setQCheckOut] = useState('');
-  const [qGuestsCount, setQGuestsCount] = useState<number | ''>('');
+  const [qAdultsCount, setQAdultsCount] = useState<number | ''>(1);
+  const [qChildUnder7, setQChildUnder7] = useState<number | ''>(0);
+  const [qChild7To18, setQChild7To18] = useState<number | ''>(0);
   const [qTransportInfo, setQTransportInfo] = useState('');
   const [qPaymentStatus, setQPaymentStatus] = useState('کل پرداخت شده');
   const [qDepositAmount, setQDepositAmount] = useState('');
@@ -122,7 +128,9 @@ export default function TaskManager() {
       apartment_name: formType === 'booking' ? apartmentName : null,
       check_in: formType === 'booking' ? checkIn : null,
       check_out: formType === 'booking' ? checkOut : null,
-      guests_count: formType === 'booking' ? Number(guestsCount) : null,
+      adults_count: formType === 'booking' ? Number(adultsCount) || 0 : null,
+      child_under_7: formType === 'booking' ? Number(childUnder7) || 0 : null,
+      child_7_to_18: formType === 'booking' ? Number(child7To18) || 0 : null,
       transport_info: formType === 'booking' ? transportInfo : null,
       payment_status: formType === 'booking' ? paymentStatus : null,
       deposit_amount: formType === 'booking' && paymentStatus === 'بیعانه داده شده' ? depositAmount : null,
@@ -155,7 +163,8 @@ export default function TaskManager() {
   };
 
   const resetForm = () => {
-    setGuestName(''); setGuestPhone(''); setApartmentName(''); setCheckIn(''); setCheckOut(''); setGuestsCount(''); setTransportInfo('');
+    setGuestName(''); setGuestPhone(''); setApartmentName(''); setCheckIn(''); setCheckOut(''); 
+    setAdultsCount(1); setChildUnder7(0); setChild7To18(0); setTransportInfo('');
     setPaymentStatus('کل پرداخت شده'); setDepositAmount('');
     setTaskTitle(''); setTaskDate(''); setTaskDescription('');
   };
@@ -175,7 +184,9 @@ export default function TaskManager() {
       apartment_name: quickType === 'booking' ? qApartmentName : null,
       check_in: quickType === 'booking' ? qCheckIn : null,
       check_out: quickType === 'booking' ? qCheckOut : null,
-      guests_count: quickType === 'booking' ? Number(qGuestsCount) : null,
+      adults_count: quickType === 'booking' ? Number(qAdultsCount) || 0 : null,
+      child_under_7: quickType === 'booking' ? Number(qChildUnder7) || 0 : null,
+      child_7_to_18: quickType === 'booking' ? Number(qChild7To18) || 0 : null,
       transport_info: quickType === 'booking' ? qTransportInfo : null,
       payment_status: quickType === 'booking' ? qPaymentStatus : null,
       deposit_amount: quickType === 'booking' && qPaymentStatus === 'بیعانه داده شده' ? qDepositAmount : null,
@@ -191,7 +202,8 @@ export default function TaskManager() {
       showNotification('با موفقیت ثبت شد.', 'success');
       fetchItems();
       setQuickDateModal(null);
-      setQGuestName(''); setQGuestPhone(''); setQApartmentName(''); setQCheckIn(''); setQCheckOut(''); setQGuestsCount(''); setQTransportInfo('');
+      setQGuestName(''); setQGuestPhone(''); setQApartmentName(''); setQCheckIn(''); setQCheckOut(''); 
+      setQAdultsCount(1); setQChildUnder7(0); setQChild7To18(0); setQTransportInfo('');
       setQPaymentStatus('کل پرداخت شده'); setQDepositAmount('');
       setQTaskTitle(''); setQTaskDate(''); setQTaskDesc('');
     }
@@ -220,7 +232,9 @@ export default function TaskManager() {
       setApartmentName(item.apartment_name || '');
       setCheckIn(item.check_in || '');
       setCheckOut(item.check_out || '');
-      setGuestsCount(item.guests_count || '');
+      setAdultsCount(item.adults_count ?? 1);
+      setChildUnder7(item.child_under_7 ?? 0);
+      setChild7To18(item.child_7_to_18 ?? 0);
       setTransportInfo(item.transport_info || '');
       setPaymentStatus(item.payment_status || 'کل پرداخت شده');
       setDepositAmount(item.deposit_amount || '');
@@ -362,7 +376,21 @@ export default function TaskManager() {
             <input type="text" placeholder="نام مهمان" value={guestName} onChange={(e) => setGuestName(e.target.value)} className="bg-gray-700 p-2.5 rounded-lg border border-gray-600 text-right text-white" required />
             <input type="text" placeholder="شماره واتساپ مسافر (مثل 374...)" value={guestPhone} onChange={(e) => setGuestPhone(e.target.value)} className="bg-gray-700 p-2.5 rounded-lg border border-gray-600 text-right text-white" required />
             <input type="text" placeholder="نام یا شماره آپارتمان" value={apartmentName} onChange={(e) => setApartmentName(e.target.value)} className="bg-gray-700 p-2.5 rounded-lg border border-gray-600 text-right text-white" required />
-            <input type="number" placeholder="تعداد نفرات" value={guestsCount} onChange={(e) => setGuestsCount(e.target.value ? Number(e.target.value) : '')} className="bg-gray-700 p-2.5 rounded-lg border border-gray-600 text-right text-white" required />
+            
+            {/* تفکیک نفرات */}
+            <div className="bg-gray-700/50 p-2.5 rounded-lg border border-gray-600 flex flex-col gap-1">
+              <label className="text-xs text-gray-300">تعداد بزرگسال</label>
+              <input type="number" min="0" placeholder="بزرگسال" value={adultsCount} onChange={(e) => setAdultsCount(e.target.value ? Number(e.target.value) : '')} className="bg-gray-700 p-1.5 rounded border border-gray-600 text-white text-right" required />
+            </div>
+            <div className="bg-gray-700/50 p-2.5 rounded-lg border border-gray-600 flex flex-col gap-1">
+              <label className="text-xs text-gray-300">کودک زیر ۷ سال</label>
+              <input type="number" min="0" placeholder="زیر ۷ سال" value={childUnder7} onChange={(e) => setChildUnder7(e.target.value ? Number(e.target.value) : '')} className="bg-gray-700 p-1.5 rounded border border-gray-600 text-white text-right" />
+            </div>
+            <div className="bg-gray-700/50 p-2.5 rounded-lg border border-gray-600 flex flex-col gap-1">
+              <label className="text-xs text-gray-300">کودک ۷ تا ۱۸ سال</label>
+              <input type="number" min="0" placeholder="۷ تا ۱۸ سال" value={child7To18} onChange={(e) => setChild7To18(e.target.value ? Number(e.target.value) : '')} className="bg-gray-700 p-1.5 rounded border border-gray-600 text-white text-right" />
+            </div>
+
             <div>
               <label className="block text-xs text-gray-400 mb-1 text-right">تاریخ ورود (Check-in)</label>
               <input type="date" value={checkIn} onChange={(e) => setCheckIn(e.target.value)} className="bg-gray-700 p-2.5 rounded-lg border border-gray-600 w-full text-white cursor-pointer" required />
@@ -524,7 +552,23 @@ export default function TaskManager() {
                 <input type="text" placeholder="نام مهمان" value={qGuestName} onChange={(e) => setQGuestName(e.target.value)} className="bg-gray-700 p-2.5 rounded-xl border border-gray-600 w-full text-white" required />
                 <input type="text" placeholder="شماره واتساپ مسافر (مثل 374...)" value={qGuestPhone} onChange={(e) => setQGuestPhone(e.target.value)} className="bg-gray-700 p-2.5 rounded-xl border border-gray-600 w-full text-white" required />
                 <input type="text" placeholder="نام یا شماره آپارتمان" value={qApartmentName} onChange={(e) => setQApartmentName(e.target.value)} className="bg-gray-700 p-2.5 rounded-xl border border-gray-600 w-full text-white" required />
-                <input type="number" placeholder="تعداد نفرات" value={qGuestsCount} onChange={(e) => setQGuestsCount(e.target.value ? Number(e.target.value) : '')} className="bg-gray-700 p-2.5 rounded-xl border border-gray-600 w-full text-white" required />
+                
+                {/* تفکیک نفرات در مودال */}
+                <div className="grid grid-cols-3 gap-2">
+                  <div className="bg-gray-700 p-2 rounded-xl border border-gray-600">
+                    <label className="block text-[10px] text-gray-300 mb-1">بزرگسال</label>
+                    <input type="number" min="0" value={qAdultsCount} onChange={(e) => setQAdultsCount(e.target.value ? Number(e.target.value) : '')} className="bg-gray-800 p-1.5 rounded w-full text-white text-center" required />
+                  </div>
+                  <div className="bg-gray-700 p-2 rounded-xl border border-gray-600">
+                    <label className="block text-[10px] text-gray-300 mb-1">کودک زیر ۷</label>
+                    <input type="number" min="0" value={qChildUnder7} onChange={(e) => setQChildUnder7(e.target.value ? Number(e.target.value) : '')} className="bg-gray-800 p-1.5 rounded w-full text-white text-center" />
+                  </div>
+                  <div className="bg-gray-700 p-2 rounded-xl border border-gray-600">
+                    <label className="block text-[10px] text-gray-300 mb-1">کودک ۷ تا ۱۸</label>
+                    <input type="number" min="0" value={qChild7To18} onChange={(e) => setQChild7To18(e.target.value ? Number(e.target.value) : '')} className="bg-gray-800 p-1.5 rounded w-full text-white text-center" />
+                  </div>
+                </div>
+
                 <div>
                   <label className="block text-xs text-gray-400 mb-1">تاریخ ورود (Check-in)</label>
                   <input type="date" value={qCheckIn} onChange={(e) => setQCheckIn(e.target.value)} className="bg-gray-700 p-2.5 rounded-xl border border-gray-600 w-full text-white cursor-pointer" required />
@@ -577,7 +621,9 @@ export default function TaskManager() {
                 <p><strong>نام مهمان:</strong> {selectedItem.guest_name}</p>
                 <p><strong>شماره تماس:</strong> {selectedItem.guest_phone || 'ندارد'}</p>
                 <p><strong>واحد آپارتمان:</strong> {selectedItem.apartment_name}</p>
-                <p><strong>تعداد نفرات:</strong> {selectedItem.guests_count}</p>
+                <p>
+                  <strong>تعداد نفرات:</strong> بزرگسال: {selectedItem.adults_count ?? 1} | کودک زیر ۷ سال: {selectedItem.child_under_7 ?? 0} | کودک ۷ تا ۱۸ سال: {selectedItem.child_7_to_18 ?? 0}
+                </p>
                 <p><strong>تاریخ ورود:</strong> {selectedItem.check_in}</p>
                 <p><strong>تاریخ خروج:</strong> {selectedItem.check_out}</p>
                 <p><strong>وضعیت پرداخت:</strong> {selectedItem.payment_status} {selectedItem.deposit_amount ? `(${selectedItem.deposit_amount})` : ''}</p>
