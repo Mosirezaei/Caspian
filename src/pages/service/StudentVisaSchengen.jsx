@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
@@ -13,6 +14,13 @@ function Content() {
       heroImage="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1200&q=80"
       serviceType="student-visa"
     >
+      {/* اضافه کردن تگ‌های سئو چندزبانه با Helmet */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'اخذ ویزای تحصیلی شینگن و تحصیل در اروپا | کاسپین گروه' : 'Schengen Student Visa & Study in Europe | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'راهنمای دریافت ویزای تحصیلی شینگن (نوع D)، شرایط تحصیل در آلمان، فرانسه، ایتالیا و اروپا با پشتیبانی کاسپین گروه.' : 'Guide to obtaining a Schengen student visa (Type D) and studying in Germany, France, Italy, and Europe with Caspian Group.'} />
+        <link rel="canonical" href="https://caspian.am/services/student-visa/schengen" />
+      </Helmet>
+
       {lang === 'fa' && <>
         <InfoBlock title="ویزای تحصیلی شینگن چیست؟">
           <p>ویزای تحصیلی شینگن (نوع D) به دانشجویان اجازه می‌دهد در کشورهای منطقه شینگن (آلمان، فرانسه، ایتالیا، اسپانیا، هلند و ۲۲ کشور دیگر) تحصیل کنند. این ویزا برای دوره‌های بیش از ۹۰ روز صادر می‌شود.</p>
