@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
@@ -13,6 +14,13 @@ function Content() {
       heroImage="https://images.unsplash.com/photo-1541971875076-8f970d573be6?w=1200&q=80"
       serviceType="student-visa"
     >
+      {/* اضافه کردن تگ‌های سئو چندزبانه با Helmet */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'اخذ ویزای تحصیلی رومانی و دانشگاه‌های اروپا | کاسپین گروه' : 'Romania Student Visa & EU Study | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'راهنمای دریافت ویزای تحصیلی رومانی، تحصیل پزشکی با مدرک معتبر اتحادیه اروپا (EU) با پشتیبانی کاسپین گروه.' : 'Guide to obtaining a Romania student visa and studying medicine with a valid EU degree through Caspian Group.'} />
+        <link rel="canonical" href="https://caspian.am/services/student-visa/romania" />
+      </Helmet>
+
       {lang === 'fa' && <>
         <InfoBlock title="چرا تحصیل در رومانی؟">
           <p>رومانی عضو اتحادیه اروپا است و مدارک دانشگاه‌های آن در سراسر اروپا معتبر است. هزینه تحصیل و زندگی در رومانی بسیار پایین‌تر از سایر کشورهای اروپایی است. دانشگاه‌های رومانی رشته پزشکی و دندانپزشکی به انگلیسی ارائه می‌دهند که در بین ایرانیان محبوبیت زیادی دارد.</p>
