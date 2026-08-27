@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
@@ -11,6 +12,13 @@ function Content() {
       subtitleRu="Ворота в Европу для иранских граждан"
       heroImage="https://images.unsplash.com/photo-1584652868574-4df7e3c8a6b1?w=1200&q=80"
       serviceType="visa-romania">
+
+      {/* اضافه کردن تگ‌های سئو چندزبانه با Helmet */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'اخذ ویزای رومانی (توریستی و اقامتی) | کاسپین گروه' : 'Romania Visa & Immigration Services | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'راهنمای دریافت ویزای رومانی (نوع C و D)، شرایط اخذ ویزا از ایروان و مدارک مورد نیاز با پشتیبانی تخصصی کاسپین گروه.' : 'Guide to obtaining a Romania visa (Type C and D), application process from Yerevan with Caspian Group.'} />
+        <link rel="canonical" href="https://caspian.am/visa/romania" />
+      </Helmet>
 
       {/* Romania flag & landscape */}
       <div className="rounded-2xl overflow-hidden mb-6 aspect-video relative">
