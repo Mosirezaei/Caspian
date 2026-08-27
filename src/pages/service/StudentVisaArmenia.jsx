@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
@@ -13,6 +14,13 @@ function Content() {
       heroImage="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1200&q=80"
       serviceType="student-visa"
     >
+      {/* اضافه کردن تگ‌های سئو چندزبانه با Helmet */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'اخذ ویزای تحصیلی ارمنستان و پذیرش دانشگاه‌ها | کاسپین گروه' : 'Armenia Student Visa & University Admission | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'راهنمای دریافت ویزای تحصیلی ارمنستان، تحصیل پزشکی و دندانپزشکی در ایروان و هزینه‌های تحصیلی با پشتیبانی کاسپین گروه.' : 'Guide to obtaining an Armenia student visa, studying medicine and dentistry in Yerevan, and tuition costs with Caspian Group.'} />
+        <link rel="canonical" href="https://caspian.am/services/student-visa/armenia" />
+      </Helmet>
+
       {lang === 'fa' && <>
         <InfoBlock title="چرا تحصیل در ارمنستان؟">
           <p>ارمنستان یکی از مقرون‌به‌صرفه‌ترین مقاصد تحصیلی در اروپا است. دانشگاه‌های ارمنستان مدارک معتبر بین‌المللی ارائه می‌دهند و هزینه‌های تحصیل و زندگی در مقایسه با اروپای غربی بسیار پایین است. ایرانیان زیادی در ارمنستان تحصیل می‌کنند و جامعه ایرانی قوی در ایروان وجود دارد.</p>
