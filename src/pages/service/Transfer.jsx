@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
@@ -14,6 +15,13 @@ function Content() {
       subtitleRu="Безопасный трансфер от аэропорта Звартноц или центрального терминала в отели и апартаменты"
       heroImage="https://images.unsplash.com/photo-1552183299-a5f2bff2d0f3?w=1200&q=80"
       serviceType="transfer">
+
+      {/* اضافه کردن تگ‌های سئو چندزبانه با Helmet */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'ترانسفر فرودگاهی زوارتنوتس و تشریفات در ایروان | کاسپین گروه' : 'Airport & Terminal Transfer in Yerevan | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'خدمات ترانسفر فرودگاهی، خودروهای VIP، راننده‌های فارسی‌زبان و ترانسفر بین‌شهری در ارمنستان با کاسپین گروه.' : 'Reliable airport transfer, VIP cars, and city-to-city transfers in Armenia with Caspian Group.'} />
+        <link rel="canonical" href="https://caspian.am/travel/transfer" />
+      </Helmet>
 
       {/* Zvartnots airport image */}
       <div className="rounded-2xl overflow-hidden mb-6 aspect-video relative">
