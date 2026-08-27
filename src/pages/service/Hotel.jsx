@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { useSEO } from '@/hooks/useSEO';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
-import { MessageCircle, ChevronDown, HelpCircle, Star } from 'lucide-react';
+import { MessageCircle, ChevronDown, HelpCircle, Star, Building, MapPin, Sparkles } from 'lucide-react';
 
 // ۱۵ هتل واقعی ارمنستان
 const HOTELS = {
@@ -182,8 +182,6 @@ const HOTELS = {
   ],
 };
 
-const starLabels = { fa: ['هتل‌های پیشنهادی', 'ستاره'], en: ['Recommended Hotels', 'Star'], ru: ['Рекомендуемые отели', 'Звёзд'] };
-
 function StarBadge({ count }) {
   return (
     <span className="flex items-center gap-0.5">
@@ -333,13 +331,54 @@ function HotelContent() {
     }
   });
 
-  const waMsg = lang === 'fa' ? 'سلام، می‌خوام هتل در ارمنستان رزرو کنم' : lang === 'ru' ? 'Здравствуйте, хочу забронировать отель в Армении' : 'Hello, I would like to book a hotel in Armenia';
   const sectionTitle = { fa: 'هتل‌های پیشنهادی ارمنستان', en: 'Recommended Hotels in Armenia', ru: 'Рекомендуемые отели Армении' };
   const note = {
     fa: '* قیمت‌ها میانگین تخمینی برای اتاق دبل در فصل معمولی هستند. در فصل اوج (تابستان، نوروز) ممکن است ۲۰ تا ۴۰ درصد بیشتر باشد.',
     en: '* Prices are estimated averages for a double room in regular season. Peak season (summer, Nowruz) may be 20–40% higher.',
     ru: '* Цены — ориентировочные средние для двухместного номера в обычный сезон. В пиковый сезон (лето, Новруз) может быть на 20–40% выше.',
   };
+
+  // متن‌های توضیحات طبیعی و تخصصی راهنمای هتل‌ها
+  const guideContent = {
+    fa: {
+      introTitle: 'راهنمای جامع رزرو هتل در ایروان و انتخاب محل اقامت',
+      introText1: 'شهر ایروان به عنوان قلب تپنده گردشگری ارمنستان، تنوع بسیار بالایی از هتل‌ها را در خود جای داده است؛ از هتل‌های بوتیک و سنتی در بافت قدیمی شهر گرفته تا برندهای بین‌المللی لوکس در اطراف میدان جمهوری و خیابان‌های اصلی مثل ابویان و شمالی.',
+      introText2: 'اگر برای سفری کاری یا تفریحی آماده می‌شوید، انتخاب درست هتل بر اساس نزدیکی به مراکز تجاری، جاذبه‌های تاریخی و دسترسی به سیستم حمل‌ونقل تأثیر مستقیمی بر کیفیت سفر شما خواهد داشت. کاسپین گروه با بیش از ۱۵ سال تجربه حضور مستمر در ایروان، مستقیماً با هتل‌های برتر این کشور قرارداد دارد تا بهترین نرخ‌ها و واچر رسمی را به مسافران ارائه دهد.',
+      featuresTitle: 'نکات کلیدی برای انتخاب هتل در ارمنستان:',
+      featuresList: [
+        'موقعیت مکانی: هتل‌های اطراف میدان جمهوری و خیابان شمالی دسترسی پیاده‌روی عالی به کافه‌ها و مراکز خرید دارند.',
+        'خدمات صبحانه: اکثر هتل‌های ۳ و ۴ ستاره ارمنستان صبحانه بوفه (Buffet Breakfast) را روی قیمت اتاق لحاظ می‌کنند.',
+        'رزرو فصلی: در ماه‌های ژوئن تا سپتامبر (تابستان) و تعطیلات نوروز، ظرفیت هتل‌های خوب ایروان به سرعت تکمیل می‌شود؛ توصیه می‌کنیم حداقل از چند هفته قبل اقدام کنید.',
+        'تضمین قیمت و واچر معتبر: با رزرو از طریق کاسپین، واچر رسمی هتل بدون واسطه و با پشتیبانی ۲۴ ساعته در ارمنستان به دست شما می‌رسد.'
+      ]
+    },
+    en: {
+      introTitle: 'Comprehensive Guide to Hotel Booking in Yerevan',
+      introText1: 'Yerevan offers a wide range of accommodations, from traditional boutique hotels in the historic district to luxury international brands around Republic Square and Northern Avenue.',
+      introText2: 'Choosing the right hotel based on proximity to business centers and attractions impacts your travel quality. With over 15 years of experience in Yerevan, Caspian Group partners directly with top hotels to provide the best rates and official vouchers.',
+      featuresTitle: 'Key Tips for Choosing a Hotel in Armenia:',
+      featuresList: [
+        'Location: Hotels around Republic Square and Northern Avenue offer great walking access to cafés and shops.',
+        'Breakfast Included: Most 3 and 4-star hotels include a rich buffet breakfast in the room rate.',
+        'Seasonal Booking: Peak seasons (summer and Nowruz) fill up fast; early booking is strongly recommended.',
+        'Guaranteed Vouchers: Book through Caspian for direct, official vouchers with 24/7 local support.'
+      ]
+    },
+    ru: {
+      introTitle: 'Подробный гид по бронированию отелей в Ереване',
+      introText1: 'Ереван предлагает огромный выбор отелей: от уютных бутик-отелей в историческом центре до роскошных мировых брендов у площади Республики.',
+      introText2: 'Правильный выбор отеля гарантирует комфорт вашей поездки. Имея более чем 15-летний опыт работы в Ереване, Caspian Group сотрудничает напрямую с лучшими отелями для предоставления лучших цен.',
+      featuresTitle: 'Ключевые советы при выборе отеля:',
+      featuresList: [
+        : 'Отели у площади Республики обеспечивают пеший доступ ко всем главным точкам.',
+        : 'Завтрак: Большинство отелей включают сытный завтрак «шведский стол» в стоимость.',
+        : 'Сезонность: В пиковые сезоны (лето и Новруз) номера раскупаются быстро, бронируйте заранее.',
+        : 'Официальные ваучеры: Бронируйте через Caspian с гарантией и поддержкой 24/7.'
+      ]
+    }
+  };
+
+  const currentGuide = guideContent[lang] || guideContent.fa;
 
   return (
     <ServicePageLayout
@@ -350,12 +389,44 @@ function HotelContent() {
       heroImage="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200&q=80"
       serviceType="hotel"
     >
-      {/* اضافه کردن تگ‌های سئو پیشرفته چندزبانه با Helmet */}
+      {/* تگ‌های سئو پیشرفته چندزبانه با Helmet */}
       <Helmet>
         <title>{lang === 'fa' ? 'رزرو هتل در ایروان و ارمنستان (۳ تا ۵ ستاره) | کاسپین گروه' : 'Hotel Booking in Yerevan & Armenia | Caspian Group'}</title>
         <meta name="description" content={lang === 'fa' ? 'رزرو هتل‌های ۳، ۴ و ۵ ستاره در ایروان و شهرهای ارمنستان با بهترین قیمت و واچر رسمی از طریق کاسپین گروه.' : 'Book 3, 4 and 5-star hotels in Yerevan and Armenia with official vouchers through Caspian Group.'} />
         <link rel="canonical" href="https://caspian.am/travel/hotel" />
       </Helmet>
+
+      {/* بخش توضیحات جامع و طبیعی برای پربار شدن صفحه و سئو */}
+      <div className="glass-panel rounded-3xl p-6 sm:p-8 mb-10 border border-primary/20 bg-black/40 backdrop-blur-md">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-10 h-10 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center text-primary">
+            <Building className="w-5 h-5" />
+          </div>
+          <h1 className="text-xl sm:text-2xl font-black text-foreground">
+            {currentGuide.introTitle}
+          </h1>
+        </div>
+        <p className="text-sm text-foreground/75 leading-relaxed mb-4">
+          {currentGuide.introText1}
+        </p>
+        <p className="text-sm text-foreground/75 leading-relaxed mb-6">
+          {currentGuide.introText2}
+        </p>
+
+        <div className="border-t border-white/10 pt-6">
+          <h3 className="font-bold text-primary text-sm sm:text-base mb-3 flex items-center gap-2">
+            <Sparkles className="w-4 h-4" /> {currentGuide.featuresTitle}
+          </h3>
+          <ul className="space-y-2.5">
+            {currentGuide.featuresList.map((item, idx) => (
+              <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground/70 leading-relaxed">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
 
       <h2 className="text-2xl font-black text-foreground mb-6 text-center gold-gradient-text">{sectionTitle[lang]}</h2>
 
