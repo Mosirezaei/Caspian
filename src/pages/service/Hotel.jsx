@@ -3,8 +3,8 @@ import BookingSearchModal from '@/components/shared/BookingSearchModal';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { useSEO } from '@/hooks/useSEO';
-import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
-import { MessageCircle, ChevronDown, HelpCircle, Star } from 'lucide-react';
+import { ServicePageLayout } from '@/components/shared/ServicePageLayout';
+import { ChevronDown, HelpCircle, Star } from 'lucide-react';
 
 // ۱۵ هتل واقعی ارمنستان
 const HOTELS = {
@@ -181,8 +181,6 @@ const HOTELS = {
   ],
 };
 
-const starLabels = { fa: ['هتل‌های پیشنهادی', 'ستاره'], en: ['Recommended Hotels', 'Star'], ru: ['Рекомендуемые отели', 'Звёзд'] };
-
 function StarBadge({ count }) {
   return (
     <span className="flex items-center gap-0.5">
@@ -331,9 +329,6 @@ function HotelContent() {
     }
   });
 
-    const waMsg = lang === 'fa' ? 'سلام، می‌خوام هتل در ارمنستان رزرو کنم' : lang === 'ru' ? 'Здравствуйте, хочу забронировать отель в Армении' : 'Hello, I would like to book a hotel in Armenia';
-  const waBtn = { fa: 'رزرو هتل از طریق واتساپ', en: 'Book a Hotel via WhatsApp', ru: 'Забронировать отель в WhatsApp' };
-  const waSub = { fa: 'نام هتل، تاریخ و تعداد نفرات را ارسال کنید', en: 'Send hotel name, dates and number of guests', ru: 'Отправьте название отеля, даты и количество гостей' };
   const sectionTitle = { fa: 'هتل‌های پیشنهادی ارمنستان', en: 'Recommended Hotels in Armenia', ru: 'Рекомендуемые отели Армении' };
   const note = {
     fa: '* قیمت‌ها میانگین تخمینی برای اتاق دبل در فصل معمولی هستند. در فصل اوج (تابستان، نوروز) ممکن است ۲۰ تا ۴۰ درصد بیشتر باشد.',

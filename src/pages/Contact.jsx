@@ -6,7 +6,7 @@ import GlobalNavbar from '@/components/shared/GlobalNavbar';
 import ContactFooter from '@/components/home/ContactFooter';
 import {
   Phone, MessageCircle, Send, Instagram, MapPin,
-  Clock, Mail, Globe, Building2, CheckCircle, Loader2
+  Clock, Globe, Building2, CheckCircle, Loader2
 } from 'lucide-react';
 import { supabase } from '@/api/supabaseClient';
 

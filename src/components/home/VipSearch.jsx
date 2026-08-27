@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 export default function VipSearch() {
   const { lang } = useLang();
-  const isRtl = lang === 'fa';
 
   const labels = {
     fa: { title: 'خدمات VIP', desc: 'با ما تماس بگیرید برای بسته‌های شخصی‌سازی شده', contact: 'تماس با VIP' },

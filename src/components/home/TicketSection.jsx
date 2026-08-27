@@ -6,7 +6,6 @@ import { useLang } from '@/lib/LanguageContext';
 
 export default function TicketSection() {
   const { lang } = useLang();
-  const isRtl = lang === 'fa';
 
   const titles = {
     fa: { main: 'رزرو بلیط', subtitle: 'بلیط هواپیما و زمینی با بهترین قیمت‌ها', air: 'هواپیما', ground: 'زمینی' },

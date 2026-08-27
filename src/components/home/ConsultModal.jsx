@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, User, Phone, MessageCircle, FileText, CheckCircle, Loader2 } from 'lucide-react';
+import { X, CheckCircle } from 'lucide-react';
 import { useLang } from '@/lib/LanguageContext';
 import { supabase } from '@/api/supabaseClient';
 

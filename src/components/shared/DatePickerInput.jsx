@@ -2,7 +2,7 @@
  * DatePickerInput — modal وسط صفحه، فقط میلادی، بدون تعطیلی
  */
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Calendar, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar } from 'lucide-react';
 
 const GREG_MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const GREG_DAYS   = ['Su','Mo','Tu','We','Th','Fr','Sa'];

@@ -2,7 +2,6 @@ import React from 'react';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 import { Link } from 'react-router-dom';
-import { GraduationCap } from 'lucide-react';
 
 const destinations = {
   fa: [

@@ -906,7 +906,6 @@ export default function GlobalNavbar() {
 
 
 
-  const [mobileLangOpen, setMobileLangOpen] = useState(false);
 
 
 

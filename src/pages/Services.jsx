@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import {
-  FileText, Building2, Hotel, Star, MessageCircle, Send, Instagram,
-  CreditCard, GraduationCap, Home as HomeIcon, Landmark, ArrowRight, Plane, Bus
+  FileText, Building2, Hotel, MessageCircle, Send, Instagram,
+  CreditCard, GraduationCap, Home as HomeIcon, Landmark, ArrowRight, Plane
 } from 'lucide-react';
 
 const WHATSAPP = 'https://wa.me/37433149327';

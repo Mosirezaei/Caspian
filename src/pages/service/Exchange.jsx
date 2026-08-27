@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { useSEO } from '@/hooks/useSEO';
-import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
+import { ServicePageLayout } from '@/components/shared/ServicePageLayout';
 import { ArrowLeftRight, TrendingUp, Loader2 } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 const CURRENCIES = ['USD', 'EUR', 'RUB', 'TRY', 'AED', 'AMD', 'GBP', 'CAD', 'CHF', 'JPY', 'GEL'];
-const API_KEY = '9d89f0a8895f9a7474ae1361';
+const API_KEY = import.meta.env.VITE_EXCHANGE_RATE_API_KEY;
 
 function CurrencyConverter() {
   const langContext = useLang();
@@ -28,6 +27,10 @@ function CurrencyConverter() {
   const lbl = labels[lang] || labels.fa;
 
   useEffect(() => {
+    if (!API_KEY) {
+      setRatesLoading(false);
+      return;
+    }
     let isMounted = true;
     setRatesLoading(true);
     
