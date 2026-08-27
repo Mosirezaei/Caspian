@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 import { Crown, Building2, Plane, Car, Shield, Utensils, Gem, Star } from 'lucide-react';
@@ -101,6 +102,13 @@ function VipContent() {
       heroImage="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80"
       serviceType="vip"
     >
+      {/* اضافه کردن تگ‌های سئو برای صفحه VIP */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'پشتیبانی و خدمات VIP | تشریفات لوکس کاسپین گروه در ایروان' : 'VIP Support & Luxury Services | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'خدمات تشریفات و پشتیبانی VIP کاسپین شامل ویلاهای اختصاصی، هتل‌های ۵ ستاره، خودروی لوکس و مشاور اختصاصی در ایروان و ارمنستان.' : 'Exclusive VIP support and luxury services by Caspian Group in Yerevan and Armenia.'} />
+        <link rel="canonical" href="https://caspian.am/travel/vip" />
+      </Helmet>
+
       {/* VIP Feature Cards */}
       <div className="mb-8">
         <h2 className="text-xl font-black gold-gradient-text text-center mb-5">{titles.feat[lang]}</h2>
