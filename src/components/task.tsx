@@ -1,7 +1,26 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { supabase } from '@/api/supabaseClient';
+
+// این پنل ادمین دیگه مستقیم به دیتابیس وصل نمیشه (که با کلید عمومی/anon
+// برای همه در دسترس بود). حالا رمز از سمت سرور توسط یک Edge Function چک
+// میشه و فقط اون Function با کلید امن (service role) به جدول reservations
+// دسترسی داره.
+const RESERVATIONS_API_URL =
+  'https://mxgxbkzpghoteaqzhfpf.supabase.co/functions/v1/reservations-api';
+
+async function callReservationsApi(action: 'list' | 'create' | 'update' | 'delete', payload?: any) {
+  const res = await fetch(RESERVATIONS_API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password: 'M@Caspian', action, payload }),
+  });
+  const json = await res.json();
+  if (!res.ok) {
+    throw new Error(json?.error || 'خطای ناشناخته');
+  }
+  return json.data;
+}
 
 interface Item {
   id: string;
@@ -105,11 +124,11 @@ export default function TaskManager() {
   }, [isLoggedIn]);
 
   const fetchItems = async () => {
-    const { data, error } = await supabase.from('reservations').select('*');
-    if (error) {
+    try {
+      const data = await callReservationsApi('list');
+      setItems(data || []);
+    } catch (error) {
       console.error('خطا در دریافت اطلاعات:', error);
-    } else if (data) {
-      setItems(data);
     }
   };
 
@@ -140,24 +159,24 @@ export default function TaskManager() {
     };
 
     if (isEditing && editId) {
-      const { error } = await supabase.from('reservations').update(newItem).eq('id', editId);
-      if (error) {
-        showNotification('خطا در ویرایش اطلاعات', 'error');
-      } else {
+      try {
+        await callReservationsApi('update', { id: editId, ...newItem });
         showNotification('تغییرات با موفقیت ذخیره شد.', 'success');
         setIsEditing(false);
         setEditId(null);
         fetchItems();
         resetForm();
+      } catch (error) {
+        showNotification('خطا در ویرایش اطلاعات', 'error');
       }
     } else {
-      const { error } = await supabase.from('reservations').insert([newItem]);
-      if (error) {
-        showNotification('خطا در ثبت اطلاعات در دیتابیس', 'error');
-      } else {
+      try {
+        await callReservationsApi('create', newItem);
         showNotification('اطلاعات با موفقیت ثبت شد.', 'success');
         fetchItems();
         resetForm();
+      } catch (error) {
+        showNotification('خطا در ثبت اطلاعات در دیتابیس', 'error');
       }
     }
   };
@@ -195,10 +214,8 @@ export default function TaskManager() {
       description: quickType === 'task' ? qTaskDesc : null,
     };
 
-    const { error } = await supabase.from('reservations').insert([newItem]);
-    if (error) {
-      showNotification('خطا در ثبت اطلاعات', 'error');
-    } else {
+    try {
+      await callReservationsApi('create', newItem);
       showNotification('با موفقیت ثبت شد.', 'success');
       fetchItems();
       setQuickDateModal(null);
@@ -206,18 +223,20 @@ export default function TaskManager() {
       setQAdultsCount(1); setQChildUnder7(0); setQChild7To18(0); setQTransportInfo('');
       setQPaymentStatus('کل پرداخت شده'); setQDepositAmount('');
       setQTaskTitle(''); setQTaskDate(''); setQTaskDesc('');
+    } catch (error) {
+      showNotification('خطا در ثبت اطلاعات', 'error');
     }
   };
 
   const handleDelete = async (id: string) => {
     if (!confirm('آیا از حذف این مورد اطمینان دارید؟')) return;
-    const { error } = await supabase.from('reservations').delete().eq('id', id);
-    if (error) {
-      showNotification('خطا در حذف اطلاعات!', 'error');
-    } else {
+    try {
+      await callReservationsApi('delete', { id });
       showNotification('با موفقیت حذف شد.', 'success');
       setSelectedItem(null);
       fetchItems();
+    } catch (error) {
+      showNotification('خطا در حذف اطلاعات!', 'error');
     }
   };
 
