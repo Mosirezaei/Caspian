@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import GlobalNavbar from '@/components/shared/GlobalNavbar';
 import ContactFooter from '@/components/home/ContactFooter';
@@ -8,7 +9,7 @@ import { Train, Bus, MessageCircle, HelpCircle, ChevronDown } from 'lucide-react
 const FAQS = {
   fa: [
     { q: 'چطور بلیط اتوبوس یا قطار رزرو کنم؟', a: 'از طریق واتساپ مبدا، مقصد، تاریخ، تعداد مسافر و نوع سفر (اتوبوس یا قطار) را ارسال کنید. تیم کاسپین گزینه‌های موجود را برای شما پیدا می‌کند.' },
-    { q: 'به چه مسیرهایی سرویس دارید؟', a: 'کاسپین بلیط زمینی در مسیرهای ایران (تهران، مشهد، تبریز و...)، ترکیه، گرجستان، ارمنستان، روسیه و آذربایجان را رزرو می‌کند.' },
+    { q: 'به چه مسیرهایی سرویس دارید؟', a: 'کاسپین بلیط زمینی در مسیرهای ایران (تهران، مشهد، تبریز و...), ترکیه، گرجستان، ارمنستان، روسیه و آذربایجان را رزرو می‌کند.' },
     { q: 'کوپه دربست چیست؟', a: 'در قطار، می‌توانید کل کوپه ۴ نفره را برای گروه خصوصی خود رزرو کنید. این گزینه برای خانواده‌ها و گروه‌های دوستانه مناسب است.' },
     { q: 'مدت سفر با اتوبوس از تهران به ایروان چقدر است؟', a: 'مسیر تهران-ایروان با اتوبوس حدود ۱۶ تا ۱۸ ساعت طول می‌کشد. معمولاً اتوبوس‌ها شب حرکت می‌کنند و صبح می‌رسند.' },
     { q: 'روش پرداخت چیست؟', a: 'پرداخت از طریق واریز ریالی، کارت دلاری یا رمزارز (USDT) انجام می‌شود. بلیط پس از تأیید پرداخت ارسال می‌شود.' },
@@ -106,6 +107,14 @@ function PageContent() {
 
   return (
     <div dir={isRtl ? 'rtl' : 'ltr'} lang={lang} className="min-h-screen bg-background font-vazir">
+      
+      {/* اضافه کردن تگ‌های سئو */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'رزرو بلیط قطار و اتوبوس بین‌المللی | کاسپین گروه' : 'Train & Bus Ticket Booking | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'رزرو آنلاین بلیط اتوبوس و قطار در مسیرهای ایران، ارمنستان، گرجستان، ترکیه و روسیه با پشتیبانی کاسپین گروه.' : 'Online bus and train ticket booking for routes in Iran, Armenia, Georgia, Turkey and Russia.'} />
+        <link rel="canonical" href="https://caspian.am/travel/bus" />
+      </Helmet>
+
       <GlobalNavbar />
       <div className="relative pt-14">
         <div className="relative h-48 sm:h-64 overflow-hidden">
