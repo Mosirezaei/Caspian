@@ -2,10 +2,6 @@
 
 import { useState, useEffect } from 'react';
 
-// این پنل ادمین دیگه مستقیم به دیتابیس وصل نمیشه (که با کلید عمومی/anon
-// برای همه در دسترس بود). حالا رمز از سمت سرور توسط یک Edge Function چک
-// میشه و فقط اون Function با کلید امن (service role) به جدول reservations
-// دسترسی داره.
 const RESERVATIONS_API_URL =
   'https://mxgxbkzpghoteaqzhfpf.supabase.co/functions/v1/reservations-api';
 
@@ -152,7 +148,7 @@ export default function TaskManager() {
       child_7_to_18: formType === 'booking' ? Number(child7To18) || 0 : null,
       transport_info: formType === 'booking' ? transportInfo : null,
       payment_status: formType === 'booking' ? paymentStatus : null,
-      deposit_amount: formType === 'booking' && paymentStatus === 'بیعانه داده شده' ? depositAmount : null,
+      deposit_amount: formType === 'booking' && (paymentStatus === 'بیعانه داده شده' || paymentStatus === 'منتظر تایید صراف') ? depositAmount : null,
       title: formType === 'task' ? taskTitle : null,
       task_date: formType === 'task' ? taskDate : null,
       description: formType === 'task' ? taskDescription : null,
@@ -208,7 +204,7 @@ export default function TaskManager() {
       child_7_to_18: quickType === 'booking' ? Number(qChild7To18) || 0 : null,
       transport_info: quickType === 'booking' ? qTransportInfo : null,
       payment_status: quickType === 'booking' ? qPaymentStatus : null,
-      deposit_amount: quickType === 'booking' && qPaymentStatus === 'بیعانه داده شده' ? qDepositAmount : null,
+      deposit_amount: quickType === 'booking' && (qPaymentStatus === 'بیعانه داده شده' || qPaymentStatus === 'منتظر تایید صراف') ? qDepositAmount : null,
       title: quickType === 'task' ? qTaskTitle : null,
       task_date: quickType === 'task' ? qTaskDate : null,
       description: quickType === 'task' ? qTaskDesc : null,
@@ -422,11 +418,12 @@ export default function TaskManager() {
             <select value={paymentStatus} onChange={(e) => setPaymentStatus(e.target.value)} className="bg-gray-700 p-2.5 rounded-lg border border-gray-600 text-right text-white">
               <option value="کل پرداخت شده">کل پرداخت شده</option>
               <option value="بیعانه داده شده">بیعانه داده شده</option>
+              <option value="منتظر تایید صراف">منتظر تایید صراف</option>
               <option value="منتظر پرداخت">منتظر پرداخت</option>
             </select>
 
-            {paymentStatus === 'بیعانه داده شده' && (
-              <input type="text" placeholder="مبلغ بیعانه / توضیحات پول..." value={depositAmount} onChange={(e) => setDepositAmount(e.target.value)} className="bg-gray-700 p-2.5 rounded-lg border border-gray-600 text-right text-white" />
+            {(paymentStatus === 'بیعانه داده شده' || paymentStatus === 'منتظر تایید صراف') && (
+              <input type="text" placeholder="مبلغ واریزی / توضیحات پول..." value={depositAmount} onChange={(e) => setDepositAmount(e.target.value)} className="bg-gray-700 p-2.5 rounded-lg border border-gray-600 text-right text-white" />
             )}
 
             <input type="text" placeholder="توضیحات سفر (با چی میاد؟)" value={transportInfo} onChange={(e) => setTransportInfo(e.target.value)} className="bg-gray-700 p-2.5 rounded-lg border border-gray-600 md:col-span-2 text-right text-white" />
@@ -519,7 +516,11 @@ export default function TaskManager() {
                                 </div>
                               </div>
                               <div className="text-[10px] opacity-90 truncate">
-                                {b.payment_status === 'بیعانه داده شده' ? `بیعانه: ${b.deposit_amount || 'ثبت نشده'}` : b.payment_status} 
+                                {b.payment_status === 'بیعانه داده شده' 
+                                  ? `بیعانه: ${b.deposit_amount || 'ثبت نشده'}` 
+                                  : b.payment_status === 'منتظر تایید صراف' 
+                                  ? `صراف: ${b.deposit_amount || 'ثبت نشده'}` 
+                                  : b.payment_status} 
                                 {b.transport_info ? ` | ${b.transport_info}` : ''}
                               </div>
                             </div>
@@ -600,11 +601,12 @@ export default function TaskManager() {
                 <select value={qPaymentStatus} onChange={(e) => setQPaymentStatus(e.target.value)} className="bg-gray-700 p-2.5 rounded-xl border border-gray-600 w-full text-right text-white">
                   <option value="کل پرداخت شده">کل پرداخت شده</option>
                   <option value="بیعانه داده شده">بیعانه داده شده</option>
+                  <option value="منتظر تایید صراف">منتظر تایید صراف</option>
                   <option value="منتظر پرداخت">منتظر پرداخت</option>
                 </select>
 
-                {qPaymentStatus === 'بیعانه داده شده' && (
-                  <input type="text" placeholder="مبلغ بیعانه / توضیحات پول..." value={qDepositAmount} onChange={(e) => setQDepositAmount(e.target.value)} className="bg-gray-700 p-2.5 rounded-xl border border-gray-600 w-full text-right text-white" />
+                {(qPaymentStatus === 'بیعانه داده شده' || qPaymentStatus === 'منتظر تایید صراف') && (
+                  <input type="text" placeholder="مبلغ واریزی / توضیحات پول..." value={qDepositAmount} onChange={(e) => setQDepositAmount(e.target.value)} className="bg-gray-700 p-2.5 rounded-xl border border-gray-600 w-full text-right text-white" />
                 )}
 
                 <input type="text" placeholder="توضیحات سفر (با چی میاد؟)" value={qTransportInfo} onChange={(e) => setQTransportInfo(e.target.value)} className="bg-gray-700 p-2.5 rounded-xl border border-gray-600 w-full text-white" />
