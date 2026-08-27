@@ -9,12 +9,16 @@ import WhySection from '@/components/home/WhySection';
 import ContactFormSection from '@/components/home/ContactFormSection';
 import ContactFooter from '@/components/home/ContactFooter';
 import WhatsAppButton from '@/components/home/WhatsAppButton';
+import HomeSchema from '@/components/home/HomeSchema'; 
 
 function HomeContent() {
   const { t } = useLang();
   return (
     <div dir={t.dir} lang={t.lang} className="min-h-screen bg-background font-vazir">
       
+      {/* ۲. فراخوانی کدهای اسکیما برای شناسایی توسط هوش مصنوعی و گوگل */}
+      <HomeSchema />
+
       {/* تنظیمات سئو و تگ‌های هدر صفحه اصلی */}
       <Helmet>
         <title>کاسپین گروه ارمنستان | خدمات اقامت، تور، ویزا و فستیوال در ایروان</title>
