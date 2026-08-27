@@ -6,7 +6,7 @@ import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/Ser
 
 function Content() {
   const { lang } = useLang();
-  
+
   useSEO({
     title: lang === 'fa' ? 'اقامت ارمنستان | کاسپین گروپ' : 
            lang === 'ru' ? 'ВНЖ Армении | Caspian Group' : 
