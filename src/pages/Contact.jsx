@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import GlobalNavbar from '@/components/shared/GlobalNavbar';
 import ContactFooter from '@/components/home/ContactFooter';
@@ -176,6 +177,13 @@ function ContactContent() {
 
   return (
     <div dir={isRtl ? 'rtl' : 'ltr'} className="min-h-screen bg-background font-vazir">
+      
+      <Helmet>
+        <title>{lang === 'fa' ? 'تماس با ما | کاسپین گروه ارمنستان (ایروان)' : 'Contact Us | Caspian Group Armenia'}</title>
+        <meta name="description" content={c.heroSub} />
+        <link rel="canonical" href="https://caspian.am/contact" />
+      </Helmet>
+
       <GlobalNavbar />
 
       {/* Hero with background image */}
