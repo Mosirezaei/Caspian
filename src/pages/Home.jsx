@@ -1,11 +1,10 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async'; // ۱. ایمپورت کردن Helmet
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
-import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
+import GlobalNavbar from '@/components/shared/GlobalNavbar';
 import HeroSection from '@/components/home/HeroSection';
 import ServicesSection from '@/components/home/ServicesSection';
 import AboutSection from '@/components/home/AboutSection';
-// TicketSection removed - ticket booking is in HeroSection
 import WhySection from '@/components/home/WhySection';
 import ContactFormSection from '@/components/home/ContactFormSection';
 import ContactFooter from '@/components/home/ContactFooter';
@@ -16,11 +15,11 @@ function HomeContent() {
   return (
     <div dir={t.dir} lang={t.lang} className="min-h-screen bg-background font-vazir">
       
-      {/* ۲. اضافه کردن تگ‌های سئو برای صفحه اصلی */}
+      {/* تنظیمات سئو و تگ‌های هدر صفحه اصلی */}
       <Helmet>
-        <title>گروه کاسپین | خدمات اقامت، تور، ویزا و فستیوال در ایروان</title>
-        <meta name="description" content="گروه کاسپین ارائه دهنده خدمات تخصصی اقامت، مهاجرت، اخذ ویزا، رزرو هتل و تورهای گردشگری و رویدادهای ویژه در ارمنستان." />
-        <link rel="canonical" href="https://yourdomain.com/" />
+        <title>کاسپین گروه ارمنستان | خدمات اقامت، تور، ویزا و فستیوال در ایروان</title>
+        <meta name="description" content="کاسپین گروه ارائه دهنده خدمات تخصصی اقامت، مهاجرت، اخذ ویزا، رزرو هتل و تورهای گردشگری و رویدادهای ویژه در ارمنستان." />
+        <link rel="canonical" href="https://caspian.am/" />
       </Helmet>
 
       <GlobalNavbar />
