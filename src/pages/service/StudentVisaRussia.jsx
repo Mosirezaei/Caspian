@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
@@ -13,6 +14,13 @@ function Content() {
       heroImage="https://images.unsplash.com/photo-1513326738677-b964603b136d?w=1200&q=80"
       serviceType="student-visa"
     >
+      {/* اضافه کردن تگ‌های سئو چندزبانه با Helmet */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'اخذ ویزای تحصیلی روسیه و بورسیه‌های دولتی | کاسپین گروه' : 'Russia Student Visa & Scholarships | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'راهنمای دریافت ویزای تحصیلی روسیه، بورسیه‌های دولتی و تحصیل در دانشگاه‌های برتر مسکو و سنت‌پترزبورگ با کاسپین گروه.' : 'Guide to obtaining a Russia student visa, government scholarships, and studying at top universities with Caspian Group.'} />
+        <link rel="canonical" href="https://caspian.am/services/student-visa/russia" />
+      </Helmet>
+
       {lang === 'fa' && <>
         <InfoBlock title="چرا تحصیل در روسیه؟">
           <p>روسیه دارای برخی از معتبرترین دانشگاه‌های جهان است که در رتبه‌بندی‌های بین‌المللی جایگاه بالایی دارند. دولت روسیه بورسیه‌های دولتی برای دانشجویان خارجی ارائه می‌دهد. تحصیل در رشته‌های پزشکی، مهندسی و علوم در روسیه بسیار معتبر است.</p>
