@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { useSEO } from '@/hooks/useSEO';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
@@ -36,7 +37,6 @@ function CurrencyConverter() {
       .then(data => {
         if (isMounted && data && data.result === 'success') {
           let adjustedRates = { ...data.conversion_rates };
-          // اعمال اختلاف نرخ مورد نظر شما برای صرافی (در صورت نیاز)
           setRates(adjustedRates);
           setRateTime(data.time_last_update_utc);
         }
@@ -160,6 +160,14 @@ function Content() {
       subtitleRu="Лучшие курсы обмена в Ереване"
       heroImage="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?w=1200&q=80"
       serviceType="exchange">
+      
+      {/* اضافه کردن تگ‌های سئو */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'صرافی و تبدیل ارز آنلاین در ایروان | کاسپین گروه' : 'Currency Exchange & Rates in Yerevan | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'بهترین نرخ‌های تبدیل ارز و صرافی در ایروان (دلار، یورو، روبل، درام) با ماشین‌حساب لحظه‌ای ارز کاسپین گروه.' : 'Best currency exchange rates in Yerevan (USD, EUR, RUB, AMD) with live calculator by Caspian Group.'} />
+        <link rel="canonical" href="https://caspian.am/travel/exchange" />
+      </Helmet>
+
       <CurrencyConverter />
     </ServicePageLayout>
   );
