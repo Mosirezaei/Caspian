@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { useSEO } from '@/hooks/useSEO';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
@@ -38,6 +39,13 @@ function Content() {
       subtitleEn="The fastest and most affordable European residency"
       subtitleRu="Самый быстрый и доступный европейский ВНЖ"
       heroImage="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1200&q=80">
+
+      {/* اضافه کردن تگ‌های سئو چندزبانه با Helmet */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'اخذ اقامت ارمنستان و ثبت شرکت | کاسپین گروه' : 'Armenia Residency & Immigration Services | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'راهنمای جامع اخذ اقامت ارمنستان، ثبت شرکت در ۳ روز و مزایای اقامتی با پشتیبانی تخصصی کاسپین گروه.' : 'Complete guide to obtaining Armenia residency, fast company registration, and benefits with Caspian Group.'} />
+        <link rel="canonical" href="https://caspian.am/residency/armenia" />
+      </Helmet>
 
       {/* Armenia flag & cityscape image */}
       <div className="rounded-2xl overflow-hidden mb-6 aspect-video relative">
