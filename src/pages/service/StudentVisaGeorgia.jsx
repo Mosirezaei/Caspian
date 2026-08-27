@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
@@ -12,6 +13,14 @@ function Content() {
       subtitleRu="Обучение в ведущих университетах Грузии по доступным ценам"
       heroImage="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1200&q=80"
       serviceType="student-visa">
+      
+      {/* اضافه کردن تگ‌های سئو چندزبانه با Helmet */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'اخذ ویزای تحصیلی گرجستان و پذیرش دانشگاه‌های تفلیس | کاسپین گروه' : 'Georgia Student Visa & University Admission | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'راهنمای دریافت ویزای تحصیلی گرجستان، تحصیل پزشکی و دندانپزشکی در تفلیس با پشتیبانی تخصصی کاسپین گروه.' : 'Guide to obtaining a Georgia student visa, studying medicine and dentistry in Tbilisi with Caspian Group.'} />
+        <link rel="canonical" href="https://caspian.am/services/student-visa/georgia" />
+      </Helmet>
+
       {lang === 'fa' && <>
         <InfoBlock title="ویزای تحصیلی گرجستان">
           <p>گرجستان با دانشگاه‌های معتبر بین‌المللی، هزینه‌های پایین زندگی و تحصیل، و فرایند اخذ ویزای ساده، یکی از مقاصد محبوب برای دانشجویان ایرانی است.</p>
