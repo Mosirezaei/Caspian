@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
@@ -13,6 +14,13 @@ function Content() {
       heroImage="https://images.unsplash.com/photo-1578469550956-0e16b69c6a3d?w=1200&q=80"
       serviceType="residency-oman"
     >
+      {/* اضافه کردن تگ‌های سئو چندزبانه با Helmet */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'اخذ اقامت عمان و سرمایه‌گذاری | کاسپین گروه' : 'Oman Residency & Investment Services | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'راهنمای اخذ اقامت عمان، اقامت طلایی، خرید ملک و مزایای اقتصادی با پشتیبانی تخصصی کاسپین گروه.' : 'Guide to obtaining Oman residency, golden visa, property purchase, and benefits with Caspian Group.'} />
+        <link rel="canonical" href="https://caspian.am/residency/oman" />
+      </Helmet>
+
       {/* Oman flag & Muscat image */}
       <div className="rounded-2xl overflow-hidden mb-6 aspect-video relative">
         <img src="https://images.unsplash.com/photo-1578469550956-0e16b69c6a3d?w=1200&q=80" alt="Muscat Oman" className="w-full h-full object-cover" loading="lazy" />
