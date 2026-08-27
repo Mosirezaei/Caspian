@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
@@ -11,6 +12,13 @@ function Content() {
       subtitleEn="Fastest embassy appointments in Yerevan"
       subtitleRu="Быстрая запись в посольства в Ереване"
       heroImage="https://images.unsplash.com/photo-1555848962-6e79363ec58f?w=1200&q=80">
+
+      {/* اضافه کردن تگ‌های سئو */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'رزرو وقت سفارت در ایروان (آلمان، فرانسه، کانادا و آمریکا) | کاسپین گروه' : 'Embassy Appointments in Yerevan | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'دریافت سریع‌ترین وقت سفارت‌های اروپایی و آمریکایی در ایروان (آلمان، فرانسه، ایتالیا، اسپانیا، کانادا و آمریکا) با خدمات تخصصی کاسپین گروه.' : 'Secure fast embassy appointments in Yerevan for European and North American countries with Caspian Group.'} />
+        <link rel="canonical" href="https://caspian.am/visa/embassy-appointment" />
+      </Helmet>
 
       {/* Yerevan with embassy flags */}
       <div className="rounded-2xl overflow-hidden mb-6 aspect-video relative">
