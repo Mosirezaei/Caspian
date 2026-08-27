@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 import { Link } from 'react-router-dom';
@@ -41,6 +42,13 @@ function Content() {
       heroImage="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&q=80"
       serviceType="student-admission"
     >
+      {/* اضافه کردن تگ‌های سئو چندزبانه با Helmet */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'اخذ ویزای تحصیلی و پذیرش دانشگاه‌های جهان | کاسپین گروه' : 'Student Visa & Study Abroad Services | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'راهنمای دریافت ویزای تحصیلی ارمنستان، روسیه، ترکیه، شینگن و رومانی با خدمات تخصصی و مشاوره کاسپین گروه.' : 'Guide to obtaining student visas for Armenia, Russia, Turkey, Schengen, and Romania with Caspian Group.'} />
+        <link rel="canonical" href="https://caspian.am/services/student-visa" />
+      </Helmet>
+
       {/* Student visa destinations image */}
       <div className="rounded-2xl overflow-hidden mb-6 aspect-video relative">
         <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&q=80" alt="Student Visa" className="w-full h-full object-cover" loading="lazy" />
