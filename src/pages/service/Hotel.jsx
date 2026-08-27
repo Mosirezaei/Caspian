@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BookingSearchModal from '@/components/shared/BookingSearchModal';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { useSEO } from '@/hooks/useSEO';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
@@ -274,7 +275,7 @@ const FAQS = {
 
 function HotelFAQ() {
   const { lang } = useLang();
-const [active, setActive] = useState(null);
+  const [active, setActive] = useState(null);
   const faqs = FAQS[lang] || FAQS.fa;
   const title = { fa: 'سوالات متداول', en: 'FAQ', ru: 'Вопросы и ответы' };
   return (
@@ -308,14 +309,15 @@ const [active, setActive] = useState(null);
 
 function HotelContent() {
   const { lang } = useLang();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useSEO({
     title: lang === 'fa' ? 'رزرو هتل در ایروان و ارمنستان | ۳، ۴ و ۵ ستاره - کاسپین گروپ' :
            lang === 'ru' ? 'Бронирование отелей в Ереване и Армении | Caspian Group' :
            'Hotel Booking in Yerevan & Armenia | 3, 4 & 5-Star | Caspian Group',
     description: lang === 'fa' ? 'رزرو هتل در ایروان و شهرهای ارمنستان با بهترین قیمت و واچر رسمی. هتل‌های ۳، ۴ و ۵ ستاره در مرکز شهر، میدان جمهوری و کاسکاد. بیش از ۱۵ سال تجربه.' :
-                 lang === 'ru' ? 'Бронирование отелей в Ереване и других городах Армении по лучшим ценам с официальным ваучером. Отели 3, 4 и 5 звёзд.' :
-                 'Book hotels in Yerevan and across Armenia at the best prices with an official voucher. 3, 4 & 5-star hotels near Republic Square and Cascade.',
+                  lang === 'ru' ? 'Бронирование отелей в Ереване и других городах Армении по лучшим ценам с официальным ваучером. Отели 3, 4 и 5 звёзд.' :
+                  'Book hotels in Yerevan and across Armenia at the best prices with an official voucher. 3, 4 & 5-star hotels near Republic Square and Cascade.',
     keywords: lang === 'fa' ? 'رزرو هتل ایروان، هتل ارمنستان، هتل ۳ ستاره ایروان، هتل ۵ ستاره ایروان، هتل نزدیک میدان جمهوری، رزرو هتل ارزان ارمنستان' :
               lang === 'ru' ? 'бронирование отеля Ереван, отели Армении, отель у площади Республики' :
               'hotel booking Yerevan, Armenia hotels, hotels near Republic Square, cheap hotel Armenia',
@@ -331,9 +333,7 @@ function HotelContent() {
     }
   });
 
-    const waMsg = lang === 'fa' ? 'سلام، می‌خوام هتل در ارمنستان رزرو کنم' : lang === 'ru' ? 'Здравствуйте, хочу забронировать отель в Армении' : 'Hello, I would like to book a hotel in Armenia';
-  const waBtn = { fa: 'رزرو هتل از طریق واتساپ', en: 'Book a Hotel via WhatsApp', ru: 'Забронировать отель в WhatsApp' };
-  const waSub = { fa: 'نام هتل، تاریخ و تعداد نفرات را ارسال کنید', en: 'Send hotel name, dates and number of guests', ru: 'Отправьте название отеля, даты и количество гостей' };
+  const waMsg = lang === 'fa' ? 'سلام، می‌خوام هتل در ارمنستان رزرو کنم' : lang === 'ru' ? 'Здравствуйте, хочу забронировать отель в Армении' : 'Hello, I would like to book a hotel in Armenia';
   const sectionTitle = { fa: 'هتل‌های پیشنهادی ارمنستان', en: 'Recommended Hotels in Armenia', ru: 'Рекомендуемые отели Армении' };
   const note = {
     fa: '* قیمت‌ها میانگین تخمینی برای اتاق دبل در فصل معمولی هستند. در فصل اوج (تابستان، نوروز) ممکن است ۲۰ تا ۴۰ درصد بیشتر باشد.',
@@ -350,6 +350,12 @@ function HotelContent() {
       heroImage="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200&q=80"
       serviceType="hotel"
     >
+      {/* اضافه کردن تگ‌های سئو پیشرفته چندزبانه با Helmet */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'رزرو هتل در ایروان و ارمنستان (۳ تا ۵ ستاره) | کاسپین گروه' : 'Hotel Booking in Yerevan & Armenia | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'رزرو هتل‌های ۳، ۴ و ۵ ستاره در ایروان و شهرهای ارمنستان با بهترین قیمت و واچر رسمی از طریق کاسپین گروه.' : 'Book 3, 4 and 5-star hotels in Yerevan and Armenia with official vouchers through Caspian Group.'} />
+        <link rel="canonical" href="https://caspian.am/travel/hotel" />
+      </Helmet>
 
       <h2 className="text-2xl font-black text-foreground mb-6 text-center gold-gradient-text">{sectionTitle[lang]}</h2>
 
@@ -359,7 +365,10 @@ function HotelContent() {
 
       <p className="text-xs text-foreground/40 text-center mt-2 mb-6">{note[lang]}</p>
 
-<BookingSearchModal isOpen={true} title="رزرو هتل" />
+      <HotelFAQ />
+
+      {/* کنترل امن و استاندارد مودال جستجوی هتل */}
+      <BookingSearchModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="رزرو هتل" />
     </ServicePageLayout>
   );
 }
