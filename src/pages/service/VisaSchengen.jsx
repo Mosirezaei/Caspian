@@ -1,11 +1,12 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { useSEO } from '@/hooks/useSEO';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
 function Content() {
   const { lang } = useLang();
-  
+
   useSEO({
     title: lang === 'fa' ? 'ویزای شینگن | کاسپین گروپ ارمنستان' : 
            lang === 'ru' ? 'Шенгенская виза | Caspian Group' : 
@@ -17,6 +18,7 @@ function Content() {
               lang === 'ru' ? 'Шенгенская виза, виза в Европу, visa Schengen' :
               'Schengen visa, Europe visa, Caspian Group',
     ogImage: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1200&q=80',
+    path: '/visa/schengen',
     schema: {
       '@context': 'https://schema.org',
       '@type': 'Service',
@@ -38,6 +40,13 @@ function Content() {
       subtitleRu="Доступ к 26 европейским странам с одной визой"
       heroImage="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1200&q=80"
       serviceType="visa-schengen">
+
+      {/* اضافه کردن تگ‌های سئو چندزبانه با Helmet */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'اخذ ویزای شینگن معتبر | کاسپین گروه' : 'Schengen Visa Application & Services | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'راهنمای تخصصی دریافت ویزای شینگن، نوبت‌دهی سفارت از ایروان و مدارک لازم با پشتیبانی کاسپین گروه.' : 'Guide to obtaining a Schengen visa, embassy appointments from Yerevan, and required documents with Caspian Group.'} />
+        <link rel="canonical" href="https://caspian.am/visa/schengen" />
+      </Helmet>
 
       {/* Schengen countries flags mosaic */}
       <div className="rounded-2xl overflow-hidden mb-6 aspect-video relative">
