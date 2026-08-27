@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { useSEO } from '@/hooks/useSEO';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
@@ -35,6 +36,13 @@ function Content() {
       subtitleRu="Туристические и деловые визы в Россию"
       heroImage="https://images.unsplash.com/photo-1513326738677-b964603b136d?w=1200&q=80"
       serviceType="visa-russia">
+
+      {/* اضافه کردن تگ‌های سئو چندزبانه با Helmet */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'اخذ ویزای توریستی و تجاری روسیه | کاسپین گروه' : 'Russia Tourist & Business Visa | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'راهنمای دریافت ویزای روسیه، دعوتنامه رسمی و خدمات تخصصی ویزا با پشتیبانی کاسپین گروه.' : 'Guide to obtaining a Russia visa, official invitations, and professional visa services with Caspian Group.'} />
+        <link rel="canonical" href="https://caspian.am/visa/russia" />
+      </Helmet>
 
       {/* Russia flag & Moscow Red Square */}
       <div className="rounded-2xl overflow-hidden mb-6 aspect-video relative">
