@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
@@ -13,6 +14,13 @@ function Content() {
       heroImage="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=80"
       serviceType="residency-uae"
     >
+      {/* اضافه کردن تگ‌های سئو چندزبانه با Helmet */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'اخذ اقامت امارات و ویزای طلایی دبی | کاسپین گروه' : 'UAE Residency & Golden Visa Services | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'راهنمای جامع اخذ اقامت امارات، ویزای طلایی دبی، خرید ملک و مزایای بدون مالیات با پشتیبانی تخصصی کاسپین گروه.' : 'Complete guide to obtaining UAE residency, Dubai golden visa, property investment, and tax-free benefits with Caspian Group.'} />
+        <link rel="canonical" href="https://caspian.am/residency/uae" />
+      </Helmet>
+
       {/* UAE flag & Dubai skyline */}
       <div className="rounded-2xl overflow-hidden mb-6 aspect-video relative">
         <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=80" alt="Dubai UAE" className="w-full h-full object-cover" loading="lazy" />
