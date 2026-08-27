@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import {
   FileText, Building2, Hotel, Star, MessageCircle, Send, Instagram,
@@ -66,6 +67,14 @@ function ServicesContent() {
 
   return (
     <div dir={isRtl ? 'rtl' : 'ltr'} lang={lang} className="min-h-screen bg-background font-vazir">
+      
+      {/* اضافه کردن تگ‌های سئو */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'خدمات کاسپین گروه | ویزا، اقامت، تور و رزرو هتل در ایروان' : 'All Services | Caspian Group Armenia'}</title>
+        <meta name="description" content={lang === 'fa' ? 'فهرست کامل خدمات کاسپین گروه شامل اخذ ویزا، اقامت ارمنستان، ثبت شرکت، تورهای گردشگری و رزرو هتل در ایروان.' : 'Full list of services by Caspian Group including visas, Armenia residency, company registration, and tours.'} />
+        <link rel="canonical" href="https://caspian.am/services" />
+      </Helmet>
+
       {/* Navbar */}
       <div className="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
