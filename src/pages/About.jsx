@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import GlobalNavbar from '@/components/shared/GlobalNavbar';
 import ContactFooter from '@/components/home/ContactFooter';
@@ -178,6 +179,13 @@ function AboutContent() {
 
   return (
     <div dir={isRtl ? 'rtl' : 'ltr'} className="min-h-screen bg-background font-vazir">
+      
+      <Helmet>
+        <title>{lang === 'fa' ? 'درباره کاسپین گروه ارمنستان | بیش از ۱۵ سال تجربه خدمات مهاجرت و سفر' : 'About Caspian Group Armenia | 15+ Years Experience'}</title>
+        <meta name="description" content={c.heroSub} />
+        <link rel="canonical" href="https://caspian.am/about" />
+      </Helmet>
+
       <GlobalNavbar />
 
       {/* Hero */}
