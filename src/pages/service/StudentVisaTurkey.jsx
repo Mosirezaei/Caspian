@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
@@ -13,6 +14,13 @@ function Content() {
       heroImage="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80"
       serviceType="student-visa"
     >
+      {/* اضافه کردن تگ‌های سئو چندزبانه با Helmet */}
+      <Helmet>
+        <title>{lang === 'fa' ? 'اخذ ویزای تحصیلی ترکیه و بورسیه دولتی | کاسپین گروه' : 'Turkey Student Visa & Scholarships | Caspian Group'}</title>
+        <meta name="description" content={lang === 'fa' ? 'راهنمای دریافت ویزای تحصیلی ترکیه، بورسیه Türkiye Bursları و تحصیل در دانشگاه‌های برتر استانبول و آنکارا با کاسپین گروه.' : 'Guide to obtaining a Turkey student visa, Türkiye Bursları scholarships, and studying at top universities with Caspian Group.'} />
+        <link rel="canonical" href="https://caspian.am/services/student-visa/turkey" />
+      </Helmet>
+
       {lang === 'fa' && <>
         <InfoBlock title="چرا تحصیل در ترکیه؟">
           <p>ترکیه با بیش از ۲۰۰ دانشگاه دولتی و خصوصی، یکی از مراکز مهم آموزش عالی در منطقه است. بسیاری از دانشگاه‌های ترکیه برنامه‌های تحصیلی به زبان انگلیسی ارائه می‌دهند. قرابت فرهنگی با ایران و هزینه‌های معقول، ترکیه را به گزینه جذابی تبدیل کرده است.</p>
