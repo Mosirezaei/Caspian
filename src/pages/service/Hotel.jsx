@@ -1,182 +1,151 @@
 import React, { useState } from 'react';
-import BookingSearchModal from '@/components/shared/BookingSearchModal';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { useSEO } from '@/hooks/useSEO';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
-import { ChevronDown, HelpCircle, Star } from 'lucide-react';
+import { ChevronDown, Star } from 'lucide-react';
 
 // ۱۵ هتل واقعی ارمنستان
 const HOTELS = {
   3: [
     {
       name: 'Erebuni Hotel',
-      location: 'مرکز ایروان، نزدیک میدان جمهوری',
-      locationEn: 'Yerevan Center, near Republic Square',
-      locationRu: 'Центр Еревана, рядом с площадью Республики',
+      location: 'مرکز ایروان، نزدیک میدان جمهوری', locationEn: 'Yerevan Center, near Republic Square', locationRu: 'Центр Еревана, рядом с площадью Республики',
       price: 55,
       image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=75',
-      descFa: 'هتل اربونی یکی از قدیمی‌ترین و شناخته‌شده‌ترین هتل‌های ایروان است. موقعیت مرکزی، نزدیکی به جاذبه‌های اصلی شهر و سرویس صبحانه شامل از ویژگی‌های اصلی آن است.',
-      descEn: 'Erebuni Hotel is one of Yerevan\'s oldest and most recognized hotels. Central location, proximity to major attractions, and included breakfast are key features.',
-      descRu: 'Отель Erebuni — один из старейших и наиболее известных отелей Еревана. Центральное расположение, близость к главным достопримечательностям и включённый завтрак.',
+      descFa: 'هتل اربونی یکی از قدیمی‌ترین و شناخته‌شده‌ترین هتل‌های ایروان است. موقعیت مرکزی، نزدیکی به جاذبه‌های اصلی شهر و سرویس صبحانه از ویژگی‌های اصلی آن است.',
+      descEn: 'Erebuni Hotel is one of Yerevan\'s oldest recognized hotels. Central location, proximity to major attractions, and included breakfast are key features.',
+      descRu: 'Отель Erebuni — один из старейших и наиболее известных отелей Еревана. Центральное расположение и включённый завтрак.',
     },
     {
       name: 'Hotel Nork',
-      location: 'محله نورک، منظره شهر',
-      locationEn: 'Nork District, city view',
-      locationRu: 'Район Норк, вид на город',
+      location: 'محله نورک، منظره شهر', locationEn: 'Nork District, city view', locationRu: 'Район Норк, вид на город',
       price: 50,
       image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=75',
-      descFa: 'هتل نورک در محله آرام نورک قرار دارد و منظره فوق‌العاده‌ای از ایروان و کوه آرارات دارد. مناسب برای کسانی که محیط آرام را ترجیح می‌دهند.',
-      descEn: 'Hotel Nork is located in the peaceful Nork neighborhood with stunning views of Yerevan and Mount Ararat. Ideal for those who prefer a quieter environment.',
-      descRu: 'Отель Nork расположен в спокойном районе Норк с потрясающим видом на Ереван и гору Арарат. Идеален для тех, кто предпочитает тихую обстановку.',
+      descFa: 'هتل نورک در محله آرام نورک قرار دارد و منظره زیبایی از ایروان و کوه آرارات دارد. مناسب کسانی که محیط آرام را ترجیح می‌دهند.',
+      descEn: 'Hotel Nork is in peaceful Nork with stunning views of Yerevan and Mount Ararat. Ideal for those who prefer a quieter environment.',
+      descRu: 'Отель Nork в спокойном районе с потрясающим видом на Ереван и гору Арарат.',
     },
     {
       name: 'Hotel Dvin',
-      location: 'بلوار مشروتیان، مرکز شهر',
-      locationEn: 'Mesrobian Boulevard, city center',
-      locationRu: 'Бульвар Месробян, центр города',
+      location: 'بلوار مشروتیان، مرکز شهر', locationEn: 'Mesrobian Boulevard, city center', locationRu: 'Бульвар Месробян, центр города',
       price: 48,
       image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=75',
-      descFa: 'هتل دوین با موقعیت مرکزی عالی، اتاق‌های تمیز و راحت و نزدیکی به رستوران‌ها و مراکز خرید یکی از محبوب‌ترین انتخاب‌های ۳ ستاره در ایروان است.',
-      descEn: 'Hotel Dvin offers excellent central location, clean and comfortable rooms, and proximity to restaurants and shopping centers — one of the most popular 3-star choices in Yerevan.',
-      descRu: 'Отель Dvin предлагает отличное центральное расположение, чистые и комфортные номера и близость к ресторанам и торговым центрам.',
+      descFa: 'هتل دوین با موقعیت مرکزی عالی، اتاق‌های تمیز و نزدیکی به رستوران‌ها و مراکز خرید، یکی از محبوب‌ترین انتخاب‌های ۳ ستاره در ایروان است.',
+      descEn: 'Hotel Dvin offers excellent central location, clean rooms, and proximity to restaurants and shopping — one of the most popular 3-star choices.',
+      descRu: 'Отель Dvin предлагает отличное расположение, чистые номера и близость к ресторанам и торговым центрам.',
     },
     {
       name: 'Cascade Hotel',
-      location: 'نزدیک کاسکاد، خیابان ترامپلین',
-      locationEn: 'Near Cascade, Tramplin Street',
-      locationRu: 'Рядом с Каскадом, ул. Трамплин',
+      location: 'نزدیک کاسکاد، خیابان ترامپلین', locationEn: 'Near Cascade, Tramplin Street', locationRu: 'Рядом с Каскадом, ул. Трамплин',
       price: 52,
       image: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&q=75',
-      descFa: 'هتل کاسکاد در نزدیکی کمپلکس معروف کاسکاد قرار دارد. دسترسی آسان به گالری‌های هنری، کافه‌ها و پارک‌های شهری از مزایای اصلی آن است.',
+      descFa: 'هتل کاسکاد در نزدیکی کمپلکس معروف کاسکاد قرار دارد. دسترسی آسان به گالری‌های هنری، کافه‌ها و پارک‌های شهری.',
       descEn: 'Cascade Hotel is located near the famous Cascade complex with easy access to art galleries, cafés, and city parks.',
-      descRu: 'Отель Cascade расположен вблизи знаменитого комплекса Каскад с удобным доступом к художественным галереям, кафе и городским паркам.',
+      descRu: 'Отель Cascade рядом с комплексом Каскад, удобный доступ к галереям, кафе и паркам.',
     },
     {
       name: 'Nairi Hotel',
-      location: 'خیابان آبوویان، مرکز تاریخی',
-      locationEn: 'Abovyan Street, historic center',
-      locationRu: 'Улица Абовяна, исторический центр',
+      location: 'خیابان آبوویان، مرکز تاریخی', locationEn: 'Abovyan Street, historic center', locationRu: 'Улица Абовяна, исторический центр',
       price: 45,
       image: 'https://images.unsplash.com/photo-1596436889106-be35e843f974?w=600&q=75',
-      descFa: 'هتل نایری در قلب ایروان تاریخی واقع شده و دسترسی عالی به مترو، رستوران‌های ایرانی و مراکز اداری دارد. انتخاب اقتصادی با کیفیت خوب.',
-      descEn: 'Nairi Hotel is located in the heart of historic Yerevan with excellent access to metro, Iranian restaurants, and administrative centers. A budget-friendly choice with good quality.',
-      descRu: 'Отель Nairi расположен в историческом центре Еревана с удобным доступом к метро, иранским ресторанам и административным центрам.',
+      descFa: 'هتل نایری در قلب ایروان تاریخی، دسترسی عالی به مترو و رستوران‌های ایرانی دارد. انتخاب اقتصادی با کیفیت خوب.',
+      descEn: 'Nairi Hotel in the heart of historic Yerevan with excellent metro access and Iranian restaurants nearby. A budget-friendly choice.',
+      descRu: 'Отель Nairi в центре с удобным доступом к метро и иранским ресторанам.',
     },
   ],
   4: [
     {
       name: 'Best Western Plus Congress Hotel',
-      location: 'میدان جمهوری، مرکز اصلی ایروان',
-      locationEn: 'Republic Square, main center of Yerevan',
-      locationRu: 'Площадь Республики, центр Еревана',
+      location: 'میدان جمهوری، مرکز اصلی ایروان', locationEn: 'Republic Square, main center', locationRu: 'Площадь Республики, центр Еревана',
       price: 120,
       image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&q=75',
-      descFa: 'هتل بست وسترن پلاس کنگره در بهترین موقعیت ایروان، درست روبروی میدان جمهوری قرار دارد. ویو کاملاً بی‌نظیر از میدان، استخر و اسپا از امکانات آن است.',
-      descEn: 'Best Western Plus Congress Hotel is in Yerevan\'s best location, directly facing Republic Square. Unique square view, pool, and spa are among its facilities.',
-      descRu: 'Отель Best Western Plus Congress расположен в лучшем месте Еревана прямо напротив площади Республики. Уникальный вид на площадь, бассейн и спа.',
+      descFa: 'بست وسترن پلاس کنگره روبروی میدان جمهوری با ویوی بی‌نظیر، استخر و اسپا. یکی از بهترین گزینه‌های ۴ ستاره برای ضمیمه ویزا.',
+      descEn: 'Best Western Plus Congress directly faces Republic Square with unique views, pool, and spa. One of the best 4-star options for visa documentation.',
+      descRu: 'Best Western Plus Congress прямо напротив площади Республики с уникальным видом, бассейном и спа.',
     },
     {
       name: 'Yerevan Marriott Hotel',
-      location: 'میدان جمهوری، قلب ایروان',
-      locationEn: 'Republic Square, heart of Yerevan',
-      locationRu: 'Площадь Республики, сердце Еревана',
+      location: 'میدان جمهوری، قلب ایروان', locationEn: 'Republic Square, heart of Yerevan', locationRu: 'Площадь Республики, сердце Еревана',
       price: 150,
       image: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&q=75',
-      descFa: 'ماریوت ایروان یکی از بهترین هتل‌های ۴ ستاره شهر است. صبحانه بوفه بین‌المللی، فیتنس کلاب، استخر سرپوشیده و رستوران‌های متنوع از امکانات عالی آن است.',
-      descEn: 'Yerevan Marriott is one of the city\'s finest 4-star hotels with international buffet breakfast, fitness club, indoor pool, and diverse restaurants.',
-      descRu: 'Marriott Ереван — один из лучших 4-звёздочных отелей города с международным шведским столом, фитнес-клубом, крытым бассейном и разнообразными ресторанами.',
+      descFa: 'ماریوت ایروان یکی از بهترین هتل‌های ۴ ستاره. صبحانه بوفه بین‌المللی، فیتنس کلاب، استخر سرپوشیده و رستوران‌های متنوع.',
+      descEn: 'Yerevan Marriott is one of the city\'s finest 4-star hotels with international buffet, fitness club, indoor pool, and diverse restaurants.',
+      descRu: 'Marriott Ереван — один из лучших 4-звёздочных отелей с шведским столом, фитнес-клубом и крытым бассейном.',
     },
     {
       name: 'Radisson Blu Hotel Yerevan',
-      location: 'مرکز تجاری، نزدیک پارک Victory',
-      locationEn: 'Business center, near Victory Park',
-      locationRu: 'Деловой центр, рядом с парком Победы',
+      location: 'مرکز تجاری، نزدیک پارک Victory', locationEn: 'Business center, near Victory Park', locationRu: 'Деловой центр, рядом с парком Победы',
       price: 135,
       image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=75',
-      descFa: 'هتل رادیسون بلو در قلب مرکز تجاری ایروان، چشم‌اندازی زیبا از شهر و کوه آرارات دارد. مناسب برای سفرهای تجاری و مسافران VIP.',
-      descEn: 'Radisson Blu Yerevan is in the heart of the business center with beautiful views of the city and Mount Ararat. Ideal for business trips and VIP travelers.',
-      descRu: 'Отель Radisson Blu Yerevan расположен в центре делового района с прекрасным видом на город и гору Арарат. Идеален для деловых поездок и VIP-путешественников.',
+      descFa: 'رادیسون بلو در قلب مرکز تجاری ایروان، چشم‌اندازی زیبا از شهر و کوه آرارات. مناسب سفرهای تجاری و مسافران VIP.',
+      descEn: 'Radisson Blu Yerevan is in the heart of the business center with city and Ararat views. Ideal for business trips and VIP travelers.',
+      descRu: 'Radisson Blu Yerevan в деловом центре с видом на город и Арарат. Идеален для деловых поездок.',
     },
     {
       name: 'Golden Palace Hotel',
-      location: 'ابوویان، نزدیک اپرا',
-      locationEn: 'Abovyan, near Opera House',
-      locationRu: 'Абовян, рядом с оперным театром',
+      location: 'ابوویان، نزدیک اپرا', locationEn: 'Abovyan, near Opera House', locationRu: 'Абовян, рядом с оперным театром',
       price: 110,
       image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=75',
-      descFa: 'هتل گلدن پالاس در نزدیکی خانه اپرا و جاذبه‌های فرهنگی ایروان قرار دارد. طراحی کلاسیک ارمنی، رستوران ملی و خدمات سطح بالا از ویژگی‌های آن است.',
-      descEn: 'Golden Palace Hotel is near the Opera House and cultural attractions. Classic Armenian design, national restaurant, and premium services are its highlights.',
-      descRu: 'Отель Golden Palace расположен рядом с оперным театром и культурными достопримечательностями. Классический армянский дизайн, национальный ресторан и первоклассный сервис.',
+      descFa: 'گلدن پالاس نزدیک خانه اپرا. طراحی کلاسیک ارمنی، رستوران ملی و خدمات سطح بالا.',
+      descEn: 'Golden Palace Hotel near the Opera House. Classic Armenian design, national restaurant, and premium services.',
+      descRu: 'Golden Palace рядом с Оперным театром. Армянский дизайн и первоклассный сервис.',
     },
     {
       name: 'Ararat Park Hyatt',
-      location: 'پشت کاخ ریاست جمهوری، چشم‌انداز آرارات',
-      locationEn: 'Behind Presidential Palace, Ararat view',
-      locationRu: 'За президентским дворцом, вид на Арарат',
+      location: 'پشت کاخ ریاست جمهوری، چشم‌انداز آرارات', locationEn: 'Behind Presidential Palace, Ararat view', locationRu: 'За президентским дворцом, вид на Арарат',
       price: 145,
       image: 'https://images.unsplash.com/photo-1568084680786-a84f91d1153c?w=600&q=75',
-      descFa: 'آرارات پارک هایت با چشم‌انداز مستقیم به کوه آرارات، یکی از بهترین هتل‌های ۴ ستاره بالای ایروان است. اتاق‌های بزرگ، رستوران لوکس و استخر روفتاپ دارد.',
-      descEn: 'Ararat Park Hyatt with direct views of Mount Ararat is one of Yerevan\'s finest upper 4-star hotels. Spacious rooms, luxury restaurant, and rooftop pool.',
-      descRu: 'Ararat Park Hyatt с прямым видом на гору Арарат — один из лучших отелей Еревана категории "4+" с просторными номерами, роскошным рестораном и бассейном на крыше.',
+      descFa: 'آرارات پارک هایت با چشم‌انداز مستقیم به کوه آرارات، اتاق‌های بزرگ، رستوران لوکس و استخر روفتاپ.',
+      descEn: 'Ararat Park Hyatt with direct Ararat views, spacious rooms, luxury restaurant, and rooftop pool.',
+      descRu: 'Ararat Park Hyatt с прямым видом на Арарат, просторными номерами и бассейном на крыше.',
     },
   ],
   5: [
     {
       name: 'The Alexander, a Luxury Collection Hotel',
-      location: 'خیابان آرامی، قلب شهر',
-      locationEn: 'Arami Street, heart of the city',
-      locationRu: 'Улица Арами, сердце города',
+      location: 'خیابان آرامی، قلب شهر', locationEn: 'Arami Street, heart of the city', locationRu: 'Улица Арами, сердце города',
       price: 250,
       image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=75',
-      descFa: 'الکساندر لاکچری کالکشن زیباترین هتل ۵ ستاره ایروان است. ساختمانی تاریخی با طراحی داخلی بین‌المللی، اسپا جهانی، بار بام‌بام و رستوران فاین‌دایننگ.',
-      descEn: 'The Alexander Luxury Collection is Yerevan\'s most beautiful 5-star hotel. Historic building with international interior design, world-class spa, rooftop bar, and fine dining.',
-      descRu: 'The Alexander Luxury Collection — самый красивый 5-звёздочный отель Еревана. Историческое здание с международным интерьером, мировым спа, баром на крыше и изысканным рестораном.',
+      descFa: 'الکساندر لاکچری کالکشن زیباترین هتل ۵ ستاره ایروان. ساختمانی تاریخی با طراحی داخلی بین‌المللی، اسپا جهانی، بار بام‌بام و رستوران فاین‌دایننگ.',
+      descEn: 'The Alexander Luxury Collection is Yerevan\'s most beautiful 5-star hotel. Historic building, world-class spa, rooftop bar, and fine dining.',
+      descRu: 'The Alexander Luxury Collection — самый красивый 5-звёздочный отель Еревана с международным интерьером и мировым спа.',
     },
     {
       name: 'Marriott Armenia Hotel',
-      location: 'میدان جمهوری، نمادین‌ترین آدرس شهر',
-      locationEn: 'Republic Square, most iconic address',
-      locationRu: 'Площадь Республики, самый знаковый адрес',
+      location: 'میدان جمهوری، نمادین‌ترین آدرس شهر', locationEn: 'Republic Square, most iconic address', locationRu: 'Площадь Республики, самый знаковый адрес',
       price: 230,
       image: 'https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?w=600&q=75',
-      descFa: 'ماریوت ارمنستان در میدان جمهوری، نمادین‌ترین هتل ایروان است. بالکن‌هایی با چشم‌انداز مستقیم میدان، اتاق‌های با دکوراسیون لوکس و خدمات ۲۴ ساعته.',
-      descEn: 'Marriott Armenia at Republic Square is Yerevan\'s most iconic hotel. Balconies with direct square views, luxuriously decorated rooms, and 24/7 services.',
-      descRu: 'Marriott Armenia на площади Республики — самый знаковый отель Еревана с балконами с прямым видом на площадь, роскошными номерами и круглосуточным обслуживанием.',
+      descFa: 'ماریوت ارمنستان در میدان جمهوری، نمادین‌ترین هتل ایروان. بالکن با چشم‌انداز مستقیم میدان، دکوراسیون لوکس و خدمات ۲۴ ساعته.',
+      descEn: 'Marriott Armenia at Republic Square is Yerevan\'s most iconic hotel. Balconies with direct square views and 24/7 services.',
+      descRu: 'Marriott Armenia на площади Республики с балконами с прямым видом и круглосуточным обслуживанием.',
     },
     {
       name: 'Hilton Yerevan',
-      location: 'خیابان سایات نووا، مرکز فرهنگی',
-      locationEn: 'Sayat-Nova Avenue, cultural center',
-      locationRu: 'Проспект Саят-Нова, культурный центр',
+      location: 'خیابان سایات نووا، مرکز فرهنگی', locationEn: 'Sayat-Nova Avenue, cultural center', locationRu: 'Проспект Саят-Нова, культурный центр',
       price: 220,
       image: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600&q=75',
-      descFa: 'هیلتون ایروان در خیابان فرهنگی سایات‌نووا، کنار موزه‌ها و تئاترهای معروف شهر است. ۲۴۰ اتاق و سوئیت لوکس، استخر داخلی، مرکز تناسب اندام و ۴ رستوران.',
-      descEn: 'Hilton Yerevan on cultural Sayat-Nova Avenue is next to famous museums and theaters. 240 luxury rooms and suites, indoor pool, fitness center, and 4 restaurants.',
-      descRu: 'Hilton Yerevan на культурном проспекте Саят-Нова рядом с известными музеями и театрами. 240 роскошных номеров и люксов, крытый бассейн, фитнес-центр и 4 ресторана.',
+      descFa: 'هیلتون ایروان در کنار موزه‌ها و تئاترهای معروف. ۲۴۰ اتاق و سوئیت لوکس، استخر داخلی، مرکز تناسب اندام و ۴ رستوران.',
+      descEn: 'Hilton Yerevan next to famous museums and theaters. 240 luxury rooms, indoor pool, fitness center, and 4 restaurants.',
+      descRu: 'Hilton Yerevan рядом с музеями и театрами. 240 роскошных номеров, крытый бассейн и 4 ресторана.',
     },
     {
       name: 'Tufenkian Historic Yerevan Hotel',
-      location: 'مرکز قدیمی ایروان، میراث فرهنگی',
-      locationEn: 'Old Yerevan center, cultural heritage',
-      locationRu: 'Исторический центр Еревана, культурное наследие',
+      location: 'مرکز قدیمی ایروان، میراث فرهنگی', locationEn: 'Old Yerevan center, cultural heritage', locationRu: 'Исторический центр, культурное наследие',
       price: 195,
       image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&q=75',
-      descFa: 'هتل تاریخی توفنکیان در بافت قدیمی ایروان، با طراحی اختصاصی ارمنی و هنر اصیل. هر اتاق یک اثر هنری منحصر به فرد است. مناسب برای مسافران فرهنگ‌دوست.',
-      descEn: 'Tufenkian Historic Hotel in old Yerevan with authentic Armenian design and original art. Each room is a unique work of art. Perfect for culturally curious travelers.',
-      descRu: 'Исторический отель Tufenkian в старом Ереване с аутентичным армянским дизайном и оригинальным искусством. Каждый номер — уникальное произведение искусства.',
+      descFa: 'هتل تاریخی توفنکیان در بافت قدیمی ایروان با طراحی اختصاصی ارمنی و هنر اصیل. هر اتاق یک اثر هنری منحصربه‌فرد است.',
+      descEn: 'Tufenkian Historic Hotel in old Yerevan with authentic Armenian design. Each room is a unique work of art — perfect for culturally curious travelers.',
+      descRu: 'Исторический отель Tufenkian с аутентичным армянским дизайном. Каждый номер — уникальное произведение искусства.',
     },
     {
       name: 'Grand Hotel Yerevan',
-      location: 'بلوار مشروتیان، مشرف به آرارات',
-      locationEn: 'Mesrobian Blvd, overlooking Ararat',
-      locationRu: 'Бульвар Месробян, с видом на Арарат',
+      location: 'بلوار مشروتیان، مشرف به آرارات', locationEn: 'Mesrobian Blvd, overlooking Ararat', locationRu: 'Бульвар Месробян, с видом на Арарат',
       price: 240,
       image: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=75',
-      descFa: 'گرند هتل ایروان با چشم‌اندازی حیرت‌انگیز از کوه آرارات، جاکوزی در سوئیت‌ها، باشگاه ورزشی VIP و رستوران بام‌بام با موزیک زنده، یک تجربه اقامت کاملاً لوکس است.',
-      descEn: 'Grand Hotel Yerevan with stunning Ararat views, in-suite jacuzzi, VIP fitness club, and rooftop restaurant with live music offers a truly luxurious experience.',
-      descRu: 'Grand Hotel Yerevan с потрясающим видом на Арарат, джакузи в люксах, VIP-фитнес-клубом и рестораном на крыше с живой музыкой предлагает подлинно роскошный опыт.',
+      descFa: 'گرند هتل ایروان با چشم‌اندازی حیرت‌انگیز از کوه آرارات، جاکوزی در سوئیت‌ها، باشگاه ورزشی VIP و رستوران بام‌بام با موزیک زنده.',
+      descEn: 'Grand Hotel Yerevan with stunning Ararat views, in-suite jacuzzi, VIP fitness club, and rooftop restaurant with live music.',
+      descRu: 'Grand Hotel Yerevan с видом на Арарат, джакузи в люксах и рестораном на крыше с живой музыкой.',
     },
   ],
 };
@@ -192,14 +161,9 @@ function StarBadge({ count }) {
 }
 
 function HotelCard({ hotel, lang }) {
-  const price = lang === 'fa'
-    ? `از ~$${hotel.price}/شب دبل`
-    : lang === 'ru'
-    ? `от ~$${hotel.price}/ночь double`
-    : `from ~$${hotel.price}/night double`;
+  const price = lang === 'fa' ? `از ~$${hotel.price}/شب دبل` : lang === 'ru' ? `от ~$${hotel.price}/ночь` : `from ~$${hotel.price}/night`;
   const location = lang === 'fa' ? hotel.location : lang === 'ru' ? hotel.locationRu : hotel.locationEn;
   const desc = lang === 'fa' ? hotel.descFa : lang === 'ru' ? hotel.descRu : hotel.descEn;
-
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
       className="glass-panel rounded-2xl overflow-hidden border border-white/8 hover:border-primary/30 transition-all duration-300">
@@ -223,14 +187,13 @@ function HotelCategorySection({ stars, hotels, lang }) {
   const sectionTitle = {
     fa: { 3: 'هتل‌های ۳ ستاره — اقتصادی با کیفیت', 4: 'هتل‌های ۴ ستاره — راحتی بالا', 5: 'هتل‌های ۵ ستاره — لاکچری' },
     en: { 3: '3-Star Hotels — Budget Quality', 4: '4-Star Hotels — High Comfort', 5: '5-Star Hotels — Luxury' },
-    ru: { 3: '3-звёздочные отели — бюджет', 4: '4-звёздочные отели — комфорт', 5: '5-звёздочные отели — люкс' },
+    ru: { 3: '3-звёздочные — бюджет', 4: '4-звёздочные — комфорт', 5: '5-звёздочные — люкс' },
   };
   const priceNote = {
-    fa: { 3: 'میانگین قیمت دبل: ۴۵ تا ۶۰ دلار/شب', 4: 'میانگین قیمت دبل: ۱۰۰ تا ۱۵۰ دلار/شب', 5: 'میانگین قیمت دبل: ۱۹۰ تا ۲۵۰ دلار/شب' },
-    en: { 3: 'Avg double rate: $45–$60/night', 4: 'Avg double rate: $100–$150/night', 5: 'Avg double rate: $190–$250/night' },
-    ru: { 3: 'Средняя цена двухместного: $45–$60/ночь', 4: 'Средняя цена: $100–$150/ночь', 5: 'Средняя цена: $190–$250/ночь' },
+    fa: { 3: 'میانگین اتاق دبل: ۴۵ تا ۶۵ دلار/شب', 4: 'میانگین اتاق دبل: ۱۰۰ تا ۱۵۰ دلار/شب', 5: 'میانگین اتاق دبل: ۱۹۰ تا ۲۵۰+ دلار/شب' },
+    en: { 3: 'Avg double: $45–$65/night', 4: 'Avg double: $100–$150/night', 5: 'Avg double: $190–$250+/night' },
+    ru: { 3: 'Двухместный: $45–$65/ночь', 4: '$100–$150/ночь', 5: '$190–$250+/ночь' },
   };
-
   return (
     <div className="mb-10">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
@@ -238,9 +201,7 @@ function HotelCategorySection({ stars, hotels, lang }) {
           <StarBadge count={stars} />
           <h2 className="text-lg font-black text-foreground">{sectionTitle[lang]?.[stars]}</h2>
         </div>
-        <span className="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">
-          {priceNote[lang]?.[stars]}
-        </span>
+        <span className="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">{priceNote[lang]?.[stars]}</span>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {hotels.map((h, i) => <HotelCard key={i} hotel={h} lang={lang} />)}
@@ -251,36 +212,35 @@ function HotelCategorySection({ stars, hotels, lang }) {
 
 const FAQS = {
   fa: [
-    { q: 'چطور هتل رزرو کنم؟', a: 'از طریق واتساپ نام هتل، تاریخ ورود و خروج و تعداد نفرات را ارسال کنید. تیم کاسپین ظرف چند ساعت قیمت دقیق و در صورت موجودی رزرو می‌کند.' },
-    { q: 'قیمت‌ها بسته به فصل فرق دارد؟', a: 'بله. فصل اوج گردشگری ارمنستان (خرداد تا شهریور) و تعطیلات نوروز قیمت‌ها بالاتر هستند. بهار و پاییز بهترین ترکیب قیمت و آب‌وهوا را دارند.' },
-    { q: 'روش پرداخت چیست؟', a: 'واریز ریالی، کارت دلاری یا رمزارز USDT. جزئیات پس از تأیید رزرو ارسال می‌شود.' },
-    { q: 'لغو رزرو چطور است؟', a: 'شرایط لغو بسته به هتل متفاوت است. کاسپین هنگام رزرو شرایط کامل را توضیح می‌دهد.' },
+    { q: 'چطور هتل رزرو کنم؟', a: 'نام هتل، تاریخ ورود و خروج و تعداد نفرات را در واتساپ ارسال کنید. تیم کاسپین ظرف چند ساعت قیمت دقیق را تأیید، رزرو می‌کند و واچر رسمی صادر می‌کند.' },
+    { q: 'آیا واچر هتل برای ویزا معتبر است؟', a: 'بله. واچر صادرشده توسط کاسپین مهر رسمی دارد، تاریخ دقیق و نام کامل مسافر در آن ذکر است و توسط سفارتخانه‌های شینگن، روسیه و سایر مقاصد پذیرفته می‌شود.' },
+    { q: 'روش پرداخت چیست؟', a: 'واریز ریالی به حساب داخل ایران، دلار نقد یا رمزارز USDT. نیازی به کارت بین‌المللی نیست.' },
+    { q: 'قیمت‌ها بسته به فصل فرق دارد؟', a: 'بله. فصل اوج (خرداد تا شهریور و تعطیلات نوروز) قیمت‌ها ۲۰ تا ۴۰ درصد بالاتر است. رزرو حداقل ۴ تا ۶ هفته قبل توصیه می‌شود. بهار و پاییز بهترین ترکیب قیمت و آب‌وهوا را دارند.' },
+    { q: 'لغو رزرو چطور است؟', a: 'شرایط لغو بسته به هتل و نوع رزرو متفاوت است. کاسپین امکان رزرو با شرایط لغو رایگان (مناسب زمانی که نتیجه ویزا مشخص نیست) را نیز فراهم می‌کند.' },
+    { q: 'آیا ترانسفر فرودگاه هم هماهنگ می‌شود؟', a: 'بله، ترانسفر از فرودگاه زوارتنوتس مستقیم به هتل قابل هماهنگی است.' },
   ],
   en: [
-    { q: 'How do I book a hotel?', a: 'Send the hotel name, check-in/out dates, and number of guests via WhatsApp. Caspian\'s team will confirm pricing and availability within hours.' },
-    { q: 'Do prices vary by season?', a: 'Yes. Armenia\'s peak tourist season (June–September) and Nowruz holidays have higher prices. Spring and autumn offer the best price-weather combination.' },
-    { q: 'What are the payment options?', a: 'Rial bank transfer, USD card, or USDT cryptocurrency. Details are provided after booking confirmation.' },
-    { q: 'What is the cancellation policy?', a: 'Cancellation terms vary by hotel. Caspian explains all conditions clearly at the time of booking.' },
+    { q: 'How do I book a hotel?', a: 'Send the hotel name, check-in/out dates, and number of guests via WhatsApp. Caspian\'s team confirms pricing within hours, completes the booking, and issues an official voucher.' },
+    { q: 'Is the hotel voucher accepted for visa applications?', a: 'Yes. The voucher issued by Caspian carries an official stamp, lists exact dates and the traveler\'s full name, and is accepted by Schengen embassies, the Russian embassy, and other missions.' },
+    { q: 'What are the payment options?', a: 'Rial bank transfer to an Iranian account, cash USD, or USDT. No international card needed.' },
+    { q: 'Do prices vary by season?', a: 'Yes. Peak season (June–September and Nowruz holidays) can be 20–40% higher. Book at least 4–6 weeks ahead. Spring and autumn offer the best price-weather combination.' },
   ],
   ru: [
-    { q: 'Как забронировать отель?', a: 'Напишите в WhatsApp название отеля, даты и количество гостей. Команда Caspian подтвердит цену и наличие мест в течение нескольких часов.' },
-    { q: 'Цены меняются в зависимости от сезона?', a: 'Да. Пик туристического сезона в Армении (июнь–сентябрь) и праздники Новруз — цены выше. Весна и осень предлагают лучшее сочетание цены и погоды.' },
-    { q: 'Какие способы оплаты?', a: 'Банковский перевод в риалах, карта USD или криптовалюта USDT. Детали предоставляются после подтверждения бронирования.' },
-    { q: 'Условия отмены?', a: 'Условия отмены зависят от отеля. Caspian подробно объясняет все условия при бронировании.' },
+    { q: 'Как забронировать отель?', a: 'Напишите в WhatsApp название отеля, даты и количество гостей. Команда Caspian подтвердит цену и выдаст официальный ваучер.' },
+    { q: 'Принимается ли ваучер для визы?', a: 'Да. Ваучер содержит официальную печать, точные даты и полное имя туриста и принимается посольствами Шенгена, России и других стран.' },
+    { q: 'Способы оплаты?', a: 'Банковский перевод в риалах, наличные USD или криптовалюта USDT.' },
+    { q: 'Меняются ли цены по сезонам?', a: 'Да. Пик (июнь–сентябрь, Новруз) — на 20–40% дороже. Бронируйте за 4–6 недель. Лучшее соотношение цены и погоды — весна и осень.' },
   ],
 };
 
 function HotelFAQ() {
   const { lang } = useLang();
-const [active, setActive] = useState(null);
+  const [active, setActive] = useState(null);
   const faqs = FAQS[lang] || FAQS.fa;
-  const title = { fa: 'سوالات متداول', en: 'FAQ', ru: 'Вопросы и ответы' };
+  const title = { fa: 'سوالات متداول', en: 'Frequently Asked Questions', ru: 'Вопросы и ответы' };
   return (
-    <div className="mt-10">
-      <div className="flex items-center gap-2 mb-4">
-        <HelpCircle className="w-5 h-5 text-primary" />
-        <h2 className="text-xl font-bold text-foreground">{title[lang]}</h2>
-      </div>
+    <div className="mt-10 mb-6">
+      <h2 className="text-xl font-bold text-foreground mb-4">{title[lang]}</h2>
       <div className="glass-panel rounded-2xl border border-white/10 overflow-hidden">
         {faqs.map((faq, i) => (
           <div key={i} className={i < faqs.length - 1 ? 'border-b border-white/5' : ''}>
@@ -306,78 +266,180 @@ const [active, setActive] = useState(null);
 
 function HotelContent() {
   const { lang } = useLang();
+  const isFa = lang === 'fa';
+  const isRu = lang === 'ru';
 
   useSEO({
-    title: lang === 'fa' ? 'رزرو هتل در ایروان و ارمنستان | ۳، ۴ و ۵ ستاره - کاسپین گروپ' :
-           lang === 'ru' ? 'Бронирование отелей в Ереване и Армении | Caspian Group' :
-           'Hotel Booking in Yerevan & Armenia | 3, 4 & 5-Star | Caspian Group',
-    description: lang === 'fa' ? 'رزرو هتل در ایروان با واچر رسمی (مناسب پرونده ویزا)، پرداخت ریالی و پشتیبانی واتساپ. هتل ۳ تا ۵ ستاره نزدیک میدان جمهوری و کاسکاد.' :
-                 lang === 'ru' ? 'Бронирование отелей в Ереване и других городах Армении по лучшим ценам с официальным ваучером. Отели 3, 4 и 5 звёзд.' :
-                 'Book hotels in Yerevan and across Armenia at the best prices with an official voucher. 3, 4 & 5-star hotels near Republic Square and Cascade.',
-    keywords: lang === 'fa' ? 'رزرو هتل ایروان، هتل ارمنستان، هتل ۳ ستاره ایروان، هتل ۵ ستاره ایروان، هتل نزدیک میدان جمهوری، رزرو هتل ارزان ارمنستان' :
-              lang === 'ru' ? 'бронирование отеля Ереван, отели Армении, отель у площади Республики' :
-              'hotel booking Yerevan, Armenia hotels, hotels near Republic Square, cheap hotel Armenia',
+    title: isFa ? 'رزرو هتل در ایروان ارمنستان | ۳، ۴ و ۵ ستاره با واچر رسمی — کاسپین گروپ' :
+           isRu ? 'Бронирование отелей в Ереване и Армении | Caspian Group' :
+           'Hotel Booking in Yerevan & Armenia | 3, 4 & 5-Star with Official Voucher | Caspian Group',
+    description: isFa ? 'رزرو هتل ایروان با واچر رسمی (قابل ارائه به سفارتخانه)، پرداخت ریالی/USDT و پشتیبانی واتساپ. هتل ۳ تا ۵ ستاره از ۴۵ دلار. در فصل اوج زودتر رزرو کنید.' :
+                 isRu ? 'Бронирование отелей в Ереване с официальным ваучером, оплата в риалах или USDT. Отели 3–5 звёзд от $45.' :
+                 'Book hotels in Yerevan with an official voucher accepted by embassies, flexible payment, WhatsApp support. 3–5 star hotels from $45/night.',
+    keywords: isFa ? 'رزرو هتل ایروان، هتل ارمنستان، هتل ۳ ستاره ایروان، هتل ۵ ستاره ایروان، هتل نزدیک میدان جمهوری، واچر هتل برای ویزا، رزرو هتل پرداخت ریالی ارمنستان، بهترین هتل ایروان' :
+              isRu ? 'бронирование отеля Ереван, ваучер для визы, отели Армении, площадь Республики' :
+              'hotel booking Yerevan, Armenia hotels, official hotel voucher visa, hotels near Republic Square',
     ogImage: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200&q=80',
     path: '/travel/hotel',
     schema: {
       '@context': 'https://schema.org',
-      '@type': 'Service',
-      name: lang === 'fa' ? 'رزرو هتل در ارمنستان' : 'Hotel Booking in Armenia',
-      description: lang === 'fa' ? 'خدمات رزرو هتل‌های ۳، ۴ و ۵ ستاره در ایروان و سایر شهرهای ارمنستان' : 'Booking service for 3, 4 & 5-star hotels in Yerevan and across Armenia',
-      provider: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-      areaServed: { '@type': 'Country', name: 'Armenia' },
+      '@graph': [
+        {
+          '@type': 'Service',
+          name: isFa ? 'رزرو هتل در ارمنستان' : 'Hotel Booking in Armenia',
+          description: isFa ? 'رزرو هتل‌های ۳، ۴ و ۵ ستاره در ایروان با واچر رسمی و پرداخت ریالی' : 'Booking 3, 4 & 5-star hotels in Yerevan with official voucher',
+          provider: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
+          areaServed: { '@type': 'Country', name: 'Armenia' },
+        },
+        isFa ? {
+          '@type': 'FAQPage',
+          mainEntity: [
+            { '@type': 'Question', name: 'آیا واچر هتل کاسپین برای ویزای شینگن معتبر است؟', acceptedAnswer: { '@type': 'Answer', text: 'بله، واچر صادرشده مهر رسمی دارد، تاریخ دقیق و نام کامل مسافر در آن ذکر است و توسط سفارتخانه‌های شینگن و روسیه پذیرفته می‌شود.' } },
+            { '@type': 'Question', name: 'آیا رزرو هتل ایروان با پرداخت ریالی ممکن است؟', acceptedAnswer: { '@type': 'Answer', text: 'بله، کاسپین واریز ریالی، دلار نقد و USDT را می‌پذیرد. نیازی به کارت بین‌المللی نیست.' } },
+            { '@type': 'Question', name: 'بهترین فصل رزرو هتل در ایروان کدام است؟', acceptedAnswer: { '@type': 'Answer', text: 'بهار و پاییز بهترین ترکیب قیمت و آب‌وهواست. تابستان و نوروز فصل اوج هستند و قیمت‌ها ۲۰ تا ۴۰ درصد بالاتر است.' } },
+          ]
+        } : null,
+      ].filter(Boolean)
     }
   });
 
-  const sectionTitle = { fa: 'هتل‌های پیشنهادی ارمنستان', en: 'Recommended Hotels in Armenia', ru: 'Рекомендуемые отели Армении' };
   const note = {
-    fa: '* قیمت‌ها میانگین تخمینی برای اتاق دبل در فصل معمولی هستند. در فصل اوج (تابستان، نوروز) ممکن است ۲۰ تا ۴۰ درصد بیشتر باشد.',
+    fa: '* قیمت‌ها میانگین تخمینی برای اتاق دبل در فصل معمولی هستند. در فصل اوج (تابستان، نوروز) ۲۰ تا ۴۰ درصد بیشتر می‌شود.',
     en: '* Prices are estimated averages for a double room in regular season. Peak season (summer, Nowruz) may be 20–40% higher.',
-    ru: '* Цены — ориентировочные средние для двухместного номера в обычный сезон. В пиковый сезон (лето, Новруз) может быть на 20–40% выше.',
+    ru: '* Ориентировочные средние цены для двухместного номера. В пиковый сезон на 20–40% выше.',
   };
 
   return (
     <ServicePageLayout
-      titleEn="Hotel Booking Armenia" titleFa="رزرو هتل در ارمنستان" titleRu="Бронирование отелей в Армении"
-      subtitleEn="3, 4 & 5-star hotels in Yerevan — best prices via Caspian Group"
-      subtitleFa="هتل‌های ۳، ۴ و ۵ ستاره در ایروان — بهترین قیمت از طریق کاسپین"
-      subtitleRu="Отели 3, 4 и 5 звёзд в Ереване — лучшие цены от Caspian Group"
+      titleEn="Hotel Booking in Yerevan, Armenia" titleFa="رزرو هتل در ایروان و ارمنستان" titleRu="Бронирование отелей в Армении"
+      subtitleEn="3, 4 & 5-star hotels — official voucher, best prices via Caspian Group"
+      subtitleFa="هتل‌های ۳، ۴ و ۵ ستاره — واچر رسمی، بهترین قیمت از طریق کاسپین"
+      subtitleRu="Отели 3, 4 и 5 звёзд — официальный ваучер, лучшие цены"
       heroImage="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200&q=80"
-      serviceType="hotel"
-    >
+      serviceType="hotel">
 
-      {lang === 'fa' && <>
+      {isFa && <>
         <InfoBlock title="چرا رزرو هتل ایروان از طریق کاسپین؟">
-          <p>سایت‌های بزرگ رزرو آنلاین قیمت و امکانات هتل را نشان می‌دهند، اما وقتی هدف شما از رزرو هتل صرفاً یک سفر گردشگری نیست — مثلاً برای ضمیمه به پرونده ویزای شینگن یا روسیه، یا هماهنگی با ترانسفر فرودگاهی و اقامتگاه بعدی‌تان در ایروان — پشتیبانی انسانی و سریع اهمیت پیدا می‌کند. کاسپین گروپ به‌جای رزرو خودکار، هر درخواست را با یک کارشناس واقعی در واتساپ پیگیری می‌کند، قیمت نهایی را قبل از پرداخت تأیید می‌کند و در صورت نیاز واچر رسمی برای سفارتخانه صادر می‌کند.</p>
+          <p>رزرو مستقیم از بوکینگ یا اکسپدیا برای اتباع ایرانی معمولاً به کارت اعتباری بین‌المللی نیاز دارد که بیشتر ایرانیان به آن دسترسی ندارند. کاسپین گروپ این مشکل را حل کرده: رزرو از طریق واتساپ، تأیید قیمت قبل از پرداخت، پرداخت ریالی/دلاری/USDT، و صدور واچر رسمی برای ارائه به سفارتخانه. علاوه بر این، در صورت بروز هر مشکل در هتل، یک تیم پشتیبانی فارسی‌زبان همراه شما خواهد بود.</p>
         </InfoBlock>
 
-        <InfoBlock title="واچر رسمی هتل برای درخواست ویزا">
-          <p className="mb-3">اکثر سفارتخانه‌ها (شینگن، روسیه و سایر مقاصد) برای بررسی درخواست ویزا به یک واچر رسمی رزرو هتل نیاز دارند — نه صرفاً یک اسکرین‌شات از سایت رزرو. این واچر باید نام کامل مسافر، تاریخ دقیق اقامت و مهر/سربرگ هتل یا آژانس را داشته باشد.</p>
+        <InfoBlock title="واچر رسمی هتل برای ویزا — نکات مهم">
+          <p className="mb-3">اکثر سفارتخانه‌های اروپایی (ویزای شینگن)، روسیه، ترکیه و سایر مقاصد برای پرونده ویزا به واچر رسمی هتل نیاز دارند — نه صرفاً یک اسکرین‌شات از سایت یا لینک رزرو. واچر باید شامل موارد زیر باشد:</p>
           <CheckList items={[
-            'واچر رسمی با سربرگ هتل، قابل ارائه به هر سفارتخانه',
-            'امکان رزرو با شرایط لغو رایگان تا نزدیک تاریخ سفر — مناسب زمانی که هنوز نتیجه ویزا مشخص نیست',
-            'هماهنگی مستقیم بین رزرو هتل و پرونده ویزای شینگن یا روسیه شما',
+            'نام کامل مسافر (دقیقاً مطابق پاسپورت)',
+            'تاریخ دقیق چک‌این و چک‌اوت',
+            'نام و آدرس هتل با سربرگ یا مهر رسمی',
+            'شماره تأیید رزرو و اطلاعات تماس هتل',
+            'گزینه لغو رایگان — مناسب زمانی که نتیجه ویزا هنوز مشخص نیست',
+          ]} />
+        </InfoBlock>
+
+        <InfoBlock title="انتخاب هتل بر اساس هدف سفر شما">
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">سفر گردشگری کوتاه‌مدت (۳ تا ۷ شب)</h3>
+          <p className="mb-3">هتل‌های ۳ ستاره مرکز شهر (مانند اربونی، دوین، کاسکاد) انتخابی هوشمندانه هستند. موقعیت مرکزی به شما امکان می‌دهد بدون نیاز به تاکسی اکثر جاذبه‌های شهر را پیاده ببینید. قیمت اتاق دبل در این هتل‌ها بین ۴۵ تا ۶۵ دلار در شب است.</p>
+
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">سفر تجاری یا جلسه با شرکا</h3>
+          <p className="mb-3">هتل‌های ۴ ستاره در محور میدان جمهوری (ماریوت، رادیسون بلو، بست وسترن کنگره) فاصله کمی از اکثر ادارات دولتی، سفارتخانه‌ها و مراکز تجاری دارند. سرویس ترانسفر فرودگاهی معمولاً در این هتل‌ها رایگان است یا با قیمت مناسب ارائه می‌شود.</p>
+
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">تعطیلات خانوادگی یا ماه عسل</h3>
+          <p>هتل‌های ۵ ستاره مانند الکساندر لاکچری کالکشن، گرند هتل و هیلتون خدمات اسپا، استخر، رستوران لوکس و اتاق‌های بزرگ خانوادگی دارند. اگر رمانتیک بودن اقامت مهم است، گرند هتل با چشم‌انداز مستقیم به کوه آرارات در میان مسافران ایرانی بسیار محبوب است.</p>
+        </InfoBlock>
+
+        <InfoBlock title="بهترین فصل برای رزرو هتل در ایروان">
+          <p className="mb-3">آب‌وهوا و قیمت هتل‌های ایروان در طول سال تفاوت قابل توجهی دارند:</p>
+          <CheckList items={[
+            'بهار (اردیبهشت و خرداد) — آب‌وهوای ایده‌آل، قیمت‌های معقول، شهر سرسبز. بهترین زمان',
+            'تابستان (تیر تا شهریور) — فصل اوج گردشگری، قیمت‌ها ۲۰ تا ۴۰ درصد بالاتر. حداقل ۶ هفته قبل رزرو کنید',
+            'پاییز (مهر و آبان) — آب‌وهوای عالی، قیمت‌های خوب، شلوغی کمتر',
+            'نوروز (فروردین) — فصل اوج مسافران ایرانی. بعضی هتل‌ها ۳ ماه قبل رزرو می‌شوند',
+            'زمستان (دی و بهمن) — زمستان سرد، تخفیف‌های ویژه. مناسب کسانی که به فضای برفی علاقه دارند',
+          ]} />
+        </InfoBlock>
+
+        <InfoBlock title="روش‌های پرداخت رزرو هتل برای ایرانیان">
+          <p>محدودیت‌های بانکی رزرو مستقیم هتل‌های خارجی را برای اتباع ایرانی دشوار کرده است. کاسپین گروپ سه روش پرداخت بدون نیاز به کارت بین‌المللی ارائه می‌دهد:</p>
+          <CheckList items={[
+            'واریز ریالی به حساب داخل ایران — آسان‌ترین روش برای مسافران داخل کشور',
+            'پرداخت دلاری نقد یا کارت دلاری معتبر',
+            'رمزارز USDT — برای پرداخت سریع بدون واسطه بانکی',
+          ]} />
+        </InfoBlock>
+
+        <InfoBlock title="نکات مهم هنگام رزرو هتل در ایروان">
+          <CheckList items={[
+            'بهترین اتاق‌ها در هتل‌های مشرف به میدان جمهوری یا کوه آرارات زودتر از بقیه پر می‌شوند — برای این اتاق‌ها زودتر اقدام کنید',
+            'هتل‌های ایروان معمولاً صبحانه بوفه شامل دارند — در اتاق‌های ارزان‌تر ممکن است صبحانه جداگانه باشد',
+            'بیشتر هتل‌های مرکزی پارکینگ ندارند یا پارکینگ آن‌ها محدود است — اگر ماشین اجاره می‌کنید این نکته را مد نظر داشته باشید',
+            'در فصل تابستان و نوروز، هتل‌های نزدیک پارک‌ها و میدان جمهوری پرسروصداتر هستند',
+            'هتل‌های ۳ ستاره در محله‌های کمی دورتر مانند نورک، معمولاً تمیزتر و آرام‌تر از همتایان مرکزی‌شان هستند',
           ]} />
         </InfoBlock>
       </>}
+
       {lang === 'en' && <>
-        <InfoBlock title="Why Book Hotels in Yerevan Through Caspian?">
-          <p>Large booking sites show prices and amenities, but when your hotel booking isn't just for tourism — for example, as a supporting document for a Schengen or Russia visa application, or coordinated with an airport transfer and your next stay in Yerevan — fast, human support matters. Instead of an automated booking, Caspian Group handles every request with a real WhatsApp agent, confirms the final price before payment, and issues an official embassy voucher when needed.</p>
+        <InfoBlock title="Why Book Yerevan Hotels Through Caspian?">
+          <p>Direct booking on Booking.com or Expedia typically requires an international credit card — something most Iranian travelers don't have access to. Caspian Group solves this: WhatsApp booking, price confirmation before payment, Rial/USD/USDT options, and official voucher issuance for embassy submission. A Persian-speaking support team is also available if anything comes up at the hotel.</p>
         </InfoBlock>
-        <InfoBlock title="Official Hotel Voucher for Visa Applications">
+
+        <InfoBlock title="Official Hotel Voucher for Visa — What You Need to Know">
           <CheckList items={[
-            'Official voucher on hotel letterhead, accepted by any embassy',
-            'Free-cancellation bookings available — useful while your visa decision is still pending',
-            'Direct coordination between your hotel booking and your Schengen or Russia visa file',
+            'Traveler\'s full name exactly as in the passport',
+            'Exact check-in and check-out dates',
+            'Hotel name and address with official letterhead or stamp',
+            'Booking confirmation number and hotel contact details',
+            'Free cancellation option available — important when visa outcome is still pending',
+          ]} />
+        </InfoBlock>
+
+        <InfoBlock title="Choosing a Hotel Based on Your Trip Purpose">
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">Short Tourist Trip (3–7 nights)</h3>
+          <p className="mb-3">3-star central hotels (Erebuni, Dvin, Cascade) are the smart choice. Central position lets you walk to most attractions. Double rooms run $45–$65/night.</p>
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">Business Travel</h3>
+          <p className="mb-3">4-star hotels around Republic Square (Marriott, Radisson Blu, Best Western Congress) are close to government offices, embassies, and business centers.</p>
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">Family Holiday or Honeymoon</h3>
+          <p>5-star options like The Alexander, Grand Hotel, and Hilton offer spa, pool, luxury restaurants, and large family rooms. Grand Hotel's direct Ararat mountain view is especially popular with Iranian couples.</p>
+        </InfoBlock>
+
+        <InfoBlock title="Best Season for Hotel Booking in Yerevan">
+          <CheckList items={[
+            'Spring (May–June) — ideal weather, reasonable prices, lush greenery',
+            'Summer (July–Sept) — peak season, prices 20–40% higher. Book 6+ weeks ahead',
+            'Autumn (Oct–Nov) — excellent weather, good prices, fewer crowds',
+            'Nowruz (March) — peak for Iranian travelers. Some hotels book out 3 months early',
+            'Winter (Jan–Feb) — cold, but special discounts available',
           ]} />
         </InfoBlock>
       </>}
-      {lang === 'ru' && <>
-        <InfoBlock title="Почему бронировать отель через Caspian?">
-          <p>Когда бронирование отеля нужно не только для туризма — например, как подтверждающий документ для шенгенской или российской визы — важна быстрая помощь живого специалиста. Caspian Group обрабатывает каждый запрос в WhatsApp и при необходимости выдаёт официальный ваучер для посольства.</p>
+
+      {isRu && <>
+        <InfoBlock title="Почему бронировать отель в Ереване через Caspian?">
+          <p>Прямое бронирование на Booking.com обычно требует международной карты. Caspian Group решает эту проблему: бронирование через WhatsApp, оплата в риалах/USD/USDT и выдача официального ваучера для посольства.</p>
+        </InfoBlock>
+
+        <InfoBlock title="Официальный ваучер для визы">
+          <CheckList items={[
+            'Полное имя туриста в соответствии с паспортом',
+            'Точные даты заезда и выезда',
+            'Название отеля с официальной печатью',
+            'Номер подтверждения бронирования',
+            'Возможность бесплатной отмены',
+          ]} />
+        </InfoBlock>
+
+        <InfoBlock title="Лучший сезон для бронирования">
+          <CheckList items={[
+            'Весна (май–июнь) — отличная погода, разумные цены',
+            'Лето (июль–сентябрь) — пик сезона, цены на 20–40% выше',
+            'Осень (октябрь–ноябрь) — прекрасная погода, меньше туристов',
+            'Новруз (март) — пик для иранских туристов',
+          ]} />
         </InfoBlock>
       </>}
 
+      {/* لیست هتل‌ها */}
+      <h2 className="text-2xl font-black text-foreground mb-6 text-center gold-gradient-text">
+        {isFa ? 'هتل‌های پیشنهادی ایروان' : isRu ? 'Рекомендуемые отели Еревана' : 'Recommended Hotels in Yerevan'}
+      </h2>
 
       <HotelCategorySection stars={3} hotels={HOTELS[3]} lang={lang} />
       <HotelCategorySection stars={4} hotels={HOTELS[4]} lang={lang} />
@@ -385,32 +447,7 @@ function HotelContent() {
 
       <p className="text-xs text-foreground/40 text-center mt-2 mb-6">{note[lang]}</p>
 
-      {lang === 'fa' && <>
-        <InfoBlock title="روش‌های پرداخت">
-          <CheckList items={[
-            'واریز ریالی به حساب داخل ایران',
-            'پرداخت دلاری نقد یا کارت‌های دلاری معتبر',
-            'رمزارز USDT برای پرداخت سریع بدون واسطه بانکی',
-          ]} />
-        </InfoBlock>
-        <InfoBlock title="بهترین زمان برای رزرو هتل ارزان‌تر در ایروان">
-          <p>پاییز و زمستان (به‌جز ایام تعطیلات نوروز) معمولاً ارزان‌ترین فصل برای اقامت در ایروان است، چون تعداد گردشگران کمتر است. برای فصل اوج تابستان و نوروز، پیشنهاد می‌شود حداقل سه تا چهار هفته زودتر رزرو قطعی شود تا هم بهترین قیمت و هم موقعیت مکانی دلخواه (نزدیک میدان جمهوری یا کاسکاد) در دسترس باشد. رزرو دقیقه‌نودی گاهی قیمت پایین‌تری هم دارد، اما برای هتل‌های محبوب ریسک پُر شدن ظرفیت وجود دارد.</p>
-        </InfoBlock>
-      </>}
-      {lang === 'en' && <>
-        <InfoBlock title="Payment Methods">
-          <CheckList items={[
-            'Rial bank transfer to an account inside Iran',
-            'Cash USD or valid USD cards',
-            'USDT cryptocurrency for fast, bank-free payment',
-          ]} />
-        </InfoBlock>
-        <InfoBlock title="Best Time to Book a Cheaper Hotel in Yerevan">
-          <p>Autumn and winter (excluding the Nowruz holidays) are usually the cheapest season to stay in Yerevan, since tourist numbers drop. For peak summer and Nowruz, book at least three to four weeks ahead to secure both the best rate and your preferred location near Republic Square or Cascade. Last-minute booking can occasionally be cheaper, but popular hotels risk selling out.</p>
-        </InfoBlock>
-      </>}
-
-<BookingSearchModal isOpen={true} title="رزرو هتل" />
+      <HotelFAQ />
     </ServicePageLayout>
   );
 }
