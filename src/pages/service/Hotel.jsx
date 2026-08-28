@@ -3,7 +3,7 @@ import BookingSearchModal from '@/components/shared/BookingSearchModal';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { useSEO } from '@/hooks/useSEO';
-import { ServicePageLayout } from '@/components/shared/ServicePageLayout';
+import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 import { ChevronDown, HelpCircle, Star } from 'lucide-react';
 
 // ۱۵ هتل واقعی ارمنستان
@@ -311,7 +311,7 @@ function HotelContent() {
     title: lang === 'fa' ? 'رزرو هتل در ایروان و ارمنستان | ۳، ۴ و ۵ ستاره - کاسپین گروپ' :
            lang === 'ru' ? 'Бронирование отелей в Ереване и Армении | Caspian Group' :
            'Hotel Booking in Yerevan & Armenia | 3, 4 & 5-Star | Caspian Group',
-    description: lang === 'fa' ? 'رزرو هتل در ایروان و شهرهای ارمنستان با بهترین قیمت و واچر رسمی. هتل‌های ۳، ۴ و ۵ ستاره در مرکز شهر، میدان جمهوری و کاسکاد. بیش از ۱۵ سال تجربه.' :
+    description: lang === 'fa' ? 'رزرو هتل در ایروان با واچر رسمی (مناسب پرونده ویزا)، پرداخت ریالی و پشتیبانی واتساپ. هتل ۳ تا ۵ ستاره نزدیک میدان جمهوری و کاسکاد.' :
                  lang === 'ru' ? 'Бронирование отелей в Ереване и других городах Армении по лучшим ценам с официальным ваучером. Отели 3, 4 и 5 звёзд.' :
                  'Book hotels in Yerevan and across Armenia at the best prices with an official voucher. 3, 4 & 5-star hotels near Republic Square and Cascade.',
     keywords: lang === 'fa' ? 'رزرو هتل ایروان، هتل ارمنستان، هتل ۳ ستاره ایروان، هتل ۵ ستاره ایروان، هتل نزدیک میدان جمهوری، رزرو هتل ارزان ارمنستان' :
@@ -346,13 +346,69 @@ function HotelContent() {
       serviceType="hotel"
     >
 
-      <h2 className="text-2xl font-black text-foreground mb-6 text-center gold-gradient-text">{sectionTitle[lang]}</h2>
+      {lang === 'fa' && <>
+        <InfoBlock title="چرا رزرو هتل ایروان از طریق کاسپین؟">
+          <p>سایت‌های بزرگ رزرو آنلاین قیمت و امکانات هتل را نشان می‌دهند، اما وقتی هدف شما از رزرو هتل صرفاً یک سفر گردشگری نیست — مثلاً برای ضمیمه به پرونده ویزای شینگن یا روسیه، یا هماهنگی با ترانسفر فرودگاهی و اقامتگاه بعدی‌تان در ایروان — پشتیبانی انسانی و سریع اهمیت پیدا می‌کند. کاسپین گروپ به‌جای رزرو خودکار، هر درخواست را با یک کارشناس واقعی در واتساپ پیگیری می‌کند، قیمت نهایی را قبل از پرداخت تأیید می‌کند و در صورت نیاز واچر رسمی برای سفارتخانه صادر می‌کند.</p>
+        </InfoBlock>
+
+        <InfoBlock title="واچر رسمی هتل برای درخواست ویزا">
+          <p className="mb-3">اکثر سفارتخانه‌ها (شینگن، روسیه و سایر مقاصد) برای بررسی درخواست ویزا به یک واچر رسمی رزرو هتل نیاز دارند — نه صرفاً یک اسکرین‌شات از سایت رزرو. این واچر باید نام کامل مسافر، تاریخ دقیق اقامت و مهر/سربرگ هتل یا آژانس را داشته باشد.</p>
+          <CheckList items={[
+            'واچر رسمی با سربرگ هتل، قابل ارائه به هر سفارتخانه',
+            'امکان رزرو با شرایط لغو رایگان تا نزدیک تاریخ سفر — مناسب زمانی که هنوز نتیجه ویزا مشخص نیست',
+            'هماهنگی مستقیم بین رزرو هتل و پرونده ویزای شینگن یا روسیه شما',
+          ]} />
+        </InfoBlock>
+      </>}
+      {lang === 'en' && <>
+        <InfoBlock title="Why Book Hotels in Yerevan Through Caspian?">
+          <p>Large booking sites show prices and amenities, but when your hotel booking isn't just for tourism — for example, as a supporting document for a Schengen or Russia visa application, or coordinated with an airport transfer and your next stay in Yerevan — fast, human support matters. Instead of an automated booking, Caspian Group handles every request with a real WhatsApp agent, confirms the final price before payment, and issues an official embassy voucher when needed.</p>
+        </InfoBlock>
+        <InfoBlock title="Official Hotel Voucher for Visa Applications">
+          <CheckList items={[
+            'Official voucher on hotel letterhead, accepted by any embassy',
+            'Free-cancellation bookings available — useful while your visa decision is still pending',
+            'Direct coordination between your hotel booking and your Schengen or Russia visa file',
+          ]} />
+        </InfoBlock>
+      </>}
+      {lang === 'ru' && <>
+        <InfoBlock title="Почему бронировать отель через Caspian?">
+          <p>Когда бронирование отеля нужно не только для туризма — например, как подтверждающий документ для шенгенской или российской визы — важна быстрая помощь живого специалиста. Caspian Group обрабатывает каждый запрос в WhatsApp и при необходимости выдаёт официальный ваучер для посольства.</p>
+        </InfoBlock>
+      </>}
+
 
       <HotelCategorySection stars={3} hotels={HOTELS[3]} lang={lang} />
       <HotelCategorySection stars={4} hotels={HOTELS[4]} lang={lang} />
       <HotelCategorySection stars={5} hotels={HOTELS[5]} lang={lang} />
 
       <p className="text-xs text-foreground/40 text-center mt-2 mb-6">{note[lang]}</p>
+
+      {lang === 'fa' && <>
+        <InfoBlock title="روش‌های پرداخت">
+          <CheckList items={[
+            'واریز ریالی به حساب داخل ایران',
+            'پرداخت دلاری نقد یا کارت‌های دلاری معتبر',
+            'رمزارز USDT برای پرداخت سریع بدون واسطه بانکی',
+          ]} />
+        </InfoBlock>
+        <InfoBlock title="بهترین زمان برای رزرو هتل ارزان‌تر در ایروان">
+          <p>پاییز و زمستان (به‌جز ایام تعطیلات نوروز) معمولاً ارزان‌ترین فصل برای اقامت در ایروان است، چون تعداد گردشگران کمتر است. برای فصل اوج تابستان و نوروز، پیشنهاد می‌شود حداقل سه تا چهار هفته زودتر رزرو قطعی شود تا هم بهترین قیمت و هم موقعیت مکانی دلخواه (نزدیک میدان جمهوری یا کاسکاد) در دسترس باشد. رزرو دقیقه‌نودی گاهی قیمت پایین‌تری هم دارد، اما برای هتل‌های محبوب ریسک پُر شدن ظرفیت وجود دارد.</p>
+        </InfoBlock>
+      </>}
+      {lang === 'en' && <>
+        <InfoBlock title="Payment Methods">
+          <CheckList items={[
+            'Rial bank transfer to an account inside Iran',
+            'Cash USD or valid USD cards',
+            'USDT cryptocurrency for fast, bank-free payment',
+          ]} />
+        </InfoBlock>
+        <InfoBlock title="Best Time to Book a Cheaper Hotel in Yerevan">
+          <p>Autumn and winter (excluding the Nowruz holidays) are usually the cheapest season to stay in Yerevan, since tourist numbers drop. For peak summer and Nowruz, book at least three to four weeks ahead to secure both the best rate and your preferred location near Republic Square or Cascade. Last-minute booking can occasionally be cheaper, but popular hotels risk selling out.</p>
+        </InfoBlock>
+      </>}
 
 <BookingSearchModal isOpen={true} title="رزرو هتل" />
     </ServicePageLayout>
