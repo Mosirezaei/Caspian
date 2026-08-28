@@ -166,7 +166,7 @@ const navLinks = {
 
 
 
-      label: 'ویزای تحصیلی', href: '/student-visa', children: [
+      label: 'ویزای تحصیلی', href: '/student-visa', _hidden: true, children: [
 
 
 
@@ -207,25 +207,9 @@ const navLinks = {
 
 
       label: 'اقامت و مهاجرت', href: '#', children: [
-
-
-
-        { label: 'اقامت ارمنستان', href: '/residency/armenia' },
-
-
-
-        { label: 'اقامت ترکیه', href: '/residency/turkey' },
-
-
-
-        { label: 'اقامت عمان', href: '/residency/oman' },
-
-
-
-        { label: 'اقامت امارات', href: '/residency/uae' },
-
-
-
+        { label: 'اقامت کاری', href: '/residency/work' },
+        { label: 'اقامت بیزینسی — ثبت شرکت', href: '/residency/business' },
+        { label: 'اقامت تحصیلی', href: '/residency/student' },
       ],
 
 
@@ -255,6 +239,7 @@ const navLinks = {
 
 
         { label: 'تور ارمنستان', href: '/travel/tour' },
+        { label: 'فستیوال‌ها', href: '/travel/festivals' },
 
 
 
@@ -315,6 +300,7 @@ const navLinks = {
 
 
         { label: 'Armenia Tour', href: '/travel/tour' },
+        { label: 'Festivals & Events', href: '/travel/festivals' },
 
 
 
@@ -343,25 +329,9 @@ const navLinks = {
 
 
       label: 'Residency & Immigration', href: '#', children: [
-
-
-
-        { label: 'Armenia Residency', href: '/residency/armenia' },
-
-
-
-        { label: 'Turkey Residency', href: '/residency/turkey' },
-
-
-
-        { label: 'Oman Residency', href: '/residency/oman' },
-
-
-
-        { label: 'UAE Residency', href: '/residency/uae' },
-
-
-
+        { label: 'Work Residency', href: '/residency/work' },
+        { label: 'Business Residency — Company Reg.', href: '/residency/business' },
+        { label: 'Student Residency', href: '/residency/student' },
       ],
 
 
@@ -414,7 +384,7 @@ const navLinks = {
 
 
 
-      label: 'Student Visa', href: '/student-visa', children: [
+      label: 'Student Visa', href: '/student-visa', _hidden: true, children: [
 
 
 
@@ -507,6 +477,7 @@ const navLinks = {
 
 
         { label: 'Тур по Армении', href: '/travel/tour' },
+        { label: 'Фестивали и события', href: '/travel/festivals' },
 
 
 
@@ -535,25 +506,9 @@ const navLinks = {
 
 
       label: 'ВНЖ и миграция', href: '#', children: [
-
-
-
-        { label: 'ВНЖ Армении', href: '/residency/armenia' },
-
-
-
-        { label: 'ВНЖ Турции', href: '/residency/turkey' },
-
-
-
-        { label: 'ВНЖ Омана', href: '/residency/oman' },
-
-
-
-        { label: 'ВНЖ ОАЭ', href: '/residency/uae' },
-
-
-
+        { label: 'Рабочий ВНЖ', href: '/residency/work' },
+        { label: 'Бизнес ВНЖ — регистрация компании', href: '/residency/business' },
+        { label: 'Учебный ВНЖ', href: '/residency/student' },
       ],
 
 
@@ -606,7 +561,7 @@ const navLinks = {
 
 
 
-      label: 'Студенческая виза', href: '/student-visa', children: [
+      label: 'Студенческая виза', href: '/student-visa', _hidden: true, children: [
 
 
 
@@ -1013,7 +968,7 @@ export default function GlobalNavbar() {
 
 
 
-            {links.map((link) =>
+            {links.filter(l => !l._hidden).map((link) =>
 
 
 
@@ -1429,7 +1384,7 @@ export default function GlobalNavbar() {
 
 
 
-                {[...links].reverse().map((link) =>
+                {[...links].filter(l => !l._hidden).reverse().map((link) =>
 
 
 

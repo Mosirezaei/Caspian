@@ -32,6 +32,9 @@ const StudentVisaGeorgia = lazy(() => import('@/pages/service/StudentVisaGeorgia
 
 // Residency pages
 const Residency = lazy(() => import('@/pages/service/Residency'));
+const ResidencyWork = lazy(() => import('@/pages/service/ResidencyWork'));
+const ResidencyStudent = lazy(() => import('@/pages/service/ResidencyStudent'));
+// Kept for backward-compat / SEO (not in main menu but routes still active)
 const ResidencyTurkey = lazy(() => import('@/pages/service/ResidencyTurkey'));
 const ResidencyOman = lazy(() => import('@/pages/service/ResidencyOman'));
 const ResidencyUAE = lazy(() => import('@/pages/service/ResidencyUAE'));
@@ -43,6 +46,7 @@ const DynamicService = lazy(() => import('@/pages/service/DynamicService'));
 const Flight = lazy(() => import('@/pages/travel/Flight'));
 const Apartment = lazy(() => import('@/pages/travel/Apartment'));
 const Tour = lazy(() => import('@/pages/travel/Tour'));
+const Festivals = lazy(() => import('@/pages/travel/Festivals'));
 const Hotel = lazy(() => import('@/pages/service/Hotel'));
 const BusTrainBooking = lazy(() => import('@/pages/service/BusTrainBooking'));
 const Exchange = lazy(() => import('@/pages/service/Exchange'));
@@ -99,6 +103,10 @@ const AuthenticatedApp = () => {
 
       {/* ── RESIDENCY ── */}
       <Route path="/residency/armenia" element={<S><Residency /></S>} />
+      <Route path="/residency/work" element={<S><ResidencyWork /></S>} />
+      <Route path="/residency/business" element={<S><CompanyReg /></S>} />
+      <Route path="/residency/student" element={<S><ResidencyStudent /></S>} />
+      {/* Kept for SEO / backward compat — not in main menu */}
       <Route path="/residency/turkey" element={<S><ResidencyTurkey /></S>} />
       <Route path="/residency/oman" element={<S><ResidencyOman /></S>} />
       <Route path="/residency/uae" element={<S><ResidencyUAE /></S>} />
@@ -110,6 +118,7 @@ const AuthenticatedApp = () => {
       <Route path="/travel/hotel" element={<S><Hotel /></S>} />
       <Route path="/travel/apartment" element={<S><Apartment /></S>} />
       <Route path="/travel/tour" element={<S><Tour /></S>} />
+      <Route path="/travel/festivals" element={<S><Festivals /></S>} />
       <Route path="/travel/transfer" element={<S><Transfer /></S>} />
       <Route path="/travel/exchange" element={<S><Exchange /></S>} />
       <Route path="/travel/vip" element={<S><VipSupport /></S>} />
