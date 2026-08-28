@@ -9,32 +9,44 @@ function Content() {
   const isRu = lang === 'ru';
 
   useSEO({
-    title: isFa ? 'ویزای روسیه برای ایرانیان از ایروان | دعوتنامه رسمی و پردازش ۵ تا ۱۰ روزه' :
-           isRu ? 'Виза в Россию для иранцев | Оформление в Ереване с приглашением' :
-           'Russia Visa for Iranians from Yerevan | Official Invitation, 5–10 Day Processing',
-    description: isFa ? 'اخذ ویزای توریستی و تجاری روسیه برای اتباع ایرانی با دعوتنامه رسمی از سفارت روسیه در ایروان. مدارک کامل، هزینه دقیق و پردازش ۵ تا ۱۰ روز کاری.' :
-                 isRu ? 'Оформление туристической и деловой визы в Россию для граждан Ирана через посольство в Ереване. Официальное приглашение, полный список документов.' :
-                 'Tourist and business Russia visas for Iranian citizens via the embassy in Yerevan, with an official invitation and full document support. Processing in 5–10 business days.',
-    keywords: isFa ? 'ویزای روسیه، ویزای روسیه برای ایرانیان، اخذ ویزای روسیه از ارمنستان، ویزای توریستی روسیه، ویزای تجاری روسیه، دعوتنامه روسیه، سفارت روسیه در ایروان، مدارک ویزای روسیه' :
-              isRu ? 'виза в Россию, виза в Россию для иранцев, туристическая виза Россия, деловая виза Россия, приглашение в Россию' :
-              'Russia visa, Russia visa for Iranians, tourist visa Russia, business visa Russia, Russian invitation letter, Russian embassy Yerevan',
+    title: isFa ? 'ویزای توریستی روسیه برای ایرانیان ۲۰۲۶ | eVisa + ویزای استیکری از ایروان — کاسپین گروپ' :
+           isRu ? 'Туристическая виза в Россию для иранцев 2026 | eVisa + стикерная виза из Еревана — Caspian Group' :
+           'Russia Tourist Visa for Iranians 2026 | eVisa + Sticker Visa from Yerevan — Caspian Group',
+    description: isFa ? 'اخذ ویزای توریستی روسیه از ایروان — دو روش: eVisa الکترونیکی (۷۰–۱۱۰ دلار، ۴ روز، تا ۱۶ روز اقامت) یا ویزای استیکری سفارت (۱۳۰–۱۶۰ دلار، ۵–۱۰ روز، تا ۳۰ روز). مدارک کامل + مشاوره رایگان.' :
+                 isRu ? 'Туристическая виза в Россию из Еревана — два способа: eVisa ($70–110, 4 дня, до 16 суток) или стикерная виза посольства ($130–160, 5–10 дней, до 30 суток).' :
+                 'Russia tourist visa from Yerevan — two routes: eVisa ($70–110, 4 days, up to 16-day stay) or embassy sticker visa ($130–160, 5–10 days, up to 30 days). Full documents + free consult.',
+    keywords: isFa ? 'ویزای روسیه، ویزای توریستی روسیه، ویزای الکترونیک روسیه، eVisa روسیه، ویزای روسیه برای ایرانیان، اخذ ویزای روسیه از ارمنستان، دعوتنامه روسیه، مدارک ویزای روسیه ۲۰۲۶' :
+              isRu ? 'виза в Россию, туристическая виза Россия, eVisa Россия, виза для иранцев, приглашение' :
+              'Russia visa, Russia tourist visa, Russia eVisa, visa for Iranians, Russia invitation letter, Yerevan embassy',
     ogImage: 'https://images.unsplash.com/photo-1513326738677-b964603b136d?w=1200&q=80',
     path: '/visa/russia',
     schema: {
       '@context': 'https://schema.org',
-      '@type': 'Service',
-      name: isFa ? 'ویزای روسیه' : 'Russia Visa',
-      description: isFa ? 'خدمات اخذ ویزای توریستی و تجاری روسیه برای ایرانیان از ایروان' : 'Tourist and business Russia visa services for Iranians from Yerevan',
-      provider: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-      areaServed: 'Iran',
+      '@graph': [
+        {
+          '@type': 'Service',
+          name: isFa ? 'ویزای توریستی روسیه' : 'Russia Tourist Visa',
+          description: isFa ? 'اخذ ویزای توریستی و تجاری روسیه برای ایرانیان از طریق سفارت روسیه در ایروان' : 'Tourist and business Russia visa for Iranians via Russian embassy in Yerevan',
+          provider: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
+          areaServed: 'Iran',
+        },
+        isFa ? {
+          '@type': 'FAQPage',
+          mainEntity: [
+            { '@type': 'Question', name: 'آیا ایرانیان می‌توانند ویزای الکترونیکی (eVisa) روسیه بگیرند؟', acceptedAnswer: { '@type': 'Answer', text: 'بله. ویزای الکترونیکی روسیه برای ایرانیان قابل دریافت است. هزینه ۷۰ تا ۱۱۰ دلار، زمان صدور ۴ روز کاری و اجازه اقامت تا ۱۶ روز. از نظر سرعت و سهولت بهتر از ویزای استیکری است اما تنها در برخی مرزها پذیرفته می‌شود.' } },
+            { '@type': 'Question', name: 'دعوتنامه روسیه چیست و چرا لازم است؟', acceptedAnswer: { '@type': 'Answer', text: 'دعوتنامه (ووچر) یک سند اجباری برای ویزای استیکری توریستی روسیه است که فقط توسط هتل‌ها یا آژانس‌های دارای مجوز از وزارت خارجه روسیه صادر می‌شود. برای eVisa نیازی به دعوتنامه نیست.' } },
+            { '@type': 'Question', name: 'ویزای روسیه از ایروان چند روز طول می‌کشد؟', acceptedAnswer: { '@type': 'Answer', text: 'eVisa: ۴ روز کاری. ویزای استیکری از سفارت ایروان: ۵ تا ۱۰ روز کاری. فوری در ۳ روز هم ممکن است اما هزینه بیشتری دارد.' } },
+          ]
+        } : null,
+      ].filter(Boolean)
     }
   });
 
   return (
-    <ServicePageLayout titleFa="ویزای روسیه" titleEn="Russia Visa" titleRu="Виза в Россию"
-      subtitleFa="ویزای توریستی و تجاری روسیه با دعوتنامه رسمی و پشتیبانی کامل از ایروان"
-      subtitleEn="Tourist and business Russia visas with an official invitation, fully handled from Yerevan"
-      subtitleRu="Туристические и деловые визы в Россию с официальным приглашением"
+    <ServicePageLayout titleFa="ویزای توریستی روسیه" titleEn="Russia Tourist Visa" titleRu="Туристическая виза в Россию"
+      subtitleFa="دو روش دریافت: eVisa الکترونیکی یا ویزای استیکری از سفارت ایروان"
+      subtitleEn="Two routes: eVisa or embassy sticker visa from Yerevan"
+      subtitleRu="Два способа: eVisa или стикерная виза через посольство в Ереване"
       heroImage="https://images.unsplash.com/photo-1513326738677-b964603b136d?w=1200&q=80"
       serviceType="visa-russia">
 
@@ -43,137 +55,209 @@ function Content() {
         <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
         <div className="absolute bottom-4 start-4 flex items-center gap-2">
           <img src="https://flagcdn.com/w80/ru.webp" alt="Russia flag" className="h-6 rounded shadow" />
-          <span className="text-sm font-bold text-white drop-shadow">مسکو، روسیه</span>
+          <span className="text-sm font-bold text-white drop-shadow">{isFa ? 'مسکو، روسیه' : isRu ? 'Москва, Россия' : 'Moscow, Russia'}</span>
         </div>
       </div>
 
       {isFa && <>
-        <InfoBlock title="آیا ایرانیان برای سفر به روسیه به ویزا نیاز دارند؟">
-          <p>بله. برخلاف تصور رایج، رابطه‌ی خوب دیپلماتیک ایران و روسیه به معنای لغو ویزا نیست و اتباع ایرانی همچنان برای هر نوع سفر به روسیه — چه گردشگری، چه تجاری — باید ویزای معتبر دریافت کنند. نکته‌ی مثبت این است که سفارت روسیه در ایروان یکی از فعال‌ترین و سریع‌ترین نمایندگی‌های روسیه در منطقه است، و همین موضوع باعث شده بسیاری از ایرانیان اقدام برای ویزای روسیه را از ارمنستان انجام دهند تا از صف‌های طولانی و بروکراسی داخل ایران فاصله بگیرند.</p>
+        <InfoBlock title="آیا ایرانیان به ویزای روسیه نیاز دارند؟">
+          <p>بله. برخلاف تصور رایج، روابط دیپلماتیک خوب ایران و روسیه به معنای لغو ویزا نیست و اتباع ایرانی همچنان برای هر نوع سفر به روسیه باید ویزای معتبر دریافت کنند. خبر خوب این است که دو روش در دسترس وجود دارد که هر کدام مزایا و محدودیت‌های خاص خود را دارند — و انتخاب درست بین آن‌ها می‌تواند هم در هزینه و هم در زمان تفاوت قابل توجهی ایجاد کند.</p>
         </InfoBlock>
 
-        <InfoBlock title="انواع ویزای روسیه و کاربرد هرکدام">
-          <p className="mb-3">انتخاب نوع ویزای درست به هدف سفر شما بستگی دارد. رایج‌ترین انواعی که کاسپین گروپ برای مشتریان ایرانی صادر می‌کند عبارت‌اند از:</p>
-          <h3 className="text-base font-bold text-foreground/90 mt-4 mb-1">ویزای توریستی</h3>
-          <p className="mb-3">برای گردشگری و دیدار خانوادگی، معمولاً یک یا دو بار ورود و اعتبار اقامت تا ۳۰ روز. پرتقاضاترین نوع ویزا در بین مسافران ایرانی است.</p>
-          <h3 className="text-base font-bold text-foreground/90 mt-4 mb-1">ویزای تجاری</h3>
-          <p className="mb-3">برای شرکت در نمایشگاه، مذاکره یا بازدید از شرکای تجاری. نیاز به دعوتنامه از یک شرکت روسی ثبت‌شده دارد و می‌تواند به‌صورت چندبار ورود (Multiple Entry) صادر شود که برای فعالان تجاری با سفرهای مکرر بسیار به‌صرفه است.</p>
-          <h3 className="text-base font-bold text-foreground/90 mt-4 mb-1">ویزای ترانزیت</h3>
-          <p className="mb-3">برای عبور از خاک روسیه به مقصد کشور سوم، اعتبار کوتاه‌مدت (معمولاً تا ۱۰ روز) دارد و مدارک آن ساده‌تر از انواع دیگر است.</p>
-          <h3 className="text-base font-bold text-foreground/90 mt-4 mb-1">ویزای کاری و تحصیلی</h3>
-          <p>برای اشتغال یا ثبت‌نام در دانشگاه‌های روسیه صادر می‌شود و نیازمند دعوتنامه از کارفرما یا دانشگاه پذیرنده است؛ فرآیندی طولانی‌تر و پیچیده‌تر از ویزای توریستی دارد.</p>
+        <InfoBlock title="مقایسه دو روش: eVisa الکترونیکی در برابر ویزای استیکری سفارت">
+          <div className="overflow-x-auto mt-3">
+            <table className="w-full text-xs border-collapse">
+              <thead>
+                <tr className="bg-primary/15 text-foreground">
+                  <th className="p-2 text-right border border-white/10">ویژگی</th>
+                  <th className="p-2 text-center border border-white/10">eVisa الکترونیکی</th>
+                  <th className="p-2 text-center border border-white/10">ویزای استیکری سفارت</th>
+                </tr>
+              </thead>
+              <tbody className="text-foreground/70">
+                {[
+                  ['هزینه کنسولی', '۷۰–۱۱۰ دلار', '۱۳۰–۱۶۰ دلار'],
+                  ['زمان صدور', '۴ روز کاری', '۵–۱۰ روز کاری'],
+                  ['حداکثر اقامت', '۱۶ روز', '۳۰ روز'],
+                  ['دعوتنامه لازم؟', '❌ لازم نیست', '✅ الزامی'],
+                  ['حضور در سفارت', '❌ لازم نیست', '✅ الزامی (بیومتریک)'],
+                  ['پذیرش مرزی', 'فقط مرزهای مشخص', 'همه مرزهای قانونی'],
+                  ['مناسب برای', 'سفر کوتاه، اولین‌بار', 'سفر طولانی‌تر، چند ورود'],
+                ].map(([f, e, s]) => (
+                  <tr key={f} className="border-b border-white/5 hover:bg-white/3">
+                    <td className="p-2 border border-white/8 font-medium text-foreground/80">{f}</td>
+                    <td className="p-2 border border-white/8 text-center">{e}</td>
+                    <td className="p-2 border border-white/8 text-center">{s}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </InfoBlock>
 
-        <InfoBlock title="دعوتنامه (ووچر) روسیه چیست و چرا الزامی است؟">
-          <p>برخلاف ویزای شینگن که رزرو هتل معمولاً کافی است، برای ویزای روسیه یک سند رسمی به نام دعوتنامه یا ووچر لازم است که تنها توسط هتل‌ها و آژانس‌های مسافرتی دارای مجوز از وزارت خارجه روسیه صادر می‌شود. این سند تضمین می‌کند که محل اقامت شما در روسیه از قبل مشخص و تأییدشده است. کاسپین گروپ از طریق شرکای معتبر و دارای مجوز در روسیه، این دعوتنامه را در کوتاه‌ترین زمان برای شما صادر می‌کند — بدون نیاز به رزرو و پرداخت واقعی هتل.</p>
+        <InfoBlock title="ویزای الکترونیکی (eVisa) روسیه برای ایرانیان">
+          <p className="mb-3">eVisa روسیه یکی از راحت‌ترین روش‌ها برای سفر کوتاه‌مدت است — بدون نیاز به دعوتنامه، بدون حضور در سفارت. مراحل آن:</p>
+          <ol className="space-y-2 list-decimal list-inside text-sm text-foreground/70">
+            <li>ورود به سامانه رسمی وزارت خارجه روسیه (electronic-visa.kdmid.ru)</li>
+            <li>تکمیل فرم آنلاین با اطلاعات پاسپورت</li>
+            <li>آپلود عکس دیجیتال زمینه سفید</li>
+            <li>پرداخت هزینه ۷۰ تا ۱۱۰ دلار</li>
+            <li>دریافت eVisa به ایمیل پس از ۴ روز کاری</li>
+          </ol>
+          <p className="text-xs text-foreground/50 mt-3">⚠️ نکته مهم: eVisa فقط در برخی گذرگاه‌های مرزی و فرودگاه‌های مشخص (از جمله فرودگاه شرمتیوو و دومودیوو مسکو، فرودگاه پولکووو سن‌پترزبورگ) قابل استفاده است. قبل از سفر لیست کامل مرزهای مجاز را بررسی کنید.</p>
         </InfoBlock>
 
-        <InfoBlock title="مدارک لازم برای ویزای روسیه">
+        <InfoBlock title="ویزای استیکری از سفارت روسیه در ایروان">
+          <p className="mb-3">این روش مناسب کسانی است که می‌خواهند بیش از ۱۶ روز در روسیه بمانند یا از هر مرزی وارد شوند. سفارت روسیه در ایروان یکی از فعال‌ترین و سریع‌ترین نمایندگی‌های روسیه در منطقه است — همین موضوع باعث شده بسیاری از ایرانیان ترجیح دهند ویزا را از ارمنستان بگیرند.</p>
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">مدارک لازم</h3>
           <CheckList items={[
-            'پاسپورت معتبر با حداقل ۶ ماه اعتبار از تاریخ ورود و حداقل دو صفحه‌ی سفید',
-            'دعوتنامه رسمی (ووچر) از هتل یا آژانس روسی — تهیه‌شده توسط کاسپین گروپ',
+            'پاسپورت معتبر با حداقل ۶ ماه اعتبار از تاریخ ورود و حداقل دو صفحه سفید',
+            'دعوتنامه رسمی (ووچر) از هتل یا آژانس روسی دارای مجوز — تهیه‌شده توسط کاسپین',
             'فرم الکترونیکی درخواست ویزا (سامانه رسمی وزارت خارجه روسیه)',
-            'یک قطعه عکس بیومتریک با زمینه سفید و استاندارد اروپایی',
-            'بیمه مسافرتی معتبر با پوشش درمانی حداقل ۳۰,۰۰۰ یورو یا معادل آن',
+            'یک قطعه عکس بیومتریک با زمینه سفید، استاندارد اروپایی',
+            'بیمه مسافرتی با پوشش درمانی حداقل ۳۰٬۰۰۰ یورو یا معادل',
             'برای ویزای تجاری: دعوتنامه از شرکت روسی طرف قرارداد',
-            'برای اتباع زیر ۱۸ سال: شناسنامه و در صورت سفر با یک والد، رضایت‌نامه رسمی از والد دیگر',
+            'برای اتباع زیر ۱۸ سال: رضایت‌نامه رسمی والد غایب',
           ]} />
         </InfoBlock>
 
-        <InfoBlock title="مراحل اخذ ویزای روسیه با کاسپین گروپ">
+        <InfoBlock title="دعوتنامه (ووچر) روسیه چیست؟">
+          <p>برخلاف ویزای شینگن که رزرو هتل معمولاً کافی است، برای ویزای استیکری روسیه یک سند رسمی به نام دعوتنامه یا ووچر لازم است که تنها توسط هتل‌ها یا آژانس‌های دارای مجوز از وزارت خارجه روسیه صادر می‌شود. کاسپین گروپ از طریق شرکای معتبر در روسیه این دعوتنامه را در کوتاه‌ترین زمان صادر می‌کند — بدون نیاز به رزرو واقعی هتل.</p>
+        </InfoBlock>
+
+        <InfoBlock title="انواع ویزای روسیه و کاربرد هرکدام">
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">ویزای توریستی</h3>
+          <p className="mb-3">برای گردشگری و دیدار خانوادگی، معمولاً یک یا دو بار ورود تا ۳۰ روز اقامت. پرتقاضاترین نوع ویزا در میان مسافران ایرانی است.</p>
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">ویزای تجاری</h3>
+          <p className="mb-3">برای نمایشگاه، مذاکره یا بازدید شرکا. نیاز به دعوتنامه از شرکت روسی دارد. می‌تواند به‌صورت Multiple Entry صادر شود — برای فعالان تجاری با سفرهای مکرر بسیار به‌صرفه است.</p>
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">ویزای ترانزیت</h3>
+          <p>برای عبور از خاک روسیه. اعتبار کوتاه‌مدت (تا ۱۰ روز)، مدارک ساده‌تر.</p>
+        </InfoBlock>
+
+        <InfoBlock title="مراحل اخذ ویزای استیکری با کاسپین">
           <ol className="space-y-2 list-decimal list-inside text-sm text-foreground/70">
-            <li>تماس با کاسپین در واتساپ و اعلام نوع سفر (توریستی/تجاری) و تاریخ مدنظر</li>
-            <li>ارسال اسکن پاسپورت و مدارک پایه برای تهیه‌ی دعوتنامه رسمی</li>
-            <li>صدور دعوتنامه توسط شریک مجاز کاسپین در روسیه (معمولاً ۲ تا ۳ روز کاری)</li>
-            <li>تکمیل فرم آنلاین درخواست ویزا و هماهنگی نوبت سفارت روسیه در ایروان</li>
-            <li>تحویل مدارک و در صورت نیاز بیومتریک در سفارت</li>
-            <li>دریافت پاسپورت با ویزای صادرشده، معمولاً طی ۵ تا ۱۰ روز کاری از تاریخ ثبت‌نام</li>
+            <li>تماس با کاسپین در واتساپ، اعلام نوع ویزا و تاریخ سفر</li>
+            <li>ارسال اسکن پاسپورت — تهیه دعوتنامه توسط شریک مجاز کاسپین (۲–۳ روز کاری)</li>
+            <li>تکمیل فرم آنلاین و هماهنگی نوبت سفارت روسیه در ایروان</li>
+            <li>تحویل مدارک + بیومتریک در سفارت (حضوری)</li>
+            <li>دریافت پاسپورت با ویزا — معمولاً ۵ تا ۱۰ روز کاری پس از ثبت</li>
           </ol>
         </InfoBlock>
 
-        <InfoBlock title="هزینه و مدت اعتبار">
-          <p>هزینه‌ی کنسولی ویزای روسیه بسته به نوع ویزا و تعداد دفعات ورود متفاوت است و جدا از هزینه‌ی خدمات کاسپین گروپ (دعوتنامه، پیگیری و مشاوره) محاسبه می‌شود. اعتبار ویزای توریستی معمولاً تا ۹۰ روز از تاریخ صدور است با امکان اقامت پیوسته تا ۳۰ روز؛ ویزای تجاری چندبار ورود می‌تواند تا یک سال اعتبار داشته باشد. برای قیمت دقیق و به‌روز، از طریق واتساپ با تیم کاسپین در تماس باشید چون نرخ کنسولی بسته به سیاست‌های سفارت ممکن است تغییر کند.</p>
+        <InfoBlock title="جاذبه‌های توریستی روسیه که نباید از دست داد">
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">مسکو</h3>
+          <p className="mb-3">میدان سرخ و کرملین قلب تاریخی روسیه هستند. کلیسای رنگارنگ سنت باسیل، موزه تاریخی روسیه، ایستگاه‌های مترو با معماری شگفت‌انگیز، مرکز خرید GUM و بازار معروف Izmaylovo از جاذبه‌های اصلی هستند. مسکو به‌ویژه در روزهای پایان هفته ارزان‌تر و آرام‌تر است.</p>
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">سن‌پترزبورگ</h3>
+          <p className="mb-3">موزه آرمیتاژ یکی از بزرگ‌ترین و مهم‌ترین موزه‌های جهان با ۳ میلیون اثر هنری، کاخ زمستانی، کلیسای ناجی در خون با کاشی‌کاری خیره‌کننده، تئاتر ماریینسکی معتبرترین سالن اپرای روسیه، و کاخ‌موزه پترهوف با آبشارهای طلایی و فواره‌های معروف. شب‌های سفید تابستانی (May-July) پدیده‌ای فراموش‌نشدنی است.</p>
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">بهترین فصل سفر</h3>
+          <p>بهار (اردیبهشت-خرداد) و تابستان (تیر-شهریور) بهترین آب‌وهوا را دارند. تابستان سن‌پترزبورگ با شب‌های سفید تجربه‌ای منحصربه‌فرد است. قیمت‌ها در زمستان پایین‌تر است ولی سرمای شدید.</p>
         </InfoBlock>
 
-        <InfoBlock title="نکاتی که پیش از اقدام باید بدانید">
+        <InfoBlock title="نکات مهم قبل از اقدام">
           <CheckList items={[
-            'ثبت‌نام در سامانه Gosuslugi (سامانه رسمی درخواست ویزای الکترونیکی روسیه) باید با اطلاعات دقیقاً منطبق با پاسپورت انجام شود؛ کوچک‌ترین اختلاف املایی می‌تواند باعث تأخیر شود',
-            'اثر انگشت و بیومتریک برای اکثر متقاضیان روسیه الزامی است و باید حضوری در سفارت انجام شود',
-            'نقطه‌ی ورود ذکرشده در فرم ویزا لازم نیست دقیقاً همان مسیر واقعی سفر باشد، اما بهتر است با آن هماهنگ باشد',
-            'برای سفر خانوادگی، دعوتنامه و فرم هر یک از اعضا — حتی کودکان — باید جداگانه تهیه شود',
+            'ثبت‌نام در سامانه Gosuslugi باید با اطلاعات دقیقاً منطبق با پاسپورت باشد — کوچک‌ترین اختلاف می‌تواند باعث تأخیر یا رد شود',
+            'بیومتریک (اثر انگشت) برای اکثر متقاضیان الزامی است و باید حضوری در سفارت انجام شود',
+            'ویزای روسیه غیرقابل تمدید است — مدت ویزا باید با مدت اقامت واقعی هماهنگ باشد',
+            'برای سفر خانوادگی، دعوتنامه و فرم هر عضو خانواده — حتی کودکان — باید جداگانه تهیه شود',
+            'هزینه‌های کنسولی بسته به سیاست‌های سفارت ممکن است تغییر کنند — قبل از اقدام آخرین نرخ را از کاسپین بپرسید',
           ]} />
         </InfoBlock>
       </>}
 
       {lang === 'en' && <>
         <InfoBlock title="Do Iranians Need a Visa to Travel to Russia?">
-          <p>Yes. Despite the strong diplomatic relationship between Iran and Russia, this does not translate into visa-free travel — Iranian citizens still need a valid visa for any trip to Russia, whether tourist or business. The good news is that the Russian embassy in Yerevan is one of the most active and efficient Russian missions in the region, which is why many Iranians choose to apply from Armenia rather than deal with longer queues at home.</p>
+          <p>Yes. Despite the strong Iran–Russia diplomatic relationship, this does not translate into visa-free travel. Two routes are available — and choosing the right one can make a real difference in cost and time.</p>
         </InfoBlock>
 
-        <InfoBlock title="Types of Russian Visas">
-          <h3 className="text-base font-bold text-foreground/90 mt-4 mb-1">Tourist Visa</h3>
-          <p className="mb-3">For sightseeing and family visits, typically single or double entry with stays of up to 30 days. The most commonly requested type among Iranian travelers.</p>
-          <h3 className="text-base font-bold text-foreground/90 mt-4 mb-1">Business Visa</h3>
-          <p className="mb-3">For exhibitions, negotiations, or visiting business partners. Requires an invitation from a registered Russian company and can be issued as multiple-entry — ideal for frequent business travelers.</p>
-          <h3 className="text-base font-bold text-foreground/90 mt-4 mb-1">Transit Visa</h3>
-          <p>For passing through Russian territory to a third country, with a short validity (usually up to 10 days) and simpler documentation.</p>
+        <InfoBlock title="Two Routes: eVisa vs. Embassy Sticker Visa">
+          <div className="overflow-x-auto mt-3">
+            <table className="w-full text-xs border-collapse">
+              <thead>
+                <tr className="bg-primary/15"><th className="p-2 text-left border border-white/10">Feature</th><th className="p-2 text-center border border-white/10">eVisa</th><th className="p-2 text-center border border-white/10">Embassy Sticker</th></tr>
+              </thead>
+              <tbody className="text-foreground/70">
+                {[['Fee','$70–110','$130–160'],['Processing','4 business days','5–10 business days'],['Max stay','16 days','30 days'],['Invitation needed?','❌ No','✅ Required'],['Embassy visit?','❌ Not required','✅ Required (biometrics)'],['Good for','Short trips, first-time','Longer stays, multiple entry']].map(([f,e,s])=>(
+                  <tr key={f} className="border-b border-white/5"><td className="p-2 border border-white/8 font-medium text-foreground/80">{f}</td><td className="p-2 border border-white/8 text-center">{e}</td><td className="p-2 border border-white/8 text-center">{s}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </InfoBlock>
 
-        <InfoBlock title="What Is a Russian Invitation Letter (Voucher)?">
-          <p>Unlike a Schengen visa where a hotel booking is often enough, a Russian visa requires a formal invitation letter issued only by hotels and travel agencies licensed by Russia's Ministry of Foreign Affairs. Caspian Group works with licensed partners inside Russia to issue this invitation quickly, without requiring an actual paid hotel reservation.</p>
+        <InfoBlock title="Russia eVisa for Iranians">
+          <p className="mb-3">Russia's eVisa is the easiest route for short visits — no invitation letter required, no embassy visit. Apply online at the official MFA portal (electronic-visa.kdmid.ru), upload a white-background digital photo, pay the fee, and receive your eVisa by email within 4 business days.</p>
+          <p className="text-xs text-foreground/50">⚠️ eVisa is only accepted at designated border crossings and airports (incl. Moscow Sheremetyevo & Domodedovo, St. Petersburg Pulkovo). Verify the allowed entry points before booking your flight.</p>
         </InfoBlock>
 
-        <InfoBlock title="Required Documents">
+        <InfoBlock title="Embassy Sticker Visa from Yerevan">
           <CheckList items={[
-            'Passport valid for at least 6 months from entry date, with at least two blank pages',
-            'Official invitation letter (voucher) from a Russian hotel or agency — arranged by Caspian Group',
-            'Completed electronic visa application (official Russian MFA portal)',
-            'One biometric photo on a white background, European standard',
-            'Valid travel insurance with minimum €30,000 medical coverage',
-            'For business visas: invitation letter from the partner Russian company',
+            'Passport valid for 6+ months from entry, with 2+ blank pages',
+            'Official invitation letter (voucher) — arranged by Caspian Group',
+            'Completed visa application form (Russian MFA portal)',
+            'One biometric photo on a white background',
+            'Travel insurance with €30,000+ medical coverage',
+            'For business visa: invitation letter from a Russian partner company',
           ]} />
         </InfoBlock>
 
-        <InfoBlock title="Process & Timeline with Caspian Group">
-          <ol className="space-y-2 list-decimal list-inside text-sm text-foreground/70">
-            <li>Contact Caspian via WhatsApp and specify trip type and travel dates</li>
-            <li>Send passport scan for the official invitation letter</li>
-            <li>Invitation issued by Caspian's licensed Russian partner (usually 2–3 business days)</li>
-            <li>Complete the online visa form and book an embassy appointment in Yerevan</li>
-            <li>Submit documents and biometrics at the embassy</li>
-            <li>Receive your passport with the visa, typically within 5–10 business days</li>
-          </ol>
+        <InfoBlock title="Top Attractions in Russia">
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">Moscow</h3>
+          <p className="mb-3">Red Square, the Kremlin, Saint Basil's Cathedral, the Russian History Museum, stunningly decorated Metro stations, and the GUM department store. Prices at hotels are lower on weekdays.</p>
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">Saint Petersburg</h3>
+          <p>The Hermitage Museum (3 million artworks), Winter Palace, Church of the Saviour on Spilled Blood, Mariinsky Theatre, and Peterhof Palace with its golden cascades. The White Nights of summer (May–July) are unforgettable.</p>
+        </InfoBlock>
+
+        <InfoBlock title="Important Notes Before Applying">
+          <CheckList items={[
+            'The Gosuslugi form must match your passport exactly — any discrepancy can cause delays',
+            'Biometrics (fingerprints) are mandatory and must be done in person at the embassy',
+            'Russian visas are non-extendable — match the visa duration to your actual stay',
+            'Every family member, including children, needs a separate invitation letter and form',
+          ]} />
         </InfoBlock>
       </>}
 
       {isRu && <>
         <InfoBlock title="Нужна ли иранцам виза для поездки в Россию?">
-          <p>Да. Несмотря на тёплые дипломатические отношения между Ираном и Россией, безвизового режима не существует — гражданам Ирана требуется действующая виза для любой поездки, туристической или деловой. Посольство России в Ереване — одно из самых активных в регионе, поэтому многие иранцы оформляют визу именно через Ереван.</p>
+          <p>Да. Несмотря на тёплые отношения между Ираном и Россией, безвизового въезда нет. Доступны два способа — и правильный выбор может сэкономить время и деньги.</p>
         </InfoBlock>
 
-        <InfoBlock title="Виды российских виз">
+        <InfoBlock title="Сравнение: eVisa vs. стикерная виза посольства">
+          <div className="overflow-x-auto mt-3">
+            <table className="w-full text-xs border-collapse">
+              <thead>
+                <tr className="bg-primary/15"><th className="p-2 text-right border border-white/10">Параметр</th><th className="p-2 text-center border border-white/10">eVisa</th><th className="p-2 text-center border border-white/10">Посольство</th></tr>
+              </thead>
+              <tbody className="text-foreground/70">
+                {[['Стоимость','$70–110','$130–160'],['Срок','4 рабочих дня','5–10 рабочих дней'],['Макс. пребывание','16 дней','30 дней'],['Нужно приглашение?','❌ Нет','✅ Да'],['Визит в посольство?','❌ Нет','✅ Да (биометрия)']].map(([f,e,s])=>(
+                  <tr key={f} className="border-b border-white/5"><td className="p-2 border border-white/8 font-medium">{f}</td><td className="p-2 border border-white/8 text-center">{e}</td><td className="p-2 border border-white/8 text-center">{s}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </InfoBlock>
+
+        <InfoBlock title="eVisa России для иранцев">
+          <p>Оформляется онлайн на портале МИД России, фото на белом фоне, срок — 4 рабочих дня. Принимается только в ряде аэропортов и погранпереходов: Москва (Шереметьево, Домодедово), Санкт-Петербург (Пулково) и другие.</p>
+        </InfoBlock>
+
+        <InfoBlock title="Документы для стикерной визы">
           <CheckList items={[
-            'Туристическая — обычно на срок до 30 дней',
-            'Деловая — по приглашению российской компании, возможна многократная',
-            'Транзитная — для проезда через территорию России',
+            'Паспорт (минимум 6 мес. действия, 2 чистые страницы)',
+            'Официальное приглашение — оформляется через Caspian Group',
+            'Анкета на визу (портал МИД)',
+            'Фото биометрического формата',
+            'Медстраховка на сумму от 30 000 €',
           ]} />
         </InfoBlock>
 
-        <InfoBlock title="Необходимые документы">
-          <CheckList items={[
-            'Паспорт, действительный минимум 6 месяцев, с двумя чистыми страницами',
-            'Официальное приглашение от отеля или агентства в России',
-            'Электронная анкета на визу',
-            'Фотография европейского стандарта',
-            'Медицинская страховка на сумму не менее 30 000 €',
-          ]} />
-        </InfoBlock>
-
-        <InfoBlock title="Этапы оформления">
-          <p>Caspian Group организует приглашение через лицензированного партнёра в России (2–3 рабочих дня), затем сопровождает подачу документов в посольство в Ереване. Полный срок оформления обычно составляет 5–10 рабочих дней.</p>
+        <InfoBlock title="Достопримечательности России">
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">Москва</h3>
+          <p className="mb-2">Красная площадь, Кремль, Собор Василия Блаженного, исторические станции метро, ГУМ.</p>
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">Санкт-Петербург</h3>
+          <p>Эрмитаж, Зимний дворец, Спас-на-Крови, Мариинский театр, Петергоф. Белые ночи (май–июль) — незабываемое явление.</p>
         </InfoBlock>
       </>}
-
     </ServicePageLayout>
   );
 }
