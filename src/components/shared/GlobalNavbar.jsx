@@ -219,50 +219,21 @@ const navLinks = {
 
 
     {
-
-
-
       label: 'خدمات مسافرتی', href: '#', children: [
-
-
-
         { label: 'پرواز', href: '/travel/flight' },
-
-
-
         { label: 'هتل', href: '/travel/hotel' },
-
-
-
         { label: 'آپارتمان', href: '/travel/apartment' },
-
-
-
-        { label: 'تور ارمنستان', href: '/travel/tour' },
-        { label: 'فستیوال‌ها', href: '/travel/festivals' },
-
-
-
         { label: 'ترانسفر', href: '/travel/transfer' },
-
-
-
         { label: 'صرافی و رمزارز', href: '/travel/exchange' },
-
-
-
         { label: 'پشتیبانی VIP', href: '/travel/vip' },
-
-
-
       ],
-
-
-
     },
-
-
-
+    {
+      label: 'تور و فستیوال', href: '#', children: [
+        { label: 'تورهای ارمنستان', href: '/travel/tour' },
+        { label: 'فستیوال‌ها', href: '/travel/festivals' },
+      ],
+    },
     { label: 'صفحه اصلی', href: '/' },
 
 
@@ -284,50 +255,21 @@ const navLinks = {
 
 
       label: 'Travel Services', href: '#', children: [
-
-
-
         { label: 'Flight', href: '/travel/flight' },
-
-
-
         { label: 'Hotel', href: '/travel/hotel' },
-
-
-
         { label: 'Apartment', href: '/travel/apartment' },
-
-
-
-        { label: 'Armenia Tour', href: '/travel/tour' },
-        { label: 'Festivals & Events', href: '/travel/festivals' },
-
-
-
         { label: 'Transfer', href: '/travel/transfer' },
-
-
-
         { label: 'Exchange & Crypto', href: '/travel/exchange' },
-
-
-
         { label: 'VIP Support', href: '/travel/vip' },
-
-
-
       ],
-
-
-
     },
-
-
-
     {
-
-
-
+      label: 'Tours & Festivals', href: '#', children: [
+        { label: 'Armenia Tours', href: '/travel/tour' },
+        { label: 'Festivals & Events', href: '/travel/festivals' },
+      ],
+    },
+    {
       label: 'Residency & Immigration', href: '#', children: [
         { label: 'Work Residency', href: '/residency/work' },
         { label: 'Business Residency — Company Reg.', href: '/residency/business' },
@@ -465,42 +407,19 @@ const navLinks = {
 
 
         { label: 'Перелёт', href: '/travel/flight' },
-
-
-
         { label: 'Отель', href: '/travel/hotel' },
-
-
-
         { label: 'Апартаменты', href: '/travel/apartment' },
-
-
-
-        { label: 'Тур по Армении', href: '/travel/tour' },
-        { label: 'Фестивали и события', href: '/travel/festivals' },
-
-
-
         { label: 'Трансфер', href: '/travel/transfer' },
-
-
-
         { label: 'Обмен и криптовалюта', href: '/travel/exchange' },
-
-
-
         { label: 'VIP поддержка', href: '/travel/vip' },
-
-
-
       ],
-
-
-
     },
-
-
-
+    {
+      label: 'Туры и фестивали', href: '#', children: [
+        { label: 'Туры по Армении', href: '/travel/tour' },
+        { label: 'Фестивали и события', href: '/travel/festivals' },
+      ],
+    },
     {
 
 
