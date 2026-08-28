@@ -1,6 +1,7 @@
 import React from 'react';
 import { Phone, MessageCircle, Send, MapPin, Instagram } from 'lucide-react';
 import { useLang } from '@/lib/LanguageContext';
+import SeoFooterLinks from '@/components/shared/SeoFooterLinks';
 
 export default function ContactFooter() {
   const { t } = useLang();
@@ -54,6 +55,7 @@ export default function ContactFooter() {
         </div>
       </div>
     </footer>
+    <SeoFooterLinks />
     </>
   );
 }

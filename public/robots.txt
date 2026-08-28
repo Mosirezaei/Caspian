@@ -1,5 +1,22 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
 
+# Block admin panel from all bots
+Disallow: /admin/
+Disallow: /admin/dashboard/
+
+# Block retro page from search (not a core money page)
+Disallow: /retro
+
+# Crawl delay for heavy bots (optional — helps server load)
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: DotBot
+Crawl-delay: 30
+
+# Sitemap
 Sitemap: https://caspian.am/sitemap.xml
