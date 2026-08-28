@@ -85,12 +85,7 @@ const AuthenticatedApp = () => {
       <Route path="/visa/south-america" element={<S><VisaSouthAmerica /></S>} />
       <Route path="/visa/embassy-usa" element={<S><EmbassyAppointment /></S>} />
       <Route path="/visa/embassy-canada" element={<S><EmbassyAppointment /></S>} />
-      {/* Legacy redirects */}
-      <Route path="/services/visa-schengen" element={<S><VisaSchengen /></S>} />
-      <Route path="/services/visa-romania" element={<S><VisaRomania /></S>} />
-      <Route path="/services/visa-russia" element={<S><VisaRussia /></S>} />
-      <Route path="/services/visa-south-america" element={<S><VisaSouthAmerica /></S>} />
-      <Route path="/services/embassy-appointment" element={<S><EmbassyAppointment /></S>} />
+      {/* Legacy /services/* paths now 301-redirect at the edge (see vercel.json) */}
 
       {/* ── STUDENT VISA ── */}
       <Route path="/student-visa" element={<S><StudentVisa /></S>} />
@@ -100,24 +95,14 @@ const AuthenticatedApp = () => {
       <Route path="/student-visa/schengen" element={<S><StudentVisaSchengen /></S>} />
       <Route path="/student-visa/romania" element={<S><StudentVisaRomania /></S>} />
       <Route path="/student-visa/georgia" element={<S><StudentVisaGeorgia /></S>} />
-      {/* Legacy redirects */}
-      <Route path="/services/student-visa" element={<S><StudentVisa /></S>} />
-      <Route path="/services/student-visa/armenia" element={<S><StudentVisaArmenia /></S>} />
-      <Route path="/services/student-visa/russia" element={<S><StudentVisaRussia /></S>} />
-      <Route path="/services/student-visa/turkey" element={<S><StudentVisaTurkey /></S>} />
-      <Route path="/services/student-visa/schengen" element={<S><StudentVisaSchengen /></S>} />
-      <Route path="/services/student-visa/romania" element={<S><StudentVisaRomania /></S>} />
+      {/* Legacy /services/student-visa/* paths now 301-redirect at the edge (see vercel.json) */}
 
       {/* ── RESIDENCY ── */}
       <Route path="/residency/armenia" element={<S><Residency /></S>} />
       <Route path="/residency/turkey" element={<S><ResidencyTurkey /></S>} />
       <Route path="/residency/oman" element={<S><ResidencyOman /></S>} />
       <Route path="/residency/uae" element={<S><ResidencyUAE /></S>} />
-      {/* Legacy redirects */}
-      <Route path="/services/residency" element={<S><Residency /></S>} />
-      <Route path="/services/residency-turkey" element={<S><ResidencyTurkey /></S>} />
-      <Route path="/services/residency-oman" element={<S><ResidencyOman /></S>} />
-      <Route path="/services/residency-uae" element={<S><ResidencyUAE /></S>} />
+      {/* Legacy /services/residency* paths now 301-redirect at the edge (see vercel.json) */}
 
       {/* ── TRAVEL ── */}
       <Route path="/travel/flight" element={<S><Flight /></S>} />
@@ -128,10 +113,7 @@ const AuthenticatedApp = () => {
       <Route path="/travel/transfer" element={<S><Transfer /></S>} />
       <Route path="/travel/exchange" element={<S><Exchange /></S>} />
       <Route path="/travel/vip" element={<S><VipSupport /></S>} />
-      {/* Legacy redirects */}
-      <Route path="/services/hotel" element={<S><Hotel /></S>} />
-      <Route path="/services/exchange" element={<S><Exchange /></S>} />
-      <Route path="/vip" element={<S><VipSupport /></S>} />
+      {/* Legacy /services/hotel, /services/exchange, /vip now 301-redirect at the edge (see vercel.json) */}
 
       {/* Dynamic service pages (slug-based, reads from data/servicesContent.js) */}
       <Route path="/service/:slug" element={<S><DynamicService /></S>} />
