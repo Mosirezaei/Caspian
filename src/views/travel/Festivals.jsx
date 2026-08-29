@@ -91,7 +91,7 @@ function FestivalsContent() {
       subtitleEn="Annual events + next 3 months schedule — with Caspian special tour"
       subtitleRu="Ежегодные события + расписание на 3 месяца — специальный тур Caspian"
       heroImage="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=80"
-      serviceType="apartment">
+      serviceType="tour">
 
       {/* رویدادهای ۳ ماه آینده */}
       <div className="mb-8">

@@ -12,7 +12,7 @@ function Content() {
       subtitleEn="Golden residency in the Middle East's business hub"
       subtitleRu="Золотой ВНЖ в деловом центре Ближнего Востока"
       heroImage="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=80"
-      serviceType="residency-uae"
+      serviceType="residency"
     >
       {/* UAE flag & Dubai skyline */}
       <div className="rounded-2xl overflow-hidden mb-6 aspect-video relative">

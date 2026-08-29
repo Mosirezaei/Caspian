@@ -7,6 +7,7 @@ import { useSEO } from '@/hooks/useSEO';
 import GlobalNavbar from './GlobalNavbar';
 import StaticFAQ from './StaticFAQ';
 import ContactFooter from '@/components/home/ContactFooter';
+import RelatedServices from './RelatedServices';
 
 const consultTexts = {
   fa: { label: 'مشاوره آنلاین رایگان', sub: 'همین الان با کارشناس ما در واتساپ صحبت کنید' },
@@ -68,6 +69,7 @@ export function ServicePageLayout({ children, titleFa, titleEn, titleRu, subtitl
       {/* Content */}
       <div className="max-w-4xl mx-auto px-4 py-10 pb-10">
         {children}
+        <RelatedServices pageType={serviceType} />
         {serviceType && <StaticFAQ serviceType={serviceType} />}
         <WhatsAppConsultButton />
       </div>

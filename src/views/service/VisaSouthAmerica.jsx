@@ -11,7 +11,7 @@ function Content() {
       subtitleEn="Travel to Argentina, Brazil, Chile and other Latin American countries"
       subtitleRu="Путешествие в Аргентину, Бразилию, Чили и другие страны"
       heroImage="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=80"
-      serviceType="visa-south-america">
+      serviceType="visa-russia">
       {lang === 'fa' && <>
         <InfoBlock title="آمریکای جنوبی — مقصدی متفاوت برای ایرانیان">
           <p>کشورهای آمریکای جنوبی از جمله آرژانتین، برزیل، شیلی، اروگوئه و بولیوی برای اتباع ایرانی نسبتاً قابل‌دسترس هستند. برخی از این کشورها بدون نیاز به ویزا و برخی دیگر با ویزای ساده‌ای که از طریق سفارت در ارمنستان قابل دریافت است، به ایرانیان خدمت می‌دهند.</p>

@@ -12,7 +12,7 @@ function Content() {
       subtitleEn="Reputable residency with affordable cost and strategic location"
       subtitleRu="Престижный ВНЖ с доступной стоимостью и стратегическим расположением"
       heroImage="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80"
-      serviceType="residency-turkey"
+      serviceType="residency"
     >
       {/* Turkey flag & Istanbul image */}
       <div className="rounded-2xl overflow-hidden mb-6 aspect-video relative">

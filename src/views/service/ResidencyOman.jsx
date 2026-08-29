@@ -12,7 +12,7 @@ function Content() {
       subtitleEn="Residency in a safe country with a growing economy and political stability"
       subtitleRu="ВНЖ в стабильной стране с развивающейся экономикой"
       heroImage="https://images.unsplash.com/photo-1578469550956-0e16b69c6a3d?w=1200&q=80"
-      serviceType="residency-oman"
+      serviceType="residency"
     >
       {/* Oman flag & Muscat image */}
       <div className="rounded-2xl overflow-hidden mb-6 aspect-video relative">

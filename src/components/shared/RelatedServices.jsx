@@ -1,0 +1,125 @@
+'use client';
+import Link from 'next/link';
+import { useLang } from '@/lib/LanguageContext';
+
+/**
+ * RelatedServices — لینک‌های داخلی مرتبط در پایین هر صفحه
+ * هدف: PageRank، کاهش bounce rate، کمک به Googlebot
+ */
+
+const SERVICES = {
+  hotel: {
+    fa: { title: 'رزرو هتل در ایروان', desc: 'هتل ۳ تا ۵ ستاره با واچر رسمی' },
+    en: { title: 'Hotel Booking Yerevan', desc: '3–5 star hotels with official voucher' },
+    ru: { title: 'Бронирование отеля в Ереване', desc: 'Отели 3–5 звёзд с официальным ваучером' },
+    href: '/travel/hotel', icon: '🏨',
+  },
+  apartment: {
+    fa: { title: 'اجاره آپارتمان مبله', desc: 'روزانه از ۳۰ دلار، ماهانه از ۳۰۰ دلار' },
+    en: { title: 'Furnished Apartment Rental', desc: 'Daily from $30, monthly from $300' },
+    ru: { title: 'Аренда квартиры в Ереване', desc: 'Посуточно от $30, помесячно от $300' },
+    href: '/travel/apartment', icon: '🏠',
+  },
+  residency: {
+    fa: { title: 'اقامت ارمنستان', desc: 'کارت اقامت در کمتر از ۳۰ روز' },
+    en: { title: 'Armenia Residency', desc: 'Residency card in under 30 days' },
+    ru: { title: 'ВНЖ Армении', desc: 'Карта ВНЖ менее чем за 30 дней' },
+    href: '/residency/armenia', icon: '🪪',
+  },
+  company: {
+    fa: { title: 'ثبت شرکت در ارمنستان', desc: 'LLC در ۳ روز، مالیات ۵٪' },
+    en: { title: 'Company Registration', desc: 'LLC in 3 days, 5% tax' },
+    ru: { title: 'Регистрация компании', desc: 'ООО за 3 дня, налог 5%' },
+    href: '/residency/business', icon: '🏢',
+  },
+  visaRussia: {
+    fa: { title: 'ویزای توریستی روسیه', desc: 'eVisa ۷۰–۱۱۰ دلار، ۴ روز کاری' },
+    en: { title: 'Russia Tourist Visa', desc: 'eVisa $70–110, 4 business days' },
+    ru: { title: 'Туристическая виза в Россию', desc: 'eVisa $70–110, 4 рабочих дня' },
+    href: '/visa/russia', icon: '🇷🇺',
+  },
+  transfer: {
+    fa: { title: 'ترانسفر فرودگاهی ایروان', desc: 'مستقیم از فرودگاه زوارتنوتس' },
+    en: { title: 'Yerevan Airport Transfer', desc: 'Direct from Zvartnots Airport' },
+    ru: { title: 'Трансфер из аэропорта Еревана', desc: 'Прямо из аэропорта Звартноц' },
+    href: '/travel/transfer', icon: '🚗',
+  },
+  studentVisa: {
+    fa: { title: 'ویزای تحصیلی ارمنستان', desc: 'پذیرش YSU، YSMU، AUA از ۱۵۰۰ دلار' },
+    en: { title: 'Armenia Student Visa', desc: 'Admission to YSU, YSMU, AUA from $1,500' },
+    ru: { title: 'Учебная виза Армении', desc: 'Поступление в YSU, YSMU, AUA от $1500' },
+    href: '/student-visa/armenia', icon: '🎓',
+  },
+  tour: {
+    fa: { title: 'تور ارمنستان', desc: 'تور زمینی و هوایی با راهنمای فارسی' },
+    en: { title: 'Armenia Tours', desc: 'Land & air tours with Persian guide' },
+    ru: { title: 'Туры по Армении', desc: 'Наземные и авиатуры с русскоязычным гидом' },
+    href: '/travel/tour', icon: '🗺️',
+  },
+  exchange: {
+    fa: { title: 'صرافی و رمزارز', desc: 'تبدیل ریال، دلار، USDT در ایروان' },
+    en: { title: 'Currency & Crypto Exchange', desc: 'Rial, USD, USDT conversion in Yerevan' },
+    ru: { title: 'Обмен валюты и криптовалюты', desc: 'Риал, USD, USDT в Ереване' },
+    href: '/travel/exchange', icon: '💱',
+  },
+  vip: {
+    fa: { title: 'پشتیبانی VIP', desc: 'خدمات اختصاصی ۲۴ ساعته در ایروان' },
+    en: { title: 'VIP Support', desc: 'Exclusive 24/7 service in Yerevan' },
+    ru: { title: 'VIP поддержка', desc: 'Эксклюзивный сервис 24/7 в Ереване' },
+    href: '/travel/vip', icon: '⭐',
+  },
+};
+
+// نقشه ارتباطات: هر صفحه چه لینک‌هایی باید داشته باشه
+const RELATED_MAP = {
+  'hotel':        ['apartment', 'transfer', 'tour', 'residency'],
+  'apartment':    ['hotel', 'transfer', 'residency', 'exchange'],
+  'residency':    ['company', 'hotel', 'apartment', 'studentVisa'],
+  'company':      ['residency', 'hotel', 'apartment', 'exchange'],
+  'visa-russia':  ['hotel', 'tour', 'transfer', 'visaRussia'],
+  'student-visa': ['studentVisa', 'hotel', 'apartment', 'residency'],
+  'tour':         ['hotel', 'apartment', 'transfer', 'exchange'],
+  'transfer':     ['hotel', 'apartment', 'tour', 'vip'],
+  'exchange':     ['hotel', 'apartment', 'transfer', 'company'],
+  'vip':          ['hotel', 'apartment', 'transfer', 'tour'],
+  'default':      ['hotel', 'apartment', 'residency', 'visaRussia'],
+};
+
+export default function RelatedServices({ pageType = 'default' }) {
+  const { lang } = useLang();
+  const keys = RELATED_MAP[pageType] || RELATED_MAP.default;
+  const items = keys.map(k => SERVICES[k]).filter(Boolean);
+
+  const labels = {
+    fa: 'خدمات مرتبط', en: 'Related Services', ru: 'Связанные услуги'
+  };
+
+  return (
+    <nav aria-label={labels[lang] || labels.fa} className="mt-10 mb-4">
+      <h2 className="text-lg font-black text-foreground mb-4 flex items-center gap-2">
+        <span className="w-1 h-5 bg-primary rounded-full inline-block" />
+        {labels[lang] || labels.fa}
+      </h2>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {items.map((svc) => {
+          const text = svc[lang] || svc.fa;
+          return (
+            <Link
+              key={svc.href}
+              href={svc.href}
+              className="glass-panel rounded-xl p-3 border border-white/8 hover:border-primary/40 transition-all duration-200 group flex flex-col gap-1"
+            >
+              <span className="text-xl">{svc.icon}</span>
+              <span className="text-xs font-bold text-foreground/85 group-hover:text-primary transition-colors leading-tight">
+                {text.title}
+              </span>
+              <span className="text-xs text-foreground/45 leading-tight hidden sm:block">
+                {text.desc}
+              </span>
+            </Link>
+          );
+        })}
+      </div>
+    </nav>
+  );
+}

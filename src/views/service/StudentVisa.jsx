@@ -39,7 +39,7 @@ function Content() {
       subtitleEn="Study at top universities worldwide with Caspian Group experts"
       subtitleRu="Учёба в лучших университетах мира с поддержкой Caspian Group"
       heroImage="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&q=80"
-      serviceType="student-admission"
+      serviceType="student-visa"
     >
       {/* Student visa destinations image */}
       <div className="rounded-2xl overflow-hidden mb-6 aspect-video relative">

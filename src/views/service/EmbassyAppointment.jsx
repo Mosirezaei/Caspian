@@ -7,7 +7,7 @@ function Content() {
   const { lang } = useLang();
   return (
     <ServicePageLayout titleFa="وقت سفارت" titleEn="Embassy Appointment" titleRu="Запись в посольство"
-      serviceType="embassy-appointment"
+      serviceType="visa-russia"
       subtitleFa="سریع‌ترین نوبت سفارت‌های اروپایی در ایروان"
       subtitleEn="Fastest embassy appointments in Yerevan"
       subtitleRu="Быстрая запись в посольства в Ереване"

@@ -32,7 +32,7 @@ function Content() {
   });
 
   return (
-    <ServicePageLayout titleFa="پذیرش دانشجویی" titleEn="Student Admission" titleRu="Поступление в вузы" serviceType="student-admission"
+    <ServicePageLayout titleFa="پذیرش دانشجویی" titleEn="Student Admission" titleRu="Поступление в вузы" serviceType="student-visa"
       subtitleFa="پذیرش، ویزای دانشجویی و اقامت تحصیلی در دانشگاه‌های معتبر ایروان"
       subtitleEn="Admission, student visa and residency at reputable Yerevan universities"
       subtitleRu="Поступление, студенческая виза и вид на жительство в Ереване"

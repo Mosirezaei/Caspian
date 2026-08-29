@@ -11,7 +11,7 @@ function Content() {
       subtitleEn="The gateway to Europe for Iranian nationals"
       subtitleRu="Ворота в Европу для иранских граждан"
       heroImage="https://images.unsplash.com/photo-1584652868574-4df7e3c8a6b1?w=1200&q=80"
-      serviceType="visa-romania">
+      serviceType="visa-russia">
 
       {/* Romania flag & landscape */}
       <div className="rounded-2xl overflow-hidden mb-6 aspect-video relative">

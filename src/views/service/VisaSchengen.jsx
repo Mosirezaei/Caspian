@@ -38,7 +38,7 @@ function Content() {
       subtitleEn="Access to 26 European countries with a single visa"
       subtitleRu="Доступ к 26 европейским странам с одной визой"
       heroImage="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1200&q=80"
-      serviceType="visa-schengen">
+      serviceType="visa-russia">
 
       {/* Schengen countries flags mosaic */}
       <div className="rounded-2xl overflow-hidden mb-6 aspect-video relative">

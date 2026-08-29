@@ -17,7 +17,7 @@ function Content() {
       subtitleEn="LLC in 3 working days — 5% or 18% tax — international bank account"
       subtitleRu="ООО за 3 рабочих дня — налог 5% или 18% — международный счёт"
       heroImage="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&q=80"
-      serviceType="company-registration">
+      serviceType="company">
 
       <div className="rounded-2xl overflow-hidden mb-6 aspect-video relative">
         <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&q=80"

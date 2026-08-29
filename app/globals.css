@@ -89,10 +89,16 @@
     caret-color: hsl(var(--primary));
   }
 
-  * {
-    cursor: default;
+  button, [role="button"], [role="tab"], [role="menuitem"],
+  nav, .select-none {
     -webkit-user-select: none;
     user-select: none;
+  }
+
+  p, h1, h2, h3, h4, h5, h6, li, span, article, section, main, td, th {
+    -webkit-user-select: text;
+    user-select: text;
+    cursor: text;
   }
 
   a, button, [role="button"], input[type="submit"], input[type="button"], label[for] {
