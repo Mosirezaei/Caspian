@@ -743,6 +743,16 @@ export default function GlobalNavbar() {
 
 
   const [openDropdown, setOpenDropdown] = useState(null);
+  const closeTimer = React.useRef(null);
+
+  const handleMouseEnter = (label) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpenDropdown(label);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimer.current = setTimeout(() => setOpenDropdown(null), 120);
+  };
 
 
 
@@ -865,15 +875,9 @@ export default function GlobalNavbar() {
 
 
 
-                <div key={link.label} className="relative group"
-
-
-
-                  onMouseEnter={() => setOpenDropdown(link.label)}
-
-
-
-                  onMouseLeave={() => setOpenDropdown(null)}>
+                <div key={link.label} className="relative"
+                  onMouseEnter={() => handleMouseEnter(link.label)}
+                  onMouseLeave={handleMouseLeave}>
 
 
 
@@ -922,6 +926,8 @@ export default function GlobalNavbar() {
 
 
                         className="absolute top-full left-0 w-52 glass-panel border border-white/10 rounded-xl py-2 shadow-xl z-50 mt-2"
+                        onMouseEnter={() => handleMouseEnter(link.label)}
+                        onMouseLeave={handleMouseLeave}
 
 
 
