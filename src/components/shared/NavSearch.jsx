@@ -1,6 +1,7 @@
+'use client';
 import React, { useState, useRef, useEffect } from 'react';
 import { Search, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '@/lib/LanguageContext';
 
@@ -97,7 +98,7 @@ export default function NavSearch() {
                   siteResults.map((p, i) => (
                     <Link
                       key={i}
-                      to={p.href}
+                      href={p.href}
                       onClick={() => setOpen(false)}
                       className="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 transition-colors border-b border-white/5 last:border-b-0"
                     >

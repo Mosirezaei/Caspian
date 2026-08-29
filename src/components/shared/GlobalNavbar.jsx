@@ -1,8 +1,10 @@
+'use client';
 import React, { useState, useEffect } from 'react';
 
 
 
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 
 
@@ -166,7 +168,7 @@ const navLinks = {
 
 
 
-      label: 'ویزای تحصیلی', href: '/student-visa', children: [
+      label: 'ویزای تحصیلی', href: '/student-visa', _hidden: true, children: [
 
 
 
@@ -207,25 +209,9 @@ const navLinks = {
 
 
       label: 'اقامت و مهاجرت', href: '#', children: [
-
-
-
-        { label: 'اقامت ارمنستان', href: '/residency/armenia' },
-
-
-
-        { label: 'اقامت ترکیه', href: '/residency/turkey' },
-
-
-
-        { label: 'اقامت عمان', href: '/residency/oman' },
-
-
-
-        { label: 'اقامت امارات', href: '/residency/uae' },
-
-
-
+        { label: 'اقامت کاری', href: '/residency/work' },
+        { label: 'اقامت بیزینسی — ثبت شرکت', href: '/residency/business' },
+        { label: 'اقامت تحصیلی', href: '/residency/student' },
       ],
 
 
@@ -235,49 +221,21 @@ const navLinks = {
 
 
     {
-
-
-
       label: 'خدمات مسافرتی', href: '#', children: [
-
-
-
         { label: 'پرواز', href: '/travel/flight' },
-
-
-
         { label: 'هتل', href: '/travel/hotel' },
-
-
-
         { label: 'آپارتمان', href: '/travel/apartment' },
-
-
-
-        { label: 'تور ارمنستان', href: '/travel/tour' },
-
-
-
         { label: 'ترانسفر', href: '/travel/transfer' },
-
-
-
         { label: 'صرافی و رمزارز', href: '/travel/exchange' },
-
-
-
         { label: 'پشتیبانی VIP', href: '/travel/vip' },
-
-
-
       ],
-
-
-
     },
-
-
-
+    {
+      label: 'تور و فستیوال', href: '#', children: [
+        { label: 'تورهای ارمنستان', href: '/travel/tour' },
+        { label: 'فستیوال‌ها', href: '/travel/festivals' },
+      ],
+    },
     { label: 'صفحه اصلی', href: '/' },
 
 
@@ -299,69 +257,25 @@ const navLinks = {
 
 
       label: 'Travel Services', href: '#', children: [
-
-
-
         { label: 'Flight', href: '/travel/flight' },
-
-
-
         { label: 'Hotel', href: '/travel/hotel' },
-
-
-
         { label: 'Apartment', href: '/travel/apartment' },
-
-
-
-        { label: 'Armenia Tour', href: '/travel/tour' },
-
-
-
         { label: 'Transfer', href: '/travel/transfer' },
-
-
-
         { label: 'Exchange & Crypto', href: '/travel/exchange' },
-
-
-
         { label: 'VIP Support', href: '/travel/vip' },
-
-
-
       ],
-
-
-
     },
-
-
-
     {
-
-
-
+      label: 'Tours & Festivals', href: '#', children: [
+        { label: 'Armenia Tours', href: '/travel/tour' },
+        { label: 'Festivals & Events', href: '/travel/festivals' },
+      ],
+    },
+    {
       label: 'Residency & Immigration', href: '#', children: [
-
-
-
-        { label: 'Armenia Residency', href: '/residency/armenia' },
-
-
-
-        { label: 'Turkey Residency', href: '/residency/turkey' },
-
-
-
-        { label: 'Oman Residency', href: '/residency/oman' },
-
-
-
-        { label: 'UAE Residency', href: '/residency/uae' },
-
-
-
+        { label: 'Work Residency', href: '/residency/work' },
+        { label: 'Business Residency — Company Reg.', href: '/residency/business' },
+        { label: 'Student Residency', href: '/residency/student' },
       ],
 
 
@@ -414,7 +328,7 @@ const navLinks = {
 
 
 
-      label: 'Student Visa', href: '/student-visa', children: [
+      label: 'Student Visa', href: '/student-visa', _hidden: true, children: [
 
 
 
@@ -495,65 +409,27 @@ const navLinks = {
 
 
         { label: 'Перелёт', href: '/travel/flight' },
-
-
-
         { label: 'Отель', href: '/travel/hotel' },
-
-
-
         { label: 'Апартаменты', href: '/travel/apartment' },
-
-
-
-        { label: 'Тур по Армении', href: '/travel/tour' },
-
-
-
         { label: 'Трансфер', href: '/travel/transfer' },
-
-
-
         { label: 'Обмен и криптовалюта', href: '/travel/exchange' },
-
-
-
         { label: 'VIP поддержка', href: '/travel/vip' },
-
-
-
       ],
-
-
-
     },
-
-
-
+    {
+      label: 'Туры и фестивали', href: '#', children: [
+        { label: 'Туры по Армении', href: '/travel/tour' },
+        { label: 'Фестивали и события', href: '/travel/festivals' },
+      ],
+    },
     {
 
 
 
       label: 'ВНЖ и миграция', href: '#', children: [
-
-
-
-        { label: 'ВНЖ Армении', href: '/residency/armenia' },
-
-
-
-        { label: 'ВНЖ Турции', href: '/residency/turkey' },
-
-
-
-        { label: 'ВНЖ Омана', href: '/residency/oman' },
-
-
-
-        { label: 'ВНЖ ОАЭ', href: '/residency/uae' },
-
-
-
+        { label: 'Рабочий ВНЖ', href: '/residency/work' },
+        { label: 'Бизнес ВНЖ — регистрация компании', href: '/residency/business' },
+        { label: 'Учебный ВНЖ', href: '/residency/student' },
       ],
 
 
@@ -606,7 +482,7 @@ const navLinks = {
 
 
 
-      label: 'Студенческая виза', href: '/student-visa', children: [
+      label: 'Студенческая виза', href: '/student-visa', _hidden: true, children: [
 
 
 
@@ -722,7 +598,7 @@ function DropdownItem({ child, isRtl, onNavigate }) {
 
 
 
-      <Link to={child.href}
+      <Link href={child.href}
 
 
 
@@ -826,7 +702,7 @@ function DropdownItem({ child, isRtl, onNavigate }) {
 
 
 
-              <Link key={sub.href + sub.label} to={sub.href}
+              <Link key={sub.href + sub.label} href={sub.href}
 
 
 
@@ -890,7 +766,7 @@ export default function GlobalNavbar() {
 
 
 
-  const location = useLocation();
+  const pathname = usePathname();
 
 
 
@@ -906,7 +782,6 @@ export default function GlobalNavbar() {
 
 
 
-  const [mobileLangOpen, setMobileLangOpen] = useState(false);
 
 
 
@@ -926,7 +801,7 @@ export default function GlobalNavbar() {
 
 
 
-  }, [location.pathname]);
+  }, [pathname]);
 
 
 
@@ -958,11 +833,11 @@ export default function GlobalNavbar() {
 
 
 
-      <nav className="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/10" aria-label="منوی اصلی">
+      <nav className="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/10 overflow-x-hidden" aria-label="منوی اصلی">
 
 
 
-        <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between" dir="ltr">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 h-14 flex items-center justify-between w-full min-w-0" dir="ltr">
 
 
 
@@ -970,7 +845,7 @@ export default function GlobalNavbar() {
 
 
 
-          <Link to="/" className="flex items-center gap-2 flex-shrink-0" aria-label="صفحه اصلی کاسپین گروه">
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0" aria-label="صفحه اصلی کاسپین گروه">
 
 
 
@@ -1010,11 +885,11 @@ export default function GlobalNavbar() {
 
 
 
-          <div className="hidden md:flex items-center gap-0.5 flex-1 justify-center">
+          <div className="hidden md:flex items-center gap-0.5 flex-1 justify-center min-w-0 overflow-hidden">
 
 
 
-            {links.map((link) =>
+            {links.filter(l => !l._hidden).map((link) =>
 
 
 
@@ -1122,7 +997,7 @@ export default function GlobalNavbar() {
 
 
 
-                <Link key={link.href} to={link.href}
+                <Link key={link.href} href={link.href}
 
 
 
@@ -1430,7 +1305,7 @@ export default function GlobalNavbar() {
 
 
 
-                {[...links].reverse().map((link) =>
+                {[...links].filter(l => !l._hidden).reverse().map((link) =>
 
 
 
@@ -1538,7 +1413,7 @@ export default function GlobalNavbar() {
 
 
 
-                                              <Link key={sub.label} to={sub.href}
+                                              <Link key={sub.label} href={sub.href}
 
 
 
@@ -1586,7 +1461,7 @@ export default function GlobalNavbar() {
 
 
 
-                                  <Link key={child.label} to={child.href}
+                                  <Link key={child.label} href={child.href}
 
 
 
@@ -1638,7 +1513,7 @@ export default function GlobalNavbar() {
 
 
 
-                    <Link key={link.href} to={link.href}
+                    <Link key={link.href} href={link.href}
 
 
 

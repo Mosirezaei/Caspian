@@ -1,12 +1,12 @@
+'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Plane, Bus } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { useLang } from '@/lib/LanguageContext';
 
 export default function TicketSection() {
   const { lang } = useLang();
-  const isRtl = lang === 'fa';
 
   const titles = {
     fa: { main: 'رزرو بلیط', subtitle: 'بلیط هواپیما و زمینی با بهترین قیمت‌ها', air: 'هواپیما', ground: 'زمینی' },
@@ -32,7 +32,7 @@ export default function TicketSection() {
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
           {/* Flight Card */}
-          <Link to="/services/ticket-booking">
+          <Link href="/services/ticket-booking">
             <motion.div
               whileHover={{ translateY: -4 }}
               className="group glass-panel rounded-2xl md:rounded-3xl border border-primary/20 p-6 md:p-8 transition-all hover:border-primary/40 cursor-pointer"
@@ -58,7 +58,7 @@ export default function TicketSection() {
           </Link>
 
           {/* Ground Card */}
-          <Link to="/services/ticket-booking">
+          <Link href="/services/ticket-booking">
             <motion.div
               whileHover={{ translateY: -4 }}
               className="group glass-panel rounded-2xl md:rounded-3xl border border-primary/20 p-6 md:p-8 transition-all hover:border-primary/40 cursor-pointer"

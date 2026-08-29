@@ -1,8 +1,9 @@
+'use client';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FileText, Globe, Building2, Hotel, Star, Plane } from 'lucide-react';
 import { useLang } from '@/lib/LanguageContext';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import ServiceDetailModal from './ServiceDetailModal';
 
 const serviceIcons = [FileText, Globe, Building2, Plane, Hotel, Star];
@@ -19,12 +20,12 @@ const serviceRoutes = {
 
 export default function ServicesSection() {
   const { t } = useLang();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [openIndex, setOpenIndex] = useState(null);
 
   const handleClick = (i) => {
     if (serviceRoutes[i]) {
-      navigate(serviceRoutes[i]);
+      router.push(serviceRoutes[i]);
     } else {
       setOpenIndex(i);
     }

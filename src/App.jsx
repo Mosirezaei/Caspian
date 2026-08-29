@@ -4,54 +4,58 @@ import { queryClientInstance } from '@/lib/query-client'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { lazy, Suspense } from 'react';
-import Home from '@/pages/Home';
+import Home from '@/views/Home';
 
 // Static pages
-const About = lazy(() => import('@/pages/About'));
-const Contact = lazy(() => import('@/pages/Contact'));
-const Services = lazy(() => import('@/pages/Services'));
+const About = lazy(() => import('@/views/About'));
+const Contact = lazy(() => import('@/views/Contact'));
+const Services = lazy(() => import('@/views/Services'));
 
 // Festival page (New)
-const Retro = lazy(() => import('@/pages/retro'));
+const Retro = lazy(() => import('@/views/retro'));
 
 // Visa pages
-const VisaSchengen = lazy(() => import('@/pages/service/VisaSchengen'));
-const VisaRomania = lazy(() => import('@/pages/service/VisaRomania'));
-const VisaRussia = lazy(() => import('@/pages/service/VisaRussia'));
-const VisaSouthAmerica = lazy(() => import('@/pages/service/VisaSouthAmerica'));
-const EmbassyAppointment = lazy(() => import('@/pages/service/EmbassyAppointment'));
+const VisaSchengen = lazy(() => import('@/views/service/VisaSchengen'));
+const VisaRomania = lazy(() => import('@/views/service/VisaRomania'));
+const VisaRussia = lazy(() => import('@/views/service/VisaRussia'));
+const VisaSouthAmerica = lazy(() => import('@/views/service/VisaSouthAmerica'));
+const EmbassyAppointment = lazy(() => import('@/views/service/EmbassyAppointment'));
 
 // Student Visa pages
-const StudentVisa = lazy(() => import('@/pages/service/StudentVisa'));
-const StudentVisaArmenia = lazy(() => import('@/pages/service/StudentVisaArmenia'));
-const StudentVisaRussia = lazy(() => import('@/pages/service/StudentVisaRussia'));
-const StudentVisaTurkey = lazy(() => import('@/pages/service/StudentVisaTurkey'));
-const StudentVisaSchengen = lazy(() => import('@/pages/service/StudentVisaSchengen'));
-const StudentVisaRomania = lazy(() => import('@/pages/service/StudentVisaRomania'));
-const StudentVisaGeorgia = lazy(() => import('@/pages/service/StudentVisaGeorgia'));
+const StudentVisa = lazy(() => import('@/views/service/StudentVisa'));
+const StudentVisaArmenia = lazy(() => import('@/views/service/StudentVisaArmenia'));
+const StudentVisaRussia = lazy(() => import('@/views/service/StudentVisaRussia'));
+const StudentVisaTurkey = lazy(() => import('@/views/service/StudentVisaTurkey'));
+const StudentVisaSchengen = lazy(() => import('@/views/service/StudentVisaSchengen'));
+const StudentVisaRomania = lazy(() => import('@/views/service/StudentVisaRomania'));
+const StudentVisaGeorgia = lazy(() => import('@/views/service/StudentVisaGeorgia'));
 
 // Residency pages
-const Residency = lazy(() => import('@/pages/service/Residency'));
-const ResidencyTurkey = lazy(() => import('@/pages/service/ResidencyTurkey'));
-const ResidencyOman = lazy(() => import('@/pages/service/ResidencyOman'));
-const ResidencyUAE = lazy(() => import('@/pages/service/ResidencyUAE'));
+const Residency = lazy(() => import('@/views/service/Residency'));
+const ResidencyWork = lazy(() => import('@/views/service/ResidencyWork'));
+const ResidencyStudent = lazy(() => import('@/views/service/ResidencyStudent'));
+// Kept for backward-compat / SEO (not in main menu but routes still active)
+const ResidencyTurkey = lazy(() => import('@/views/service/ResidencyTurkey'));
+const ResidencyOman = lazy(() => import('@/views/service/ResidencyOman'));
+const ResidencyUAE = lazy(() => import('@/views/service/ResidencyUAE'));
 
 // Dynamic service page (slug-based)
-const DynamicService = lazy(() => import('@/pages/service/DynamicService'));
+const DynamicService = lazy(() => import('@/views/service/DynamicService'));
 
 // Travel pages
-const Flight = lazy(() => import('@/pages/travel/Flight'));
-const Apartment = lazy(() => import('@/pages/travel/Apartment'));
-const Tour = lazy(() => import('@/pages/travel/Tour'));
-const Hotel = lazy(() => import('@/pages/service/Hotel'));
-const BusTrainBooking = lazy(() => import('@/pages/service/BusTrainBooking'));
-const Exchange = lazy(() => import('@/pages/service/Exchange'));
-const Transfer = lazy(() => import('@/pages/service/Transfer'));
-const VipSupport = lazy(() => import('@/pages/VipSupport'));
+const Flight = lazy(() => import('@/views/travel/Flight'));
+const Apartment = lazy(() => import('@/views/travel/Apartment'));
+const Tour = lazy(() => import('@/views/travel/Tour'));
+const Festivals = lazy(() => import('@/views/travel/Festivals'));
+const Hotel = lazy(() => import('@/views/service/Hotel'));
+const BusTrainBooking = lazy(() => import('@/views/service/BusTrainBooking'));
+const Exchange = lazy(() => import('@/views/service/Exchange'));
+const Transfer = lazy(() => import('@/views/service/Transfer'));
+const VipSupport = lazy(() => import('@/views/VipSupport'));
 
 // Other service pages
-const CompanyReg = lazy(() => import('@/pages/service/CompanyReg'));
-const StudentAdmission = lazy(() => import('@/pages/service/StudentAdmission'));
+const CompanyReg = lazy(() => import('@/views/service/CompanyReg'));
+const StudentAdmission = lazy(() => import('@/views/service/StudentAdmission'));
 
 // Admin Task & Booking Manager Page (اصلاح مسیر ایمپورت بر اساس محل واقعی فایل task.tsx)
 const TaskManager = lazy(() => import('./components/task'));
@@ -85,12 +89,7 @@ const AuthenticatedApp = () => {
       <Route path="/visa/south-america" element={<S><VisaSouthAmerica /></S>} />
       <Route path="/visa/embassy-usa" element={<S><EmbassyAppointment /></S>} />
       <Route path="/visa/embassy-canada" element={<S><EmbassyAppointment /></S>} />
-      {/* Legacy redirects */}
-      <Route path="/services/visa-schengen" element={<S><VisaSchengen /></S>} />
-      <Route path="/services/visa-romania" element={<S><VisaRomania /></S>} />
-      <Route path="/services/visa-russia" element={<S><VisaRussia /></S>} />
-      <Route path="/services/visa-south-america" element={<S><VisaSouthAmerica /></S>} />
-      <Route path="/services/embassy-appointment" element={<S><EmbassyAppointment /></S>} />
+      {/* Legacy /services/* paths now 301-redirect at the edge (see vercel.json) */}
 
       {/* ── STUDENT VISA ── */}
       <Route path="/student-visa" element={<S><StudentVisa /></S>} />
@@ -100,24 +99,18 @@ const AuthenticatedApp = () => {
       <Route path="/student-visa/schengen" element={<S><StudentVisaSchengen /></S>} />
       <Route path="/student-visa/romania" element={<S><StudentVisaRomania /></S>} />
       <Route path="/student-visa/georgia" element={<S><StudentVisaGeorgia /></S>} />
-      {/* Legacy redirects */}
-      <Route path="/services/student-visa" element={<S><StudentVisa /></S>} />
-      <Route path="/services/student-visa/armenia" element={<S><StudentVisaArmenia /></S>} />
-      <Route path="/services/student-visa/russia" element={<S><StudentVisaRussia /></S>} />
-      <Route path="/services/student-visa/turkey" element={<S><StudentVisaTurkey /></S>} />
-      <Route path="/services/student-visa/schengen" element={<S><StudentVisaSchengen /></S>} />
-      <Route path="/services/student-visa/romania" element={<S><StudentVisaRomania /></S>} />
+      {/* Legacy /services/student-visa/* paths now 301-redirect at the edge (see vercel.json) */}
 
       {/* ── RESIDENCY ── */}
       <Route path="/residency/armenia" element={<S><Residency /></S>} />
+      <Route path="/residency/work" element={<S><ResidencyWork /></S>} />
+      <Route path="/residency/business" element={<S><CompanyReg /></S>} />
+      <Route path="/residency/student" element={<S><ResidencyStudent /></S>} />
+      {/* Kept for SEO / backward compat — not in main menu */}
       <Route path="/residency/turkey" element={<S><ResidencyTurkey /></S>} />
       <Route path="/residency/oman" element={<S><ResidencyOman /></S>} />
       <Route path="/residency/uae" element={<S><ResidencyUAE /></S>} />
-      {/* Legacy redirects */}
-      <Route path="/services/residency" element={<S><Residency /></S>} />
-      <Route path="/services/residency-turkey" element={<S><ResidencyTurkey /></S>} />
-      <Route path="/services/residency-oman" element={<S><ResidencyOman /></S>} />
-      <Route path="/services/residency-uae" element={<S><ResidencyUAE /></S>} />
+      {/* Legacy /services/residency* paths now 301-redirect at the edge (see vercel.json) */}
 
       {/* ── TRAVEL ── */}
       <Route path="/travel/flight" element={<S><Flight /></S>} />
@@ -125,13 +118,11 @@ const AuthenticatedApp = () => {
       <Route path="/travel/hotel" element={<S><Hotel /></S>} />
       <Route path="/travel/apartment" element={<S><Apartment /></S>} />
       <Route path="/travel/tour" element={<S><Tour /></S>} />
+      <Route path="/travel/festivals" element={<S><Festivals /></S>} />
       <Route path="/travel/transfer" element={<S><Transfer /></S>} />
       <Route path="/travel/exchange" element={<S><Exchange /></S>} />
       <Route path="/travel/vip" element={<S><VipSupport /></S>} />
-      {/* Legacy redirects */}
-      <Route path="/services/hotel" element={<S><Hotel /></S>} />
-      <Route path="/services/exchange" element={<S><Exchange /></S>} />
-      <Route path="/vip" element={<S><VipSupport /></S>} />
+      {/* Legacy /services/hotel, /services/exchange, /vip now 301-redirect at the edge (see vercel.json) */}
 
       {/* Dynamic service pages (slug-based, reads from data/servicesContent.js) */}
       <Route path="/service/:slug" element={<S><DynamicService /></S>} />

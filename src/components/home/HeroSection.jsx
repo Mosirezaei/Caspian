@@ -1,5 +1,6 @@
+'use client';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ChevronDown, Plane, Hotel, Home as HomeIcon, Star, MapPin, Building2, GraduationCap, Globe } from 'lucide-react';
 import { useLang } from '@/lib/LanguageContext';
@@ -7,7 +8,6 @@ import ConsultModal from '@/components/home/ConsultModal';
 
 export default function HeroSection() {
   const { t, lang } = useLang();
-  const isRtl = lang === 'fa';
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
@@ -16,7 +16,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 -z-10">
         <img src="https://images.unsplash.com/photo-1609669712881-d9bc36df5ab3?w=1400&q=80"
           alt="" role="presentation" width="1400" height="900"
-          className="w-full h-full object-cover opacity-15" fetchpriority="high" />
+          className="w-full h-full object-cover opacity-15" fetchPriority="high" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-background/70 to-background" />
         {/* Gold radial glow center */}
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 40%, rgba(212,168,68,0.06) 0%, transparent 70%)' }} />
@@ -37,7 +37,7 @@ export default function HeroSection() {
             alt="Caspian Business Group"
             width="140" height="140"
             className="relative h-20 sm:h-36 w-auto mx-auto object-contain drop-shadow-2xl"
-            fetchpriority="high"
+            fetchPriority="high"
           />
           </div>
         </motion.div>
@@ -101,7 +101,7 @@ export default function HeroSection() {
               { icon: GraduationCap, label: lang === 'fa' ? 'تحصیلی' : lang === 'en' ? 'Student' : 'Учёба', href: '/student-visa/armenia' },
               { icon: Globe, label: lang === 'fa' ? 'ویزای روسیه' : lang === 'en' ? 'Russia Visa' : 'Виза РФ', href: '/visa/russia' },
             ].map(({ icon: Icon, label, href }) => (
-              <Link key={label} to={href}
+              <Link key={label} href={href}
                 className="flex flex-col items-center gap-1.5 px-2 py-3 rounded-xl border border-primary/15 bg-white/3 backdrop-blur-sm hover:border-primary/50 hover:bg-primary/8 transition-all group"
                 style={{ background: 'rgba(212,168,68,0.03)' }}>
                 <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary group-hover:scale-110 transition-transform drop-shadow-sm" />
@@ -116,7 +116,7 @@ export default function HeroSection() {
               { icon: HomeIcon, label: lang === 'fa' ? 'آپارتمان' : lang === 'en' ? 'Apartment' : 'Квартира', href: '/travel/apartment' },
               { icon: Star, label: 'VIP', href: '/travel/vip' },
             ].map(({ icon: Icon, label, href }) => (
-              <Link key={label} to={href}
+              <Link key={label} href={href}
                 className="flex flex-col items-center gap-1.5 px-2 py-3 rounded-xl border border-primary/15 backdrop-blur-sm hover:border-primary/50 hover:bg-primary/8 transition-all group"
                 style={{ background: 'rgba(212,168,68,0.03)' }}>
                 <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary group-hover:scale-110 transition-transform drop-shadow-sm" />

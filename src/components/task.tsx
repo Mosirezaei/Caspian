@@ -1,7 +1,22 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { supabase } from '@/api/supabaseClient';
+
+const RESERVATIONS_API_URL =
+  'https://mxgxbkzpghoteaqzhfpf.supabase.co/functions/v1/reservations-api';
+
+async function callReservationsApi(action: 'list' | 'create' | 'update' | 'delete', payload?: any) {
+  const res = await fetch(RESERVATIONS_API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password: 'M@Caspian', action, payload }),
+  });
+  const json = await res.json();
+  if (!res.ok) {
+    throw new Error(json?.error || 'خطای ناشناخته');
+  }
+  return json.data;
+}
 
 interface Item {
   id: string;
@@ -105,11 +120,11 @@ export default function TaskManager() {
   }, [isLoggedIn]);
 
   const fetchItems = async () => {
-    const { data, error } = await supabase.from('reservations').select('*');
-    if (error) {
+    try {
+      const data = await callReservationsApi('list');
+      setItems(data || []);
+    } catch (error) {
       console.error('خطا در دریافت اطلاعات:', error);
-    } else if (data) {
-      setItems(data);
     }
   };
 
@@ -133,31 +148,31 @@ export default function TaskManager() {
       child_7_to_18: formType === 'booking' ? Number(child7To18) || 0 : null,
       transport_info: formType === 'booking' ? transportInfo : null,
       payment_status: formType === 'booking' ? paymentStatus : null,
-      deposit_amount: formType === 'booking' && paymentStatus === 'بیعانه داده شده' ? depositAmount : null,
+      deposit_amount: formType === 'booking' && (paymentStatus === 'بیعانه داده شده' || paymentStatus === 'منتظر تایید صراف') ? depositAmount : null,
       title: formType === 'task' ? taskTitle : null,
       task_date: formType === 'task' ? taskDate : null,
       description: formType === 'task' ? taskDescription : null,
     };
 
     if (isEditing && editId) {
-      const { error } = await supabase.from('reservations').update(newItem).eq('id', editId);
-      if (error) {
-        showNotification('خطا در ویرایش اطلاعات', 'error');
-      } else {
+      try {
+        await callReservationsApi('update', { id: editId, ...newItem });
         showNotification('تغییرات با موفقیت ذخیره شد.', 'success');
         setIsEditing(false);
         setEditId(null);
         fetchItems();
         resetForm();
+      } catch (error) {
+        showNotification('خطا در ویرایش اطلاعات', 'error');
       }
     } else {
-      const { error } = await supabase.from('reservations').insert([newItem]);
-      if (error) {
-        showNotification('خطا در ثبت اطلاعات در دیتابیس', 'error');
-      } else {
+      try {
+        await callReservationsApi('create', newItem);
         showNotification('اطلاعات با موفقیت ثبت شد.', 'success');
         fetchItems();
         resetForm();
+      } catch (error) {
+        showNotification('خطا در ثبت اطلاعات در دیتابیس', 'error');
       }
     }
   };
@@ -189,16 +204,14 @@ export default function TaskManager() {
       child_7_to_18: quickType === 'booking' ? Number(qChild7To18) || 0 : null,
       transport_info: quickType === 'booking' ? qTransportInfo : null,
       payment_status: quickType === 'booking' ? qPaymentStatus : null,
-      deposit_amount: quickType === 'booking' && qPaymentStatus === 'بیعانه داده شده' ? qDepositAmount : null,
+      deposit_amount: quickType === 'booking' && (qPaymentStatus === 'بیعانه داده شده' || qPaymentStatus === 'منتظر تایید صراف') ? qDepositAmount : null,
       title: quickType === 'task' ? qTaskTitle : null,
       task_date: quickType === 'task' ? qTaskDate : null,
       description: quickType === 'task' ? qTaskDesc : null,
     };
 
-    const { error } = await supabase.from('reservations').insert([newItem]);
-    if (error) {
-      showNotification('خطا در ثبت اطلاعات', 'error');
-    } else {
+    try {
+      await callReservationsApi('create', newItem);
       showNotification('با موفقیت ثبت شد.', 'success');
       fetchItems();
       setQuickDateModal(null);
@@ -206,18 +219,20 @@ export default function TaskManager() {
       setQAdultsCount(1); setQChildUnder7(0); setQChild7To18(0); setQTransportInfo('');
       setQPaymentStatus('کل پرداخت شده'); setQDepositAmount('');
       setQTaskTitle(''); setQTaskDate(''); setQTaskDesc('');
+    } catch (error) {
+      showNotification('خطا در ثبت اطلاعات', 'error');
     }
   };
 
   const handleDelete = async (id: string) => {
     if (!confirm('آیا از حذف این مورد اطمینان دارید؟')) return;
-    const { error } = await supabase.from('reservations').delete().eq('id', id);
-    if (error) {
-      showNotification('خطا در حذف اطلاعات!', 'error');
-    } else {
+    try {
+      await callReservationsApi('delete', { id });
       showNotification('با موفقیت حذف شد.', 'success');
       setSelectedItem(null);
       fetchItems();
+    } catch (error) {
+      showNotification('خطا در حذف اطلاعات!', 'error');
     }
   };
 
@@ -403,11 +418,12 @@ export default function TaskManager() {
             <select value={paymentStatus} onChange={(e) => setPaymentStatus(e.target.value)} className="bg-gray-700 p-2.5 rounded-lg border border-gray-600 text-right text-white">
               <option value="کل پرداخت شده">کل پرداخت شده</option>
               <option value="بیعانه داده شده">بیعانه داده شده</option>
+              <option value="منتظر تایید صراف">منتظر تایید صراف</option>
               <option value="منتظر پرداخت">منتظر پرداخت</option>
             </select>
 
-            {paymentStatus === 'بیعانه داده شده' && (
-              <input type="text" placeholder="مبلغ بیعانه / توضیحات پول..." value={depositAmount} onChange={(e) => setDepositAmount(e.target.value)} className="bg-gray-700 p-2.5 rounded-lg border border-gray-600 text-right text-white" />
+            {(paymentStatus === 'بیعانه داده شده' || paymentStatus === 'منتظر تایید صراف') && (
+              <input type="text" placeholder="مبلغ واریزی / توضیحات پول..." value={depositAmount} onChange={(e) => setDepositAmount(e.target.value)} className="bg-gray-700 p-2.5 rounded-lg border border-gray-600 text-right text-white" />
             )}
 
             <input type="text" placeholder="توضیحات سفر (با چی میاد؟)" value={transportInfo} onChange={(e) => setTransportInfo(e.target.value)} className="bg-gray-700 p-2.5 rounded-lg border border-gray-600 md:col-span-2 text-right text-white" />
@@ -500,7 +516,11 @@ export default function TaskManager() {
                                 </div>
                               </div>
                               <div className="text-[10px] opacity-90 truncate">
-                                {b.payment_status === 'بیعانه داده شده' ? `بیعانه: ${b.deposit_amount || 'ثبت نشده'}` : b.payment_status} 
+                                {b.payment_status === 'بیعانه داده شده' 
+                                  ? `بیعانه: ${b.deposit_amount || 'ثبت نشده'}` 
+                                  : b.payment_status === 'منتظر تایید صراف' 
+                                  ? `صراف: ${b.deposit_amount || 'ثبت نشده'}` 
+                                  : b.payment_status} 
                                 {b.transport_info ? ` | ${b.transport_info}` : ''}
                               </div>
                             </div>
@@ -581,11 +601,12 @@ export default function TaskManager() {
                 <select value={qPaymentStatus} onChange={(e) => setQPaymentStatus(e.target.value)} className="bg-gray-700 p-2.5 rounded-xl border border-gray-600 w-full text-right text-white">
                   <option value="کل پرداخت شده">کل پرداخت شده</option>
                   <option value="بیعانه داده شده">بیعانه داده شده</option>
+                  <option value="منتظر تایید صراف">منتظر تایید صراف</option>
                   <option value="منتظر پرداخت">منتظر پرداخت</option>
                 </select>
 
-                {qPaymentStatus === 'بیعانه داده شده' && (
-                  <input type="text" placeholder="مبلغ بیعانه / توضیحات پول..." value={qDepositAmount} onChange={(e) => setQDepositAmount(e.target.value)} className="bg-gray-700 p-2.5 rounded-xl border border-gray-600 w-full text-right text-white" />
+                {(qPaymentStatus === 'بیعانه داده شده' || qPaymentStatus === 'منتظر تایید صراف') && (
+                  <input type="text" placeholder="مبلغ واریزی / توضیحات پول..." value={qDepositAmount} onChange={(e) => setQDepositAmount(e.target.value)} className="bg-gray-700 p-2.5 rounded-xl border border-gray-600 w-full text-right text-white" />
                 )}
 
                 <input type="text" placeholder="توضیحات سفر (با چی میاد؟)" value={qTransportInfo} onChange={(e) => setQTransportInfo(e.target.value)} className="bg-gray-700 p-2.5 rounded-xl border border-gray-600 w-full text-white" />

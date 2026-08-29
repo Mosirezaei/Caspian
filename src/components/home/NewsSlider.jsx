@@ -1,7 +1,8 @@
+'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { useLang } from '@/lib/LanguageContext';
 
 const SECTION_TITLE = {
@@ -36,7 +37,7 @@ const SLIDES = {
 
 export default function NewsSlider() {
   const { lang } = useLang();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [current, setCurrent] = useState(0);
   const timerRef = useRef(null);
   const slides = SLIDES[lang] || SLIDES.fa;
@@ -83,7 +84,7 @@ export default function NewsSlider() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: lang === 'fa' ? 16 : -16 }}
               transition={{ duration: 0.25 }}
-              onClick={() => navigate('/immigration-news')}
+              onClick={() => router.push('/immigration-news')}
               className="w-full text-right group"
               dir={lang === 'fa' ? 'rtl' : 'ltr'}>
               <span className="inline-block text-xs bg-primary/15 text-primary px-2 py-0.5 rounded-full font-bold mb-1.5">
