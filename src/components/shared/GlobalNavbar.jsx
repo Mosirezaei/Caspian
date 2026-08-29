@@ -766,7 +766,7 @@ export default function GlobalNavbar() {
 
 
 
-  const location = usePathname();
+  const pathname = usePathname();
 
 
 
