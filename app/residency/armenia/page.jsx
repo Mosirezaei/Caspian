@@ -6,12 +6,26 @@ export const metadata = {
   keywords: 'اقامت ارمنستان, کارت اقامت ارمنستان, مهاجرت ارمنستان, اقامت ارمنستان برای ایرانیان ۲۰۲۶',
   alternates: { canonical: 'https://caspian.am/residency/armenia' },
   openGraph: {
-    title: 'اقامت ارمنستان برای ایرانیان ۲۰۲۶ | مراحل، هزینه و شرایط کامل',
-    description: 'اقامت ارمنستان در کمتر از ۳۰ روز از طریق ثبت شرکت. قانون جدید نوامبر ۲۰۲۶، هزینه کارت اقامت ۳۸۰ دلار، مالیات ۱۰٪. مشاوره رایگان واتساپ.',
+    title: 'اقامت ارمنستان ۲۰۲۶ | مراحل و هزینه کامل',
+    description: 'اقامت ارمنستان در ۳۰ روز. هزینه ۳۸۰ دلار. مشاوره رایگان.',
     url: 'https://caspian.am/residency/armenia',
   },
 };
 
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'اقامت ارمنستان برای ایرانیان',
+  description: 'اخذ کارت اقامت ارمنستان از طریق ثبت شرکت در کمتر از ۳۰ روز',
+  provider: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am', telephone: '+37433149327' },
+  areaServed: { '@type': 'Country', name: 'Armenia' },
+};
+
 export default function Page() {
-  return <Residency />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <Residency />
+    </>
+  );
 }

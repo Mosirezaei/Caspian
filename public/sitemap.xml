@@ -1,61 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- صفحه اصلی -->
+  <!-- همه URL ها روی non-www هستند — www به non-www ریدایرکت می‌شه -->
+
   <url><loc>https://caspian.am/</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://caspian.am/about</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://caspian.am/contact</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://caspian.am/services</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
 
-  <!-- رزرو هتل و آپارتمان — اولویت ۱ -->
   <url><loc>https://caspian.am/travel/hotel</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://caspian.am/travel/apartment</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-
-  <!-- اقامت ارمنستان — اولویت ۱ -->
-  <url><loc>https://caspian.am/residency/armenia</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://caspian.am/residency/work</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://caspian.am/residency/business</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://caspian.am/residency/student</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-
-  <!-- ویزای روسیه — اولویت ۱ -->
-  <url><loc>https://caspian.am/visa/russia</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-
-  <!-- ویزای تحصیلی ارمنستان — اولویت ۱ -->
-  <url><loc>https://caspian.am/student-visa/armenia</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-
-  <!-- تور و فستیوال -->
   <url><loc>https://caspian.am/travel/tour</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://caspian.am/travel/festivals</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-
-  <!-- سایر خدمات مسافرتی -->
   <url><loc>https://caspian.am/travel/flight</loc><lastmod>2026-08-29</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
   <url><loc>https://caspian.am/travel/bus</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://caspian.am/travel/transfer</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://caspian.am/travel/exchange</loc><lastmod>2026-08-29</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
   <url><loc>https://caspian.am/travel/vip</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
-  <!-- ویزاهای دیگر -->
+  <url><loc>https://caspian.am/residency/armenia</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://caspian.am/residency/work</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://caspian.am/residency/business</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://caspian.am/residency/student</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://caspian.am/residency/turkey</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://caspian.am/residency/oman</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://caspian.am/residency/uae</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+
+  <url><loc>https://caspian.am/visa/russia</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://caspian.am/visa/schengen</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://caspian.am/visa/romania</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://caspian.am/visa/south-america</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
   <url><loc>https://caspian.am/visa/embassy-usa</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://caspian.am/visa/embassy-canada</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
 
-  <!-- ویزای تحصیلی -->
   <url><loc>https://caspian.am/student-visa</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://caspian.am/student-visa/armenia</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://caspian.am/student-visa/russia</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://caspian.am/student-visa/turkey</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
   <url><loc>https://caspian.am/student-visa/schengen</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
   <url><loc>https://caspian.am/student-visa/romania</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
   <url><loc>https://caspian.am/student-visa/georgia</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
 
-  <!-- خدمات -->
   <url><loc>https://caspian.am/services/company-registration</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://caspian.am/services/student-admission</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
-  <!-- اقامت سایر کشورها -->
-  <url><loc>https://caspian.am/residency/turkey</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://caspian.am/residency/oman</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://caspian.am/residency/uae</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://caspian.am/retro</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
 
 </urlset>

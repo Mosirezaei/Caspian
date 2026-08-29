@@ -42,6 +42,8 @@ const LINKS = {
           { label: 'ویزای رومانی', href: '/visa/romania' },
           { label: 'ویزای تحصیلی ارمنستان', href: '/student-visa/armenia' },
           { label: 'ویزای تحصیلی روسیه', href: '/student-visa/russia' },
+          { label: 'ویزای تحصیلی شینگن', href: '/student-visa/schengen' },
+          { label: 'وقت سفارت کانادا', href: '/visa/embassy-canada' },
         ],
       },
       {
@@ -52,6 +54,8 @@ const LINKS = {
           { label: 'صرافی و رمزارز', href: '/travel/exchange' },
           { label: 'ثبت شرکت در ارمنستان', href: '/services/company-registration' },
           { label: 'درباره کاسپین گروپ', href: '/about' },
+          { label: 'تماس با ما', href: '/contact' },
+          { label: 'همه خدمات', href: '/services' },
         ],
       },
     ],
