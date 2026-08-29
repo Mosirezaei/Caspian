@@ -1,14 +1,9 @@
 import CompanyReg from '@/views/service/CompanyReg';
 
 export const metadata = {
-  title: 'ثبت شرکت در ارمنستان | LLC در ۳ روز',
-  description: 'ثبت شرکت LLC در ۳ روز کاری. مالیات ۵٪. حساب بانکی بین‌المللی.',
-  alternates: { canonical: 'https://caspian.am/services/company-registration' },
-  openGraph: {
-    title: 'ثبت شرکت در ارمنستان | LLC در ۳ روز',
-    description: 'ثبت شرکت LLC در ۳ روز کاری. مالیات ۵٪. حساب بانکی بین‌المللی.',
-    url: 'https://caspian.am/services/company-registration',
-  },
+  title: 'ثبت شرکت در ارمنستان | LLC در ۳ روز — مالیات ۵٪ | کاسپین گروپ',
+  description: 'ثبت LLC در ارمنستان در ۳ روز کاری. مالیات ساده‌شده ۵٪ یا ۱۸٪. حساب بانکی بین‌المللی ویزا/مسترکارت. مالکیت صددرصد خارجی.',
+  alternates: { canonical: 'https://caspian.am/residency/business' },
 };
 
 export default function Page() {
