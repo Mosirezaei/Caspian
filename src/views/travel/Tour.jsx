@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
-import { useSEO } from '@/hooks/useSEO';
+import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 import { MessageCircle, PartyPopper, CalendarDays } from 'lucide-react';
 
@@ -68,33 +67,6 @@ const HIGHLIGHTS = {
 function TourContent() {
   const { lang } = useLang();
 
-  useSEO({
-    title: lang === 'fa' ? 'تور ارمنستان | تور گروهی و اختصاصی از ایروان - کاسپین گروپ' :
-           lang === 'ru' ? 'Тур по Армении | Групповые и индивидуальные туры - Caspian Group' :
-           'Armenia Tour | Group & Private Tours | Caspian Group',
-    description: lang === 'fa' ? 'تور ارمنستان با کاسپین — تورهای گروهی و اختصاصی به ایروان، دریاچه سوان، گارنی-گقارد، خور ویراپ و دیلیجان با راهنمای فارسی‌زبان از سال ۲۰۰۷.' :
-                 lang === 'ru' ? 'Тур по Армении с Caspian — групповые и индивидуальные туры в Ереван, озеро Севан, Гарни-Гегард, Хор Вирап и Дилижан с 2007 года.' :
-                 'Armenia tours with Caspian — group and private tours to Yerevan, Lake Sevan, Garni-Geghard, Khor Virap and Dilijan with a Persian-speaking guide since 2007.',
-    keywords: lang === 'fa' ? 'تور ارمنستان، تور ایروان، تور گروهی ارمنستان، تور اختصاصی ارمنستان، سفر به ارمنستان، تور دریاچه سوان، کاسپین تور' :
-              lang === 'ru' ? 'тур по Армении, тур в Ереван, групповой тур Армения, индивидуальный тур Армения' :
-              'Armenia tour, Yerevan tour, Armenia group tour, private Armenia tour, Lake Sevan tour',
-    ogImage: 'https://images.unsplash.com/photo-1609669712881-d9bc36df5ab3?w=1200&q=80',
-    path: '/travel/tour',
-    schema: {
-      '@context': 'https://schema.org',
-      '@type': 'TouristTrip',
-      name: lang === 'fa' ? 'تور ارمنستان' : 'Armenia Tour',
-      description: lang === 'fa' ? 'تورهای گروهی و اختصاصی ارمنستان شامل ایروان، دریاچه سوان، گارنی-گقارد، خور ویراپ و دیلیجان' : 'Group and private Armenia tours covering Yerevan, Lake Sevan, Garni-Geghard, Khor Virap and Dilijan',
-      touristType: lang === 'fa' ? 'گردشگران ایرانی' : 'Iranian tourists',
-      provider: { '@type': 'TravelAgency', name: 'Caspian Business Group', url: 'https://caspian.am' },
-      itinerary: {
-        '@type': 'ItemList',
-        itemListElement: (HIGHLIGHTS[lang] || HIGHLIGHTS.fa).map((h, i) => ({
-          '@type': 'ListItem', position: i + 1, name: h.name,
-        })),
-      },
-    },
-  });
 
   const t = {
     fa: {

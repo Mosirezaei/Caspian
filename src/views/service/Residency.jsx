@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
-import { useSEO } from '@/hooks/useSEO';
+import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
 function Content() {
@@ -9,39 +8,6 @@ function Content() {
   const isFa = lang === 'fa';
   const isRu = lang === 'ru';
 
-  useSEO({
-    title: isFa ? 'اقامت ارمنستان برای ایرانیان ۲۰۲۶ | مراحل، هزینه و شرایط — کاسپین گروپ' :
-           isRu ? 'ВНЖ Армении для иранцев 2026 | Этапы, стоимость, условия — Caspian Group' :
-           'Armenia Residency for Iranians 2026 | Steps, Costs & Requirements — Caspian Group',
-    description: isFa ? 'اقامت ارمنستان در کمتر از ۳۰ روز از طریق ثبت شرکت. هزینه واقعی، مدارک لازم، قانون جدید نوامبر ۲۰۲۶ و راهنمای گام‌به‌گام. مشاوره رایگان در واتساپ.' :
-                 isRu ? 'ВНЖ Армении за 30 дней через регистрацию компании. Реальные расходы, документы, закон с ноября 2026. Бесплатная консультация в WhatsApp.' :
-                 'Armenia residency in under 30 days via company registration. Real costs, documents, November 2026 law update, step-by-step guide. Free WhatsApp consultation.',
-    keywords: isFa ? 'اقامت ارمنستان، کارت اقامت ارمنستان، مهاجرت به ارمنستان، اقامت ارمنستان برای ایرانیان، ثبت شرکت ارمنستان اقامت، شرایط اقامت ارمنستان ۲۰۲۶، هزینه اقامت ارمنستان' :
-              isRu ? 'ВНЖ Армении, вид на жительство Армении, миграция в Армению, регистрация компании ВНЖ' :
-              'Armenia residency permit, residency Armenia Iranians, company registration Armenia, Armenia residency 2026',
-    ogImage: '/images/Yerevan_Residency.webp',
-    path: '/residency/armenia',
-    schema: {
-      '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'Service',
-          name: isFa ? 'اقامت ارمنستان' : 'Armenia Residency',
-          description: isFa ? 'اخذ کارت اقامت ارمنستان از طریق ثبت شرکت یا سایر روش‌ها در کمتر از ۳۰ روز' : 'Obtaining Armenia residency permit via company registration or other methods in under 30 days',
-          provider: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-          areaServed: 'Iran',
-        },
-        isFa ? {
-          '@type': 'FAQPage',
-          mainEntity: [
-            { '@type': 'Question', name: 'سریع‌ترین روش اخذ اقامت ارمنستان چیست؟', acceptedAnswer: { '@type': 'Answer', text: 'ثبت شرکت در ارمنستان سریع‌ترین روش است و در ۳ روز کاری انجام می‌شود. پس از ثبت شرکت، کارت اقامت معمولاً ظرف ۲۰ تا ۴۰ روز صادر می‌شود.' } },
-            { '@type': 'Question', name: 'آیا باید برای اقامت ارمنستان در این کشور زندگی کنم؟', acceptedAnswer: { '@type': 'Answer', text: 'قانون جدید نوامبر ۲۰۲۶ غیبت بیش از ۱۸۳ روز در سال را ریسک لغو اقامت می‌داند. با این حال صاحبان شرکت با برنامه‌ریزی مناسب می‌توانند الزام حضور را مدیریت کنند.' } },
-            { '@type': 'Question', name: 'هزینه کل اخذ اقامت ارمنستان چقدر است؟', acceptedAnswer: { '@type': 'Answer', text: 'هزینه دولتی کارت اقامت یک‌ساله ۱۵۰٬۰۰۰ درام (حدود ۳۸۰ دلار)، هزینه ثبت شرکت ۱۰۰ تا ۱۵۰ دلار، و هزینه خدمات کاسپین جداگانه است. برای قیمت دقیق مشاوره رایگان بگیرید.' } },
-          ]
-        } : null,
-      ].filter(Boolean)
-    }
-  });
 
   return (
     <ServicePageLayout titleFa="اقامت ارمنستان" titleEn="Armenia Residency" titleRu="ВНЖ Армении"

@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
+import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 import { Crown, Building2, Plane, Car, Shield, Utensils, Gem, Star } from 'lucide-react';
 

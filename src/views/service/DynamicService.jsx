@@ -9,7 +9,7 @@
 import React from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
+import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 import { getServiceContent } from '@/data/servicesContent';
 
@@ -54,10 +54,4 @@ function DynamicServiceContent() {
   );
 }
 
-export default function DynamicService() {
-  return (
-    <LanguageProvider>
-      <DynamicServiceContent />
-    </LanguageProvider>
-  );
-}
+export default DynamicServiceContent;

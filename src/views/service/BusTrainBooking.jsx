@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
+import { useLang } from '@/lib/LanguageContext';
 import GlobalNavbar from '@/components/shared/GlobalNavbar';
 import ContactFooter from '@/components/home/ContactFooter';
 import { Train, Bus, MessageCircle, HelpCircle, ChevronDown } from 'lucide-react';

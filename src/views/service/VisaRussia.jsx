@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
-import { useSEO } from '@/hooks/useSEO';
+import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
 function Content() {
@@ -9,39 +8,6 @@ function Content() {
   const isFa = lang === 'fa';
   const isRu = lang === 'ru';
 
-  useSEO({
-    title: isFa ? 'ویزای توریستی روسیه برای ایرانیان ۲۰۲۶ | eVisa + ویزای استیکری از ایروان — کاسپین گروپ' :
-           isRu ? 'Туристическая виза в Россию для иранцев 2026 | eVisa + стикерная виза из Еревана — Caspian Group' :
-           'Russia Tourist Visa for Iranians 2026 | eVisa + Sticker Visa from Yerevan — Caspian Group',
-    description: isFa ? 'اخذ ویزای توریستی روسیه از ایروان — دو روش: eVisa الکترونیکی (۷۰–۱۱۰ دلار، ۴ روز، تا ۱۶ روز اقامت) یا ویزای استیکری سفارت (۱۳۰–۱۶۰ دلار، ۵–۱۰ روز، تا ۳۰ روز). مدارک کامل + مشاوره رایگان.' :
-                 isRu ? 'Туристическая виза в Россию из Еревана — два способа: eVisa ($70–110, 4 дня, до 16 суток) или стикерная виза посольства ($130–160, 5–10 дней, до 30 суток).' :
-                 'Russia tourist visa from Yerevan — two routes: eVisa ($70–110, 4 days, up to 16-day stay) or embassy sticker visa ($130–160, 5–10 days, up to 30 days). Full documents + free consult.',
-    keywords: isFa ? 'ویزای روسیه، ویزای توریستی روسیه، ویزای الکترونیک روسیه، eVisa روسیه، ویزای روسیه برای ایرانیان، اخذ ویزای روسیه از ارمنستان، دعوتنامه روسیه، مدارک ویزای روسیه ۲۰۲۶' :
-              isRu ? 'виза в Россию, туристическая виза Россия, eVisa Россия, виза для иранцев, приглашение' :
-              'Russia visa, Russia tourist visa, Russia eVisa, visa for Iranians, Russia invitation letter, Yerevan embassy',
-    ogImage: 'https://images.unsplash.com/photo-1513326738677-b964603b136d?w=1200&q=80',
-    path: '/visa/russia',
-    schema: {
-      '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'Service',
-          name: isFa ? 'ویزای توریستی روسیه' : 'Russia Tourist Visa',
-          description: isFa ? 'اخذ ویزای توریستی و تجاری روسیه برای ایرانیان از طریق سفارت روسیه در ایروان' : 'Tourist and business Russia visa for Iranians via Russian embassy in Yerevan',
-          provider: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-          areaServed: 'Iran',
-        },
-        isFa ? {
-          '@type': 'FAQPage',
-          mainEntity: [
-            { '@type': 'Question', name: 'آیا ایرانیان می‌توانند ویزای الکترونیکی (eVisa) روسیه بگیرند؟', acceptedAnswer: { '@type': 'Answer', text: 'بله. ویزای الکترونیکی روسیه برای ایرانیان قابل دریافت است. هزینه ۷۰ تا ۱۱۰ دلار، زمان صدور ۴ روز کاری و اجازه اقامت تا ۱۶ روز. از نظر سرعت و سهولت بهتر از ویزای استیکری است اما تنها در برخی مرزها پذیرفته می‌شود.' } },
-            { '@type': 'Question', name: 'دعوتنامه روسیه چیست و چرا لازم است؟', acceptedAnswer: { '@type': 'Answer', text: 'دعوتنامه (ووچر) یک سند اجباری برای ویزای استیکری توریستی روسیه است که فقط توسط هتل‌ها یا آژانس‌های دارای مجوز از وزارت خارجه روسیه صادر می‌شود. برای eVisa نیازی به دعوتنامه نیست.' } },
-            { '@type': 'Question', name: 'ویزای روسیه از ایروان چند روز طول می‌کشد؟', acceptedAnswer: { '@type': 'Answer', text: 'eVisa: ۴ روز کاری. ویزای استیکری از سفارت ایروان: ۵ تا ۱۰ روز کاری. فوری در ۳ روز هم ممکن است اما هزینه بیشتری دارد.' } },
-          ]
-        } : null,
-      ].filter(Boolean)
-    }
-  });
 
   return (
     <ServicePageLayout titleFa="ویزای توریستی روسیه" titleEn="Russia Tourist Visa" titleRu="Туристическая виза в Россию"

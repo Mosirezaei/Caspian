@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useRef } from 'react';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
-import { useSEO } from '@/hooks/useSEO';
+import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
 // لیست شهرها
@@ -36,39 +35,6 @@ function ApartmentContent() {
   const isFa = lang === 'fa';
   const isRu = lang === 'ru';
 
-  useSEO({
-    title: isFa ? 'اجاره آپارتمان مبله در ایروان (روزانه و ماهانه) | کاسپین گروپ' :
-           isRu ? 'Аренда меблированных квартир в Ереване | Посуточно и помесячно' :
-           'Furnished Apartment Rental in Yerevan | Daily & Monthly | Caspian Group',
-    description: isFa ? 'رزرو آپارتمان مبله در ایروان با عکس واقعی، پرداخت ریالی/دلاری/USDT و ترانسفر فرودگاهی. قیمت از ۳۰ دلار در شب — همین حالا در واتساپ رزرو کنید.' :
-                 isRu ? 'Аренда меблированных квартир посуточно и помесячно в Ереване по лучшим ценам. Реальные фото, трансфер из аэропорта.' :
-                 'Furnished apartments for daily and monthly rent in Yerevan. Real photos before booking, flexible payment, airport transfer included.',
-    keywords: isFa ? 'اجاره آپارتمان ایروان، اجاره آپارتمان روزانه ایروان، اجاره سوئیت ارمنستان، اجاره ماهانه ایروان، سوئیت مبله ایروان، اجاره خانه در ارمنستان، بهترین محله ایروان برای اجاره، قیمت اجاره آپارتمان ایروان' :
-              isRu ? 'аренда квартиры Ереван, посуточная аренда Армения, меблированная квартира Ереван' :
-              'apartment rental Yerevan, daily apartment Yerevan, monthly apartment Armenia, furnished suite Yerevan',
-    ogImage: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=80',
-    path: '/travel/apartment',
-    schema: {
-      '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'Service',
-          name: isFa ? 'اجاره آپارتمان در ایروان' : 'Apartment Rental in Yerevan',
-          description: isFa ? 'اجاره آپارتمان مبله روزانه و ماهانه در ایروان و سایر شهرهای ارمنستان' : 'Daily and monthly furnished apartment rental in Yerevan and across Armenia',
-          provider: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-          areaServed: { '@type': 'Country', name: 'Armenia' },
-        },
-        isFa ? {
-          '@type': 'FAQPage',
-          mainEntity: [
-            { '@type': 'Question', name: 'قیمت اجاره آپارتمان در ایروان چقدر است؟', acceptedAnswer: { '@type': 'Answer', text: 'استودیو از ۳۰ دلار، یک‌خوابه از ۴۵ دلار و دوخوابه از ۶۵ دلار در شب شروع می‌شود. برای اقامت ماهانه تخفیف قابل توجهی اعمال می‌شود.' } },
-            { '@type': 'Question', name: 'چطور مطمئن شویم آپارتمان واقعی و بدون کلاهبرداری است؟', acceptedAnswer: { '@type': 'Answer', text: 'قبل از تأیید نهایی رزرو، عکس و ویدیوی واقعی از همان واحد در دسترس برای شما در واتساپ ارسال می‌شود و پرداخت کامل تنها پس از تأیید شما انجام می‌گیرد.' } },
-            { '@type': 'Question', name: 'آیا پرداخت از ایران ممکن است؟', acceptedAnswer: { '@type': 'Answer', text: 'بله، از طریق واریز ریالی، دلار نقد یا رمزارز USDT؛ نیازی به کارت بانکی بین‌المللی نیست.' } },
-          ]
-        } : null,
-      ].filter(Boolean)
-    }
-  });
 
   const [formData, setFormData] = useState({ destination: '', checkIn: '', checkOut: '', adults: 1, childWithBed: 0, childNoBed: 0, bedrooms: '' });
   const [showSuggestions, setShowSuggestions] = useState(false);

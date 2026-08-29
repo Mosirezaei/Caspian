@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
+import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
 function Content() {

@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
-import { useSEO } from '@/hooks/useSEO';
+import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
 function Content() {
@@ -9,15 +8,6 @@ function Content() {
   const isFa = lang === 'fa';
   const isRu = lang === 'ru';
 
-  useSEO({
-    title: isFa ? 'اقامت کاری ارمنستان | ویزای کار و مجوز اشتغال — کاسپین گروپ' :
-           isRu ? 'Рабочий ВНЖ Армении | Трудовая виза — Caspian Group' :
-           'Armenia Work Residency | Work Permit & Employment Visa — Caspian Group',
-    description: isFa ? 'اقامت ارمنستان از طریق کار در شرکت‌های ارمنی. شرایط، مدارک و مراحل اخذ مجوز کار و کارت اقامت کاری. مشاوره رایگان در واتساپ.' :
-                 isRu ? 'ВНЖ Армении через трудоустройство в армянских компаниях. Условия, документы и этапы получения.' :
-                 'Armenia residency through employment in Armenian companies. Requirements, documents, and steps for work permit and residency card.',
-    path: '/residency/work',
-  });
 
   return (
     <ServicePageLayout

@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
+import { useLang } from '@/lib/LanguageContext';
 import GlobalNavbar from '@/components/shared/GlobalNavbar';
 import ContactFooter from '@/components/home/ContactFooter';
 
@@ -462,10 +462,4 @@ ${stCount > 0 ? `🎫 Կանգնած տոմս: ${stCount} ($${(stCount * prices.
   );
 }
 
-export default function Fests() {
-  return (
-    <LanguageProvider>
-      <FestsContent />
-    </LanguageProvider>
-  );
-}
+export default FestsContent;

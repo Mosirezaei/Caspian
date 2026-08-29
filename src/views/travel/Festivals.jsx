@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
-import { useSEO } from '@/hooks/useSEO';
+import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout } from '@/components/shared/ServicePageLayout';
 import { CalendarDays, Flame, Star } from 'lucide-react';
 
@@ -66,18 +65,6 @@ function FestivalsContent() {
   const isFa = lang === 'fa';
   const isRu = lang === 'ru';
 
-  useSEO({
-    title: isFa ? 'فستیوال‌ها و کنسرت‌های ایروان ۲۰۲۶ | رویدادهای ارمنستان — کاسپین گروپ' :
-           isRu ? 'Фестивали и концерты Еревана 2026 | Мероприятия Армении — Caspian Group' :
-           'Yerevan Festivals & Concerts 2026 | Armenia Events — Caspian Group',
-    description: isFa ? 'کامل‌ترین راهنمای فستیوال‌ها و کنسرت‌های ایروان ۲۰۲۶ — رویدادهای سالانه و برنامه‌های ۳ ماه آینده. تور ویژه فستیوال با هماهنگی کاسپین.' :
-                 isRu ? 'Полный гид по фестивалям и концертам Еревана 2026 — ежегодные события и ближайшие 3 месяца. Специальный фестивальный тур от Caspian.' :
-                 'Complete guide to Yerevan festivals and concerts 2026 — annual events and upcoming 3 months. Special festival tour via Caspian Group.',
-    keywords: isFa ? 'فستیوال ایروان، کنسرت ارمنستان، رویدادهای ایروان ۲۰۲۶، فستیوال وردجور، جشنواره انار ارمنستان، کنسرت ابی ایروان، تور فستیوال ارمنستان' :
-              isRu ? 'фестивали Ереван 2026, концерты Армения, Вардавар, фестиваль Арени' :
-              'Yerevan festivals 2026, Armenia concerts, events Yerevan, Vardavar, Areni festival',
-    path: '/travel/festivals',
-  });
 
   const annual = ANNUAL_EVENTS[lang] || ANNUAL_EVENTS.fa;
   const upcoming = UPCOMING[lang] || UPCOMING.fa;

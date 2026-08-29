@@ -1,8 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
-import { useSEO } from '@/hooks/useSEO';
+import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 import { ChevronDown, Star } from 'lucide-react';
 
@@ -270,39 +269,6 @@ function HotelContent() {
   const isFa = lang === 'fa';
   const isRu = lang === 'ru';
 
-  useSEO({
-    title: isFa ? 'رزرو هتل در ایروان ارمنستان | ۳، ۴ و ۵ ستاره با واچر رسمی — کاسپین گروپ' :
-           isRu ? 'Бронирование отелей в Ереване и Армении | Caspian Group' :
-           'Hotel Booking in Yerevan & Armenia | 3, 4 & 5-Star with Official Voucher | Caspian Group',
-    description: isFa ? 'رزرو هتل ایروان با واچر رسمی (قابل ارائه به سفارتخانه)، پرداخت ریالی/USDT و پشتیبانی واتساپ. هتل ۳ تا ۵ ستاره از ۴۵ دلار. در فصل اوج زودتر رزرو کنید.' :
-                 isRu ? 'Бронирование отелей в Ереване с официальным ваучером, оплата в риалах или USDT. Отели 3–5 звёзд от $45.' :
-                 'Book hotels in Yerevan with an official voucher accepted by embassies, flexible payment, WhatsApp support. 3–5 star hotels from $45/night.',
-    keywords: isFa ? 'رزرو هتل ایروان، هتل ارمنستان، هتل ۳ ستاره ایروان، هتل ۵ ستاره ایروان، هتل نزدیک میدان جمهوری، واچر هتل برای ویزا، رزرو هتل پرداخت ریالی ارمنستان، بهترین هتل ایروان' :
-              isRu ? 'бронирование отеля Ереван, ваучер для визы, отели Армении, площадь Республики' :
-              'hotel booking Yerevan, Armenia hotels, official hotel voucher visa, hotels near Republic Square',
-    ogImage: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200&q=80',
-    path: '/travel/hotel',
-    schema: {
-      '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'Service',
-          name: isFa ? 'رزرو هتل در ارمنستان' : 'Hotel Booking in Armenia',
-          description: isFa ? 'رزرو هتل‌های ۳، ۴ و ۵ ستاره در ایروان با واچر رسمی و پرداخت ریالی' : 'Booking 3, 4 & 5-star hotels in Yerevan with official voucher',
-          provider: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-          areaServed: { '@type': 'Country', name: 'Armenia' },
-        },
-        isFa ? {
-          '@type': 'FAQPage',
-          mainEntity: [
-            { '@type': 'Question', name: 'آیا واچر هتل کاسپین برای ویزای شینگن معتبر است؟', acceptedAnswer: { '@type': 'Answer', text: 'بله، واچر صادرشده مهر رسمی دارد، تاریخ دقیق و نام کامل مسافر در آن ذکر است و توسط سفارتخانه‌های شینگن و روسیه پذیرفته می‌شود.' } },
-            { '@type': 'Question', name: 'آیا رزرو هتل ایروان با پرداخت ریالی ممکن است؟', acceptedAnswer: { '@type': 'Answer', text: 'بله، کاسپین واریز ریالی، دلار نقد و USDT را می‌پذیرد. نیازی به کارت بین‌المللی نیست.' } },
-            { '@type': 'Question', name: 'بهترین فصل رزرو هتل در ایروان کدام است؟', acceptedAnswer: { '@type': 'Answer', text: 'بهار و پاییز بهترین ترکیب قیمت و آب‌وهواست. تابستان و نوروز فصل اوج هستند و قیمت‌ها ۲۰ تا ۴۰ درصد بالاتر است.' } },
-          ]
-        } : null,
-      ].filter(Boolean)
-    }
-  });
 
   const note = {
     fa: '* قیمت‌ها میانگین تخمینی برای اتاق دبل در فصل معمولی هستند. در فصل اوج (تابستان، نوروز) ۲۰ تا ۴۰ درصد بیشتر می‌شود.',

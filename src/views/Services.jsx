@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
+import { useLang } from '@/lib/LanguageContext';
 import {
   FileText, Building2, Hotel, MessageCircle, Send, Instagram,
   CreditCard, GraduationCap, Home as HomeIcon, Landmark, ArrowRight, Plane
@@ -158,10 +158,4 @@ function ServicesContent() {
   );
 }
 
-export default function Services() {
-  return (
-    <LanguageProvider>
-      <ServicesContent />
-    </LanguageProvider>
-  );
-}
+export default ServicesContent;

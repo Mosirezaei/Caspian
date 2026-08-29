@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
-import { useSEO } from '@/hooks/useSEO';
+import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
 function Content() {
@@ -9,27 +8,6 @@ function Content() {
   const isFa = lang === 'fa';
   const isRu = lang === 'ru';
 
-  useSEO({
-    title: isFa ? 'پذیرش تحصیلی و اقامت دانشجویی ارمنستان | ثبت‌نام دانشگاه‌های ایروان' :
-           isRu ? 'Поступление и студенческая виза в Армению | Университеты Еревана' :
-           'University Admission & Student Residency in Armenia | Yerevan Universities',
-    description: isFa ? 'پذیرش در دانشگاه‌های معتبر ایروان (پزشکی، دندانپزشکی، مهندسی، MBA)، اخذ ویزای دانشجویی و اقامت تحصیلی با پشتیبانی کامل کاسپین گروپ.' :
-                 isRu ? 'Поступление в ведущие университеты Еревана, оформление студенческой визы и вида на жительство с полной поддержкой Caspian Group.' :
-                 'Admission to top Yerevan universities (medicine, dentistry, engineering, MBA), student visa processing and residency support from Caspian Group.',
-    keywords: isFa ? 'پذیرش دانشجویی ارمنستان، تحصیل در ارمنستان، اقامت تحصیلی ارمنستان، دانشگاه پزشکی ایروان، شهریه دانشگاه ارمنستان، ویزای دانشجویی ارمنستان' :
-              isRu ? 'поступление в Армению, учёба в Армении, студенческая виза Армения, университет Еревана' :
-              'study in Armenia, Armenia student admission, Yerevan university, student visa Armenia, Armenian medical university',
-    ogImage: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&q=80',
-    path: '/services/student-admission',
-    schema: {
-      '@context': 'https://schema.org',
-      '@type': 'Service',
-      name: isFa ? 'پذیرش دانشجویی و اقامت تحصیلی ارمنستان' : 'Armenia Student Admission & Residency',
-      description: isFa ? 'مشاوره انتخاب رشته، پذیرش دانشگاه، ویزای دانشجویی و اقامت تحصیلی در ارمنستان' : 'University consulting, admission processing, student visa and residency in Armenia',
-      provider: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-      areaServed: 'Iran',
-    }
-  });
 
   return (
     <ServicePageLayout titleFa="پذیرش دانشجویی" titleEn="Student Admission" titleRu="Поступление в вузы" serviceType="student-visa"

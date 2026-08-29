@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
-import { useSEO } from '@/hooks/useSEO';
+import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
 function Content() {
@@ -9,15 +8,6 @@ function Content() {
   const isFa = lang === 'fa';
   const isRu = lang === 'ru';
 
-  useSEO({
-    title: isFa ? 'اقامت تحصیلی ارمنستان | پذیرش دانشگاه + کارت اقامت دانشجویی — کاسپین گروپ' :
-           isRu ? 'Учебный ВНЖ Армении | Поступление в вуз + студенческий ВНЖ — Caspian Group' :
-           'Armenia Student Residency | University Admission + Student Residency Card — Caspian Group',
-    description: isFa ? 'اقامت تحصیلی ارمنستان از طریق پذیرش در دانشگاه‌های معتبر. شهریه از ۱۵۰۰ دلار، مدارک لازم، دانشگاه‌های توصیه‌شده. مشاوره رایگان.' :
-                 isRu ? 'Учебный ВНЖ Армении через поступление в вузы. Плата от $1500, необходимые документы, рекомендованные вузы.' :
-                 'Armenia student residency via university admission. Tuition from $1,500, required documents, recommended universities. Free consultation.',
-    path: '/residency/student',
-  });
 
   return (
     <ServicePageLayout

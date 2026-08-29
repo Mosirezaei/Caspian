@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
+import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
 function Content() {
@@ -15,6 +15,9 @@ function Content() {
       {lang === 'fa' && <>
         <InfoBlock title="آمریکای جنوبی — مقصدی متفاوت برای ایرانیان">
           <p>کشورهای آمریکای جنوبی از جمله آرژانتین، برزیل، شیلی، اروگوئه و بولیوی برای اتباع ایرانی نسبتاً قابل‌دسترس هستند. برخی از این کشورها بدون نیاز به ویزا و برخی دیگر با ویزای ساده‌ای که از طریق سفارت در ارمنستان قابل دریافت است، به ایرانیان خدمت می‌دهند.</p>
+        </InfoBlock>
+        <InfoBlock title="چرا ویزای آمریکای جنوبی از ایروان؟">
+          <p>برخی سفارتخانه‌های کشورهای آمریکای جنوبی مثل برزیل و آرژانتین در ایروان نمایندگی دارند. کاسپین گروپ مدارک و وقت سفارت را هماهنگ می‌کند.</p>
         </InfoBlock>
         <InfoBlock title="کشورهایی که کاسپین تجربه دارد">
           <CheckList items={[

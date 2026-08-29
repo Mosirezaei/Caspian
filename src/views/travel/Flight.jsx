@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
+import { useLang } from '@/lib/LanguageContext';
 import GlobalNavbar from '@/components/shared/GlobalNavbar';
 import ContactFooter from '@/components/home/ContactFooter';
 
@@ -197,17 +197,33 @@ function FlightContent() {
         </div>
       </div>
 
-      <div className="mt-16 bg-[#0a0a0a] border-t border-white/10">
+      <div className="px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full pb-6">
+        <div className="bg-[#121212] border border-white/10 rounded-2xl p-6 shadow-xl space-y-4">
+          <h2 className="text-xl font-bold text-amber-400">پروازهای مستقیم از ایروان به ایران</h2>
+          <ul className="space-y-1.5 text-sm text-gray-300">
+            <li>✈️ <strong>تهران</strong> (IKA/THR) — روزانه، ماهان ایر، ایران ایر، Flyone</li>
+            <li>✈️ <strong>مشهد</strong> (MHD) — چند بار در هفته</li>
+            <li>✈️ <strong>شیراز</strong> (SYZ) — چند بار در هفته</li>
+            <li>✈️ <strong>اصفهان</strong> (IFN) — برخی روزها</li>
+          </ul>
+          <h2 className="text-xl font-bold text-amber-400">پروازهای بین‌المللی از ایروان</h2>
+          <ul className="space-y-1.5 text-sm text-gray-300">
+            <li>✈️ مسکو (SVO/DME) — روزانه | دوبی (DXB) — روزانه | استانبول (IST) — روزانه</li>
+            <li>✈️ پاریس، رم، آمستردام، فرانکفورت — چند بار در هفته</li>
+          </ul>
+          <h2 className="text-xl font-bold text-amber-400">نکات رزرو</h2>
+          <ul className="space-y-1.5 text-sm text-gray-300">
+            <li>✅ بلیط ایروان-تهران رفت‌وبرگشت از ۱۵۰ دلار</li>
+            <li>✅ پرداخت ریالی از طریق کاسپین امکان‌پذیر است</li>
+            <li>⚠️ فصل اوج (تابستان-نوروز): قیمت ۳۰-۵۰٪ بالاتر — زود رزرو کنید</li>
+          </ul>
+        </div>
+      </div>
+            <div className="mt-16 bg-[#0a0a0a] border-t border-white/10">
         <ContactFooter />
       </div>
     </div>
   );
 }
 
-export default function Flight() {
-  return (
-    <LanguageProvider>
-      <FlightContent />
-    </LanguageProvider>
-  );
-}
+export default FlightContent;
