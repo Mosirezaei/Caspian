@@ -1,9 +1,9 @@
 {
+  "framework": "nextjs",
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com https://embed.tawk.to https://*.tawk.to; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.tawk.to; img-src 'self' data: https: https://*.tawk.to; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://*.supabase.co https://*.vercel.app https://*.tawk.to wss://*.tawk.to; frame-src 'self' https://www.google.com https://*.tawk.to;" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "DENY" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
@@ -13,26 +13,10 @@
     }
   ],
   "redirects": [
-    { "source": "/services/visa-schengen", "destination": "/visa/schengen", "permanent": true },
-    { "source": "/services/visa-romania", "destination": "/visa/romania", "permanent": true },
-    { "source": "/services/visa-russia", "destination": "/visa/russia", "permanent": true },
-    { "source": "/services/visa-south-america", "destination": "/visa/south-america", "permanent": true },
-    { "source": "/services/embassy-appointment", "destination": "/visa/embassy-usa", "permanent": true },
-    { "source": "/services/student-visa", "destination": "/student-visa", "permanent": true },
-    { "source": "/services/student-visa/armenia", "destination": "/student-visa/armenia", "permanent": true },
-    { "source": "/services/student-visa/russia", "destination": "/student-visa/russia", "permanent": true },
-    { "source": "/services/student-visa/turkey", "destination": "/student-visa/turkey", "permanent": true },
-    { "source": "/services/student-visa/schengen", "destination": "/student-visa/schengen", "permanent": true },
-    { "source": "/services/student-visa/romania", "destination": "/student-visa/romania", "permanent": true },
-    { "source": "/services/residency", "destination": "/residency/armenia", "permanent": true },
-    { "source": "/services/residency-turkey", "destination": "/residency/turkey", "permanent": true },
-    { "source": "/services/residency-oman", "destination": "/residency/oman", "permanent": true },
-    { "source": "/services/residency-uae", "destination": "/residency/uae", "permanent": true },
-    { "source": "/services/hotel", "destination": "/travel/hotel", "permanent": true },
-    { "source": "/services/exchange", "destination": "/travel/exchange", "permanent": true },
-    { "source": "/vip", "destination": "/travel/vip", "permanent": true }
-  ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/services/visa-schengen",   "destination": "/visa/schengen",      "permanent": true },
+    { "source": "/services/visa-russia",     "destination": "/visa/russia",         "permanent": true },
+    { "source": "/services/residency",       "destination": "/residency/armenia",   "permanent": true },
+    { "source": "/services/hotel",           "destination": "/travel/hotel",        "permanent": true },
+    { "source": "/vip",                      "destination": "/travel/vip",          "permanent": true }
   ]
 }
