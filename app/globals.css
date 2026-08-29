@@ -1,12 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --font-vazir: 'Vazirmatn', sans-serif;
+    /* --font-vazir is now injected by next/font (see app/layout.jsx) */
 
     --background: 0 0% 4%;
     --foreground: 0 0% 98%;

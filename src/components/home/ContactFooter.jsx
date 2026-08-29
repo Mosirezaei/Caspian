@@ -15,13 +15,13 @@ export default function ContactFooter() {
           <div>
             <div className="mb-4 flex items-center gap-3">
               <img src="/images/contact.webp"
-                alt="Caspian Business Group" className="h-12 w-auto object-contain" loading="lazy" />
+                alt="Caspian Business Group" width="48" height="48" className="h-12 w-auto object-contain" loading="lazy" />
               <span className="text-xl font-black gold-gradient-text leading-tight">کاسپین گروه</span>
             </div>
             <p className="text-sm text-foreground/50 leading-relaxed">{t.footer.tagline}</p>
           </div>
           <div>
-            <h4 className="font-bold text-foreground mb-4">{t.footer.contactTitle}</h4>
+            <h3 className="font-bold text-foreground mb-4">{t.footer.contactTitle}</h3>
             <div className="space-y-3">
               <a href="tel:0037433149327" className="flex items-center gap-3 text-sm text-foreground/60 hover:text-primary transition-colors">
                 <Phone className="w-4 h-4 text-primary flex-shrink-0" />

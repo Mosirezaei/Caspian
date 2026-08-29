@@ -14,9 +14,6 @@ export default function HeroSection() {
     <section className="relative min-h-[70vh] sm:h-screen sm:max-h-[960px] flex flex-col items-center justify-center px-4 overflow-hidden w-full">
       {/* Background */}
       <div className="absolute inset-0 -z-10">
-        <img src="https://images.unsplash.com/photo-1609669712881-d9bc36df5ab3?w=1400&q=80"
-          alt="" role="presentation" width="1400" height="900"
-          className="w-full h-full object-cover opacity-15" fetchPriority="high" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-background/70 to-background" />
         {/* Gold radial glow center */}
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 40%, rgba(212,168,68,0.06) 0%, transparent 70%)' }} />
@@ -27,9 +24,8 @@ export default function HeroSection() {
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
 
       <div className="max-w-4xl mx-auto text-center z-10 pt-16 sm:pt-28">
-        {/* Logo */}
-        <motion.div initial={{ opacity: 0, scale: 0.7 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: 'easeOut' }}
-          className="mb-4 sm:mb-6">
+        {/* Logo — no entrance animation: this is the LCP element, animating it delays when the browser reports it as painted */}
+        <div className="mb-4 sm:mb-6">
           <div className="relative inline-block">
             <div className="absolute inset-0 rounded-full blur-2xl bg-primary/20 scale-150" />
             <img
@@ -40,7 +36,7 @@ export default function HeroSection() {
             fetchPriority="high"
           />
           </div>
-        </motion.div>
+        </div>
 
         {/* Badge */}
         <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}>

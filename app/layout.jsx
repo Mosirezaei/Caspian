@@ -1,5 +1,16 @@
 import './globals.css';
+import { Vazirmatn } from 'next/font/google';
 import Providers from './providers';
+
+// Self-hosted via next/font: removes the render-blocking Google Fonts
+// <link> round trip (HTML -> fonts.googleapis.com CSS -> fonts.gstatic.com woff2)
+// that was adding ~500-1000ms to the critical path.
+const vazirmatn = Vazirmatn({
+  subsets: ['arabic', 'latin'],
+  weight: ['400', '600', '700', '900'],
+  variable: '--font-vazir',
+  display: 'swap',
+});
 
 export const viewport = {
   width: 'device-width',
@@ -31,11 +42,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fa" dir="rtl">
+    <html lang="fa" dir="rtl" className={vazirmatn.variable}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;900&display=swap" />
         <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
         <link rel="apple-touch-icon" href="/images/favicon.png" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({

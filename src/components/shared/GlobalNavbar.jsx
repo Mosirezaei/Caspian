@@ -25,65 +25,33 @@ import { useLang } from '@/lib/LanguageContext';
 
 
 function YerevanClock() {
-
-
-
-  const [now, setNow] = useState(new Date());
-
-
+  // Start as null (not `new Date()`) so server and client render identical
+  // empty markup on the first pass. The real value is set client-side only,
+  // inside useEffect (after hydration) — this avoids the server/client text
+  // mismatch (React error #418) caused by `new Date()` differing by a few ms
+  // between server render time and browser hydration time.
+  const [now, setNow] = useState(null);
 
   useEffect(() => {
-
-
-
+    setNow(new Date());
     const timer = setInterval(() => setNow(new Date()), 1000);
-
-
-
     return () => clearInterval(timer);
-
-
-
   }, []);
 
-
+  if (!now) {
+    return <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-foreground/40 font-vazir tabular-nums" />;
+  }
 
   const timeStr = now.toLocaleTimeString('fa-IR', { timeZone: 'Asia/Yerevan', hour: '2-digit', minute: '2-digit' });
-
-
-
   const dateStr = now.toLocaleDateString('fa-IR', { timeZone: 'Asia/Yerevan', month: 'long', day: 'numeric' });
 
-
-
   return (
-
-
-
     <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-foreground/40 font-vazir tabular-nums">
-
-
-
       <span>{dateStr}</span>
-
-
-
       <span className="opacity-40">|</span>
-
-
-
       <span dir="ltr">{timeStr}</span>
-
-
-
     </span>
-
-
-
   );
-
-
-
 }
 
 
@@ -833,7 +801,7 @@ export default function GlobalNavbar() {
 
 
 
-      <nav className="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/10 overflow-x-hidden" aria-label="منوی اصلی">
+      <nav className="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/10" aria-label="منوی اصلی">
 
 
 
