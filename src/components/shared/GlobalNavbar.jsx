@@ -833,11 +833,11 @@ export default function GlobalNavbar() {
 
 
 
-      <nav className="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/10" aria-label="منوی اصلی">
+      <nav className="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/10 overflow-x-hidden" aria-label="منوی اصلی">
 
 
 
-        <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between" dir="ltr">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 h-14 flex items-center justify-between w-full min-w-0" dir="ltr">
 
 
 
@@ -885,7 +885,7 @@ export default function GlobalNavbar() {
 
 
 
-          <div className="hidden md:flex items-center gap-0.5 flex-1 justify-center">
+          <div className="hidden md:flex items-center gap-0.5 flex-1 justify-center min-w-0 overflow-hidden">
 
 
 

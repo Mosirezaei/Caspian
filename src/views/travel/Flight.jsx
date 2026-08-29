@@ -117,7 +117,7 @@ function FlightContent() {
   )}`;
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white flex flex-col justify-between font-vazirmatn" dir={lang === 'fa' ? 'rtl' : 'ltr'}>
+    <div className="min-h-screen bg-[#0a0a0a] text-white flex flex-col justify-between font-vazirmatn">
 
       <div>
         <GlobalNavbar />

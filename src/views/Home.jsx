@@ -14,7 +14,7 @@ import WhatsAppButton from '@/components/home/WhatsAppButton';
 function HomeContent() {
   const { t } = useLang();
   return (
-    <div dir={t.dir} lang={t.lang} className="min-h-screen bg-background font-vazir">
+    <div className="min-h-screen bg-background font-vazir">
       
       {/* ۲. اضافه کردن تگ‌های سئو برای صفحه اصلی */}
 

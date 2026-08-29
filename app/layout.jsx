@@ -1,6 +1,12 @@
 import './globals.css';
 import Providers from './providers';
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata = {
   metadataBase: new URL('https://caspian.am'),
   title: {
@@ -45,7 +51,7 @@ export default function RootLayout({ children }) {
         })}} />
         <style>{`html,body{background-color:#0a0a0a;color:#fafafa;}#__next{min-height:100vh;background-color:#0a0a0a;}`}</style>
       </head>
-      <body style={{ backgroundColor: '#0a0a0a', margin: 0 }}>
+      <body style={{ backgroundColor: '#0a0a0a', margin: 0, overflowX: 'hidden', maxWidth: '100vw' }}>
         <Providers>{children}</Providers>
       </body>
     </html>
