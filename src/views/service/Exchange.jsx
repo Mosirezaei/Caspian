@@ -1,178 +1,112 @@
 'use client';
-import React, { useState, useEffect } from 'react';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
-import { useSEO } from '@/hooks/useSEO';
-import { ServicePageLayout } from '@/components/shared/ServicePageLayout';
-import { ArrowLeftRight, TrendingUp, Loader2 } from 'lucide-react';
+import React from 'react';
+import { useLang } from '@/lib/LanguageContext';
+import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
-const CURRENCIES = ['USD', 'EUR', 'RUB', 'TRY', 'AED', 'AMD', 'GBP', 'CAD', 'CHF', 'JPY', 'GEL'];
 const API_KEY = process.env.NEXT_PUBLIC_EXCHANGE_RATE_API_KEY;
 
-function CurrencyConverter() {
-  const langContext = useLang();
-  const lang = langContext?.lang || 'fa';
-
-  const [amount, setAmount] = useState('100');
-  const [from, setFrom] = useState('USD');
-  const [to, setTo] = useState('AMD');
-  const [result, setResult] = useState('');
-  const [rates, setRates] = useState(null);
-  const [rateTime, setRateTime] = useState(null);
-  const [ratesLoading, setRatesLoading] = useState(true);
-
-  const labels = {
-    fa: { from: 'از', to: 'به', amount: 'مقدار', note: 'نرخ‌های صرافی کاسپین', updated: 'آخرین به‌روزرسانی' },
-    en: { from: 'From', to: 'To', amount: 'Amount', note: 'Caspian Exchange Rates', updated: 'Last updated' },
-    ru: { from: 'Из', to: 'В', amount: 'Сумма', note: 'Курсы валют Caspian', updated: 'Обновлено' },
-  };
-  const lbl = labels[lang] || labels.fa;
-
-  useEffect(() => {
-    if (!API_KEY) {
-      setRatesLoading(false);
-      return;
-    }
-    let isMounted = true;
-    setRatesLoading(true);
-    
-    fetch(`https://v6.exchangerate-api.com/v6/${API_KEY}/latest/USD`)
-      .then(r => r.json())
-      .then(data => {
-        if (isMounted && data && data.result === 'success') {
-          let adjustedRates = { ...data.conversion_rates };
-          // اعمال اختلاف نرخ مورد نظر شما برای صرافی (در صورت نیاز)
-          setRates(adjustedRates);
-          setRateTime(data.time_last_update_utc);
-        }
-      })
-      .catch(() => {})
-      .finally(() => {
-        if (isMounted) setRatesLoading(false);
-      });
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
-  useEffect(() => {
-    if (rates && rates[from] && rates[to] && amount && !isNaN(Number(amount))) {
-      const usd = parseFloat(amount) / rates[from];
-      const res = (usd * rates[to]).toFixed(4);
-      setResult(res);
-    } else {
-      setResult('');
-    }
-  }, [amount, from, to, rates]);
-
-  const swap = () => { 
-    setFrom(to); 
-    setTo(from); 
-  };
-
-  return (
-    <div className="glass-panel rounded-2xl p-6 mb-6 bg-secondary/20 border border-border">
-      <div className="flex items-center gap-2 mb-4">
-        <TrendingUp className="w-5 h-5 text-primary" />
-        <h3 className="font-bold text-foreground">
-          {lang === 'fa' ? 'ماشین‌حساب نرخ صرافی کاسپین' : 'Caspian Exchange Calculator'}
-        </h3>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-        <div>
-          <label className="text-xs text-muted-foreground mb-1 block">{lbl.amount}</label>
-          <input
-            type="number"
-            value={amount}
-            onChange={e => setAmount(e.target.value)}
-            className="w-full bg-input border border-border rounded-xl px-4 py-3 text-foreground text-sm outline-none focus:border-primary"
-          />
-        </div>
-        <div>
-          <label className="text-xs text-muted-foreground mb-1 block">{lbl.from}</label>
-          <select 
-            value={from} 
-            onChange={e => setFrom(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-xl px-4 py-3 text-foreground text-sm outline-none focus:border-primary cursor-pointer"
-          >
-            {CURRENCIES.map(c => <option key={c} value={c} className="bg-background text-foreground">{c}</option>)}
-          </select>
-        </div>
-      </div>
-
-      <div className="flex items-center gap-3 mb-6">
-        <div className="flex-1">
-          <label className="text-xs text-muted-foreground mb-1 block">{lbl.to}</label>
-          <select 
-            value={to} 
-            onChange={e => setTo(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-xl px-4 py-3 text-foreground text-sm outline-none focus:border-primary cursor-pointer"
-          >
-            {CURRENCIES.map(c => <option key={c} value={c} className="bg-background text-foreground">{c}</option>)}
-          </select>
-        </div>
-        <button 
-          onClick={swap} 
-          type="button"
-          className="mt-6 p-3 rounded-xl border border-border hover:border-primary text-muted-foreground hover:text-primary transition-colors cursor-pointer bg-secondary/50 flex items-center justify-center"
-        >
-          <ArrowLeftRight className="w-4 h-4" />
-        </button>
-      </div>
-
-      {ratesLoading ? (
-        <div className="flex items-center justify-center py-4 text-muted-foreground text-sm gap-2 bg-secondary/30 rounded-xl mb-4">
-          <Loader2 className="w-4 h-4 animate-spin text-primary" />
-          {lang === 'fa' ? 'در حال دریافت نرخ‌های به‌روز صرافی...' : 'Loading live rates...'}
-        </div>
-      ) : (
-        <div className="mb-4 p-4 rounded-xl bg-primary/10 border border-primary/30 text-center">
-          <p className="text-2xl font-black text-primary">
-            {result ? `${parseFloat(result).toLocaleString(undefined, { maximumFractionDigits: 2 })} ${to}` : '---'}
-          </p>
-          <p className="text-xs text-muted-foreground mt-1">
-            {amount || 0} {from} ≈ {result ? parseFloat(result).toLocaleString(undefined, { maximumFractionDigits: 2 }) : '0'} {to}
-          </p>
-        </div>
-      )}
-
-      <div className="flex items-center justify-between mt-4 pt-3 border-t border-border/50">
-        <p className="text-xs text-muted-foreground">{lbl.note}</p>
-        {rateTime && <p className="text-xs text-muted-foreground">{lbl.updated}: {new Date(rateTime).toLocaleDateString()}</p>}
-      </div>
-    </div>
-  );
-}
-
 function Content() {
-  const langContext = useLang();
-  const lang = langContext?.lang || 'fa';
-
-  useSEO({
-    title: lang === 'fa' ? 'صرافی و تبدیل ارز | کاسپین گروپ' : 'Currency Exchange | Caspian Group',
-    description: 'Caspian Group currency exchange — best rates in Yerevan.',
-  });
+  const { lang } = useLang();
+  const isFa = lang === 'fa';
+  const isRu = lang === 'ru';
 
   return (
     <ServicePageLayout
-      titleFa="صرافی و تبدیل ارز"
-      titleEn="Currency Exchange"
-      titleRu="Обмен валюты"
-      subtitleFa="بهترین نرخ‌های ارز در ایروان — دلار، یورو، روبل، درهم و بیشتر"
-      subtitleEn="Best exchange rates in Yerevan"
-      subtitleRu="Лучшие курсы обмена в Ереване"
-      heroImage="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?w=1200&q=80"
+      titleFa="صرافی و رمزارز در ایروان" titleEn="Currency & Crypto Exchange in Yerevan" titleRu="Обмен валюты и криптовалюты в Ереване"
+      subtitleFa="تبدیل ریال، دلار، یورو، درام و USDT — بدون واسطه، شفاف و امن"
+      subtitleEn="Rial, USD, EUR, AMD & USDT exchange — direct, transparent, secure"
+      subtitleRu="Риал, USD, EUR, AMD и USDT — прямо, прозрачно, безопасно"
+      heroImage="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=75"
       serviceType="exchange">
-      <CurrencyConverter />
+
+      {isFa && <>
+        <InfoBlock title="چرا تبدیل ارز در ایروان؟">
+          <p>ایروان به یکی از مراکز اصلی تبادل مالی ایرانیان در خارج از کشور تبدیل شده است. بدون محدودیت‌های بانکی داخل ایران، بدون نیاز به حساب بانکی خارجی، و با نرخ‌هایی که معمولاً از حواله‌های داخل ایران مناسب‌تر هستند — صرافی‌های ایرانی در ایروان راه‌حلی عملی برای انتقال پول و تبدیل ارز فراهم می‌کنند.</p>
+        </InfoBlock>
+
+        <InfoBlock title="خدمات صرافی کاسپین در ایروان">
+          <CheckList items={[
+            'تبدیل ریال ایران به درام ارمنستان (AMD) — بدون نیاز به خروج نقد از ایران',
+            'خرید و فروش دلار آمریکا (USD) و یورو (EUR) در ایروان',
+            'خرید و فروش رمزارز USDT (TRC-20 و ERC-20)',
+            'انتقال وجه از ایران به ارمنستان و بالعکس (حواله)',
+            'تامین هزینه‌های زندگی، اجاره، شهریه دانشگاه و ثبت شرکت از طریق کاسپین',
+            'نرخ اعلام‌شده پیش از انجام معامله — بدون کارمزد مخفی',
+          ]} />
+        </InfoBlock>
+
+        <InfoBlock title="روش‌های انتقال پول از ایران به ارمنستان">
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">حواله ریالی (ساده‌ترین روش)</h3>
+          <p className="mb-3">مبلغ را به حساب داخل ایران واریز می‌کنید و معادل آن به درام یا دلار در ایروان دریافت می‌شود. این روش نیاز به کارت بانکی بین‌المللی ندارد و برای اکثر ایرانیان قابل استفاده است. زمان انتقال معمولاً همان روز یا روز کاری بعد است.</p>
+
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">رمزارز USDT</h3>
+          <p className="mb-3">برای کسانی که کیف پول رمزارز دارند، ارسال USDT به آدرس کاسپین و دریافت معادل آن به درام یا دلار نقد در ایروان امکان‌پذیر است. این روش سریع‌ترین و بی‌واسطه‌ترین گزینه است.</p>
+
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">دلار نقد</h3>
+          <p>اگر دلار نقد دارید، می‌توانید آن را در ایروان به درام، ریال یا سایر ارزها تبدیل کنید. نرخ تبدیل نقد معمولاً از حواله بهتر است.</p>
+        </InfoBlock>
+
+        <InfoBlock title="درام ارمنستان — آنچه باید بدانید">
+          <p className="mb-3">واحد پول رسمی ارمنستان «درام» (AMD) است. زندگی روزمره در ایروان بدون درام نقد تقریباً غیرممکن است — از سوپرمارکت و تاکسی تا بازار سنتی. قیمت‌ها معمولاً به درام اعلام می‌شوند.</p>
+          <CheckList items={[
+            'هزینه اتوبوس شهری: ۱۵۰ درام (~۰.۳۸ دلار)',
+            'هزینه مترو: ۱۵۰ درام',
+            'تاکسی از فرودگاه تا مرکز شهر: ۵٬۰۰۰ تا ۷٬۰۰۰ درام (~۱۳ تا ۱۸ دلار)',
+            'نهار متوسط در رستوران: ۳٬۰۰۰ تا ۸٬۰۰۰ درام',
+            'ATM ها در سراسر ایروان در دسترس هستند ولی کارت ایرانی نمی‌پذیرند',
+          ]} />
+        </InfoBlock>
+
+        <InfoBlock title="چرا از کاسپین؟">
+          <CheckList items={[
+            'نرخ روز پیش از معامله اعلام می‌شود — بدون کارمزد مخفی',
+            'امکان تامین درام نقد، دلار و یورو در ایروان',
+            'تجربه چندساله در خدمات مالی برای ایرانیان در ارمنستان',
+            'پشتیبانی واتساپ فارسی ۷ روز هفته',
+            'برای مبالغ بالا، امکان مذاکره نرخ ویژه وجود دارد',
+          ]} />
+        </InfoBlock>
+      </>}
+
+      {lang === 'en' && <>
+        <InfoBlock title="Currency Exchange & Money Transfer in Yerevan">
+          <p>Yerevan has become a major financial hub for Iranians abroad. No international banking restrictions, no need for foreign cards — Iranian-friendly exchange offices in Yerevan offer practical solutions for money transfers and currency exchange at competitive rates.</p>
+        </InfoBlock>
+        <InfoBlock title="Caspian Exchange Services in Yerevan">
+          <CheckList items={[
+            'Iranian Rial → Armenian Dram (AMD) — no need to carry cash out of Iran',
+            'Buy/sell USD and EUR in Yerevan',
+            'Buy/sell USDT (TRC-20 and ERC-20)',
+            'Money transfer from Iran to Armenia and vice versa',
+            'Rate quoted before transaction — no hidden fees',
+          ]} />
+        </InfoBlock>
+        <InfoBlock title="Armenian Dram — What You Need to Know">
+          <CheckList items={[
+            'City bus/metro: 150 AMD (~$0.38)',
+            'Airport taxi to city center: 5,000–7,000 AMD (~$13–18)',
+            'Average restaurant lunch: 3,000–8,000 AMD',
+            'ATMs available everywhere but do not accept Iranian cards',
+          ]} />
+        </InfoBlock>
+      </>}
+
+      {isRu && <>
+        <InfoBlock title="Обмен валюты и переводы в Ереване">
+          <p>Ереван стал крупным финансовым центром для иранцев. Без банковских ограничений, без международных карт — иранские обменники в Ереване предлагают практичные решения для переводов и обмена валюты.</p>
+        </InfoBlock>
+        <InfoBlock title="Услуги Caspian по обмену валюты">
+          <CheckList items={[
+            'Иранский риал → армянский драм (AMD)',
+            'Покупка/продажа USD и EUR в Ереване',
+            'Покупка/продажа USDT (TRC-20 и ERC-20)',
+            'Денежные переводы Иран ↔ Армения',
+            'Курс объявляется до сделки — без скрытых комиссий',
+          ]} />
+        </InfoBlock>
+      </>}
     </ServicePageLayout>
   );
 }
 
-export default function Exchange() {
-  return (
-    <LanguageProvider>
-      <Content />
-    </LanguageProvider>
-  );
-}
+export default Content;

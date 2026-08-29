@@ -189,6 +189,42 @@ function TourContent() {
         <CheckList items={t.includes} />
       </InfoBlock>
 
+      {lang === 'fa' && <>
+        <InfoBlock title="بهترین جاذبه‌های ارمنستان که نباید از دست بدهید">
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">دریاچه سوان (Lake Sevan)</h3>
+          <p className="mb-3">یکی از بزرگ‌ترین دریاچه‌های آب شیرین دنیا در ارتفاع ۱۹۰۰ متری. کلیساهای تاریخی سواناوانک روی شبه‌جزیره، ماهی ایشخان (قزل‌آلای بومی) و هوای خنک تابستانی از دلایل اصلی بازدید هستند. حدود ۶۰ کیلومتر از ایروان.</p>
+
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">قرناهبد (Garni) و معبد گغارد</h3>
+          <p className="mb-3">معبد یونانی-رومی قرناهبد تنها ساختمان دوره پیش از مسیحیت باقی‌مانده در ارمنستان است. معبد صخره‌ای گغارد در دل کوه کنده شده و در فهرست میراث یونسکو قرار دارد. ۳۰ کیلومتر از ایروان.</p>
+
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">نوراوانک و کانیون آهنجا</h3>
+          <p className="mb-3">صومعه قرن سیزدهمی نوراوانک در دل کانیون آهنجا با دیواره‌های صخره‌ای نارنجی. یکی از فتوژنیک‌ترین مناطق ارمنستان. ۱۲۰ کیلومتر از ایروان.</p>
+
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">خور ویراپ (Khor Virap)</h3>
+          <p>صومعه تاریخی با چشم‌انداز مستقیم به کوه آرارات — نمادین‌ترین تصویر ارمنستان. محل زندانی شدن گریگور روشن‌بخش در قرن چهارم. ۴۵ کیلومتر از ایروان.</p>
+        </InfoBlock>
+
+        <InfoBlock title="بهترین فصل برای تور ارمنستان">
+          <CheckList items={[
+            'بهار (اردیبهشت-خرداد) — گل‌های وحشی، دریاچه سوان آبی-سبز، قیمت متعادل. بهترین انتخاب',
+            'تابستان (تیر-شهریور) — گرمای ایروان ولی آب‌وهوای کوهستان خنک. فصل اوج — هتل‌ها زودتر رزرو می‌شوند',
+            'پاییز (مهر-آبان) — رنگ‌آمیزی طبیعی جنگل‌ها، جشنواره انار آرنی. توصیه‌شده',
+            'زمستان (آذر-بهمن) — اسکی در تسخکاذور، ایروان آرام و ارزان. مناسب کسانی که شلوغی دوست ندارند',
+          ]} />
+        </InfoBlock>
+      </>}
+
+      {lang === 'en' && <>
+        <InfoBlock title="Top Armenia Attractions">
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">Lake Sevan</h3>
+          <p className="mb-2">One of the world's largest high-altitude lakes at 1,900m. Sevanavank monastery, fresh trout, and cool summer air. 60km from Yerevan.</p>
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">Garni Temple & Geghard Monastery</h3>
+          <p className="mb-2">Armenia's only pre-Christian Greco-Roman temple, plus the UNESCO-listed rock-hewn Geghard Monastery. 30km from Yerevan.</p>
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">Noravank & Areni Canyon</h3>
+          <p>13th-century monastery in a stunning orange-walled canyon. One of Armenia's most photogenic spots. 120km from Yerevan.</p>
+        </InfoBlock>
+      </>}
+
       <a href="https://wa.me/37433149327?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D9%85%DB%8C%E2%80%8C%D8%AE%D9%88%D8%A7%D9%85%20%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87%20%D8%AA%D9%88%D8%B1%20%D8%A7%D8%B1%D9%85%D9%86%D8%B3%D8%AA%D8%A7%D9%86%20%D9%85%D8%B4%D8%A7%D9%88%D8%B1%D9%87%20%D8%A8%DA%AF%DB%8C%D8%B1%D9%85"
         target="_blank" rel="noopener noreferrer"
         className="flex items-center justify-center gap-3 w-full py-4 px-6 rounded-2xl bg-primary text-black font-black hover:bg-yellow-500 transition-all duration-300 shadow-lg mt-4">

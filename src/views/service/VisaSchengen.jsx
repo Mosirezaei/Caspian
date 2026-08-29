@@ -1,36 +1,11 @@
 'use client';
 import React from 'react';
-import { LanguageProvider, useLang } from '@/lib/LanguageContext';
-import { useSEO } from '@/hooks/useSEO';
+import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
 function Content() {
   const { lang } = useLang();
   
-  useSEO({
-    title: lang === 'fa' ? 'ویزای شینگن | کاسپین گروپ ارمنستان' : 
-           lang === 'ru' ? 'Шенгенская виза | Caspian Group' : 
-           'Schengen Visa | Caspian Group',
-    description: lang === 'fa' ? 'اخذ ویزای شینگن برای ایرانیان - دسترسی به ۲۶ کشور اروپایی. بیش از ۱۵ سال تجربه و بالاترین نرخ موفقیت.' :
-                 lang === 'ru' ? 'Получение Шенгенской визы для граждан Ирана - доступ к 26 европейским странам. Более 15 лет опыта.' :
-                 'Get Schengen Visa for Iranians - Access to 26 European countries. Over 15 years of experience, highest success rate.',
-    keywords: lang === 'fa' ? 'ویزای شینگن، ویزای اروپا، اخذ ویزا ارمنستان، کاسپین' :
-              lang === 'ru' ? 'Шенгенская виза, виза в Европу, visa Schengen' :
-              'Schengen visa, Europe visa, Caspian Group',
-    ogImage: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1200&q=80',
-    schema: {
-      '@context': 'https://schema.org',
-      '@type': 'Service',
-      name: lang === 'fa' ? 'ویزای شینگن' : 'Schengen Visa',
-      description: lang === 'fa' ? 'خدمات اخذ ویزای شینگن برای ایرانیان' : 'Schengen Visa Services',
-      provider: {
-        '@type': 'Organization',
-        name: 'Caspian Group',
-        url: 'https://caspian.am'
-      },
-      areaServed: 'Iran'
-    }
-  });
   
   return (
     <ServicePageLayout titleFa="ویزای شینگن" titleEn="Schengen Visa" titleRu="Шенгенская виза"
@@ -79,6 +54,25 @@ function Content() {
         </InfoBlock>
         <InfoBlock title="مدت پردازش">
           <p>معمولاً ۱۰ تا ۱۵ روز کاری. در موارد اورژانسی امکان پیگیری سریع‌تر وجود دارد. کاسپین گروه از زمان تکمیل مدارک تا دریافت پاسپورت شما را همراهی می‌کند.</p>
+        </InfoBlock>
+        <InfoBlock title="چرا اخذ ویزای شینگن از ایروان؟">
+          <p className="mb-3">بسیاری از ایرانیان برای اخذ ویزای شینگن به ایروان می‌آیند — و دلایل خوبی هم دارند:</p>
+          <CheckList items={[
+            'سفارتخانه‌های اروپایی در ایروان معمولاً وقت سفارت سریع‌تری نسبت به دفاتر ایران دارند',
+            'نرخ رد درخواست از ایروان در مقایسه با ایران پایین‌تر است',
+            'برخی سفارتخانه‌ها مثل آلمان، فرانسه و ایتالیا در ایروان نمایندگی فعال دارند',
+            'می‌توانید همزمان با پیگیری ویزا، از ایروان دیدن کرده یا کارهای دیگر (اقامت، ثبت شرکت) را انجام دهید',
+            'رزرو هتل و واچر برای پرونده ویزا از طریق کاسپین فراهم می‌شود',
+          ]} />
+        </InfoBlock>
+        <InfoBlock title="اشتباهات رایج در پرونده ویزای شینگن">
+          <CheckList items={[
+            'رزرو هتل بدون واچر رسمی — سفارتخانه لینک بوکینگ قبول نمی‌کند، واچر رسمی لازم است',
+            'موجودی حساب ناکافی — معمولاً حداقل ۵۰ دلار در روز برای مدت اقامت لازم است',
+            'برنامه سفر مبهم — باید مسیر و شهرهای بازدید مشخص باشند',
+            'عکس استاندارد نبودن — اندازه، زمینه سفید و کیفیت اهمیت دارد',
+            'درخواست خیلی زود یا خیلی دیر — معمولاً ۱۵ روز تا ۶ ماه قبل از سفر',
+          ]} />
         </InfoBlock>
         <InfoBlock title="کشورهای شینگن که کاسپین تجربه دارد">
           <CheckList items={[
