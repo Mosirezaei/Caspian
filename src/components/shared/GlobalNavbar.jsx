@@ -258,12 +258,17 @@ export default function GlobalNavbar() {
   const closeTimer = React.useRef(null);
 
   const handleMouseEnter = (label) => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
     setOpenDropdown(label);
   };
 
   const handleMouseLeave = () => {
-    closeTimer.current = setTimeout(() => setOpenDropdown(null), 120);
+    closeTimer.current = setTimeout(() => {
+      setOpenDropdown(null);
+    }, 150);
   };
 
   const [openGroups, setOpenGroups] = useState({});
@@ -304,26 +309,23 @@ export default function GlobalNavbar() {
                     <ChevronDown className={`w-3 h-3 transition-transform flex-shrink-0 ${openDropdown === link.label ? 'rotate-180' : ''}`} />
                   </button>
 
-                  <AnimatePresence>
-                    {openDropdown === link.label && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 4 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 4 }}
-                        transition={{ duration: 0.15 }}
-                        className="absolute top-full left-0 pt-2 w-52 z-50"
-                        onMouseEnter={() => handleMouseEnter(link.label)}
-                        onMouseLeave={handleMouseLeave}
-                        dir={isRtl ? 'rtl' : 'ltr'}
-                      >
-                        <div className="glass-panel border border-white/10 rounded-xl py-2 shadow-xl">
-                          {link.children.map((child) => (
-                            <DropdownItem key={child.label} child={child} isRtl={isRtl} onNavigate={() => setOpenDropdown(null)} />
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {/* Bridge gap between button and dropdown so mouseLeave doesn't fire */}
+                  <div className="absolute top-full left-0 right-0 h-2" />
+
+                  {openDropdown === link.label && (
+                    <div
+                      className="absolute top-full left-0 pt-2 w-56 z-50"
+                      onMouseEnter={() => handleMouseEnter(link.label)}
+                      onMouseLeave={handleMouseLeave}
+                      dir={isRtl ? 'rtl' : 'ltr'}
+                    >
+                      <div className="glass-panel border border-white/10 rounded-xl py-2 shadow-xl">
+                        {link.children.map((child) => (
+                          <DropdownItem key={child.label} child={child} isRtl={isRtl} onNavigate={() => setOpenDropdown(null)} />
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <Link key={link.href} href={link.href}
