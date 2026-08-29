@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useEffect } from 'react';
 import { useLang } from '@/lib/LanguageContext';
 import { MessageCircle } from 'lucide-react';

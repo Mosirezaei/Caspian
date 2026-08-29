@@ -1,3 +1,4 @@
+'use client';
 /**
  * DatePickerInput — modal وسط صفحه، فقط میلادی، بدون تعطیلی
  */

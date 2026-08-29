@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search, MapPin, Users, Baby, Star, ExternalLink, Building2 } from 'lucide-react';

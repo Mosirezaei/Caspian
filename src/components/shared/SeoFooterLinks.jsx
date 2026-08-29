@@ -1,3 +1,4 @@
+'use client';
 /**
  * SeoFooterLinks — HTML sitemap footer برای SEO
  *

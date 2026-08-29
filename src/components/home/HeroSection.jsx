@@ -1,5 +1,6 @@
+'use client';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ChevronDown, Plane, Hotel, Home as HomeIcon, Star, MapPin, Building2, GraduationCap, Globe } from 'lucide-react';
 import { useLang } from '@/lib/LanguageContext';
@@ -100,7 +101,7 @@ export default function HeroSection() {
               { icon: GraduationCap, label: lang === 'fa' ? 'تحصیلی' : lang === 'en' ? 'Student' : 'Учёба', href: '/student-visa/armenia' },
               { icon: Globe, label: lang === 'fa' ? 'ویزای روسیه' : lang === 'en' ? 'Russia Visa' : 'Виза РФ', href: '/visa/russia' },
             ].map(({ icon: Icon, label, href }) => (
-              <Link key={label} to={href}
+              <Link key={label} href={href}
                 className="flex flex-col items-center gap-1.5 px-2 py-3 rounded-xl border border-primary/15 bg-white/3 backdrop-blur-sm hover:border-primary/50 hover:bg-primary/8 transition-all group"
                 style={{ background: 'rgba(212,168,68,0.03)' }}>
                 <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary group-hover:scale-110 transition-transform drop-shadow-sm" />
@@ -115,7 +116,7 @@ export default function HeroSection() {
               { icon: HomeIcon, label: lang === 'fa' ? 'آپارتمان' : lang === 'en' ? 'Apartment' : 'Квартира', href: '/travel/apartment' },
               { icon: Star, label: 'VIP', href: '/travel/vip' },
             ].map(({ icon: Icon, label, href }) => (
-              <Link key={label} to={href}
+              <Link key={label} href={href}
                 className="flex flex-col items-center gap-1.5 px-2 py-3 rounded-xl border border-primary/15 backdrop-blur-sm hover:border-primary/50 hover:bg-primary/8 transition-all group"
                 style={{ background: 'rgba(212,168,68,0.03)' }}>
                 <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary group-hover:scale-110 transition-transform drop-shadow-sm" />

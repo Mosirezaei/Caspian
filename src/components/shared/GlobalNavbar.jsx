@@ -1,8 +1,10 @@
+'use client';
 import React, { useState, useEffect } from 'react';
 
 
 
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 
 
@@ -596,7 +598,7 @@ function DropdownItem({ child, isRtl, onNavigate }) {
 
 
 
-      <Link to={child.href}
+      <Link href={child.href}
 
 
 
@@ -700,7 +702,7 @@ function DropdownItem({ child, isRtl, onNavigate }) {
 
 
 
-              <Link key={sub.href + sub.label} to={sub.href}
+              <Link key={sub.href + sub.label} href={sub.href}
 
 
 
@@ -764,7 +766,7 @@ export default function GlobalNavbar() {
 
 
 
-  const location = useLocation();
+  const location = usePathname();
 
 
 
@@ -799,7 +801,7 @@ export default function GlobalNavbar() {
 
 
 
-  }, [location.pathname]);
+  }, [pathname]);
 
 
 
@@ -843,7 +845,7 @@ export default function GlobalNavbar() {
 
 
 
-          <Link to="/" className="flex items-center gap-2 flex-shrink-0" aria-label="صفحه اصلی کاسپین گروه">
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0" aria-label="صفحه اصلی کاسپین گروه">
 
 
 
@@ -995,7 +997,7 @@ export default function GlobalNavbar() {
 
 
 
-                <Link key={link.href} to={link.href}
+                <Link key={link.href} href={link.href}
 
 
 
@@ -1411,7 +1413,7 @@ export default function GlobalNavbar() {
 
 
 
-                                              <Link key={sub.label} to={sub.href}
+                                              <Link key={sub.label} href={sub.href}
 
 
 
@@ -1459,7 +1461,7 @@ export default function GlobalNavbar() {
 
 
 
-                                  <Link key={child.label} to={child.href}
+                                  <Link key={child.label} href={child.href}
 
 
 
@@ -1511,7 +1513,7 @@ export default function GlobalNavbar() {
 
 
 
-                    <Link key={link.href} to={link.href}
+                    <Link key={link.href} href={link.href}
 
 
 

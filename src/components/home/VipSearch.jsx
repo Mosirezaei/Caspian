@@ -1,7 +1,8 @@
+'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLang } from '@/lib/LanguageContext';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 export default function VipSearch() {
   const { lang } = useLang();
@@ -19,7 +20,7 @@ export default function VipSearch() {
       <h3 className="text-2xl font-bold gold-gradient-text mb-3">{t.title}</h3>
       <p className="text-foreground/70 mb-6">{t.desc}</p>
       <Link
-        to="/travel/vip"
+        href="/travel/vip"
         className="inline-block px-8 py-3 rounded-xl bg-gradient-to-r from-primary to-primary/80 text-background font-bold hover:shadow-lg transition-all"
       >
         {t.contact}
