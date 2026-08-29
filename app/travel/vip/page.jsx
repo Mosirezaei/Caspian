@@ -1,12 +1,12 @@
 import VipSupport from '@/views/VipSupport';
 
 export const metadata = {
-  title: 'پشتیبانی VIP کاسپین گروپ',
-  description: 'خدمات VIP کاسپین: رزرو اختصاصی، همراهی و مشاوره حضوری در ایروان.',
+  title: 'پشتیبانی VIP کاسپین گروپ ارمنستان | خدمات اختصاصی VIP در ایروان',
+  description: 'خدمات VIP کاسپین: رزرو اختصاصی هتل و آپارتمان، همراهی حضوری، ترانسفر VIP، مشاوره حضوری در ایروان. ۲۴ ساعته در دسترس.',
   alternates: { canonical: 'https://caspian.am/travel/vip' },
   openGraph: {
-    title: 'پشتیبانی VIP کاسپین گروپ',
-    description: 'خدمات VIP کاسپین: رزرو اختصاصی، همراهی و مشاوره حضوری در ایروان.',
+    title: 'پشتیبانی VIP کاسپین گروپ ارمنستان | خدمات اختصاصی VIP در ایروان',
+    description: 'خدمات VIP کاسپین: رزرو اختصاصی هتل و آپارتمان، همراهی حضوری، ترانسفر VIP، مشاوره حضوری در ایروان. ۲۴ ساعته در دسترس.',
     url: 'https://caspian.am/travel/vip',
   },
 };
