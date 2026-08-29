@@ -39,14 +39,14 @@ function YerevanClock() {
   }, []);
 
   if (!now) {
-    return <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-foreground/40 font-vazir tabular-nums" />;
+    return <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-foreground/65 font-vazir tabular-nums" />;
   }
 
   const timeStr = now.toLocaleTimeString('fa-IR', { timeZone: 'Asia/Yerevan', hour: '2-digit', minute: '2-digit' });
   const dateStr = now.toLocaleDateString('fa-IR', { timeZone: 'Asia/Yerevan', month: 'long', day: 'numeric' });
 
   return (
-    <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-foreground/40 font-vazir tabular-nums">
+    <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-foreground/65 font-vazir tabular-nums">
       <span>{dateStr}</span>
       <span className="opacity-40">|</span>
       <span dir="ltr">{timeStr}</span>

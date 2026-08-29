@@ -51,8 +51,8 @@ export default function ContactFooter() {
           </div>
         </div>
         <div className="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-foreground/30">{t.footer.copyright}</p>
-          <p className="text-xs text-foreground/30">Designed & Developed with @Mosirezaei</p>
+          <p className="text-xs text-foreground/60">{t.footer.copyright}</p>
+          <p className="text-xs text-foreground/60">Designed & Developed with @Mosirezaei</p>
         </div>
       </div>
     </footer>

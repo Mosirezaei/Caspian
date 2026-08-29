@@ -155,7 +155,7 @@ export default function SeoFooterLinks() {
       aria-label={lang === 'fa' ? 'نقشه سایت' : lang === 'ru' ? 'Карта сайта' : 'Site Map'}
       className="border-t border-white/6 pt-10 pb-6 px-4 mt-6"
     >
-      <p className="text-xs text-foreground/30 text-center mb-6 font-medium tracking-widest uppercase">
+      <p className="text-xs text-foreground/60 text-center mb-6 font-medium tracking-widest uppercase">
         {lang === 'fa' ? 'لینک‌های مفید' : lang === 'ru' ? 'Полезные ссылки' : 'Useful Links'}
       </p>
       <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6">
@@ -170,7 +170,7 @@ export default function SeoFooterLinks() {
                   {/* تگ <a> واقعی (نه Link از React Router) — Googlebot این رو می‌فهمه */}
                   <a
                     href={link.href}
-                    className="text-xs text-foreground/40 hover:text-primary transition-colors leading-relaxed block"
+                    className="text-xs text-foreground/65 hover:text-primary transition-colors leading-relaxed block"
                   >
                     {link.label}
                   </a>
