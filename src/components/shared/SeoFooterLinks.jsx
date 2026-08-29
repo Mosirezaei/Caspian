@@ -1,0 +1,185 @@
+'use client';
+/**
+ * SeoFooterLinks — HTML sitemap footer برای SEO
+ *
+ * این کامپوننت لینک‌های داخلی کلیدی را با تگ‌های <a> واقعی (نه Link از react-router)
+ * رندر می‌کند تا Googlebot بدون نیاز به اجرای JavaScript بتواند تمام صفحات مهم
+ * سایت را کشف و ایندکس کند. PageRank از صفحه اصلی به صفحات مهم منتقل می‌شود.
+ *
+ * این کامپوننت در ServicePageLayout و Home نمایش داده می‌شود.
+ */
+import React from 'react';
+import { useLang } from '@/lib/LanguageContext';
+
+const LINKS = {
+  fa: {
+    sections: [
+      {
+        title: 'رزرو اقامتگاه',
+        links: [
+          { label: 'رزرو هتل در ایروان', href: '/travel/hotel' },
+          { label: 'اجاره آپارتمان مبله در ایروان', href: '/travel/apartment' },
+          { label: 'رزرو پرواز', href: '/travel/flight' },
+          { label: 'ترانسفر فرودگاهی', href: '/travel/transfer' },
+          { label: 'پشتیبانی VIP', href: '/travel/vip' },
+        ],
+      },
+      {
+        title: 'اقامت و مهاجرت',
+        links: [
+          { label: 'اقامت ارمنستان', href: '/residency/armenia' },
+          { label: 'اقامت کاری ارمنستان', href: '/residency/work' },
+          { label: 'اقامت بیزینسی — ثبت شرکت', href: '/residency/business' },
+          { label: 'اقامت تحصیلی ارمنستان', href: '/residency/student' },
+          { label: 'پذیرش دانشگاه ارمنستان', href: '/services/student-admission' },
+        ],
+      },
+      {
+        title: 'ویزا',
+        links: [
+          { label: 'ویزای توریستی روسیه', href: '/visa/russia' },
+          { label: 'ویزای شینگن', href: '/visa/schengen' },
+          { label: 'ویزای رومانی', href: '/visa/romania' },
+          { label: 'ویزای تحصیلی ارمنستان', href: '/student-visa/armenia' },
+          { label: 'ویزای تحصیلی روسیه', href: '/student-visa/russia' },
+        ],
+      },
+      {
+        title: 'تور و فستیوال',
+        links: [
+          { label: 'تورهای ارمنستان', href: '/travel/tour' },
+          { label: 'فستیوال‌ها و رویدادهای ایروان', href: '/travel/festivals' },
+          { label: 'صرافی و رمزارز', href: '/travel/exchange' },
+          { label: 'ثبت شرکت در ارمنستان', href: '/services/company-registration' },
+          { label: 'درباره کاسپین گروپ', href: '/about' },
+        ],
+      },
+    ],
+  },
+  en: {
+    sections: [
+      {
+        title: 'Accommodation',
+        links: [
+          { label: 'Hotel Booking in Yerevan', href: '/travel/hotel' },
+          { label: 'Furnished Apartment Rental in Yerevan', href: '/travel/apartment' },
+          { label: 'Flight Booking', href: '/travel/flight' },
+          { label: 'Airport Transfer', href: '/travel/transfer' },
+          { label: 'VIP Support', href: '/travel/vip' },
+        ],
+      },
+      {
+        title: 'Residency & Immigration',
+        links: [
+          { label: 'Armenia Residency', href: '/residency/armenia' },
+          { label: 'Work Residency Armenia', href: '/residency/work' },
+          { label: 'Business Residency / Company Registration', href: '/residency/business' },
+          { label: 'Student Residency Armenia', href: '/residency/student' },
+          { label: 'University Admission Armenia', href: '/services/student-admission' },
+        ],
+      },
+      {
+        title: 'Visa Services',
+        links: [
+          { label: 'Russia Tourist Visa', href: '/visa/russia' },
+          { label: 'Schengen Visa', href: '/visa/schengen' },
+          { label: 'Romania Visa', href: '/visa/romania' },
+          { label: 'Armenia Student Visa', href: '/student-visa/armenia' },
+          { label: 'Russia Student Visa', href: '/student-visa/russia' },
+        ],
+      },
+      {
+        title: 'Tours & Festivals',
+        links: [
+          { label: 'Armenia Tours', href: '/travel/tour' },
+          { label: 'Yerevan Festivals & Events', href: '/travel/festivals' },
+          { label: 'Currency Exchange & Crypto', href: '/travel/exchange' },
+          { label: 'Company Registration Armenia', href: '/services/company-registration' },
+          { label: 'About Caspian Group', href: '/about' },
+        ],
+      },
+    ],
+  },
+  ru: {
+    sections: [
+      {
+        title: 'Жильё',
+        links: [
+          { label: 'Бронирование отелей в Ереване', href: '/travel/hotel' },
+          { label: 'Аренда квартир в Ереване', href: '/travel/apartment' },
+          { label: 'Бронирование авиабилетов', href: '/travel/flight' },
+          { label: 'Трансфер из аэропорта', href: '/travel/transfer' },
+          { label: 'VIP поддержка', href: '/travel/vip' },
+        ],
+      },
+      {
+        title: 'ВНЖ и миграция',
+        links: [
+          { label: 'ВНЖ Армении', href: '/residency/armenia' },
+          { label: 'Рабочий ВНЖ Армении', href: '/residency/work' },
+          { label: 'Бизнес ВНЖ — регистрация компании', href: '/residency/business' },
+          { label: 'Учебный ВНЖ Армении', href: '/residency/student' },
+          { label: 'Поступление в университет', href: '/services/student-admission' },
+        ],
+      },
+      {
+        title: 'Визы',
+        links: [
+          { label: 'Туристическая виза в Россию', href: '/visa/russia' },
+          { label: 'Шенгенская виза', href: '/visa/schengen' },
+          { label: 'Виза в Румынию', href: '/visa/romania' },
+          { label: 'Студенческая виза Армении', href: '/student-visa/armenia' },
+          { label: 'Студенческая виза России', href: '/student-visa/russia' },
+        ],
+      },
+      {
+        title: 'Туры и фестивали',
+        links: [
+          { label: 'Туры по Армении', href: '/travel/tour' },
+          { label: 'Фестивали и события Еревана', href: '/travel/festivals' },
+          { label: 'Обмен валюты и криптовалюта', href: '/travel/exchange' },
+          { label: 'Регистрация компании в Армении', href: '/services/company-registration' },
+          { label: 'О нас', href: '/about' },
+        ],
+      },
+    ],
+  },
+};
+
+export default function SeoFooterLinks() {
+  const { lang } = useLang();
+  const data = LINKS[lang] || LINKS.fa;
+
+  return (
+    <nav
+      aria-label={lang === 'fa' ? 'نقشه سایت' : lang === 'ru' ? 'Карта сайта' : 'Site Map'}
+      className="border-t border-white/6 pt-10 pb-6 px-4 mt-6"
+    >
+      <p className="text-xs text-foreground/30 text-center mb-6 font-medium tracking-widest uppercase">
+        {lang === 'fa' ? 'لینک‌های مفید' : lang === 'ru' ? 'Полезные ссылки' : 'Useful Links'}
+      </p>
+      <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6">
+        {data.sections.map((section) => (
+          <div key={section.title}>
+            <h3 className="text-xs font-bold text-foreground/50 mb-3 uppercase tracking-wide">
+              {section.title}
+            </h3>
+            <ul className="space-y-1.5">
+              {section.links.map((link) => (
+                <li key={link.href}>
+                  {/* تگ <a> واقعی (نه Link از React Router) — Googlebot این رو می‌فهمه */}
+                  <a
+                    href={link.href}
+                    className="text-xs text-foreground/40 hover:text-primary transition-colors leading-relaxed block"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </nav>
+  );
+}
