@@ -40,13 +40,33 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" href="/images/favicon.png" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           '@context': 'https://schema.org',
-          '@type': ['TravelAgency', 'LocalBusiness'],
+          '@type': ['TravelAgency', 'LocalBusiness', 'ProfessionalService'],
           name: 'Caspian Business Group',
-          alternateName: ['کاسپین گروه', 'کاسپین گروپ ارمنستان'],
+          alternateName: ['کاسپین گروه', 'کاسپین گروپ ارمنستان', 'Caspian Group Armenia', 'Каспиан Групп'],
+          description: 'Caspian Business Group is a licensed travel and immigration services company in Yerevan, Armenia, specializing in hotel and apartment booking, Armenia residency, company registration, Russia visa, and student visa services for Persian-speaking (Iranian) clients.',
           url: 'https://caspian.am',
           logo: 'https://caspian.am/images/logo.webp',
+          image: 'https://caspian.am/images/GoogleSearch.png',
           telephone: '+37433149327',
-          address: { '@type': 'PostalAddress', streetAddress: 'No 49, Komitas', addressLocality: 'Yerevan', addressCountry: 'AM' },
+          email: 'info@caspian.am',
+          foundingDate: '2010',
+          areaServed: ['Armenia', 'Iran', 'Russia'],
+          knowsLanguage: ['fa', 'en', 'ru'],
+          address: { '@type': 'PostalAddress', streetAddress: 'No 49, Komitas Avenue', addressLocality: 'Yerevan', addressCountry: 'AM', postalCode: '0051' },
+          geo: { '@type': 'GeoCoordinates', latitude: 40.2012, longitude: 44.5123 },
+          hasOfferCatalog: {
+            '@type': 'OfferCatalog',
+            name: 'Caspian Group Services',
+            itemListElement: [
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Hotel Booking in Yerevan', url: 'https://caspian.am/travel/hotel' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Furnished Apartment Rental Yerevan', url: 'https://caspian.am/travel/apartment' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Armenia Residency', url: 'https://caspian.am/residency/armenia' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Company Registration Armenia', url: 'https://caspian.am/residency/business' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Russia Tourist Visa from Yerevan', url: 'https://caspian.am/visa/russia' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Armenia Student Visa', url: 'https://caspian.am/student-visa/armenia' } },
+            ],
+          },
+          contactPoint: { '@type': 'ContactPoint', telephone: '+37433149327', contactType: 'customer service', availableLanguage: ['Persian', 'English', 'Russian'] },
           sameAs: ['https://t.me/caspianbusinessgroup', 'https://www.instagram.com/caspian.am'],
         })}} />
         <style>{`html,body{background-color:#0a0a0a;color:#fafafa;}#__next{min-height:100vh;background-color:#0a0a0a;}`}</style>
