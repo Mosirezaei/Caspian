@@ -5,10 +5,10 @@ Allow: /
 Disallow: /admin/
 Disallow: /admin/dashboard/
 
-# Block retro page from search (not a core money page)
-Disallow: /retro
+# Note: /retro is no longer blocked here -- it uses a noindex meta tag
+# on the page itself instead, so bots can crawl it but won't index it.
 
-# Crawl delay for heavy bots (optional — helps server load)
+# Crawl delay for heavy bots (optional -- helps server load)
 User-agent: AhrefsBot
 Crawl-delay: 10
 
