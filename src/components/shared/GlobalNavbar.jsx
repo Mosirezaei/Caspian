@@ -297,7 +297,7 @@ export default function GlobalNavbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-0.5 flex-1 justify-center min-w-0 overflow-hidden">
+          <div className="hidden md:flex items-center gap-0.5 flex-1 justify-center min-w-0">
             {links.filter(l => !l._hidden).map((link) =>
               link.children ? (
                 <div key={link.label} className="relative"
