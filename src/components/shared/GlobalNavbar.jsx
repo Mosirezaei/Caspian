@@ -300,32 +300,23 @@ export default function GlobalNavbar() {
           <div className="hidden md:flex items-center gap-0.5 flex-1 justify-center min-w-0">
             {links.filter(l => !l._hidden).map((link) =>
               link.children ? (
-                <div key={link.label} className="relative"
-                  onMouseEnter={() => handleMouseEnter(link.label)}
-                  onMouseLeave={handleMouseLeave}>
-
+                <div key={link.label} className="relative group">
                   <button className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm text-foreground/70 hover:text-primary transition-colors font-medium whitespace-nowrap">
                     {link.label}
-                    <ChevronDown className={`w-3 h-3 transition-transform flex-shrink-0 ${openDropdown === link.label ? 'rotate-180' : ''}`} />
+                    <ChevronDown className="w-3 h-3 transition-transform flex-shrink-0 group-hover:rotate-180" />
                   </button>
 
-                  {/* Bridge gap between button and dropdown so mouseLeave doesn't fire */}
-                  <div className="absolute top-full left-0 right-0 h-2" />
-
-                  {openDropdown === link.label && (
-                    <div
-                      className="absolute top-full left-0 pt-2 w-56 z-50"
-                      onMouseEnter={() => handleMouseEnter(link.label)}
-                      onMouseLeave={handleMouseLeave}
-                      dir={isRtl ? 'rtl' : 'ltr'}
-                    >
-                      <div className="glass-panel border border-white/10 rounded-xl py-2 shadow-xl">
-                        {link.children.map((child) => (
-                          <DropdownItem key={child.label} child={child} isRtl={isRtl} onNavigate={() => setOpenDropdown(null)} />
-                        ))}
-                      </div>
+                  {/* Dropdown — pure CSS, no JS state needed */}
+                  <div
+                    className="absolute top-full left-0 pt-2 w-56 z-50 hidden group-hover:block"
+                    dir={isRtl ? 'rtl' : 'ltr'}
+                  >
+                    <div className="glass-panel border border-white/10 rounded-xl py-2 shadow-xl">
+                      {link.children.map((child) => (
+                        <DropdownItem key={child.label} child={child} isRtl={isRtl} onNavigate={() => {}} />
+                      ))}
                     </div>
-                  )}
+                  </div>
                 </div>
               ) : (
                 <Link key={link.href} href={link.href}
