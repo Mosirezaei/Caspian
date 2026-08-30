@@ -1,7 +1,7 @@
 import StudentVisaSchengen from '@/views/service/StudentVisaSchengen';
 
 export const metadata = {
-  title: 'ویزای تحصیلی اروپا (شینگن) از ارمنستان | دانشگاه‌های اروپایی',
+  title: 'ویزای تحصیلی شینگن از ارمنستان',
   description: 'اخذ ویزای تحصیلی کشورهای شینگن از سفارت‌های اروپایی در ایروان. آلمان، فرانسه، هلند. مدارک پذیرش و پیگیری.',
   alternates: { canonical: 'https://caspian.am/student-visa/schengen' },
   openGraph: {
