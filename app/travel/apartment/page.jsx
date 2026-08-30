@@ -13,34 +13,38 @@ export const metadata = {
   },
 };
 
-// JSON-LD schema برای صفحه اجاره آپارتمان
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'اجاره آپارتمان مبله در ایروان',
-  description: 'اجاره آپارتمان مبله روزانه و ماهانه در ایروان ارمنستان با پرداخت ریالی',
-  provider: {
-    '@type': 'Organization',
-    name: 'Caspian Business Group',
-    url: 'https://caspian.am',
-    telephone: '+37433149327',
-  },
-  areaServed: { '@type': 'City', name: 'Yerevan', containedInPlace: { '@type': 'Country', name: 'Armenia' } },
-  offers: {
-    '@type': 'AggregateOffer',
-    priceCurrency: 'USD',
-    lowPrice: '30',
-    highPrice: '300',
-    description: 'اجاره روزانه از ۳۰ دلار، ماهانه از ۳۰۰ دلار',
-  },
-};
-
+// JSON-LD — باید export جداگانه باشه تا Next.js درست پردازش کنه
 export default function Page() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Service',
+            name: 'اجاره آپارتمان مبله در ایروان',
+            description: 'اجاره آپارتمان مبله روزانه و ماهانه در ایروان ارمنستان با پرداخت ریالی',
+            provider: {
+              '@type': 'Organization',
+              name: 'Caspian Business Group',
+              url: 'https://caspian.am',
+              telephone: '+37433149327',
+            },
+            areaServed: {
+              '@type': 'City',
+              name: 'Yerevan',
+              containedInPlace: { '@type': 'Country', name: 'Armenia' },
+            },
+            offers: {
+              '@type': 'AggregateOffer',
+              priceCurrency: 'USD',
+              lowPrice: '30',
+              highPrice: '300',
+              description: 'اجاره روزانه از ۳۰ دلار، ماهانه از ۳۰۰ دلار',
+            },
+          }),
+        }}
       />
       <Apartment />
     </>

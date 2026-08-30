@@ -1,8 +1,9 @@
 import './globals.css';
 import { Vazirmatn } from 'next/font/google';
+const vazirmatn = Vazirmatn({ subsets: ['arabic', 'latin'], weight: ['400', '600', '700', '900'], variable: '--font-vazir', display: 'swap' });
 import Providers from './providers';
 
-const vazirmatn = Vazirmatn({ subsets: ['arabic', 'latin'], weight: ['400', '600', '700', '900'], variable: '--font-vazir', display: 'swap' });
+
 
 // Self-hosted via next/font: removes the render-blocking Google Fonts
 // <link> round trip (HTML -> fonts.googleapis.com CSS -> fonts.gstatic.com woff2)

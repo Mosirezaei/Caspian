@@ -5,7 +5,7 @@ import { Check } from 'lucide-react';
 import { useLang } from '@/lib/LanguageContext';
 
 export default function AboutSection() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
 
   return (
     <section id="about" className="py-16 sm:py-24 px-4 relative">
@@ -58,6 +58,14 @@ export default function AboutSection() {
                 <span className="text-sm text-foreground/65">{f}</span>
               </div>
             ))}
+          </div>
+          <div className="mt-6 flex gap-3 flex-wrap">
+            <a href="/about" className="text-sm text-primary hover:underline font-medium">
+              {lang === 'fa' ? 'بیشتر درباره ما ←' : lang === 'ru' ? 'Подробнее о нас →' : 'More about us →'}
+            </a>
+            <a href="/contact" className="text-sm text-foreground/50 hover:text-primary hover:underline font-medium">
+              {lang === 'fa' ? 'تماس با ما' : lang === 'ru' ? 'Связаться' : 'Contact us'}
+            </a>
           </div>
         </motion.div>
       </div>
