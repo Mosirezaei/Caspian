@@ -194,15 +194,6 @@
   box-shadow: 0 0 20px rgba(13, 79, 140, 0.3), 0 0 40px rgba(8, 145, 178, 0.15);
 }
 
-[data-theme="light"] .animate-gold-pulse {
-  animation: blue-pulse 2s ease-in-out infinite;
-}
-
-@keyframes blue-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(13, 79, 140, 0.4); }
-  50% { box-shadow: 0 0 0 12px rgba(13, 79, 140, 0); }
-}
-
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -246,9 +237,33 @@
   box-shadow: 0 0 30px rgba(212, 168, 68, 0.2), 0 0 80px rgba(212, 168, 68, 0.08), 0 0 160px rgba(212, 168, 68, 0.04);
 }
 
-/* Pulse animation for WhatsApp */
-@keyframes gold-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 168, 68, 0.4); }
-  50% { box-shadow: 0 0 0 12px rgba(212, 168, 68, 0); }
+/* Pulse animation for WhatsApp button — compositor-only (transform + opacity).
+   Previously animated box-shadow directly, which Lighthouse flags as a
+   non-composited animation because it forces a main-thread repaint on every
+   frame. This reproduces the same expanding "sonar ring" look by animating a
+   pseudo-element's transform/opacity instead, which the GPU can composite. */
+.animate-gold-pulse {
+  position: relative;
 }
-.animate-gold-pulse { animation: gold-pulse 2s ease-in-out infinite; }
+.animate-gold-pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 2px rgba(212, 168, 68, 0.4);
+  animation: gold-pulse-ring 2s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes gold-pulse-ring {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+[data-theme="light"] .animate-gold-pulse::after {
+  box-shadow: 0 0 0 2px rgba(13, 79, 140, 0.4);
+  animation: blue-pulse-ring 2s ease-in-out infinite;
+}
+@keyframes blue-pulse-ring {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}

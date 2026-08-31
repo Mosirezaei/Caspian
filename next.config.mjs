@@ -9,6 +9,14 @@ const nextConfig = {
     ],
   },
 
+  experimental: {
+    // Tree-shakes barrel-style imports from these packages so only the
+    // icons/components actually used end up in the client bundle, instead of
+    // the whole library. Directly targets the "Reduce unused JavaScript"
+    // finding from PageSpeed Insights.
+    optimizePackageImports: ['lucide-react', 'framer-motion', 'recharts', 'date-fns', 'lodash'],
+  },
+
   async redirects() {
     return [
       // Legacy routes only — NO www redirect (handled by Vercel domain settings)
