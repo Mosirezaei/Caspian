@@ -4,7 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "browserslist": [
-    "defaults",
+    "chrome >= 90",
+    "edge >= 90",
+    "firefox >= 88",
+    "safari >= 14",
     "not IE 11",
     "not op_mini all"
   ],

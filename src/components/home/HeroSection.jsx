@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ChevronDown, Plane, Hotel, Home as HomeIcon, Star, MapPin, Building2, GraduationCap, Globe } from 'lucide-react';
@@ -28,13 +29,16 @@ export default function HeroSection() {
         <div className="mb-4 sm:mb-6">
           <div className="relative inline-block">
             <div className="absolute inset-0 rounded-full blur-2xl bg-primary/20 scale-150" />
-            <img
-            src="/images/logo.webp"
-            alt="Caspian Business Group"
-            width="140" height="140"
-            className="relative h-20 sm:h-36 w-auto mx-auto object-contain drop-shadow-2xl"
-            fetchPriority="high"
-          />
+            <Image
+              src="/images/logo.webp"
+              alt="Caspian Business Group"
+              width={140}
+              height={140}
+              priority
+              fetchPriority="high"
+              sizes="(min-width: 640px) 144px, 80px"
+              className="relative h-20 sm:h-36 w-auto mx-auto object-contain drop-shadow-2xl"
+            />
           </div>
         </div>
 

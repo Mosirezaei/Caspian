@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -288,10 +289,11 @@ export default function GlobalNavbar() {
         <div className="max-w-7xl mx-auto px-3 sm:px-4 h-14 flex items-center justify-between w-full min-w-0" dir="ltr">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 flex-shrink-0" aria-label="صفحه اصلی کاسپین گروه">
-            <img
+            <Image
               src="/images/logo.webp"
               alt="Caspian Business Group"
-              width="40" height="40"
+              width={40}
+              height={40}
               className="h-10 w-auto"
             />
           </Link>
@@ -382,9 +384,11 @@ export default function GlobalNavbar() {
               
               {/* Drawer Header */}
               <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
-                <img
+                <Image
                   src="/images/logo.webp"
                   alt="Caspian"
+                  width={40}
+                  height={40}
                   className="h-10 w-auto"
                 />
                 <button onClick={() => setMobileOpen(false)}
