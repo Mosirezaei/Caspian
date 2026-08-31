@@ -1,6 +1,7 @@
 import './globals.css';
 import { Vazirmatn } from 'next/font/google';
 const vazirmatn = Vazirmatn({ subsets: ['arabic', 'latin'], weight: ['400', '600', '700', '900'], variable: '--font-vazir', display: 'swap' });
+
 import Providers from './providers';
 
 
