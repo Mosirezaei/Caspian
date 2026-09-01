@@ -120,7 +120,7 @@ export default function LivingCostYerevan() {
           </a>
         </div>
 
-        <RelatedServices currentPath="/blog/living-cost-yerevan-1404" />
+        <RelatedServices currentPath="/blog/living-cost-yerevan" />
         <SeoFooterLinks />
       </main>
     </div>

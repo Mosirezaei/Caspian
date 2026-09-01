@@ -77,7 +77,7 @@ src/
 - صفحه `app/retro/page.jsx` (فستیوال Disco Legends)
 - صفحه `app/admin/dashboard/task/page.jsx`
 - صفحه `app/travel/armenia-guide/page.jsx`
-- بلاگ: `/blog/living-cost-yerevan-1404`
+- بلاگ: `/blog/living-cost-yerevan`
 - بلاگ: `/blog/armenia-visa-documents`
 - بخش Articles در صفحه اصلی (جایگزین Disco Legends)
 

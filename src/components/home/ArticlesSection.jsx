@@ -3,7 +3,7 @@ import { useLang } from '@/lib/LanguageContext';
 
 const articles = [
   {
-    href: '/blog/living-cost-yerevan-1404',
+    href: '/blog/living-cost-yerevan',
     emoji: '💰',
     titleFa: 'هزینه زندگی در ایروان ۱۴۰۴',
     titleEn: 'Cost of Living in Yerevan 2025',
