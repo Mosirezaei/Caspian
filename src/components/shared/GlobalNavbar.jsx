@@ -89,6 +89,7 @@ const navLinks = {
     {
       label: 'تور و فستیوال', href: '#', children: [
         { label: 'تورهای ارمنستان', href: '/travel/tour' },
+        { label: 'جاهای دیدنی ارمنستان', href: '/travel/armenia-guide' },
         { label: 'فستیوال‌ها', href: '/travel/festivals' },
       ],
     },
@@ -109,6 +110,7 @@ const navLinks = {
     {
       label: 'Tours & Festivals', href: '#', children: [
         { label: 'Armenia Tours', href: '/travel/tour' },
+        { label: 'Where to Go in Armenia', href: '/travel/armenia-guide' },
         { label: 'Festivals & Events', href: '/travel/festivals' },
       ],
     },
@@ -161,6 +163,7 @@ const navLinks = {
     {
       label: 'Туры и фестивали', href: '#', children: [
         { label: 'Туры по Армении', href: '/travel/tour' },
+        { label: 'Куда поехать в Армении', href: '/travel/armenia-guide' },
         { label: 'Фестивали и события', href: '/travel/festivals' },
       ],
     },
