@@ -1,12 +1,12 @@
 import LivingCostYerevan from '@/views/blog/LivingCostYerevan';
 
 export const metadata = {
-  title: 'هزینه زندگی در ایروان ۱۴۰۴ | راهنمای کامل ایرانیان',
+  title: ' هزینه زندگی در ایروان | راهنمای کامل ایرانیان',
   description: 'هزینه اجاره خانه، خواربار، حمل‌ونقل و قبوض در ایروان ارمنستان ۱۴۰۴. راهنمای عملی برای ایرانیانی که قصد مهاجرت به ارمنستان دارند.',
   keywords: 'هزینه زندگی ایروان, هزینه زندگی ارمنستان, اجاره خانه ایروان, مهاجرت به ارمنستان',
   alternates: { canonical: 'https://caspian.am/blog/living-cost-yerevan-1404' },
   openGraph: {
-    title: 'هزینه زندگی در ایروان ۱۴۰۴',
+    title: 'هزینه زندگی در ایروان',
     description: 'هزینه اجاره خانه، خواربار، حمل‌ونقل و قبوض در ایروان ارمنستان',
     url: 'https://caspian.am/blog/living-cost-yerevan-1404',
   },
