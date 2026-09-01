@@ -19,7 +19,7 @@ const nextConfig = {
 
   async redirects() {
     return [
-      // Legacy routes only — NO www redirect (handled by Vercel domain settings)
+      { source: '/blog/living-cost-yerevan-1404', destination: '/blog/living-cost-yerevan', permanent: true },
       { source: '/services/visa-schengen',        destination: '/visa/schengen',      permanent: true },
       { source: '/services/visa-russia',          destination: '/visa/russia',         permanent: true },
       { source: '/services/residency',            destination: '/residency/armenia',   permanent: true },
