@@ -3,6 +3,7 @@ import { MessageCircle } from 'lucide-react';
 import { useLang } from '@/lib/LanguageContext';
 import RelatedContent from './RelatedContent';
 import RelatedServices from './RelatedServices';
+import SeoFooterLinks from './SeoFooterLinks';
 
 const t = {
   fa: { cta: 'مشاوره رایگان', ctaSub: 'سوالی داری؟ همین حالا با کارشناسان ما در واتساپ چت کن' },
@@ -48,6 +49,10 @@ export default function PageSidebar({ tags, currentPath, serviceType }) {
           <RelatedServices pageType={serviceType} variant="sidebar" />
         </div>
       )}
+
+      <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+        <SeoFooterLinks variant="sidebar" />
+      </div>
     </aside>
   );
 }
