@@ -71,6 +71,7 @@ const navLinks = {
     },
     {
       label: 'اقامت و مهاجرت', href: '#', children: [
+        { label: 'اقامت ارمنستان', href: '/residency/armenia' },
         { label: 'اقامت کاری', href: '/residency/work' },
         { label: 'اقامت بیزینسی — ثبت شرکت', href: '/residency/business' },
         { label: 'اقامت تحصیلی', href: '/residency/student' },
@@ -116,6 +117,7 @@ const navLinks = {
     },
     {
       label: 'Residency & Immigration', href: '#', children: [
+        { label: 'Armenia Residency', href: '/residency/armenia' },
         { label: 'Work Residency', href: '/residency/work' },
         { label: 'Business Residency — Company Reg.', href: '/residency/business' },
         { label: 'Student Residency', href: '/residency/student' },
@@ -169,6 +171,7 @@ const navLinks = {
     },
     {
       label: 'ВНЖ и миграция', href: '#', children: [
+        { label: 'ВНЖ Армении', href: '/residency/armenia' },
         { label: 'Рабочий ВНЖ', href: '/residency/work' },
         { label: 'Бизнес ВНЖ — регистрация компании', href: '/residency/business' },
         { label: 'Учебный ВНЖ', href: '/residency/student' },
