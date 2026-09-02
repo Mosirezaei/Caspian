@@ -1,7 +1,7 @@
 'use client';
 import { useLang } from '@/lib/LanguageContext';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
-import BlogSidebar from '@/components/shared/BlogSidebar';
+import PageSidebar from '@/components/shared/PageSidebar';
 import SeoFooterLinks from '@/components/shared/SeoFooterLinks.jsx';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import RelatedContent from '@/components/shared/RelatedContent.jsx';
@@ -126,7 +126,7 @@ export default function LivingCostYerevan() {
 
         </div>
 
-          <BlogSidebar currentTags={['yerevan', 'cost-of-living', 'residency', 'life']} currentPath="/blog/living-cost-yerevan" />
+          <PageSidebar tags={['yerevan', 'cost-of-living', 'residency', 'life']} currentPath="/blog/living-cost-yerevan" />
         </div>
 
         <RelatedServices currentPath="/blog/living-cost-yerevan" />
