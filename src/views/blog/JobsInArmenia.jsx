@@ -5,7 +5,7 @@ import {
   ChevronDown, CheckCircle2, Wallet, GraduationCap,
 } from 'lucide-react';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
-import BlogSidebar from '@/components/shared/BlogSidebar';
+import PageSidebar from '@/components/shared/PageSidebar';
 import SeoFooterLinks from '@/components/shared/SeoFooterLinks.jsx';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import RelatedContent from '@/components/shared/RelatedContent.jsx';
@@ -261,7 +261,7 @@ export default function JobsInArmenia() {
 
         </div>
 
-          <BlogSidebar currentTags={['jobs', 'employment', 'work-permit', 'armenia']} currentPath="/blog/jobs-in-armenia" />
+          <PageSidebar tags={['jobs', 'employment', 'work-permit', 'armenia']} currentPath="/blog/jobs-in-armenia" />
         </div>
 
         <RelatedServices currentPath="/blog/jobs-in-armenia" />
