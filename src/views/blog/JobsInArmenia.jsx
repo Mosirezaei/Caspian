@@ -5,6 +5,7 @@ import {
   ChevronDown, CheckCircle2, Wallet, GraduationCap,
 } from 'lucide-react';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
+import BlogSidebar from '@/components/shared/BlogSidebar';
 import SeoFooterLinks from '@/components/shared/SeoFooterLinks.jsx';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import RelatedContent from '@/components/shared/RelatedContent.jsx';
@@ -92,7 +93,9 @@ export default function JobsInArmenia() {
   return (
     <div className="min-h-screen" dir="rtl">
       <GlobalNavbar />
-      <main className="max-w-4xl mx-auto px-4 py-12 sm:py-20">
+      <main className="max-w-6xl mx-auto px-4 py-12 sm:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2">
 
         {/* Hero */}
         <div className="grid sm:grid-cols-2 gap-6 items-center mb-8">
@@ -256,7 +259,11 @@ export default function JobsInArmenia() {
           </a>
         </div>
 
-        <RelatedContent currentTags={['jobs', 'employment', 'work-permit', 'armenia']} currentPath="/blog/jobs-in-armenia" />
+        </div>
+
+          <BlogSidebar currentTags={['jobs', 'employment', 'work-permit', 'armenia']} currentPath="/blog/jobs-in-armenia" />
+        </div>
+
         <RelatedServices currentPath="/blog/jobs-in-armenia" />
         <SeoFooterLinks />
       </main>
