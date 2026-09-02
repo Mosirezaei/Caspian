@@ -168,7 +168,7 @@ export default function ResidencyArmenia() {
               <p className="text-sm text-foreground/70 leading-8 mb-4">
                 {isFa
                   ? 'پارلمان ارمنستان در مارس ۲۰۲۵ قانون الحاق رسمی به اتحادیه اروپا را تصویب کرد. اولین اجلاس تاریخی ارمنستان–EU در مه ۲۰۲۶ در ایروان برگزار شد. این مسیر چند سال طول می‌کشد، اما حرکت جدی است.'
-                  : 'Armenia''s parliament approved the official EU accession law in March 2025. The first historic Armenia–EU summit was held in Yerevan in May 2026. The process will take years, but the direction is serious.'}
+                  : 'Armenia's parliament approved the official EU accession law in March 2025. The first historic Armenia–EU summit was held in Yerevan in May 2026. The process will take years, but the direction is serious.'}
               </p>
               <div className="grid sm:grid-cols-3 gap-3">
                 {[
@@ -229,7 +229,7 @@ export default function ResidencyArmenia() {
               <p className="text-sm text-foreground/70 leading-8 mb-5">
                 {isFa
                   ? 'ثبت شرکت نه‌فقط مسیر اقامت، بلکه یک فرصت واقعی کسب‌وکار است. مالکیت ۱۰۰٪ بدون نیاز به شریک ارمنی، ثبت ۱ تا ۳ روزه آنلاین، دسترسی به بانکداری بین‌المللی.'
-                  : 'Company registration is not just a residency route — it''s a real business opportunity. 100% foreign ownership, 1–3 day online registration, international banking access.'}
+                  : 'Company registration is not just a residency route — it's a real business opportunity. 100% foreign ownership, 1–3 day online registration, international banking access.'}
               </p>
               <div className="grid sm:grid-cols-2 gap-4 mb-5">
                 <div>
@@ -424,7 +424,7 @@ export default function ResidencyArmenia() {
               <p className="text-sm text-foreground/70 leading-8 mb-4">
                 {isFa
                   ? 'پاسپورت ارمنستان دسترسی به ۵۹ کشور بدون ویزا را می‌دهد و هدف نهایی بسیاری از ایرانیان مقیم ایروان است. تابعیت دوگانه کاملاً مجاز است.'
-                  : 'Armenia''s passport offers visa-free access to 59 countries and is the ultimate goal of many Iranians based in Yerevan. Dual citizenship is fully permitted.'}
+                  : 'Armenia's passport offers visa-free access to 59 countries and is the ultimate goal of many Iranians based in Yerevan. Dual citizenship is fully permitted.'}
               </p>
               <ul className="space-y-1.5">
                 {(isFa ? [
