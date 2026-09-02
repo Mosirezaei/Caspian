@@ -21,24 +21,20 @@ const LINKS = {
           { label: 'اجاره آپارتمان مبله در ایروان', href: '/travel/apartment' },
           { label: 'رزرو پرواز', href: '/travel/flight' },
           { label: 'ترانسفر فرودگاهی', href: '/travel/transfer' },
-          { label: 'پشتیبانی VIP', href: '/travel/vip' },
         ],
       },
       {
         title: 'اقامت و مهاجرت',
         links: [
-          { label: 'اقامت ارمنستان', href: '/residency/armenia' },
           { label: 'اقامت کاری ارمنستان', href: '/residency/work' },
           { label: 'اقامت بیزینسی — ثبت شرکت', href: '/residency/business' },
           { label: 'اقامت تحصیلی ارمنستان', href: '/residency/student' },
-          { label: 'پذیرش دانشگاه ارمنستان', href: '/services/student-admission' },
         ],
       },
       {
         title: 'روسیه',
         links: [
           { label: 'ویزای توریستی روسیه', href: '/visa/russia' },
-          { label: 'ویزای تحصیلی ارمنستان', href: '/student-visa/armenia' },
           { label: 'ویزای تحصیلی روسیه', href: '/student-visa/russia' },
         ],
       },
@@ -46,12 +42,8 @@ const LINKS = {
         title: 'تور و فستیوال',
         links: [
           { label: 'تورهای ارمنستان', href: '/travel/tour' },
-          { label: 'فستیوال‌ها و رویدادهای ایروان', href: '/travel/festivals' },
-          { label: 'صرافی و رمزارز', href: '/travel/exchange' },
-          { label: 'ثبت شرکت در ارمنستان', href: '/services/company-registration' },
           { label: 'درباره کاسپین گروپ', href: '/about' },
           { label: 'تماس با ما', href: '/contact' },
-          { label: 'همه خدمات', href: '/services' },
         ],
       },
     ],
@@ -65,24 +57,20 @@ const LINKS = {
           { label: 'Furnished Apartment Rental in Yerevan', href: '/travel/apartment' },
           { label: 'Flight Booking', href: '/travel/flight' },
           { label: 'Airport Transfer', href: '/travel/transfer' },
-          { label: 'VIP Support', href: '/travel/vip' },
         ],
       },
       {
         title: 'Residency & Immigration',
         links: [
-          { label: 'Armenia Residency', href: '/residency/armenia' },
           { label: 'Work Residency Armenia', href: '/residency/work' },
           { label: 'Business Residency / Company Registration', href: '/residency/business' },
           { label: 'Student Residency Armenia', href: '/residency/student' },
-          { label: 'University Admission Armenia', href: '/services/student-admission' },
         ],
       },
       {
         title: 'Russia',
         links: [
           { label: 'Russia Tourist Visa', href: '/visa/russia' },
-          { label: 'Armenia Student Visa', href: '/student-visa/armenia' },
           { label: 'Russia Student Visa', href: '/student-visa/russia' },
         ],
       },
@@ -90,9 +78,6 @@ const LINKS = {
         title: 'Tours & Festivals',
         links: [
           { label: 'Armenia Tours', href: '/travel/tour' },
-          { label: 'Yerevan Festivals & Events', href: '/travel/festivals' },
-          { label: 'Currency Exchange & Crypto', href: '/travel/exchange' },
-          { label: 'Company Registration Armenia', href: '/services/company-registration' },
           { label: 'About Caspian Group', href: '/about' },
         ],
       },
@@ -107,24 +92,20 @@ const LINKS = {
           { label: 'Аренда квартир в Ереване', href: '/travel/apartment' },
           { label: 'Бронирование авиабилетов', href: '/travel/flight' },
           { label: 'Трансфер из аэропорта', href: '/travel/transfer' },
-          { label: 'VIP поддержка', href: '/travel/vip' },
         ],
       },
       {
         title: 'ВНЖ и миграция',
         links: [
-          { label: 'ВНЖ Армении', href: '/residency/armenia' },
           { label: 'Рабочий ВНЖ Армении', href: '/residency/work' },
           { label: 'Бизнес ВНЖ — регистрация компании', href: '/residency/business' },
           { label: 'Учебный ВНЖ Армении', href: '/residency/student' },
-          { label: 'Поступление в университет', href: '/services/student-admission' },
         ],
       },
       {
         title: 'Россия',
         links: [
           { label: 'Туристическая виза в Россию', href: '/visa/russia' },
-          { label: 'Студенческая виза Армении', href: '/student-visa/armenia' },
           { label: 'Студенческая виза России', href: '/student-visa/russia' },
         ],
       },
@@ -132,9 +113,6 @@ const LINKS = {
         title: 'Туры и фестивали',
         links: [
           { label: 'Туры по Армении', href: '/travel/tour' },
-          { label: 'Фестивали и события Еревана', href: '/travel/festivals' },
-          { label: 'Обмен валюты и криптовалюта', href: '/travel/exchange' },
-          { label: 'Регистрация компании в Армении', href: '/services/company-registration' },
           { label: 'О нас', href: '/about' },
         ],
       },

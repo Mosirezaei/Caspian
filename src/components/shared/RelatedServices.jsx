@@ -24,7 +24,7 @@ const SERVICES = {
     fa: { title: 'اقامت ارمنستان', desc: 'کارت اقامت در کمتر از ۳۰ روز' },
     en: { title: 'Armenia Residency', desc: 'Residency card in under 30 days' },
     ru: { title: 'ВНЖ Армении', desc: 'Карта ВНЖ менее чем за 30 дней' },
-    href: '/residency/armenia', icon: '🪪',
+    href: '/residency/business', icon: '🪪',
   },
   company: {
     fa: { title: 'ثبت شرکت در ارمنستان', desc: 'LLC در ۳ روز، مالیات ۵٪' },
@@ -48,7 +48,7 @@ const SERVICES = {
     fa: { title: 'ویزای تحصیلی ارمنستان', desc: 'پذیرش YSU، YSMU، AUA از ۱۵۰۰ دلار' },
     en: { title: 'Armenia Student Visa', desc: 'Admission to YSU, YSMU, AUA from $1,500' },
     ru: { title: 'Учебная виза Армении', desc: 'Поступление в YSU, YSMU, AUA от $1500' },
-    href: '/student-visa/armenia', icon: '🎓',
+    href: '/student-visa/russia', icon: '🎓',
   },
   tour: {
     fa: { title: 'تور ارمنستان', desc: 'تور زمینی و هوایی با راهنمای فارسی' },
@@ -56,32 +56,18 @@ const SERVICES = {
     ru: { title: 'Туры по Армении', desc: 'Наземные и авиатуры с русскоязычным гидом' },
     href: '/travel/tour', icon: '🗺️',
   },
-  exchange: {
-    fa: { title: 'صرافی و رمزارز', desc: 'تبدیل ریال، دلار، USDT در ایروان' },
-    en: { title: 'Currency & Crypto Exchange', desc: 'Rial, USD, USDT conversion in Yerevan' },
-    ru: { title: 'Обмен валюты и криптовалюты', desc: 'Риал, USD, USDT в Ереване' },
-    href: '/travel/exchange', icon: '💱',
-  },
-  vip: {
-    fa: { title: 'پشتیبانی VIP', desc: 'خدمات اختصاصی ۲۴ ساعته در ایروان' },
-    en: { title: 'VIP Support', desc: 'Exclusive 24/7 service in Yerevan' },
-    ru: { title: 'VIP поддержка', desc: 'Эксклюзивный сервис 24/7 в Ереване' },
-    href: '/travel/vip', icon: '⭐',
-  },
 };
 
 // نقشه ارتباطات: هر صفحه چه لینک‌هایی باید داشته باشه
 const RELATED_MAP = {
   'hotel':        ['apartment', 'transfer', 'tour', 'residency'],
-  'apartment':    ['hotel', 'transfer', 'residency', 'exchange'],
+  'apartment':    ['hotel', 'transfer', 'residency', 'company'],
   'residency':    ['company', 'hotel', 'apartment', 'studentVisa'],
-  'company':      ['residency', 'hotel', 'apartment', 'exchange'],
+  'company':      ['residency', 'hotel', 'apartment', 'tour'],
   'visa-russia':  ['hotel', 'tour', 'transfer', 'visaRussia'],
   'student-visa': ['studentVisa', 'hotel', 'apartment', 'residency'],
-  'tour':         ['hotel', 'apartment', 'transfer', 'exchange'],
-  'transfer':     ['hotel', 'apartment', 'tour', 'vip'],
-  'exchange':     ['hotel', 'apartment', 'transfer', 'company'],
-  'vip':          ['hotel', 'apartment', 'transfer', 'tour'],
+  'tour':         ['hotel', 'apartment', 'transfer', 'company'],
+  'transfer':     ['hotel', 'apartment', 'tour', 'residency'],
   'default':      ['hotel', 'apartment', 'residency', 'visaRussia'],
 };
 

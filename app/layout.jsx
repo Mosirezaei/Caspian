@@ -67,10 +67,10 @@ export default function RootLayout({ children }) {
             itemListElement: [
               { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Hotel Booking in Yerevan', url: 'https://caspian.am/travel/hotel' } },
               { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Furnished Apartment Rental Yerevan', url: 'https://caspian.am/travel/apartment' } },
-              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Armenia Residency', url: 'https://caspian.am/residency/armenia' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Armenia Student Residency', url: 'https://caspian.am/residency/student' } },
               { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Company Registration Armenia', url: 'https://caspian.am/residency/business' } },
               { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Russia Tourist Visa from Yerevan', url: 'https://caspian.am/visa/russia' } },
-              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Armenia Student Visa', url: 'https://caspian.am/student-visa/armenia' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Russia Student Visa', url: 'https://caspian.am/student-visa/russia' } },
             ],
           },
           contactPoint: { '@type': 'ContactPoint', telephone: '+37433149327', contactType: 'customer service', availableLanguage: ['Persian', 'English', 'Russian'] },
