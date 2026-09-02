@@ -7,7 +7,11 @@ import { usePathname } from 'next/navigation';
 
 import { motion, AnimatePresence } from 'framer-motion';
 
-import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
+import {
+  Menu, X, ChevronDown, ChevronRight,
+  Home, Building2, Briefcase, Baby, MapPin,
+  GraduationCap, Compass, Newspaper,
+} from 'lucide-react';
 
 import { useLang } from '@/lib/LanguageContext';
 
@@ -41,110 +45,106 @@ function YerevanClock() {
   );
 }
 
+// دسته‌های مگامنوی وبلاگ — آیکون + عنوان هر دسته، همه به آرشیو وبلاگ لینک می‌شن
+// (فیلتر بر اساس دسته وقتی صفحات مقالات نوشته بشن به /blog?category= اضافه میشه)
+const blogCategories = {
+  fa: [
+    { icon: Home, label: 'اقامت و مهاجرت', href: '/blog?category=residency' },
+    { icon: Building2, label: 'ثبت شرکت و مالی', href: '/blog?category=company' },
+    { icon: Briefcase, label: 'کار و اشتغال', href: '/blog?category=work' },
+    { icon: MapPin, label: 'زندگی در ایروان', href: '/blog?category=life' },
+    { icon: GraduationCap, label: 'تحصیل', href: '/blog?category=education' },
+    { icon: Compass, label: 'گردشگری و دیدنی‌ها', href: '/blog?category=tourism' },
+    { icon: Newspaper, label: 'اخبار و رویدادها', href: '/blog?category=news' },
+  ],
+  en: [
+    { icon: Home, label: 'Residency & Immigration', href: '/blog?category=residency' },
+    { icon: Building2, label: 'Company Registration & Finance', href: '/blog?category=company' },
+    { icon: Briefcase, label: 'Work & Employment', href: '/blog?category=work' },
+    { icon: MapPin, label: 'Life in Yerevan', href: '/blog?category=life' },
+    { icon: GraduationCap, label: 'Education', href: '/blog?category=education' },
+    { icon: Compass, label: 'Tourism & Sights', href: '/blog?category=tourism' },
+    { icon: Newspaper, label: 'News & Events', href: '/blog?category=news' },
+  ],
+  ru: [
+    { icon: Home, label: 'ВНЖ и миграция', href: '/blog?category=residency' },
+    { icon: Building2, label: 'Регистрация компаний и финансы', href: '/blog?category=company' },
+    { icon: Briefcase, label: 'Работа и трудоустройство', href: '/blog?category=work' },
+    { icon: MapPin, label: 'Жизнь в Ереване', href: '/blog?category=life' },
+    { icon: GraduationCap, label: 'Образование', href: '/blog?category=education' },
+    { icon: Compass, label: 'Туризм и достопримечательности', href: '/blog?category=tourism' },
+    { icon: Newspaper, label: 'Новости и события', href: '/blog?category=news' },
+  ],
+};
+
 const navLinks = {
   fa: [
+    { label: 'صفحه اصلی', href: '/' },
     {
-      label: 'کاسپین گروه', href: '#', children: [
+      label: 'خدمات مسافرتی', href: '#', children: [
+        { label: 'تورهای ارمنستان', href: '/travel/tour' },
+        { label: 'رزرو هتل', href: '/travel/hotel' },
+        { label: 'رزرو آپارتمان', href: '/travel/apartment' },
+        { label: 'بلیط هوایی و زمینی', href: '/travel/flight' },
+        { label: 'ترانسفر فرودگاهی', href: '/travel/transfer' },
+      ],
+    },
+    {
+      label: 'اقامت', href: '#', children: [
+        { label: 'ثبت شرکت ارمنستان', href: '/residency/business' },
+        { label: 'اقامت کاری ارمنستان', href: '/residency/work' },
+        { label: 'اقامت تحصیلی', href: '/residency/student' },
+        { label: 'اقامت ارمنستان از طریق تولد فرزند', href: '/residency/child-birth' },
+        { label: 'اقامت از طریق سرمایه‌گذاری', href: '/residency/investment' },
+      ],
+    },
+    {
+      label: 'روسیه', href: '#', children: [
+        { label: 'ویزای توریستی', href: '/visa/russia' },
+        { label: 'ویزای تجاری', href: '/visa/russia/business' },
+        { label: 'ویزای مولتی', href: '/visa/russia/multi' },
+        { label: 'ویزای تحصیلی', href: '/student-visa/russia' },
+      ],
+    },
+    { label: 'وبلاگ', href: '/blog', mega: true },
+    {
+      label: 'درباره کاسپین', href: '#', children: [
         { label: 'درباره ما', href: '/about' },
         { label: 'تماس با ما', href: '/contact' },
       ],
     },
-    {
-      label: 'ویزا', href: '#', children: [
-        { label: 'وقت سفارت آمریکا', href: '/visa/embassy-usa' },
-        { label: 'وقت سفارت کانادا', href: '/visa/embassy-canada' },
-        { label: 'ویزای شینگن', href: '/visa/schengen' },
-        { label: 'ویزای رومانی', href: '/visa/romania' },
-        { label: 'ویزای روسیه', href: '/visa/russia' },
-        { label: 'ویزای آمریکای جنوبی', href: '/visa/south-america' },
-      ],
-    },
-    {
-      label: 'ویزای تحصیلی', href: '/student-visa', _hidden: true, children: [
-        { label: 'ویزای تحصیلی ارمنستان', href: '/student-visa/armenia' },
-        { label: 'ویزای تحصیلی روسیه', href: '/student-visa/russia' },
-        { label: 'ویزای تحصیلی ترکیه', href: '/student-visa/turkey' },
-        { label: 'ویزای تحصیلی شینگن', href: '/student-visa/schengen' },
-        { label: 'ویزای تحصیلی رومانی', href: '/student-visa/romania' },
-        { label: 'ویزای تحصیلی گرجستان', href: '/student-visa/georgia' },
-      ],
-    },
-    {
-      label: 'اقامت و مهاجرت', href: '#', children: [
-        { label: 'اقامت ارمنستان', href: '/residency/armenia' },
-        { label: 'اقامت کاری', href: '/residency/work' },
-        { label: 'اقامت بیزینسی — ثبت شرکت', href: '/residency/business' },
-        { label: 'اقامت تحصیلی', href: '/residency/student' },
-      ],
-    },
-    {
-      label: 'خدمات مسافرتی', href: '#', children: [
-        { label: 'پرواز', href: '/travel/flight' },
-        { label: 'هتل', href: '/travel/hotel' },
-        { label: 'آپارتمان', href: '/travel/apartment' },
-        { label: 'ترانسفر', href: '/travel/transfer' },
-        { label: 'صرافی و رمزارز', href: '/travel/exchange' },
-        { label: 'پشتیبانی VIP', href: '/travel/vip' },
-      ],
-    },
-    {
-      label: 'تور و فستیوال', href: '#', children: [
-        { label: 'تورهای ارمنستان', href: '/travel/tour' },
-        { label: 'جاهای دیدنی ارمنستان', href: '/travel/armenia-guide' },
-        { label: 'فستیوال‌ها', href: '/travel/festivals' },
-      ],
-    },
-    { label: 'صفحه اصلی', href: '/' },
   ],
   en: [
     { label: 'Home', href: '/' },
     {
       label: 'Travel Services', href: '#', children: [
-        { label: 'Flight', href: '/travel/flight' },
-        { label: 'Hotel', href: '/travel/hotel' },
-        { label: 'Apartment', href: '/travel/apartment' },
-        { label: 'Transfer', href: '/travel/transfer' },
-        { label: 'Exchange & Crypto', href: '/travel/exchange' },
-        { label: 'VIP Support', href: '/travel/vip' },
-      ],
-    },
-    {
-      label: 'Tours & Festivals', href: '#', children: [
         { label: 'Armenia Tours', href: '/travel/tour' },
-        { label: 'Where to Go in Armenia', href: '/travel/armenia-guide' },
-        { label: 'Festivals & Events', href: '/travel/festivals' },
+        { label: 'Hotel Booking', href: '/travel/hotel' },
+        { label: 'Apartment Booking', href: '/travel/apartment' },
+        { label: 'Flight & Ground Tickets', href: '/travel/flight' },
+        { label: 'Airport Transfer', href: '/travel/transfer' },
       ],
     },
     {
-      label: 'Residency & Immigration', href: '#', children: [
-        { label: 'Armenia Residency', href: '/residency/armenia' },
-        { label: 'Work Residency', href: '/residency/work' },
-        { label: 'Business Residency — Company Reg.', href: '/residency/business' },
+      label: 'Residency', href: '#', children: [
+        { label: 'Armenia Company Registration', href: '/residency/business' },
+        { label: 'Armenia Work Residency', href: '/residency/work' },
         { label: 'Student Residency', href: '/residency/student' },
+        { label: 'Residency via Child Birth in Armenia', href: '/residency/child-birth' },
+        { label: 'Residency via Investment', href: '/residency/investment' },
       ],
     },
     {
-      label: 'Visa', href: '#', children: [
-        { label: 'US Embassy Appointment', href: '/visa/embassy-usa' },
-        { label: 'Canada Embassy Appointment', href: '/visa/embassy-canada' },
-        { label: 'Schengen Visa', href: '/visa/schengen' },
-        { label: 'Romania Visa', href: '/visa/romania' },
-        { label: 'Russia Visa', href: '/visa/russia' },
-        { label: 'South America Visa', href: '/visa/south-america' },
+      label: 'Russia', href: '#', children: [
+        { label: 'Tourist Visa', href: '/visa/russia' },
+        { label: 'Business Visa', href: '/visa/russia/business' },
+        { label: 'Multi-entry Visa', href: '/visa/russia/multi' },
+        { label: 'Student Visa', href: '/student-visa/russia' },
       ],
     },
+    { label: 'Blog', href: '/blog', mega: true },
     {
-      label: 'Student Visa', href: '/student-visa', _hidden: true, children: [
-        { label: 'Armenia Student Visa', href: '/student-visa/armenia' },
-        { label: 'Russia Student Visa', href: '/student-visa/russia' },
-        { label: 'Turkey Student Visa', href: '/student-visa/turkey' },
-        { label: 'Schengen Student Visa', href: '/student-visa/schengen' },
-        { label: 'Romania Student Visa', href: '/student-visa/romania' },
-        { label: 'Georgia Student Visa', href: '/student-visa/georgia' },
-      ],
-    },
-    {
-      label: 'Caspian Group', href: '#', children: [
+      label: 'About Caspian', href: '#', children: [
         { label: 'About Us', href: '/about' },
         { label: 'Contact Us', href: '/contact' },
       ],
@@ -154,51 +154,33 @@ const navLinks = {
     { label: 'Главная', href: '/' },
     {
       label: 'Туристические услуги', href: '#', children: [
-        { label: 'Перелёт', href: '/travel/flight' },
-        { label: 'Отель', href: '/travel/hotel' },
-        { label: 'Апартаменты', href: '/travel/apartment' },
-        { label: 'Трансфер', href: '/travel/transfer' },
-        { label: 'Обмен и криптовалюта', href: '/travel/exchange' },
-        { label: 'VIP поддержка', href: '/travel/vip' },
-      ],
-    },
-    {
-      label: 'Туры и фестивали', href: '#', children: [
         { label: 'Туры по Армении', href: '/travel/tour' },
-        { label: 'Куда поехать в Армении', href: '/travel/armenia-guide' },
-        { label: 'Фестивали и события', href: '/travel/festivals' },
+        { label: 'Бронирование отелей', href: '/travel/hotel' },
+        { label: 'Бронирование апартаментов', href: '/travel/apartment' },
+        { label: 'Авиа и наземные билеты', href: '/travel/flight' },
+        { label: 'Трансфер из аэропорта', href: '/travel/transfer' },
       ],
     },
     {
-      label: 'ВНЖ и миграция', href: '#', children: [
-        { label: 'ВНЖ Армении', href: '/residency/armenia' },
-        { label: 'Рабочий ВНЖ', href: '/residency/work' },
-        { label: 'Бизнес ВНЖ — регистрация компании', href: '/residency/business' },
+      label: 'ВНЖ', href: '#', children: [
+        { label: 'Регистрация компании в Армении', href: '/residency/business' },
+        { label: 'Рабочий ВНЖ Армении', href: '/residency/work' },
         { label: 'Учебный ВНЖ', href: '/residency/student' },
+        { label: 'ВНЖ через рождение ребёнка в Армении', href: '/residency/child-birth' },
+        { label: 'ВНЖ через инвестиции', href: '/residency/investment' },
       ],
     },
     {
-      label: 'Виза', href: '#', children: [
-        { label: 'Запись в посольство США', href: '/visa/embassy-usa' },
-        { label: 'Запись в посольство Канады', href: '/visa/embassy-canada' },
-        { label: 'Шенгенская виза', href: '/visa/schengen' },
-        { label: 'Виза в Румынию', href: '/visa/romania' },
-        { label: 'Виза в Россию', href: '/visa/russia' },
-        { label: 'Виза в Южную Америку', href: '/visa/south-america' },
+      label: 'Россия', href: '#', children: [
+        { label: 'Туристическая виза', href: '/visa/russia' },
+        { label: 'Бизнес-виза', href: '/visa/russia/business' },
+        { label: 'Мульти-виза', href: '/visa/russia/multi' },
+        { label: 'Студенческая виза', href: '/student-visa/russia' },
       ],
     },
+    { label: 'Блог', href: '/blog', mega: true },
     {
-      label: 'Студенческая виза', href: '/student-visa', _hidden: true, children: [
-        { label: 'Студ. виза Армении', href: '/student-visa/armenia' },
-        { label: 'Студ. виза России', href: '/student-visa/russia' },
-        { label: 'Студ. виза Турции', href: '/student-visa/turkey' },
-        { label: 'Шенгенская студ. виза', href: '/student-visa/schengen' },
-        { label: 'Студ. виза Румынии', href: '/student-visa/romania' },
-        { label: 'Студ. виза Грузии', href: '/student-visa/georgia' },
-      ],
-    },
-    {
-      label: 'Caspian Group', href: '#', children: [
+      label: 'О Caspian', href: '#', children: [
         { label: 'О нас', href: '/about' },
         { label: 'Контакты', href: '/contact' },
       ],
@@ -256,6 +238,44 @@ function DropdownItem({ child, isRtl, onNavigate }) {
   );
 }
 
+// مگامنوی وبلاگ — گرید چندستونه با آیکون برای هر دسته (متفاوت از دراپ‌داون لیستی ساده رقبا)
+function BlogMegaMenu({ isRtl, lang, onNavigate }) {
+  const categories = blogCategories[lang] || blogCategories.fa;
+  return (
+    <div className="glass-panel border border-white/10 rounded-2xl p-4 shadow-2xl" dir={isRtl ? 'rtl' : 'ltr'}>
+      <div className="grid grid-cols-2 gap-2 w-[520px]">
+        {categories.map((cat) => {
+          const Icon = cat.icon;
+          return (
+            <Link
+              key={cat.label}
+              href={cat.href}
+              onClick={onNavigate}
+              className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 border border-transparent hover:border-primary/30 transition-all group"
+            >
+              <span className="flex-shrink-0 w-9 h-9 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center group-hover:bg-amber-400/20 transition-colors">
+                <Icon className="w-4 h-4 text-primary" />
+              </span>
+              <span className="text-sm text-foreground/75 group-hover:text-primary transition-colors font-medium">
+                {cat.label}
+              </span>
+            </Link>
+          );
+        })}
+      </div>
+      <div className="mt-3 pt-3 border-t border-white/10">
+        <Link
+          href="/blog"
+          onClick={onNavigate}
+          className="block text-center text-xs font-bold text-primary hover:text-amber-300 transition-colors py-1"
+        >
+          {lang === 'fa' ? 'مشاهده همه مقالات ←' : lang === 'ru' ? 'Все статьи →' : 'View all articles →'}
+        </Link>
+      </div>
+    </div>
+  );
+}
+
 export default function GlobalNavbar() {
   const { lang, setLang } = useLang();
   const isRtl = lang === 'fa';
@@ -288,6 +308,7 @@ export default function GlobalNavbar() {
   const toggleGroup = (label) => setOpenGroups(prev => ({ ...prev, [label]: !prev[label] }));
 
   const links = navLinks[lang] || navLinks.fa;
+  const categories = blogCategories[lang] || blogCategories.fa;
 
   return (
     <>
@@ -306,8 +327,21 @@ export default function GlobalNavbar() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-0.5 flex-1 justify-center min-w-0">
-            {links.filter(l => !l._hidden).map((link) =>
-              link.children ? (
+            {links.map((link) =>
+              link.mega ? (
+                <div key={link.label} className="relative group">
+                  <button className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm text-foreground/70 hover:text-primary transition-colors font-medium whitespace-nowrap">
+                    {link.label}
+                    <ChevronDown className="w-3 h-3 transition-transform flex-shrink-0 group-hover:rotate-180" />
+                  </button>
+                  <div
+                    className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50 hidden group-hover:block"
+                    dir={isRtl ? 'rtl' : 'ltr'}
+                  >
+                    <BlogMegaMenu isRtl={isRtl} lang={lang} onNavigate={() => {}} />
+                  </div>
+                </div>
+              ) : link.children ? (
                 <div key={link.label} className="relative group">
                   <button className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm text-foreground/70 hover:text-primary transition-colors font-medium whitespace-nowrap">
                     {link.label}
@@ -387,7 +421,7 @@ export default function GlobalNavbar() {
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
               dir={isRtl ? 'rtl' : 'ltr'}
               className={`fixed top-0 w-72 h-full bg-card border-white/10 z-50 flex flex-col ${isRtl ? 'right-0 border-l' : 'left-0 border-r'}`}>
-              
+
               {/* Drawer Header */}
               <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
                 <Image
@@ -406,8 +440,36 @@ export default function GlobalNavbar() {
 
               {/* Drawer Links */}
               <div className="flex-1 overflow-y-auto py-4 px-3 space-y-1">
-                {[...links].filter(l => !l._hidden).reverse().map((link) =>
-                  link.children ? (
+                {links.map((link) =>
+                  link.mega ? (
+                    <div key={link.label}>
+                      <button onClick={() => toggleGroup(link.label)}
+                        className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-bold text-primary hover:bg-white/5 transition-colors cursor-pointer">
+                        {link.label}
+                        <ChevronDown className={`w-4 h-4 transition-transform ${openGroups[link.label] ? 'rotate-180' : ''}`} />
+                      </button>
+                      <AnimatePresence>
+                        {openGroups[link.label] && (
+                          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
+                            <div className="ps-2 py-2 grid grid-cols-2 gap-1.5 border-b border-white/5 mb-1">
+                              {categories.map((cat) => {
+                                const Icon = cat.icon;
+                                return (
+                                  <Link key={cat.label} href={cat.href}
+                                    onClick={() => setMobileOpen(false)}
+                                    className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-xs text-foreground/70 hover:text-primary hover:bg-white/5 transition-colors border border-white/5">
+                                    <Icon className="w-3.5 h-3.5 flex-shrink-0 text-primary/80" />
+                                    <span>{cat.label}</span>
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ) : link.children ? (
                     <div key={link.label}>
                       <button onClick={() => toggleGroup(link.label)}
                         className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-bold text-primary hover:bg-white/5 transition-colors cursor-pointer">
