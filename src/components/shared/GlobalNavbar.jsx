@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Menu, X, ChevronDown, ChevronRight,
   Home, Building2, Briefcase, MapPin,
-  GraduationCap, Compass, Newspaper,
+  GraduationCap, Compass, PartyPopper,
 } from 'lucide-react';
 
 import { useLang } from '@/lib/LanguageContext';
@@ -55,7 +55,7 @@ const blogCategories = {
     { icon: MapPin, label: 'زندگی در ایروان', href: '/blog?category=life' },
     { icon: GraduationCap, label: 'تحصیل', href: '/blog?category=education' },
     { icon: Compass, label: 'گردشگری و دیدنی‌ها', href: '/blog?category=tourism' },
-    { icon: Newspaper, label: 'اخبار و رویدادها', href: '/blog?category=news' },
+    { icon: PartyPopper, label: 'اخبار و فستیوال‌ها', href: '/blog?category=news' },
   ],
   en: [
     { icon: Home, label: 'Residency & Immigration', href: '/blog?category=residency' },
@@ -64,7 +64,7 @@ const blogCategories = {
     { icon: MapPin, label: 'Life in Yerevan', href: '/blog?category=life' },
     { icon: GraduationCap, label: 'Education', href: '/blog?category=education' },
     { icon: Compass, label: 'Tourism & Sights', href: '/blog?category=tourism' },
-    { icon: Newspaper, label: 'News & Events', href: '/blog?category=news' },
+    { icon: PartyPopper, label: 'News & Festivals', href: '/blog?category=news' },
   ],
   ru: [
     { icon: Home, label: 'ВНЖ и миграция', href: '/blog?category=residency' },
@@ -73,7 +73,7 @@ const blogCategories = {
     { icon: MapPin, label: 'Жизнь в Ереване', href: '/blog?category=life' },
     { icon: GraduationCap, label: 'Образование', href: '/blog?category=education' },
     { icon: Compass, label: 'Туризм и достопримечательности', href: '/blog?category=tourism' },
-    { icon: Newspaper, label: 'Новости и события', href: '/blog?category=news' },
+    { icon: PartyPopper, label: 'Новости и фестивали', href: '/blog?category=news' },
   ],
 };
 
