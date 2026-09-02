@@ -4,6 +4,8 @@ import { useLang } from '@/lib/LanguageContext';
 import RelatedContent from './RelatedContent';
 import RelatedServices from './RelatedServices';
 import SeoFooterLinks from './SeoFooterLinks';
+import { usePathname } from 'next/navigation';
+import { SERVICE_TYPE_TAGS } from '@/data/siteLinks';
 
 const t = {
   fa: { cta: 'مشاوره رایگان', ctaSub: 'سوالی داری؟ همین حالا با کارشناسان ما در واتساپ چت کن' },
@@ -23,6 +25,9 @@ const t = {
 export default function PageSidebar({ tags, currentPath, serviceType }) {
   const { lang } = useLang();
   const tt = t[lang] || t.fa;
+  const pathname = usePathname();
+  const path = currentPath || pathname || '';
+  const usefulLinksTags = (tags && tags.length > 0) ? tags : (SERVICE_TYPE_TAGS[serviceType] || SERVICE_TYPE_TAGS.default);
 
   return (
     <aside className="lg:sticky lg:top-20 lg:self-start space-y-5">
@@ -51,7 +56,7 @@ export default function PageSidebar({ tags, currentPath, serviceType }) {
       )}
 
       <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
-        <SeoFooterLinks variant="sidebar" />
+        <SeoFooterLinks variant="sidebar" currentTags={usefulLinksTags} currentPath={path} />
       </div>
     </aside>
   );
