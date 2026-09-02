@@ -1,7 +1,7 @@
 'use client';
 import { useLang } from '@/lib/LanguageContext';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
-import BlogSidebar from '@/components/shared/BlogSidebar';
+import PageSidebar from '@/components/shared/PageSidebar';
 import SeoFooterLinks from '@/components/shared/SeoFooterLinks.jsx';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import RelatedContent from '@/components/shared/RelatedContent.jsx';
@@ -137,7 +137,7 @@ export default function ArmeniaVisaDocuments() {
 
         </div>
 
-          <BlogSidebar currentTags={['visa', 'documents', 'residency', 'armenia']} currentPath="/blog/armenia-visa-documents" />
+          <PageSidebar tags={['visa', 'documents', 'residency', 'armenia']} currentPath="/blog/armenia-visa-documents" />
         </div>
 
         <RelatedServices currentPath="/blog/armenia-visa-documents" />
