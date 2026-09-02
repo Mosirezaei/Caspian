@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import {
   Menu, X, ChevronDown, ChevronRight,
-  Home, Building2, Briefcase, Baby, MapPin,
+  Home, Building2, Briefcase, MapPin,
   GraduationCap, Compass, Newspaper,
 } from 'lucide-react';
 
@@ -281,22 +281,7 @@ export default function GlobalNavbar() {
   const isRtl = lang === 'fa';
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null);
-  const closeTimer = React.useRef(null);
-
-  const handleMouseEnter = (label) => {
-    if (closeTimer.current) {
-      clearTimeout(closeTimer.current);
-      closeTimer.current = null;
-    }
-    setOpenDropdown(label);
-  };
-
-  const handleMouseLeave = () => {
-    closeTimer.current = setTimeout(() => {
-      setOpenDropdown(null);
-    }, 150);
-  };
+  const [_openDropdown, setOpenDropdown] = useState(null);
 
   const [openGroups, setOpenGroups] = useState({});
 
