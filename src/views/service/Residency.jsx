@@ -168,7 +168,7 @@ export default function ResidencyArmenia() {
               <p className="text-sm text-foreground/70 leading-8 mb-4">
                 {isFa
                   ? 'پارلمان ارمنستان در مارس ۲۰۲۵ قانون الحاق رسمی به اتحادیه اروپا را تصویب کرد. اولین اجلاس تاریخی ارمنستان–EU در مه ۲۰۲۶ در ایروان برگزار شد. این مسیر چند سال طول می‌کشد، اما حرکت جدی است.'
-                  : 'Armenia's parliament approved the official EU accession law in March 2025. The first historic Armenia–EU summit was held in Yerevan in May 2026. The process will take years, but the direction is serious.'}
+                  : 'Armenia\'s parliament approved the official EU accession law in March 2025. The first historic Armenia–EU summit was held in Yerevan in May 2026. The process will take years, but the direction is serious.'}
               </p>
               <div className="grid sm:grid-cols-3 gap-3">
                 {[
@@ -229,7 +229,7 @@ export default function ResidencyArmenia() {
               <p className="text-sm text-foreground/70 leading-8 mb-5">
                 {isFa
                   ? 'ثبت شرکت نه‌فقط مسیر اقامت، بلکه یک فرصت واقعی کسب‌وکار است. مالکیت ۱۰۰٪ بدون نیاز به شریک ارمنی، ثبت ۱ تا ۳ روزه آنلاین، دسترسی به بانکداری بین‌المللی.'
-                  : 'Company registration is not just a residency route — it's a real business opportunity. 100% foreign ownership, 1–3 day online registration, international banking access.'}
+                  : 'Company registration is not just a residency route — it\'s a real business opportunity. 100% foreign ownership, 1–3 day online registration, international banking access.'}
               </p>
               <div className="grid sm:grid-cols-2 gap-4 mb-5">
                 <div>
@@ -424,7 +424,7 @@ export default function ResidencyArmenia() {
               <p className="text-sm text-foreground/70 leading-8 mb-4">
                 {isFa
                   ? 'پاسپورت ارمنستان دسترسی به ۵۹ کشور بدون ویزا را می‌دهد و هدف نهایی بسیاری از ایرانیان مقیم ایروان است. تابعیت دوگانه کاملاً مجاز است.'
-                  : 'Armenia's passport offers visa-free access to 59 countries and is the ultimate goal of many Iranians based in Yerevan. Dual citizenship is fully permitted.'}
+                  : 'Armenia\'s passport offers visa-free access to 59 countries and is the ultimate goal of many Iranians based in Yerevan. Dual citizenship is fully permitted.'}
               </p>
               <ul className="space-y-1.5">
                 {(isFa ? [
@@ -576,7 +576,7 @@ export default function ResidencyArmenia() {
                 ] : [
                   {q: 'Can I get residency just by renting an apartment?', a: 'No. Renting alone is not a valid residency basis. You must use one of the official routes: company, work, study, family, or investment.'},
                   {q: 'Does Armenia residency give me a Schengen visa?', a: 'Not currently. However, as Armenia advances toward EU membership, this may change in the long term.'},
-                  {q: 'What happens if I'm outside Armenia for more than 6 months?', a: 'From November 2026, absence over 183 days per year must be reported within 10 days. Failure to report may put your residency at risk.'},
+                  {q: 'What happens if I\'m outside Armenia for more than 6 months?', a: 'From November 2026, absence over 183 days per year must be reported within 10 days. Failure to report may put your residency at risk.'},
                   {q: 'Can my children also get residency?', a: 'Yes. Spouse and children can obtain residency through family reunification. From August 2026, financial support proof is only required for spouse and children, not extended family.'},
                   {q: 'How long does it take to receive the residency card?', a: 'Usually 2–6 weeks after submitting a complete application. Document preparation before travel adds 2–4 weeks.'},
                   {q: 'Can I convert temporary to permanent residency?', a: 'Yes. After 3 years of temporary residency with economic activity, you can apply for 3-year permanent residency.'},
