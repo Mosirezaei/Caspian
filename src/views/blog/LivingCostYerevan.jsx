@@ -1,6 +1,7 @@
 'use client';
 import { useLang } from '@/lib/LanguageContext';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
+import BlogSidebar from '@/components/shared/BlogSidebar';
 import SeoFooterLinks from '@/components/shared/SeoFooterLinks.jsx';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import RelatedContent from '@/components/shared/RelatedContent.jsx';
@@ -77,7 +78,9 @@ export default function LivingCostYerevan() {
   return (
     <div className="min-h-screen" dir="rtl">
       <GlobalNavbar />
-      <main className="max-w-3xl mx-auto px-4 py-12 sm:py-20">
+      <main className="max-w-6xl mx-auto px-4 py-12 sm:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2">
 
         {/* Header */}
         <div className="mb-10">
@@ -121,7 +124,11 @@ export default function LivingCostYerevan() {
           </a>
         </div>
 
-        <RelatedContent currentTags={['yerevan', 'cost-of-living', 'residency', 'life']} currentPath="/blog/living-cost-yerevan" />
+        </div>
+
+          <BlogSidebar currentTags={['yerevan', 'cost-of-living', 'residency', 'life']} currentPath="/blog/living-cost-yerevan" />
+        </div>
+
         <RelatedServices currentPath="/blog/living-cost-yerevan" />
         <SeoFooterLinks />
       </main>
