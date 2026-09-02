@@ -1,7 +1,7 @@
 'use client';
 import { MapPin, Clock } from 'lucide-react';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
-import BlogSidebar from '@/components/shared/BlogSidebar';
+import PageSidebar from '@/components/shared/PageSidebar';
 import SeoFooterLinks from '@/components/shared/SeoFooterLinks.jsx';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import RelatedContent from '@/components/shared/RelatedContent.jsx';
@@ -130,7 +130,7 @@ export default function ArmeniaTourism() {
 
         </div>
 
-          <BlogSidebar currentTags={['tourism', 'yerevan', 'sightseeing', 'armenia']} currentPath="/blog/armenia-tourism-guide" />
+          <PageSidebar tags={['tourism', 'yerevan', 'sightseeing', 'armenia']} currentPath="/blog/armenia-tourism-guide" />
         </div>
 
         <RelatedServices currentPath="/blog/armenia-tourism-guide" />
