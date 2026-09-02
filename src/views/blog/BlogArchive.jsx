@@ -2,11 +2,35 @@
 import { Suspense, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { ArrowLeft, ArrowRight, Calendar } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, FileCheck2, Building2, Briefcase, Home, GraduationCap, Mountain, Newspaper } from 'lucide-react';
 import { useLang } from '@/lib/LanguageContext';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 import SeoFooterLinks from '@/components/shared/SeoFooterLinks.jsx';
 import { blogPosts, CATEGORY_LABELS } from '@/data/blogPosts';
+
+const CATEGORY_ICON = {
+  residency: FileCheck2, company: Building2, work: Briefcase,
+  life: Home, education: GraduationCap, tourism: Mountain, news: Newspaper,
+};
+const CATEGORY_GRADIENT = {
+  residency: 'from-emerald-500/25 to-emerald-500/5',
+  company: 'from-sky-500/25 to-sky-500/5',
+  work: 'from-primary/30 to-primary/5',
+  life: 'from-amber-500/25 to-amber-500/5',
+  education: 'from-violet-500/25 to-violet-500/5',
+  tourism: 'from-rose-500/25 to-rose-500/5',
+  news: 'from-slate-400/25 to-slate-400/5',
+};
+
+function CardThumb({ category }) {
+  const Icon = CATEGORY_ICON[category] || FileCheck2;
+  const grad = CATEGORY_GRADIENT[category] || CATEGORY_GRADIENT.residency;
+  return (
+    <div className={`w-24 sm:w-28 shrink-0 rounded-xl bg-gradient-to-br ${grad} border border-white/10 flex items-center justify-center`}>
+      <Icon className="w-8 h-8 sm:w-9 sm:h-9 text-foreground/70" strokeWidth={1.6} />
+    </div>
+  );
+}
 
 function BlogArchiveInner() {
   const { lang } = useLang();
@@ -66,20 +90,23 @@ function BlogArchiveInner() {
               const c = post[lang] || post.fa;
               return (
                 <Link key={post.slug} href={post.href}
-                  className="group block p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/30 transition">
-                  <span className="text-[11px] font-semibold text-primary/80">{catLabels[post.category]}</span>
-                  <h2 className="text-lg font-bold text-foreground mt-2 mb-2 leading-snug group-hover:text-primary transition-colors">
-                    {c.title}
-                  </h2>
-                  <p className="text-sm text-foreground/55 leading-relaxed line-clamp-3 mb-3">{c.excerpt}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center gap-1.5 text-xs text-foreground/35">
-                      <Calendar className="w-3.5 h-3.5" /> {post.date}
-                    </span>
-                    <span className="inline-flex items-center gap-1 text-xs text-primary/70 font-medium">
-                      {t.readMore} <Arrow className="w-3 h-3" />
-                    </span>
+                  className="group flex items-stretch gap-4 p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/30 transition">
+                  <div className="flex-1 min-w-0">
+                    <span className="text-[11px] font-semibold text-primary/80">{catLabels[post.category]}</span>
+                    <h2 className="text-base sm:text-lg font-bold text-foreground mt-2 mb-2 leading-snug group-hover:text-primary transition-colors">
+                      {c.title}
+                    </h2>
+                    <p className="text-sm text-foreground/55 leading-relaxed line-clamp-3 mb-3">{c.excerpt}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex items-center gap-1.5 text-xs text-foreground/35">
+                        <Calendar className="w-3.5 h-3.5" /> {post.date}
+                      </span>
+                      <span className="inline-flex items-center gap-1 text-xs text-primary/70 font-medium">
+                        {t.readMore} <Arrow className="w-3 h-3" />
+                      </span>
+                    </div>
                   </div>
+                  <CardThumb category={post.category} />
                 </Link>
               );
             })}
