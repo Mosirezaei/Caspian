@@ -238,36 +238,26 @@ function DropdownItem({ child, isRtl, onNavigate }) {
   );
 }
 
-// مگامنوی وبلاگ — گرید چندستونه با آیکون برای هر دسته (متفاوت از دراپ‌داون لیستی ساده رقبا)
+// دراپ‌داون وبلاگ — لیست ساده مثل بقیه منوها (بدون آیکون)
 function BlogMegaMenu({ isRtl, lang, onNavigate }) {
   const categories = blogCategories[lang] || blogCategories.fa;
   return (
-    <div className="glass-panel border border-white/10 rounded-2xl p-4 shadow-2xl" dir={isRtl ? 'rtl' : 'ltr'}>
-      <div className="grid grid-cols-2 gap-2 w-[520px]">
-        {categories.map((cat) => {
-          const Icon = cat.icon;
-          return (
-            <Link
-              key={cat.label}
-              href={cat.href}
-              onClick={onNavigate}
-              className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 border border-transparent hover:border-primary/30 transition-all group"
-            >
-              <span className="flex-shrink-0 w-9 h-9 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center group-hover:bg-amber-400/20 transition-colors">
-                <Icon className="w-4 h-4 text-primary" />
-              </span>
-              <span className="text-sm text-foreground/75 group-hover:text-primary transition-colors font-medium">
-                {cat.label}
-              </span>
-            </Link>
-          );
-        })}
-      </div>
-      <div className="mt-3 pt-3 border-t border-white/10">
+    <div className="glass-panel border border-white/10 rounded-xl py-2 shadow-xl w-56" dir={isRtl ? 'rtl' : 'ltr'}>
+      {categories.map((cat) => (
+        <Link
+          key={cat.label}
+          href={cat.href}
+          onClick={onNavigate}
+          className="block px-4 py-2 text-sm text-foreground/70 hover:text-primary hover:bg-white/5 transition-colors"
+        >
+          {cat.label}
+        </Link>
+      ))}
+      <div className="mt-1 pt-1 border-t border-white/10">
         <Link
           href="/blog"
           onClick={onNavigate}
-          className="block text-center text-xs font-bold text-primary hover:text-amber-300 transition-colors py-1"
+          className="block px-4 py-2 text-sm font-bold text-primary hover:text-amber-300 transition-colors"
         >
           {lang === 'fa' ? 'مشاهده همه مقالات ←' : lang === 'ru' ? 'Все статьи →' : 'View all articles →'}
         </Link>
@@ -320,7 +310,7 @@ export default function GlobalNavbar() {
                     <ChevronDown className="w-3 h-3 transition-transform flex-shrink-0 group-hover:rotate-180" />
                   </button>
                   <div
-                    className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50 hidden group-hover:block"
+                    className="absolute top-full left-0 pt-2 w-56 z-50 hidden group-hover:block"
                     dir={isRtl ? 'rtl' : 'ltr'}
                   >
                     <BlogMegaMenu isRtl={isRtl} lang={lang} onNavigate={() => {}} />
@@ -437,18 +427,14 @@ export default function GlobalNavbar() {
                         {openGroups[link.label] && (
                           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
-                            <div className="ps-2 py-2 grid grid-cols-2 gap-1.5 border-b border-white/5 mb-1">
-                              {categories.map((cat) => {
-                                const Icon = cat.icon;
-                                return (
-                                  <Link key={cat.label} href={cat.href}
-                                    onClick={() => setMobileOpen(false)}
-                                    className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-xs text-foreground/70 hover:text-primary hover:bg-white/5 transition-colors border border-white/5">
-                                    <Icon className="w-3.5 h-3.5 flex-shrink-0 text-primary/80" />
-                                    <span>{cat.label}</span>
-                                  </Link>
-                                );
-                              })}
+                            <div className="ps-4 py-1 space-y-0.5 border-b border-white/5 mb-1">
+                              {categories.map((cat) => (
+                                <Link key={cat.label} href={cat.href}
+                                  onClick={() => setMobileOpen(false)}
+                                  className="block px-3 py-2 rounded-lg text-sm text-foreground/70 hover:text-primary hover:bg-white/5 transition-colors">
+                                  {cat.label}
+                                </Link>
+                              ))}
                             </div>
                           </motion.div>
                         )}
