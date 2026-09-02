@@ -1,20 +1,11 @@
-import UnderConstruction from '@/views/service/UnderConstruction';
+import ResidencyChildBirth from '@/views/service/ResidencyChildBirth';
 
 export const metadata = {
-  title: 'اقامت ارمنستان از طریق تولد فرزند',
-  description: 'راهنمای اخذ اقامت ارمنستان از طریق تولد فرزند در این کشور. این صفحه در حال به\u200cروزرسانی است.',
+  title: 'اقامت ارمنستان از طریق تولد فرزند | گروه کاسپین',
+  description: 'راهنمای کامل اخذ اقامت موقت ارمنستان برای والدینی که فرزندشان در ارمنستان به دنیا اومده — مدارک لازم و مراحل کار.',
   alternates: { canonical: 'https://caspian.am/residency/child-birth' },
-  robots: { index: false, follow: true },
 };
 
 export default function Page() {
-  return (
-    <UnderConstruction
-      titleFa="اقامت ارمنستان از طریق تولد فرزند"
-      titleEn="Armenia Residency via Child Birth"
-      titleRu="ВНЖ Армении через рождение ребёнка"
-      heroImage="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=1200&q=80"
-      serviceType="residency"
-    />
-  );
+  return <ResidencyChildBirth />;
 }
