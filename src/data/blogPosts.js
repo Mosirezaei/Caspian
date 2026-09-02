@@ -36,6 +36,21 @@ export const blogPosts = [
       excerpt: 'Rent, groceries, transport, and monthly budget in Yerevan. A practical guide for anyone planning to move to Armenia.',
     },
   },
+  {
+    slug: 'jobs-in-armenia',
+    href: '/blog/jobs-in-armenia',
+    category: 'work',
+    tags: ['jobs', 'employment', 'work-permit', 'armenia'],
+    date: '2026-09-02',
+    fa: {
+      title: 'راهنمای جامع اشتغال و کاریابی در ارمنستان برای متقاضیان ایرانی',
+      excerpt: 'مسیرهای یافتن شغل، مشاغل پرتقاضا و بازه حقوق، و مراحل قانونی دریافت مجوز کار و اقامت کاری در ارمنستان.',
+    },
+    en: {
+      title: 'Jobs & Employment in Armenia — Guide for Iranian Applicants',
+      excerpt: 'Where to find jobs in Armenia, in-demand fields and salary ranges, and the legal steps for a work permit and residency.',
+    },
+  },
 ];
 
 export const CATEGORY_LABELS = {
