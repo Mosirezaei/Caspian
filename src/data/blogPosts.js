@@ -66,19 +66,34 @@ export const blogPosts = [
       excerpt: 'From Yerevan\'s squares and Cascade to rock-hewn monasteries, Lake Sevan and Tatev — Armenia\'s main sights with photos and full descriptions.',
     },
   },
+  {
+    slug: 'armenia-festivals-events-news',
+    href: '/blog/armenia-festivals-events-news',
+    category: 'news',
+    tags: ['festivals', 'events', 'concerts', 'news', 'eu', 'armenia'],
+    date: '2026-09-02',
+    fa: {
+      title: 'فستیوال‌های سالانه ارمنستان، کنسرت‌های پیش رو و اخبار مهاجرتی',
+      excerpt: 'تقویم کامل فستیوال‌های سالانه ارمنستان، کنسرت‌های تا سه ماه آینده در ایروان، و آخرین اخبار روابط ارمنستان و اتحادیه اروپا.',
+    },
+    en: {
+      title: "Armenia's Annual Festivals, Upcoming Concerts & Migration News",
+      excerpt: "A full calendar of Armenia's annual festivals, concerts in Yerevan over the next three months, and the latest on Armenia-EU relations.",
+    },
+  },
 ];
 
 export const CATEGORY_LABELS = {
   fa: {
     residency: 'اقامت و مهاجرت', company: 'ثبت شرکت و مالی', work: 'کار و اشتغال',
-    life: 'زندگی در ایروان', education: 'تحصیل', tourism: 'گردشگری و دیدنی‌ها', news: 'اخبار و رویدادها',
+    life: 'زندگی در ایروان', education: 'تحصیل', tourism: 'گردشگری و دیدنی‌ها', news: 'اخبار و فستیوال‌ها',
   },
   en: {
     residency: 'Residency & Immigration', company: 'Company Registration & Finance', work: 'Work & Employment',
-    life: 'Life in Yerevan', education: 'Education', tourism: 'Tourism & Sights', news: 'News & Events',
+    life: 'Life in Yerevan', education: 'Education', tourism: 'Tourism & Sights', news: 'News & Festivals',
   },
   ru: {
     residency: 'ВНЖ и миграция', company: 'Регистрация компаний и финансы', work: 'Работа и трудоустройство',
-    life: 'Жизнь в Ереване', education: 'Образование', tourism: 'Туризм и достопримечательности', news: 'Новости и события',
+    life: 'Жизнь в Ереване', education: 'Образование', tourism: 'Туризм и достопримечательности', news: 'Новости и фестивали',
   },
 };
