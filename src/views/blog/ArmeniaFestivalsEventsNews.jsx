@@ -2,7 +2,6 @@
 import { PartyPopper, Music, Newspaper, CalendarDays, Info } from 'lucide-react';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 import PageSidebar from '@/components/shared/PageSidebar';
-import SeoFooterLinks from '@/components/shared/SeoFooterLinks.jsx';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import RelatedContent from '@/components/shared/RelatedContent.jsx';
 
@@ -138,7 +137,6 @@ export default function ArmeniaFestivalsEventsNews() {
         </div>
 
         <RelatedServices currentPath="/blog/armenia-festivals-events-news" />
-        <SeoFooterLinks />
       </main>
     </div>
   );
