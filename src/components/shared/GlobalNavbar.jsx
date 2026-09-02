@@ -288,7 +288,7 @@ export default function GlobalNavbar() {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/10" aria-label="منوی اصلی">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 h-14 flex items-center justify-between w-full min-w-0" dir="ltr">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 h-14 flex items-center justify-between w-full min-w-0" dir={isRtl ? 'rtl' : 'ltr'}>
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 flex-shrink-0" aria-label="صفحه اصلی کاسپین گروه">
             <Image
