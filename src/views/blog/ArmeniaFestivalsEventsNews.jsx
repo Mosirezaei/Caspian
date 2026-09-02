@@ -1,7 +1,7 @@
 'use client';
 import { PartyPopper, Music, Newspaper, CalendarDays, Info } from 'lucide-react';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
-import BlogSidebar from '@/components/shared/BlogSidebar';
+import PageSidebar from '@/components/shared/PageSidebar';
 import SeoFooterLinks from '@/components/shared/SeoFooterLinks.jsx';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import RelatedContent from '@/components/shared/RelatedContent.jsx';
@@ -134,7 +134,7 @@ export default function ArmeniaFestivalsEventsNews() {
 
         </div>
 
-          <BlogSidebar currentTags={['festivals', 'events', 'concerts', 'news', 'eu', 'armenia']} currentPath="/blog/armenia-festivals-events-news" />
+          <PageSidebar tags={['festivals', 'events', 'concerts', 'news', 'eu', 'armenia']} currentPath="/blog/armenia-festivals-events-news" />
         </div>
 
         <RelatedServices currentPath="/blog/armenia-festivals-events-news" />
