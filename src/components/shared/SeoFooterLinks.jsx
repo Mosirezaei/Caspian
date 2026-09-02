@@ -31,7 +31,7 @@ export default function SeoFooterLinks({ variant = 'default', currentTags = [], 
     return (
       <nav aria-label={label}>
         <h3 className="text-sm font-bold text-foreground mb-3">{label}</h3>
-        <ul className="space-y-1.5 max-h-[420px] overflow-y-auto pr-1">
+        <ul className="space-y-1.5">
           {items.map((link) => {
             const text = link[lang] || link.fa;
             return (
