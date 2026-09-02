@@ -137,3 +137,15 @@ Home, Building2, Briefcase, MapPin, GraduationCap, Compass, Newspaper) برای 
 - هر روت دو فایل داره: app/[route]/page.jsx (متادیتا + import) و src/views/.../[Name].jsx (محتوای واقعی)
 - Deploy: git push به main → Vercel خودکار دیپلوی می‌کنه
 - پروژه دوم (بدون ربط به این کار): Mosirezaei/beep — دست نزن
+
+
+---
+
+## فیکس جانبی — باگ بیلد (خارج از ۵ مرحله)
+
+- [x] 2026-09-02 — `src/views/service/Residency.jsx` بیلد رو می‌شکست: ۴ تا آپاستروف escape‌نشده
+  تو رشته‌های تک‌کوتیشن انگلیسی (`'Armenia's parliament...'`, `'...it's a real...'`,
+  `'Armenia's passport...'`, `'What happens if I'm...'`). این فایل قبل از شروع کار ما وجود داشت،
+  ربطی به تغییرات مرحله ۱/۲ نداشت. کامیت فیکس: `9e37a75`.
+  فایل‌های نوشته‌شده تو مرحله ۱ و ۲ (GlobalNavbar, SeoFooterLinks, ServicesSection, StudentVisa,
+  sitemap, servicesContent) چک شدن و این باگ رو ندارن.
