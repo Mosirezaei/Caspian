@@ -1,105 +1,255 @@
 'use client';
+import {
+  Search, Briefcase, Users, Globe2, FileCheck2, PlaneTakeoff,
+  TrendingUp, MapPin, Code2, Hotel, Truck, Languages, HardHat,
+  ChevronDown, CheckCircle2, Wallet, GraduationCap,
+} from 'lucide-react';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 import SeoFooterLinks from '@/components/shared/SeoFooterLinks.jsx';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import RelatedContent from '@/components/shared/RelatedContent.jsx';
 
-const content = {
-  fa: {
-    title: 'راهنمای جامع اشتغال و کاریابی در ارمنستان',
-    subtitle: 'راهنمای کامل برای متقاضیان ایرانی برای ورود به بازار کار ارمنستان',
-    updated: 'آپدیت: شهریور ۱۴۰۵',
-    sections: [
-      {
-        title: '🇦🇲 چرا بازار کار ارمنستان برای متخصصان ایرانی جذاب است؟',
-        body: `محیط کسب‌وکار ارمنستان در سال‌های اخیر به یکی از گزینه‌های پرطرفدار برای مهاجرت شغلی نیروهای متخصص و فعالان اقتصادی ایرانی تبدیل شده است.
+const stats = [
+  { icon: PlaneTakeoff, value: '۹۰ روز', label: 'اقامت اولیه بدون ویزا' },
+  { icon: MapPin, value: '٪۹۰+', label: 'مشاغل کشور در ایروان' },
+  { icon: TrendingUp, value: '$۳۵۰۰', label: 'سقف درآمد در حوزه IT' },
+  { icon: Users, value: '٪۱۳', label: 'نرخ بیکاری کلی کشور' },
+];
 
-• اقامت اولیه بدون نیاز به تشریفات ویزا: اشخاص ایرانی قادرند تا نود روز بدون اخذ روادید در خاک ارمنستان بمانند و با خیالی آسوده بازار را رصد کنند و با کارفرمایان وارد مذاکره شوند.
-• تعادل میان مخارج و درآمد: هزینه‌های جاری در قیاس با بسیاری از کشورهای اروپایی و مقصدهای دیگر پایین‌تر بوده و با دریافتی متوسط می‌توان کیفیت قابل قبولی از زندگی را تجربه کرد.
-• تمرکز بر اقتصادهای پویا: حوزه‌های فناوری نوین، گردشگری خارجی و تجارت فرامرزی رشد پرشتابی دارند و تشنه جذب نیروی ماهر بین‌المللی هستند.
-• اشتراکات فرهنگی و حضور هموطنان: پیوندهای فرهنگی دیرینه و جمعیت فعال ایرانی ساکن ایروان، سرعت انطباق با شرایط جدید را دوچندان می‌کند.`,
-      },
-      {
-        title: '🔍 مسیرهای اصلی برای دسترسی به فرصت‌های شغلی',
-        body: `پلتفرم‌های تخصصی آنلاین: Staff.am معتبرترین درگاه کاریابی ارمنستان است. Job.am و CareerCenter.am هم منابع خوبی برای موقعیت‌های شغلی و کارآموزی هستند، و LinkedIn برای ارتباط با مدیران منابع انسانی در ایروان کاربرد دارد.
+const reasons = [
+  { icon: PlaneTakeoff, title: 'اقامت بدون تشریفات ویزا', body: 'اشخاص ایرانی تا نود روز بدون اخذ روادید می‌مانند و بازار را رصد می‌کنند.' },
+  { icon: Wallet, title: 'تعادل هزینه و درآمد', body: 'هزینه‌های جاری پایین‌تر از اروپاست؛ با دریافتی متوسط، کیفیت زندگی قابل قبولی ممکنه.' },
+  { icon: TrendingUp, title: 'اقتصادهای پویا', body: 'فناوری نوین، گردشگری خارجی و تجارت فرامرزی تشنه‌ی نیروی ماهر بین‌المللی‌اند.' },
+  { icon: Users, title: 'اشتراکات فرهنگی', body: 'پیوند فرهنگی دیرینه و جمعیت فعال ایرانی ساکن ایروان، انطباق را سریع‌تر می‌کند.' },
+];
 
-آژانس‌ها و نهادهای واسطه: Repat Armenia علاوه بر معرفی شغل، مشاوره‌های اسکان و ورود به ساختار اقتصادی هم ارائه می‌دهد، و Resource Group Recruitment Agency طیف وسیعی از مشاغل اجرایی و تخصصی را پوشش می‌دهد.
+const paths = [
+  { icon: Search, title: 'پلتفرم‌های آنلاین', body: 'Staff.am معتبرترین درگاه کاریابی است؛ Job.am، CareerCenter.am و LinkedIn هم منابع خوبی‌اند.' },
+  { icon: Briefcase, title: 'آژانس‌های کاریابی', body: 'Repat Armenia مشاوره‌ی اسکان هم می‌دهد؛ Resource Group Recruitment Agency طیف وسیعی از مشاغل را پوشش می‌دهد.' },
+  { icon: Globe2, title: 'حضور میدانی', body: 'بخش بزرگی از مشاغل هیچ‌وقت آنلاین درج نمی‌شوند؛ شبکه‌سازی حضوری و رویدادهای تخصصی ایروان راه میانبرند.' },
+];
 
-حضور میدانی و شبکه‌سازی: بخش بزرگی از مشاغل پنهان بازار هیچ‌وقت در سایت‌ها درج نمی‌شوند و از طریق ارتباطات فردی یا مراجعه مستقیم به مجموعه‌ها حاصل می‌شوند؛ حضور در رویدادهای تخصصی ایروان راه میانبری برای جذب سریع است.`,
-      },
-      {
-        title: '💼 مشاغل پرتقاضا و بازه پرداختی',
-        body: `فناوری اطلاعات و کامپیوتر — برنامه‌نویسی وب، توسعه نرم‌افزار، امنیت شبکه: بالاترین سطح درآمدی در کشور (حدود ۱۲۰۰ تا بیش از ۳۵۰۰ دلار)
-گردشگری و هتلداری — مدیریت تور، خدمات رزرواسیون، مهمانداری بین‌المللی: از ۴۵۰ تا ۱۲۰۰ دلار بسته به تجربه
-بازرگانی و تجارت بین‌الملل — لجستیک، ترخیص کالا، بازاریابی صادراتی: از ۵۰۰ تا ۲۰۰۰ دلار
-آموزش زبان — تدریس انگلیسی یا فارسی: از ۴۰۰ تا ۱۱۰۰ دلار
-مهندسی و ساخت‌وساز — عمران، معماری، نظارت کارگاهی: از ۷۰۰ تا ۲۲۰۰ دلار
+const salaryData = [
+  { icon: Code2, field: 'فناوری اطلاعات و کامپیوتر', min: 1200, max: 3500 },
+  { icon: Hotel, field: 'گردشگری و هتلداری', min: 450, max: 1200 },
+  { icon: Truck, field: 'بازرگانی و تجارت بین‌الملل', min: 500, max: 2000 },
+  { icon: Languages, field: 'آموزش زبان', min: 400, max: 1100 },
+  { icon: HardHat, field: 'مهندسی و ساخت‌وساز', min: 700, max: 2200 },
+];
+const SALARY_SCALE = 3500;
 
-ارقام حقوق در این حوزه‌ها کاملاً شناور است و بسته به تخصص، تسلط به زبان، سوابق کاری قبلی و توانمندی‌های فردی در رزومه متغیر است.`,
-      },
-      {
-        title: '📋 تشریفات قانونی و مدارک لازم برای فعالیت رسمی',
-        body: `۱. آماده‌سازی مدارک شناسایی و حرفه‌ای: تدوین رزومه استاندارد (به زبان انگلیسی یا ارمنی)، ترجمه رسمی مدارک تحصیلی و داشتن پاسپورت با حداقل ۶ ماه اعتبار.
-۲. دریافت پیشنهاد شغلی (Job Offer): توافق رسمی با کارفرمای ارمنی و عقد قرارداد همکاری.
-۳. دریافت مجوز کار (Work Permit): کارفرما موظف است فرآیند اداری اخذ پروانه کار را از مراجع ذی‌صلاح دولتی پیگیری کند (عموماً حدود دو هفته کاری زمان می‌برد).
-۴. صدور روادید کاری و اقامت: پس از تایید مجوز، با مراجعه به نهادهای مربوطه می‌توان اقامت موقت یک‌ساله (قابل تمدید) دریافت کرد.`,
-      },
-      {
-        title: '🎯 راهبردهای کلیدی برای موفقیت در بازار کار ارمنستان',
-        body: `یادگیری زبان: اگرچه در شرکت‌های فناور و بین‌المللی تسلط کامل به انگلیسی کافی است، اما کسب تسلط نسبی به زبان ارمنی یا روسی تعاملات روزمره را بسیار آسان‌تر می‌کند.
+const legalSteps = [
+  { title: 'مدارک شناسایی و حرفه‌ای', body: 'رزومه استاندارد (انگلیسی یا ارمنی)، ترجمه رسمی مدارک تحصیلی، پاسپورت با حداقل ۶ ماه اعتبار.' },
+  { title: 'دریافت پیشنهاد شغلی', body: 'توافق رسمی با کارفرمای ارمنی و عقد قرارداد همکاری.' },
+  { title: 'دریافت مجوز کار', body: 'کارفرما فرآیند اداری اخذ پروانه کار را پیگیری می‌کند — معمولاً حدود دو هفته.' },
+  { title: 'صدور روادید کاری و اقامت', body: 'پس از تایید مجوز، اقامت موقت یک‌ساله (قابل تمدید) دریافت می‌شود.' },
+];
 
-مدیریت سرمایه و منابع مالی: فرآیند مصاحبه، گزینش و طی شدن مراحل اداری ممکن است چند هفته زمان ببرد؛ بنابراین پیش از سفر یا شروع جستجو، پس‌انداز مالی مناسبی برای پوشش هزینه‌های دو الی سه ماه نخست داشته باشید.
+const strategies = [
+  { icon: Languages, title: 'یادگیری زبان', body: 'تسلط به انگلیسی برای شرکت‌های بین‌المللی کافی‌ست؛ ارمنی یا روسی تعاملات روزمره را آسان‌تر می‌کند.' },
+  { icon: Wallet, title: 'مدیریت سرمایه', body: 'مصاحبه و مراحل اداری چند هفته طول می‌کشد؛ پس‌انداز دو تا سه ماه هزینه را کنار بگذارید.' },
+  { icon: GraduationCap, title: 'شخصی‌سازی رزومه', body: 'رزومه را با استانداردهای منطقه تنظیم و دستاوردها را با عدد و شاهد عینی برجسته کنید.' },
+];
 
-شخصی‌سازی رزومه: رزومه خود را با دقت و متناسب با استانداردهای بازار منطقه تنظیم کنید و دستاوردهای گذشته خود را با اعداد و شواهد عینی برجسته سازید.`,
-      },
-      {
-        title: '❓ پرسش‌های متداول',
-        body: `آیا بدون بلد بودن زبان ارمنی می‌توان شغل پیدا کرد؟ بله؛ در حوزه‌های فناوری، استارتاپ‌ها، مجموعه‌های بین‌المللی و صنعت توریسم، تسلط کامل به زبان انگلیسی کافی است.
+const faqs = [
+  { q: 'آیا بدون بلد بودن زبان ارمنی می‌توان شغل پیدا کرد؟', a: 'بله؛ در فناوری، استارتاپ‌ها، مجموعه‌های بین‌المللی و صنعت توریسم، تسلط کامل به انگلیسی کافی است.' },
+  { q: 'کدام شهر ارمنستان برای جستجوی کار مناسب‌تر است؟', a: 'ایروان — بیش از نود درصد موقعیت‌های شغلی کشور به دلیل تمرکز دفاتر مرکزی شرکت‌ها، هتل‌ها و مراکز تجاری آنجاست.' },
+  { q: 'نرخ بیکاری در ارمنستان در چه وضعیتی است؟', a: 'نرخ کلی حدود سیزده درصد؛ اما در مهندسی نرم‌افزار، حسابداری پیشرفته و بازرگانی بین‌المللی کمبود نیروی کارآمد شدید است.' },
+];
 
-کدام شهر ارمنستان برای جستجوی کار مناسب‌تر است؟ پایتخت یعنی شهر ایروان به دلیل تمرکز دفاتر مرکزی شرکت‌ها، هتل‌ها و مراکز تجاری، بیش از نود درصد موقعیت‌های شغلی کشور را در خود جای داده است.
+function HeroArt() {
+  return (
+    <svg viewBox="0 0 400 160" className="w-full h-auto max-w-sm mx-auto" aria-hidden="true">
+      <circle cx="330" cy="40" r="22" className="fill-primary/25" />
+      <path d="M0,150 L90,55 L130,95 L215,15 L300,110 L400,70 L400,160 L0,160 Z" className="fill-primary/10" />
+      <path d="M55,150 L130,95 L185,140 L245,85 L320,150 Z" className="fill-primary/20" />
+      <path d="M120,90 L130,95 L138,88" className="stroke-background" strokeWidth="3" fill="none" />
+      <path d="M230,80 L215,15 L200,80" className="fill-background/60" />
+      <rect x="175" y="118" width="50" height="34" rx="4" className="fill-primary" />
+      <rect x="190" y="108" width="20" height="10" rx="2" className="fill-primary" />
+      <rect x="196" y="130" width="8" height="8" className="fill-background/70" />
+    </svg>
+  );
+}
 
-نرخ بیکاری در ارمنستان در چه وضعیتی قرار دارد؟ نرخ کلی بیکاری حدود سیزده درصد است، اما در بخش‌های تخصصی مانند مهندسی نرم‌افزار، حسابداری پیشرفته و بازرگانی بین‌المللی، کمبود نیروی انسانی کارآمد به شدت احساس می‌شود.`,
-      },
-    ],
-  },
-};
+function AccordionFAQ() {
+  return (
+    <div className="space-y-3">
+      {faqs.map((item, i) => (
+        <details key={i} className="group p-4 rounded-xl bg-white/5 border border-white/10 open:border-primary/30">
+          <summary className="flex items-center justify-between cursor-pointer list-none font-bold text-foreground text-sm sm:text-base">
+            {item.q}
+            <ChevronDown className="w-4 h-4 text-primary/70 transition-transform group-open:rotate-180 shrink-0 ms-3" />
+          </summary>
+          <p className="text-foreground/60 text-sm mt-3 leading-7">{item.a}</p>
+        </details>
+      ))}
+    </div>
+  );
+}
 
 export default function JobsInArmenia() {
-  const t = content.fa; // فعلاً فقط فارسی
-
   return (
     <div className="min-h-screen" dir="rtl">
       <GlobalNavbar />
-      <main className="max-w-3xl mx-auto px-4 py-12 sm:py-20">
+      <main className="max-w-4xl mx-auto px-4 py-12 sm:py-20">
 
-        <div className="mb-10">
-          <span className="text-xs text-primary/70 font-semibold bg-primary/8 px-3 py-1 rounded-full">
-            کار و اشتغال
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-black text-foreground mt-4 leading-tight">
-            {t.title}
-          </h1>
-          <p className="text-foreground/60 mt-3 text-lg">{t.subtitle}</p>
-          <p className="text-xs text-foreground/40 mt-2">{t.updated}</p>
+        {/* Hero */}
+        <div className="grid sm:grid-cols-2 gap-6 items-center mb-8">
+          <div>
+            <span className="text-xs text-primary/70 font-semibold bg-primary/8 px-3 py-1 rounded-full">
+              کار و اشتغال
+            </span>
+            <h1 className="text-3xl sm:text-4xl font-black text-foreground mt-4 leading-tight">
+              راهنمای جامع اشتغال و کاریابی در ارمنستان
+            </h1>
+            <p className="text-foreground/60 mt-3 text-lg">
+              راهنمای کامل برای متقاضیان ایرانی برای ورود به بازار کار ارمنستان
+            </p>
+            <p className="text-xs text-foreground/40 mt-2">آپدیت: شهریور ۱۴۰۵</p>
+          </div>
+          <HeroArt />
         </div>
 
-        <div className="space-y-8">
-          {t.sections.map((section, i) => (
-            <article key={i} className="border-r-2 border-primary/30 pr-5">
-              <h2 className="text-xl font-bold text-foreground mb-3">{section.title}</h2>
-              <div className="text-foreground/70 leading-8 whitespace-pre-line text-sm sm:text-base">
-                {section.body}
+        {/* Stats bar */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-12">
+          {stats.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <div key={i} className="p-4 rounded-2xl bg-white/5 border border-white/10 text-center">
+                <Icon className="w-5 h-5 text-primary mx-auto mb-2" />
+                <div className="text-lg font-black text-foreground">{s.value}</div>
+                <div className="text-[11px] text-foreground/50 mt-1 leading-4">{s.label}</div>
               </div>
-            </article>
-          ))}
+            );
+          })}
         </div>
 
-        <div className="mt-12 p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 text-center">
+        {/* Why Armenia — icon cards */}
+        <section className="mb-12">
+          <h2 className="text-xl font-bold text-foreground mb-5 flex items-center gap-2">
+            <span className="text-2xl">🇦🇲</span> چرا بازار کار ارمنستان برای متخصصان ایرانی جذاب است؟
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {reasons.map((r, i) => {
+              const Icon = r.icon;
+              return (
+                <div key={i} className="p-5 rounded-2xl bg-white/5 border border-white/10">
+                  <div className="w-9 h-9 rounded-lg bg-primary/15 flex items-center justify-center mb-3">
+                    <Icon className="w-4.5 h-4.5 text-primary" />
+                  </div>
+                  <h3 className="font-bold text-foreground text-sm mb-1.5">{r.title}</h3>
+                  <p className="text-foreground/60 text-sm leading-6">{r.body}</p>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Job search paths */}
+        <section className="mb-12">
+          <h2 className="text-xl font-bold text-foreground mb-5 flex items-center gap-2">
+            <Search className="w-5 h-5 text-primary" /> مسیرهای اصلی برای دسترسی به فرصت‌های شغلی
+          </h2>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {paths.map((p, i) => {
+              const Icon = p.icon;
+              return (
+                <div key={i} className="p-5 rounded-2xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/15">
+                  <Icon className="w-6 h-6 text-primary mb-3" />
+                  <h3 className="font-bold text-foreground text-sm mb-1.5">{p.title}</h3>
+                  <p className="text-foreground/60 text-sm leading-6">{p.body}</p>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Salary ranges — visual bars */}
+        <section className="mb-12">
+          <h2 className="text-xl font-bold text-foreground mb-5 flex items-center gap-2">
+            <Wallet className="w-5 h-5 text-primary" /> مشاغل پرتقاضا و بازه پرداختی (ماهانه، دلار)
+          </h2>
+          <div className="space-y-4 p-5 rounded-2xl bg-white/5 border border-white/10">
+            {salaryData.map((s, i) => {
+              const Icon = s.icon;
+              const left = (s.min / SALARY_SCALE) * 100;
+              const width = ((s.max - s.min) / SALARY_SCALE) * 100;
+              return (
+                <div key={i}>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="flex items-center gap-2 text-sm font-semibold text-foreground">
+                      <Icon className="w-4 h-4 text-primary" /> {s.field}
+                    </span>
+                    <span className="text-xs text-foreground/50">${s.min} – ${s.max}</span>
+                  </div>
+                  <div className="h-2.5 rounded-full bg-white/10 relative overflow-hidden">
+                    <div
+                      className="absolute top-0 h-full rounded-full bg-primary/70"
+                      style={{ insetInlineStart: `${left}%`, width: `${width}%` }}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <p className="text-xs text-foreground/40 mt-3">
+            ارقام کاملاً شناور است و بسته به تخصص، تسلط به زبان، سوابق کاری و توانمندی فردی متغیر است.
+          </p>
+        </section>
+
+        {/* Legal steps — timeline */}
+        <section className="mb-12">
+          <h2 className="text-xl font-bold text-foreground mb-5 flex items-center gap-2">
+            <FileCheck2 className="w-5 h-5 text-primary" /> تشریفات قانونی و مدارک لازم برای فعالیت رسمی
+          </h2>
+          <div className="relative border-e-2 border-primary/25 pe-6 space-y-7">
+            {legalSteps.map((step, i) => (
+              <div key={i} className="relative">
+                <span className="absolute top-0 -end-[31px] w-6 h-6 rounded-full bg-primary text-black text-xs font-black flex items-center justify-center">
+                  {i + 1}
+                </span>
+                <h3 className="font-bold text-foreground text-sm mb-1">{step.title}</h3>
+                <p className="text-foreground/60 text-sm leading-6">{step.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Strategies */}
+        <section className="mb-12">
+          <h2 className="text-xl font-bold text-foreground mb-5 flex items-center gap-2">
+            <CheckCircle2 className="w-5 h-5 text-primary" /> راهبردهای کلیدی برای موفقیت
+          </h2>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {strategies.map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <div key={i} className="p-5 rounded-2xl bg-white/5 border border-white/10 text-center">
+                  <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center mx-auto mb-3">
+                    <Icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <h3 className="font-bold text-foreground text-sm mb-1.5">{s.title}</h3>
+                  <p className="text-foreground/60 text-sm leading-6">{s.body}</p>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="mb-12">
+          <h2 className="text-xl font-bold text-foreground mb-5">پرسش‌های متداول</h2>
+          <AccordionFAQ />
+        </section>
+
+        {/* CTA */}
+        <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 text-center">
           <h3 className="text-lg font-bold text-foreground mb-2">
             برای مشاوره در مورد اقامت کاری و مجوز کار آماده‌اید؟
           </h3>
           <p className="text-sm text-foreground/60 mb-4">
-            کارشناسان گروه با تجربه‌ی بیش از ۵ سال در اقامت، خدمات اجاره‌آماده، ثبت شرکت و مشاوره کاری مهاجرت ارائه می‌دهند.
+            کارشناسان گروه با تجربه‌ی بیش از ۵ سال در اقامت، ثبت شرکت و مشاوره کاری مهاجرت ارائه می‌دهند.
           </p>
           <a href="/contact" className="inline-flex items-center gap-2 bg-primary text-black font-bold px-6 py-3 rounded-xl hover:bg-primary/90 transition text-sm">
             مشاوره رایگان بگیرید
