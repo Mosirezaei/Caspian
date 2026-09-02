@@ -3,6 +3,7 @@ import { useLang } from '@/lib/LanguageContext';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 import SeoFooterLinks from '@/components/shared/SeoFooterLinks.jsx';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
+import RelatedContent from '@/components/shared/RelatedContent.jsx';
 
 const content = {
   fa: {
@@ -120,6 +121,7 @@ export default function LivingCostYerevan() {
           </a>
         </div>
 
+        <RelatedContent currentTags={['yerevan', 'cost-of-living', 'residency', 'life']} currentPath="/blog/living-cost-yerevan" />
         <RelatedServices currentPath="/blog/living-cost-yerevan" />
         <SeoFooterLinks />
       </main>
