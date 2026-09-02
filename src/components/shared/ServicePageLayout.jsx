@@ -15,28 +15,12 @@ const consultTexts = {
   ru: { label: 'Бесплатная онлайн-консультация', sub: 'Напишите нашему специалисту в WhatsApp прямо сейчас' },
 };
 
-function WhatsAppConsultButton() {
-  const { lang } = useLang();
-  const t = consultTexts[lang] || consultTexts.fa;
-  return (
-    <div className="mt-8 mb-4">
-      <a href="https://wa.me/37433149327" target="_blank" rel="noopener noreferrer"
-        className="flex items-center justify-center gap-3 w-full py-4 px-6 rounded-2xl bg-green-600 hover:bg-green-500 transition-all duration-300 shadow-lg hover:shadow-green-600/30 group">
-        <MessageCircle className="w-6 h-6 text-white flex-shrink-0 group-hover:scale-110 transition-transform" />
-        <div className="text-center">
-          <div className="text-white font-bold text-base leading-tight">{t.label}</div>
-          <div className="text-green-100 text-xs mt-0.5">{t.sub}</div>
-        </div>
-      </a>
-    </div>
-  );
-}
-
 export function ServicePageLayout({ children, titleFa, titleEn, titleRu, subtitleFa, subtitleEn, subtitleRu, heroImage, serviceType }) {
   const { lang } = useLang();
   const isRtl = lang === 'fa';
   const title = lang === 'fa' ? titleFa : lang === 'ru' ? titleRu : titleEn;
   const subtitle = lang === 'fa' ? subtitleFa : lang === 'ru' ? subtitleRu : subtitleEn;
+  const ct = consultTexts[lang] || consultTexts.fa;
 
   // Every page that uses this shared layout automatically gets a unique
   // <title>, meta description and canonical URL (previously ~18 pages had
@@ -67,11 +51,31 @@ export function ServicePageLayout({ children, titleFa, titleEn, titleRu, subtitl
       </div>
 
       {/* Content */}
-      <div className="max-w-4xl mx-auto px-4 py-10 pb-10">
-        {children}
-        <RelatedServices pageType={serviceType} />
-        {serviceType && <StaticFAQ serviceType={serviceType} />}
-        <WhatsAppConsultButton />
+      <div className="max-w-6xl mx-auto px-4 py-10 pb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2">
+            {children}
+            {serviceType && <StaticFAQ serviceType={serviceType} />}
+          </div>
+
+          <aside className="lg:sticky lg:top-20 lg:self-start space-y-5">
+            <div className="p-5 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 border border-primary/20">
+              <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-3">
+                <MessageCircle className="w-5 h-5 text-primary" />
+              </div>
+              <h3 className="font-bold text-foreground text-sm mb-1">{ct.label}</h3>
+              <p className="text-xs text-foreground/60 mb-4 leading-relaxed">{ct.sub}</p>
+              <a href="https://wa.me/37433149327" target="_blank" rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-green-600 hover:bg-green-500 transition text-white text-xs font-bold">
+                <MessageCircle className="w-4 h-4" /> WhatsApp
+              </a>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+              <RelatedServices pageType={serviceType} variant="sidebar" />
+            </div>
+          </aside>
+        </div>
       </div>
       <ContactFooter />
     </div>
