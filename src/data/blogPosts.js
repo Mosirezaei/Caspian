@@ -51,6 +51,21 @@ export const blogPosts = [
       excerpt: 'Where to find jobs in Armenia, in-demand fields and salary ranges, and the legal steps for a work permit and residency.',
     },
   },
+  {
+    slug: 'armenia-tourism-guide',
+    href: '/blog/armenia-tourism-guide',
+    category: 'tourism',
+    tags: ['tourism', 'yerevan', 'sightseeing', 'armenia'],
+    date: '2026-09-02',
+    fa: {
+      title: 'راهنمای کامل جاهای دیدنی ارمنستان',
+      excerpt: 'از میدان‌ها و کاسکید ایروان تا صومعه‌های صخره‌ای، دریاچه سوان و تاتو — همه‌ی جاذبه‌های اصلی ارمنستان با عکس و توضیحات کامل.',
+    },
+    en: {
+      title: 'Complete Guide to Armenia\'s Top Attractions',
+      excerpt: 'From Yerevan\'s squares and Cascade to rock-hewn monasteries, Lake Sevan and Tatev — Armenia\'s main sights with photos and full descriptions.',
+    },
+  },
 ];
 
 export const CATEGORY_LABELS = {
