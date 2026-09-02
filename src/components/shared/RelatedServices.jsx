@@ -71,7 +71,7 @@ const RELATED_MAP = {
   'default':      ['hotel', 'apartment', 'residency', 'visaRussia'],
 };
 
-export default function RelatedServices({ pageType = 'default' }) {
+export default function RelatedServices({ pageType = 'default', variant = 'grid' }) {
   const { lang } = useLang();
   const keys = RELATED_MAP[pageType] || RELATED_MAP.default;
   const items = keys.map(k => SERVICES[k]).filter(Boolean);
@@ -79,6 +79,28 @@ export default function RelatedServices({ pageType = 'default' }) {
   const labels = {
     fa: 'خدمات مرتبط', en: 'Related Services', ru: 'Связанные услуги'
   };
+
+  if (variant === 'sidebar') {
+    return (
+      <nav aria-label={labels[lang] || labels.fa}>
+        <h3 className="text-sm font-bold text-foreground mb-3">{labels[lang] || labels.fa}</h3>
+        <div className="space-y-2.5">
+          {items.map((svc) => {
+            const text = svc[lang] || svc.fa;
+            return (
+              <Link key={svc.href} href={svc.href}
+                className="group flex items-center gap-2.5 p-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary/30 transition">
+                <span className="text-lg shrink-0">{svc.icon}</span>
+                <span className="text-xs font-bold text-foreground/85 group-hover:text-primary transition-colors leading-tight">
+                  {text.title}
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+      </nav>
+    );
+  }
 
   return (
     <nav aria-label={labels[lang] || labels.fa} className="mt-10 mb-4">
