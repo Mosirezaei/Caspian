@@ -15,8 +15,8 @@
   "redirects": [
     { "source": "/services/visa-schengen",   "destination": "/visa/schengen",      "permanent": true },
     { "source": "/services/visa-russia",     "destination": "/visa/russia",         "permanent": true },
-    { "source": "/services/residency",       "destination": "/residency/armenia",   "permanent": true },
+    { "source": "/services/residency",       "destination": "/residency/business",  "permanent": true },
     { "source": "/services/hotel",           "destination": "/travel/hotel",        "permanent": true },
-    { "source": "/vip",                      "destination": "/travel/vip",          "permanent": true }
+    { "source": "/vip",                      "destination": "/contact",             "permanent": true }
   ]
 }

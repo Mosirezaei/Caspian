@@ -20,13 +20,13 @@ const nextConfig = {
   async redirects() {
     return [
       { source: '/blog/living-cost-yerevan-1404', destination: '/blog/living-cost-yerevan', permanent: true },
-      { source: '/services/visa-schengen',        destination: '/visa/schengen',      permanent: true },
+      { source: '/services/visa-schengen',        destination: '/contact',            permanent: true },
       { source: '/services/visa-russia',          destination: '/visa/russia',         permanent: true },
-      { source: '/services/residency',            destination: '/residency/armenia',   permanent: true },
+      { source: '/services/residency',            destination: '/residency/business',  permanent: true },
       { source: '/services/hotel',               destination: '/travel/hotel',         permanent: true },
-      { source: '/vip',                           destination: '/travel/vip',          permanent: true },
-      { source: '/services/embassy-appointment',  destination: '/visa/embassy-usa',    permanent: true },
-      { source: '/services/student-visa',         destination: '/student-visa',        permanent: true },
+      { source: '/vip',                           destination: '/contact',             permanent: true },
+      { source: '/services/embassy-appointment',  destination: '/contact',             permanent: true },
+      { source: '/services/student-visa',         destination: '/student-visa/russia', permanent: true },
       { source: '/services/company-registration', destination: '/residency/business',  permanent: true },
     ];
   },
