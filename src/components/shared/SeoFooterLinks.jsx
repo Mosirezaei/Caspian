@@ -120,9 +120,37 @@ const LINKS = {
   },
 };
 
-export default function SeoFooterLinks() {
+export default function SeoFooterLinks({ variant = 'default' }) {
   const { lang } = useLang();
   const data = LINKS[lang] || LINKS.fa;
+  const label = lang === 'fa' ? 'لینک‌های مفید' : lang === 'ru' ? 'Полезные ссылки' : 'Useful Links';
+
+  if (variant === 'sidebar') {
+    return (
+      <nav aria-label={label}>
+        <h3 className="text-sm font-bold text-foreground mb-3">{label}</h3>
+        <div className="space-y-4">
+          {data.sections.map((section) => (
+            <div key={section.title}>
+              <h4 className="text-[11px] font-bold text-foreground/40 mb-1.5 uppercase tracking-wide">
+                {section.title}
+              </h4>
+              <ul className="space-y-1">
+                {section.links.map((link) => (
+                  <li key={link.href}>
+                    <a href={link.href}
+                      className="text-xs text-foreground/60 hover:text-primary transition-colors leading-relaxed block">
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </nav>
+    );
+  }
 
   return (
     <nav
