@@ -10,7 +10,7 @@ const serviceIcons = [FileText, Globe, Building2, Plane, Hotel, Star];
 
 // index → direct route (null = open modal)
 const serviceRoutes = {
-  0: '/visa/schengen',
+  0: '/visa/russia',
   1: '/residency/armenia',
   2: '/services/company-registration',
   3: '/travel/bus',

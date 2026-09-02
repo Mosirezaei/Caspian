@@ -35,15 +35,11 @@ const LINKS = {
         ],
       },
       {
-        title: 'ویزا',
+        title: 'روسیه',
         links: [
           { label: 'ویزای توریستی روسیه', href: '/visa/russia' },
-          { label: 'ویزای شینگن', href: '/visa/schengen' },
-          { label: 'ویزای رومانی', href: '/visa/romania' },
           { label: 'ویزای تحصیلی ارمنستان', href: '/student-visa/armenia' },
           { label: 'ویزای تحصیلی روسیه', href: '/student-visa/russia' },
-          { label: 'ویزای تحصیلی شینگن', href: '/student-visa/schengen' },
-          { label: 'وقت سفارت کانادا', href: '/visa/embassy-canada' },
         ],
       },
       {
@@ -83,11 +79,9 @@ const LINKS = {
         ],
       },
       {
-        title: 'Visa Services',
+        title: 'Russia',
         links: [
           { label: 'Russia Tourist Visa', href: '/visa/russia' },
-          { label: 'Schengen Visa', href: '/visa/schengen' },
-          { label: 'Romania Visa', href: '/visa/romania' },
           { label: 'Armenia Student Visa', href: '/student-visa/armenia' },
           { label: 'Russia Student Visa', href: '/student-visa/russia' },
         ],
@@ -127,11 +121,9 @@ const LINKS = {
         ],
       },
       {
-        title: 'Визы',
+        title: 'Россия',
         links: [
           { label: 'Туристическая виза в Россию', href: '/visa/russia' },
-          { label: 'Шенгенская виза', href: '/visa/schengen' },
-          { label: 'Виза в Румынию', href: '/visa/romania' },
           { label: 'Студенческая виза Армении', href: '/student-visa/armenia' },
           { label: 'Студенческая виза России', href: '/student-visa/russia' },
         ],
