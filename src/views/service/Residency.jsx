@@ -537,7 +537,7 @@ export default function ResidencyArmenia() {
                   </thead>
                   <tbody className="text-foreground/70">
                     {[
-                      [isFa?'حداقل سرمایه':'Min. capital', isFa?'۰ (شرکت)':\'0 (company)\', isFa?'$۴۰۰k (ملک)':'$400k (property)', isFa?'۰ (آزاد ۳۶۵ روز)':\'0 (free 365d)\', '€500k'],
+                      [isFa?'حداقل سرمایه':'Min. capital', isFa?'۰ (شرکت)':'0 (company)', isFa?'$۴۰۰k (ملک)':'$400k (property)', isFa?'۰ (آزاد ۳۶۵ روز)':'0 (free 365d)', '€500k'],
                       [isFa?'مدت اقامت':'Processing', isFa?'۱–۲ ماه':'1–2 months', isFa?'۱–۳ ماه':'1–3 months', isFa?'فوری':'Immediate', isFa?'۳–۱۲ ماه':'3–12 months'],
                       [isFa?'مسیر شهروندی':'Citizenship', isFa?'۳ سال':'3 years', isFa?'۵ سال':'5 years', isFa?'۶–۱۰ سال':'6–10 years', isFa?'۵–۱۰ سال':'5–10 years'],
                       [isFa?'تابعیت دوگانه':'Dual citizenship', '✅', '✅', '⚠️', isFa?'بستگی دارد':'Depends'],
