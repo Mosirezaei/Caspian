@@ -15,13 +15,13 @@ export default function CompanyRegistrationGuide() {
 
       <div className="relative pt-14">
         <div className="relative h-56 sm:h-72 overflow-hidden">
-          <img src={heroImg} alt="\u0645\u0631\u06a9\u0632 \u0634\u0647\u0631 \u0627\u06cc\u0631\u0648\u0627\u0646" className="w-full h-full object-cover opacity-40" loading="lazy" />
+          <img src={heroImg} alt="مرکز شهر ایروان" className="w-full h-full object-cover opacity-40" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/60 to-background" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
             <h1 className="text-3xl sm:text-4xl font-black text-foreground mb-2">
-              <span className="gold-gradient-text">\u0631\u0627\u0647\u0646\u0645\u0627\u06cc \u062b\u0628\u062a \u0634\u0631\u06a9\u062a \u062f\u0631 \u0627\u0631\u0645\u0646\u0633\u062a\u0627\u0646</span>
+              <span className="gold-gradient-text">راهنمای ثبت شرکت در ارمنستان</span>
             </h1>
-            <p className="text-foreground/60 text-sm sm:text-base max-w-xl">\u0647\u0632\u06cc\u0646\u0647\u200c\u0647\u0627\u060c \u0645\u0631\u0627\u062d\u0644\u060c \u0645\u0627\u0644\u06cc\u0627\u062a \u0648 \u0646\u06a9\u0627\u062a \u06a9\u0644\u06cc\u062f\u06cc \u0628\u0631\u0627\u06cc \u0627\u06cc\u0631\u0627\u0646\u06cc\u0627\u0646</p>
+            <p className="text-foreground/60 text-sm sm:text-base max-w-xl">هزینه‌ها، مراحل، مالیات و نکات کلیدی برای ایرانیان</p>
           </div>
         </div>
       </div>
