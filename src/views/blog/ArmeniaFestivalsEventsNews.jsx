@@ -126,7 +126,7 @@ export default function ArmeniaFestivalsEventsNews() {
           <p className="text-sm text-foreground/60 mb-4">
             گروه کاسپین برای هماهنگی سفر همزمان با فستیوال‌ها و مشاوره‌ی به‌روز اقامت و مهاجرت در کنارتونه.
           </p>
-          <a href="/contact" className="inline-flex items-center gap-2 bg-primary text-black font-bold px-6 py-3 rounded-xl hover:bg-primary/90 transition text-sm">
+          <a href="https://wa.me/37433149327" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-primary text-black font-bold px-6 py-3 rounded-xl hover:bg-primary/90 transition text-sm">
             تماس با کارشناسان
           </a>
         </div>
