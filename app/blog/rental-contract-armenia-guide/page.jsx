@@ -1,4 +1,4 @@
-import RentalContractArmeniaGuide from '@/views/blog/RentalContractArmeniaGuide';
+import RentalContractTips from '@/views/blog/RentalContractTips';
 
 export const metadata = {
   title: 'قرارداد اجاره خانه در ارمنستان: مدارک، ودیعه و نکاتی که باید قبل از امضا بدانید | کاسپین گروپ',
@@ -7,5 +7,5 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <RentalContractArmeniaGuide />;
+  return <RentalContractTips />;
 }
