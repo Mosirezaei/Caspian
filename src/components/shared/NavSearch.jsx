@@ -16,7 +16,7 @@ const sitePages = [
   { fa: 'ثبت شرکت در ارمنستان', en: 'Company Registration', ru: 'Регистрация компании', href: '/services/company-registration' },
   { fa: 'پذیرش تحصیلی', en: 'Student Admission', ru: 'Поступление в вузы', href: '/services/student-admission' },
   { fa: 'صرافی و رمزارز', en: 'Exchange & Crypto', ru: 'Обмен и криптовалюта', href: '/services/exchange' },
-  { fa: 'رزرو بلیط هواپیما', en: 'Flight Ticket Booking', ru: 'Бронирование билетов', href: '/services/ticket-booking' },
+  { fa: 'رزرو بلیط هواپیما', en: 'Flight Ticket Booking', ru: 'Бронирование билетов', href: '/travel/flight' },
   { fa: 'رزرو هتل و آپارتمان', en: 'Hotel & Apartment Booking', ru: 'Бронирование отелей', href: '/services/hotel' },
   { fa: 'پشتیبانی VIP', en: 'VIP Support', ru: 'VIP поддержка', href: '/vip' },
   { fa: 'درباره ما', en: 'About Us', ru: 'О нас', href: '/about' },
