@@ -2,7 +2,7 @@
 import { Suspense, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { ArrowLeft, ArrowRight, Calendar, FileCheck2, Building2, Briefcase, Home, GraduationCap, Mountain, PartyPopper } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, FileCheck2, Building2, Briefcase, Home, GraduationCap, Mountain, PartyPopper, Key } from 'lucide-react';
 import { useLang } from '@/lib/LanguageContext';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 import SeoFooterLinks from '@/components/shared/SeoFooterLinks.jsx';
@@ -10,7 +10,7 @@ import { blogPosts, CATEGORY_LABELS } from '@/data/blogPosts';
 
 const CATEGORY_ICON = {
   residency: FileCheck2, company: Building2, work: Briefcase,
-  life: Home, education: GraduationCap, tourism: Mountain, news: PartyPopper,
+  life: Home, education: GraduationCap, tourism: Mountain, news: PartyPopper, apartment: Key,
 };
 const CATEGORY_GRADIENT = {
   residency: 'from-emerald-500/25 to-emerald-500/5',
@@ -19,7 +19,7 @@ const CATEGORY_GRADIENT = {
   life: 'from-amber-500/25 to-amber-500/5',
   education: 'from-violet-500/25 to-violet-500/5',
   tourism: 'from-rose-500/25 to-rose-500/5',
-  news: 'from-fuchsia-500/25 to-fuchsia-500/5',
+  news: 'from-fuchsia-500/25 to-fuchsia-500/5', apartment: 'from-teal-500/25 to-teal-500/5',
 };
 
 function CardThumb({ category, thumbnail }) {
