@@ -31,19 +31,19 @@ export default function SeoFooterLinks({ variant = 'default', currentTags = [], 
     return (
       <nav aria-label={label}>
         <h3 className="text-sm font-bold text-foreground mb-3">{label}</h3>
-        <ul className="space-y-1.5">
+        <div className="space-y-2.5">
           {items.map((link) => {
             const text = link[lang] || link.fa;
             return (
-              <li key={link.href}>
-                <a href={link.href}
-                  className="text-xs text-foreground/60 hover:text-primary transition-colors leading-relaxed block">
+              <a key={link.href} href={link.href}
+                className="group block p-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary/30 transition">
+                <h4 className="text-xs font-bold text-foreground mt-0.5 leading-snug line-clamp-2 group-hover:text-primary transition-colors">
                   {text.label}
-                </a>
-              </li>
+                </h4>
+              </a>
             );
           })}
-        </ul>
+        </div>
       </nav>
     );
   }
