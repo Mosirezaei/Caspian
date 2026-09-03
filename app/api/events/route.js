@@ -1,28 +1,89 @@
 import { NextResponse } from 'next/server';
 
+// Cache the whole response for 10 minutes. Without this, Next.js 15 refetches
+// tomsarkgh.am's full homepage (hundreds of events) and re-parses it on every
+// single page view, which is the main reason the page felt slow.
+export const revalidate = 600;
+
 const CAT_FA = {
-  '\u0540\u0561\u0574\u0565\u0580\u0563': '\u06a9\u0646\u0633\u0631\u062a',
-  '\u0539\u0561\u057f\u0580\u0578\u0576': '\u062a\u0626\u0627\u062a\u0631',
-  '\u053f\u056b\u0576\u0578': '\u0633\u06cc\u0646\u0645\u0627',
-  '\u053f\u0561\u057f\u0561\u056f\u0565\u0580\u0563\u0578\u0582\u0569\u0575\u0578\u0582\u0576': '\u06a9\u0645\u062f\u06cc',
-  'Stand-up': '\u0627\u0633\u062a\u0646\u062f\u0622\u067e',
-  'Party': '\u067e\u0627\u0631\u062a\u06cc',
-  '\u0531\u056f\u0578\u0582\u0574\u0562': '\u06a9\u0644\u0627\u0628',
-  '\u0553\u0561\u0562': '\u067e\u0627\u0628',
-  '\u0555\u057a\u0565\u0580\u0561 \u0587 \u0562\u0561\u056c\u0565\u057f': '\u0627\u067e\u0631\u0627 \u0648 \u0628\u0627\u0644\u0647',
-  '\u0551\u0578\u0582\u0581\u0561\u0570\u0561\u0576\u0564\u0565\u057d': '\u0646\u0645\u0627\u06cc\u0634\u06af\u0627\u0647',
-  '\u054d\u057a\u0578\u0580\u057f': '\u0648\u0631\u0632\u0634',
-  '\u053f\u0580\u056f\u0565\u057d': '\u0633\u06cc\u0631\u06a9',
-  '\u0531\u056f\u0578\u0582\u0574\u0562 \u0587 \u0583\u0561\u0562': '\u06a9\u0644\u0627\u0628 \u0648 \u067e\u0627\u0628',
-  '\u0531\u0575\u056c': '\u0633\u0627\u06cc\u0631',
+  'Համերգ': 'کنسرت',
+  'Թատրոն': 'تئاتر',
+  'Կինո': 'سینما',
+  'Կատակերգություն': 'کمدی',
+  'Stand-up': 'استندآپ',
+  'Party': 'پارتی',
+  'Ակումբ': 'کلاب',
+  'Փաբ': 'پاب',
+  'Օպերա և բալետ': 'اپرا و باله',
+  'Ցուցահանդես': 'نمایشگاه',
+  'Սպորտ': 'ورزش',
+  'Կրկես': 'سیرک',
+  'Ակումբ և փաբ': 'کلاب و پاب',
+  'Այլ': 'سایر',
 };
 
 const MONTH_FA = {
-  '\u054d\u0565\u057a\u057f\u0565\u0574\u0562\u0565\u0580': '\u0633\u067e\u062a\u0627\u0645\u0628\u0631',
-  '\u0540\u0578\u056f\u057f\u0565\u0574\u0562\u0565\u0580': '\u0627\u06a9\u062a\u0628\u0631',
-  '\u0546\u0578\u0575\u0565\u0574\u0562\u0565\u0580': '\u0646\u0648\u0627\u0645\u0628\u0631',
-  '\u0534\u0565\u056f\u057f\u0565\u0574\u0562\u0565\u0580': '\u062f\u0633\u0627\u0645\u0628\u0631',
+  'Սեպտեմբեր': 'سپتامبر',
+  'Հոկտեմբեր': 'اکتبر',
+  'Նոյեմբեր': 'نوامبر',
+  'Դեկտեմբեր': 'دسامبر',
+  'Հունվար': 'ژانویه',
+  'Փետրվար': 'فوریه',
+  'Մարտ': 'مارس',
+  'Ապրիլ': 'آوریل',
+  'Մայիս': 'مه',
+  'Հունիս': 'ژوئن',
+  'Հուլիս': 'ژوئیه',
+  'Օգոստոս': 'اوت',
 };
+
+function proxyImage(url) {
+  return url ? `/api/image-proxy?src=${encodeURIComponent(url)}` : null;
+}
+
+// Translates event titles to Farsi with the Claude API, batched in one call.
+// Guarded so a slow/failed/unconfigured translation NEVER blocks or breaks
+// the events response -- worst case, titles stay in their original language.
+async function translateTitles(events) {
+  if (!process.env.ANTHROPIC_API_KEY || events.length === 0) return;
+
+  try {
+    const titlesText = events.map((e, i) => `${i + 1}. ${e.title}`).join('\n');
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': process.env.ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 4000,
+        messages: [{
+          role: 'user',
+          content: `Translate these Armenian/English/Russian event titles to Persian (Farsi). Keep proper nouns, band names and English words as-is. Return ONLY numbered translations, one per line, matching the input numbering. No explanations.\n\n${titlesText}`,
+        }],
+      }),
+      signal: controller.signal,
+    });
+    clearTimeout(timeout);
+
+    if (!res.ok) return;
+    const data = await res.json();
+    const translated = data.content?.[0]?.text || '';
+    for (const line of translated.split('\n')) {
+      const m = line.match(/^(\d+)\.\s*(.+)/);
+      if (!m) continue;
+      const idx = parseInt(m[1], 10) - 1;
+      if (idx >= 0 && idx < events.length) events[idx].titleFa = m[2].trim();
+    }
+  } catch (e) {
+    // Timed out, no key, or API error -- titles just stay untranslated.
+  }
+}
 
 export async function GET() {
   try {
@@ -31,6 +92,7 @@ export async function GET() {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
         'Accept': 'text/html',
       },
+      next: { revalidate: 600 },
     });
 
     if (!res.ok) return NextResponse.json({ error: 'Fetch failed' }, { status: 502 });
@@ -82,7 +144,7 @@ export async function GET() {
             id: eid,
             title: titleMatch[1].trim(),
             url: 'https://www.tomsarkgh.am/hy/event/' + eid + '/' + linkMatch[2],
-            image: imageUrl,
+            image: proxyImage(imageUrl),
             category: catMatch ? catMatch[1].trim() : null,
             categoryFa: catFa,
             date: dateFa,
@@ -92,6 +154,11 @@ export async function GET() {
         }
       } catch (e) { /* skip */ }
     }
+
+    // Best-effort Farsi translation of titles. Bounded to 8s and fully
+    // cached alongside the rest of this response (revalidate: 600), so it
+    // only ever runs once per 10-minute window, not per visitor.
+    await translateTitles(events);
 
     return NextResponse.json({ events, total: events.length, fetchedAt: new Date().toISOString() });
   } catch (error) {
