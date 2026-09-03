@@ -1,6 +1,6 @@
 // src/data/blogPosts.js
 // رجیستری مرکزی مقالات وبلاگ — هم برای صفحه‌ی آرشیو (/blog) و هم برای RelatedContent استفاده می‌شه.
-// وقتی مقاله‌ی جدیدی (مرحله ۵) نوشته می‌شه، یک آبجکت اینجا اضافه کن؛ همون‌جا خودکار تو آرشیو و در نتیجه‌ها ظاهر می‌شه.
+// وقتی مقاله‌ی جدیدی نوشته می‌شه، یک آبجکت اینجا اضافه کن؛ همون‌جا خودکار تو آرشیو و در نتیجه‌ها ظاهر می‌شه.
 //
 // category باید یکی از این ۷ تا باشه (دقیقاً هماهنگ با blogCategories تو GlobalNavbar.jsx):
 // residency | company | work | life | education | tourism | news
@@ -30,8 +30,8 @@ export const blogPosts = [
     tags: ['yerevan', 'cost-of-living', 'residency', 'life'],
     date: '2025-09-01',
     fa: {
-      title: 'هزینه زندگی در ایروان — راهنمای کامل ایرانیان',
-      excerpt: 'هزینه اجاره خانه، خواروبار، حمل‌ونقل و بودجه ماهانه در ایروان. راهنمای عملی برای کسانی که قصد مهاجرت به ارمنستان دارن.',
+      title: 'هزینه‌های زندگی در ایروان — راهنمای کامل ماهانه',
+      excerpt: 'هزینه‌های اجاره خانه، خواروبار، حمل‌ونقل و بودجه ماهانه در ایروان. راهنمای عملی برای برنامه‌ریزی مهاجرت به ارمنستان.',
     },
     en: {
       title: 'Cost of Living in Yerevan — Complete Guide',
@@ -47,7 +47,7 @@ export const blogPosts = [
     date: '2026-09-02',
     fa: {
       title: 'راهنمای جامع اشتغال و کاریابی در ارمنستان برای متقاضیان ایرانی',
-      excerpt: 'مسیرهای یافتن شغل، مشاغل پرتقاضا و بازه حقوق، و مراحل قانونی دریافت مجوز کار و اقامت کاری در ارمنستان.',
+      excerpt: 'مسیرهای یافتن شغل، مشاغل پرتقاضا و بازه حقوقی و مراحل قانونی مجوز کار و اقامت کاری در ارمنستان.',
     },
     en: {
       title: 'Jobs & Employment in Armenia — Guide for Iranian Applicants',
@@ -63,11 +63,11 @@ export const blogPosts = [
     date: '2026-09-02',
     fa: {
       title: 'راهنمای کامل جاهای دیدنی ارمنستان',
-      excerpt: 'از میدان‌ها و کاسکید ایروان تا صومعه‌های صخره‌ای، دریاچه سوان و تاتو — همه‌ی جاذبه‌های اصلی ارمنستان با عکس و توضیحات کامل.',
+      excerpt: 'از میدان‌ها و کاسکید ایروان تا صخره‌های دیرینه، دریاچه سوان و تاتو — همه‌جا همراه عکس و توضیح کامل.',
     },
     en: {
-      title: 'Complete Guide to Armenia\'s Top Attractions',
-      excerpt: 'From Yerevan\'s squares and Cascade to rock-hewn monasteries, Lake Sevan and Tatev — Armenia\'s main sights with photos and full descriptions.',
+      title: "Complete Guide to Armenia's Top Attractions",
+      excerpt: "From Yerevan's squares and Cascade to rock-hewn monasteries, Lake Sevan and Tatev — Armenia's main sights with photos and full descriptions.",
     },
   },
   {
@@ -78,8 +78,8 @@ export const blogPosts = [
     tags: ['festivals', 'events', 'concerts', 'news', 'eu', 'armenia'],
     date: '2026-09-02',
     fa: {
-      title: 'فستیوال‌های سالانه ارمنستان، کنسرت‌های پیش رو و اخبار مهاجرتی',
-      excerpt: 'تقویم کامل فستیوال‌های سالانه ارمنستان، کنسرت‌های تا سه ماه آینده در ایروان، و آخرین اخبار روابط ارمنستان و اتحادیه اروپا.',
+      title: 'فستیوال‌های سالانه ارمنستان، کنسرت‌های پیش‌رو و اخبار مهاجرت',
+      excerpt: 'تقویم کامل فستیوال‌های سالانه ارمنستان، کنسرت‌های تا سه ماه آینده در ایروان، و آخرین اخبار روابط اروپا و ارمنستان.',
     },
     en: {
       title: "Armenia's Annual Festivals, Upcoming Concerts & Migration News",
@@ -95,11 +95,75 @@ export const blogPosts = [
     date: '2026-09-03',
     fa: {
       title: 'راهنمای ثبت شرکت در ارمنستان: هزینه، مراحل و مالیات',
-      excerpt: 'ثبت LLC در ۳ روز، مالیات ۵٪، حساب بانکی بین‌المللی — راهنمای واقعی هزینه‌ها و مراحل ثبت شرکت ارمنستان برای ایرانیان.',
+      excerpt: 'ثبت LLC در ۳ روز، مالیات ۵٪، حساب بانکی بین‌المللی — راهنمای واقعی و هزینه‌ها برای ایرانیان.',
     },
     en: {
       title: 'Company Registration in Armenia: Costs, Steps & Taxes',
       excerpt: 'LLC registration in 3 days, 5% tax, international bank account — a practical guide for Iranians.',
+    },
+  },
+  {
+    slug: 'sabt-sherktat-armenia-marahel',
+    href: '/blog/sabt-sherktat-armenia-marahel',
+    category: 'company',
+    thumbnail: '/images/company/yerevan-bank-building.webp',
+    tags: ['company', 'registration', 'documents', 'armenia', 'LLC'],
+    date: '2026-09-03',
+    fa: {
+      title: 'ثبت شرکت در ارمنستان: مراحل، مدارک و زمان‌بندی کامل',
+      excerpt: 'مدارک لازم، فرایند اداره ثبت، وکالت‌نامه از راه دور و اقدامات ضروری پس از دریافت شماره ثبت — راهنمای گام‌به‌گام.',
+    },
+    en: {
+      title: 'Company Registration in Armenia: Steps, Documents & Timeline',
+      excerpt: 'Required documents, registration process, remote power of attorney, and post-registration steps — a complete step-by-step guide.',
+    },
+  },
+  {
+    slug: 'sakhtare-hoqooqi-sherktat-armenia',
+    href: '/blog/sakhtare-hoqooqi-sherktat-armenia',
+    category: 'company',
+    thumbnail: '/images/company/yerevan-city-center.webp',
+    tags: ['LLC', 'IE', 'CJSC', 'legal-structure', 'armenia', 'company'],
+    date: '2026-09-03',
+    fa: {
+      title: 'انواع ساختار حقوقی شرکت در ارمنستان: LLC، IE یا CJSC؟',
+      excerpt: 'مقایسه کامل LLC، IE و CJSC: مزایا، مسئولیت مالی و اینکه کدام ساختار برای فریلنسر، استارتاپ یا شرکت بازرگانی مناسب‌تر است.',
+    },
+    en: {
+      title: 'Legal Structures in Armenia: LLC, IE or CJSC?',
+      excerpt: 'Full comparison of LLC, IE and CJSC: benefits, liability and which structure suits freelancers, startups or trading companies.',
+    },
+  },
+  {
+    slug: 'hazine-maliyat-bank-armenia',
+    href: '/blog/hazine-maliyat-bank-armenia',
+    category: 'company',
+    thumbnail: '/images/company/yerevan-bank-building.webp',
+    tags: ['cost', 'tax', 'bank', 'armenia', 'company', 'finance'],
+    date: '2026-09-03',
+    fa: {
+      title: 'هزینه ثبت شرکت در ارمنستان، مالیات و افتتاح حساب بانکی',
+      excerpt: 'هزینه واقعی راه‌اندازی ۱۰۰۰ تا ۱۶۰۰ دلار، رژیم مالیاتی ۱۸٪ یا گردش مالی، شرایط KYC بانک و چرا حسابداری منظم ضروری است.',
+    },
+    en: {
+      title: 'Company Registration Costs, Tax & Banking in Armenia',
+      excerpt: 'Real setup cost $1,000-$1,600, 18% or turnover tax regime, KYC banking requirements and why regular accounting is essential.',
+    },
+  },
+  {
+    slug: 'eqamat-armenia-az-tarigh-sherktat',
+    href: '/blog/eqamat-armenia-az-tarigh-sherktat',
+    category: 'company',
+    thumbnail: '/images/Yerevan_Residency.webp',
+    tags: ['residency', 'company', 'armenia', 'immigration', 'EAEU'],
+    date: '2026-09-03',
+    fa: {
+      title: 'اقامت ارمنستان از طریق ثبت شرکت: شرایط، مراحل و نکات مهم',
+      excerpt: 'اقامت با فعالیت واقعی شرکت — چرا ثبت صوری کافی نیست، چه مدارکی لازم است و Caspian Group چطور کل مسیر را پشتیبانی می‌کند.',
+    },
+    en: {
+      title: 'Armenia Residency Through Company Registration: Conditions & Steps',
+      excerpt: 'Residency through real business activity — why paper-only registration fails, what documents you need and how Caspian Group supports the full journey.',
     },
   },
   {
@@ -110,8 +174,8 @@ export const blogPosts = [
     thumbnail: '/images/residency.webp',
     date: '2026-09-03',
     fa: {
-      title: 'تحصیل در ارمنستان: مدارس ایرانی، دانشگاه\u200cها و هزینه\u200cها',
-      excerpt: 'راهنمای کامل مدارس ایرانی ایروان، دانشگاه\u200cهای برتر ارمنستان، شهریه و هزینه\u200cی زندگی دانشجویی برای ایرانیان.',
+      title: 'تحصیل در ارمنستان: مدارس ایرانی، دانشگاه‌ها و هزینه‌ها',
+      excerpt: 'راهنمای کامل مدارس ایرانی در ایروان، برتر دانشگاه‌های ارمنستان، شهریه و هزینه‌های زندگی دانشجویی برای ایرانیان.',
     },
     en: {
       title: 'Studying in Armenia: Iranian Schools, Universities & Costs',
