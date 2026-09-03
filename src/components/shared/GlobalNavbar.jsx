@@ -56,7 +56,7 @@ const blogCategories = {
     { icon: GraduationCap, label: 'تحصیل', href: '/blog?category=education' },
     { icon: Compass, label: 'گردشگری و دیدنی‌ها', href: '/blog?category=tourism' },
     { icon: PartyPopper, label: 'اخبار و فستیوال‌ها', href: '/blog?category=news' },
-          { icon: Key, label: 'اجاره و ملک', href: '/blog?category=apartment' },
+          { icon: Key, label: 'اجاره و خرید ملک', href: '/blog?category=apartment' },
   ],
   en: [
     { icon: Home, label: 'Residency & Immigration', href: '/blog?category=residency' },
@@ -66,7 +66,7 @@ const blogCategories = {
     { icon: GraduationCap, label: 'Education', href: '/blog?category=education' },
     { icon: Compass, label: 'Tourism & Sights', href: '/blog?category=tourism' },
     { icon: PartyPopper, label: 'News & Festivals', href: '/blog?category=news' },
-          { icon: Key, label: 'Rental & Property', href: '/blog?category=apartment' },
+          { icon: Key, label: 'Rental & Purchase', href: '/blog?category=apartment' },
   ],
   ru: [
     { icon: Home, label: 'ВНЖ и миграция', href: '/blog?category=residency' },
@@ -76,7 +76,7 @@ const blogCategories = {
     { icon: GraduationCap, label: 'Образование', href: '/blog?category=education' },
     { icon: Compass, label: 'Туризм и достопримечательности', href: '/blog?category=tourism' },
     { icon: PartyPopper, label: 'Новости и фестивали', href: '/blog?category=news' },
-          { icon: Key, label: 'Аренда и недвижимость', href: '/blog?category=apartment' },
+          { icon: Key, label: 'Аренда и покупка', href: '/blog?category=apartment' },
   ],
 };
 
@@ -391,7 +391,7 @@ export default function GlobalNavbar() {
           <>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               onClick={() => setMobileOpen(false)}
-              className="fixed inset-0 bg-black/60 z-50 md:hidden" />
+              className="fixed inset-0 bg-black/90 z-50 md:hidden" />
             <motion.div
               initial={{ x: isRtl ? '100%' : '-100%' }}
               animate={{ x: 0 }}
