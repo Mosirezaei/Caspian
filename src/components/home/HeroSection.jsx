@@ -96,7 +96,7 @@ export default function HeroSection() {
           className="w-full max-w-lg mx-auto mb-2 mt-4">
           <div className="grid grid-cols-4 gap-2 w-full mb-2">
             {[
-              { icon: MapPin, label: lang === 'fa' ? 'اقامت' : lang === 'en' ? 'Residency' : 'ВНЖ', href: '/residency/armenia' },
+              { icon: MapPin, label: lang === 'fa' ? 'اقامت' : lang === 'en' ? 'Residency' : 'ВНЖ', href: '/residency/work' },
               { icon: Building2, label: lang === 'fa' ? 'ثبت شرکت' : lang === 'en' ? 'Company' : 'Компания', href: '/services/company-registration' },
               { icon: GraduationCap, label: lang === 'fa' ? 'تحصیلی' : lang === 'en' ? 'Student' : 'Учёба', href: '/student-visa/armenia' },
               { icon: Globe, label: lang === 'fa' ? 'ویزای روسیه' : lang === 'en' ? 'Russia Visa' : 'Виза РФ', href: '/visa/russia' },
@@ -114,7 +114,7 @@ export default function HeroSection() {
               { icon: Plane, label: lang === 'fa' ? 'پرواز' : lang === 'en' ? 'Flight' : 'Авиа', href: '/travel/flight' },
               { icon: Hotel, label: lang === 'fa' ? 'هتل' : lang === 'en' ? 'Hotel' : 'Отель', href: '/travel/hotel' },
               { icon: HomeIcon, label: lang === 'fa' ? 'آپارتمان' : lang === 'en' ? 'Apartment' : 'Квартира', href: '/travel/apartment' },
-              { icon: Star, label: 'VIP', href: '/travel/vip' },
+              { icon: Star, label: 'VIP', href: '/travel/transfer' },
             ].map(({ icon: Icon, label, href }) => (
               <Link key={label} href={href}
                 className="flex flex-col items-center gap-1.5 px-2 py-3 rounded-xl border border-primary/15 backdrop-blur-sm hover:border-primary/50 hover:bg-primary/8 transition-all group"
