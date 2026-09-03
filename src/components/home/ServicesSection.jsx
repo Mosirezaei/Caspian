@@ -11,11 +11,11 @@ const serviceIcons = [FileText, Globe, Building2, Plane, Hotel, Star];
 // index → direct route (null = open modal)
 const serviceRoutes = {
   0: '/visa/russia',
-  1: '/residency/armenia',
+  1: '/residency/work',
   2: '/services/company-registration',
   3: '/travel/bus',
   4: '/travel/hotel',
-  5: '/travel/vip',
+  5: '/travel/transfer',
 };
 
 export default function ServicesSection() {
