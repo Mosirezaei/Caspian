@@ -136,7 +136,7 @@ export default function ArmeniaVisaDocuments() {
             <a href="https://wa.me/37433149327" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-primary text-black font-bold px-6 py-3 rounded-xl hover:bg-primary/90 transition text-sm">
               مشاوره رایگان
             </a>
-            <a href="/residency/armenia" className="inline-flex items-center gap-2 border border-primary/30 text-primary font-bold px-6 py-3 rounded-xl hover:bg-primary/10 transition text-sm">
+            <a href="/residency/work" className="inline-flex items-center gap-2 border border-primary/30 text-primary font-bold px-6 py-3 rounded-xl hover:bg-primary/10 transition text-sm">
               اقامت ارمنستان
             </a>
           </div>
