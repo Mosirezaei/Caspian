@@ -22,7 +22,14 @@ const CATEGORY_GRADIENT = {
   news: 'from-fuchsia-500/25 to-fuchsia-500/5',
 };
 
-function CardThumb({ category }) {
+function CardThumb({ category, thumbnail }) {
+  if (thumbnail) {
+    return (
+      <div className="w-24 sm:w-28 shrink-0 rounded-xl overflow-hidden border border-white/10">
+        <img src={thumbnail} alt="" className="w-full h-full object-cover" loading="lazy" />
+      </div>
+    );
+  }
   const Icon = CATEGORY_ICON[category] || FileCheck2;
   const grad = CATEGORY_GRADIENT[category] || CATEGORY_GRADIENT.residency;
   return (
@@ -106,7 +113,7 @@ function BlogArchiveInner() {
                       </span>
                     </div>
                   </div>
-                  <CardThumb category={post.category} />
+                  <CardThumb category={post.category} thumbnail={post.thumbnail} />
                 </Link>
               );
             })}
