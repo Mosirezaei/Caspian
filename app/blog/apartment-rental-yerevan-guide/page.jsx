@@ -1,11 +1,11 @@
-import ApartmentRentalYerevanGuide from '@/views/blog/ApartmentRentalYerevanGuide';
+import ApartmentRentalGuide from '@/views/blog/ApartmentRentalGuide';
 
 export const metadata = {
-  title: 'اجاره آپارتمان در ایروان: راهنمای قیمت، مدت اقامت و انواع مسکن | کاسپین گروپ',
-  description: 'کوتاه‌مدت یا بلندمدت، آپارتمان یا خانه ویلایی؛ بازه قیمت اجاره، ودیعه و هزینه‌های جانبی در ایروان.',
+  title: 'راهنمای اجاره آپارتمان در ایروان | گروه کاسپین',
+  description: 'بازه قیمت اجاره، تفاوت کوتاه‌مدت و بلندمدت، هزینه‌های جانبی و نکات کلیدی برای ایرانیان.',
   alternates: { canonical: 'https://caspian.am/blog/apartment-rental-yerevan-guide' },
 };
 
 export default function Page() {
-  return <ApartmentRentalYerevanGuide />;
+  return <ApartmentRentalGuide />;
 }
