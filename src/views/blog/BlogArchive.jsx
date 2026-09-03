@@ -5,7 +5,6 @@ import { useSearchParams } from 'next/navigation';
 import { ArrowLeft, ArrowRight, Calendar, FileCheck2, Building2, Briefcase, Home, GraduationCap, Mountain, PartyPopper, Key } from 'lucide-react';
 import { useLang } from '@/lib/LanguageContext';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
-import SeoFooterLinks from '@/components/shared/SeoFooterLinks.jsx';
 import { blogPosts, CATEGORY_LABELS } from '@/data/blogPosts';
 
 const CATEGORY_ICON = {
@@ -120,7 +119,6 @@ function BlogArchiveInner() {
           </div>
         )}
       </main>
-      <SeoFooterLinks />
     </div>
   );
 }
