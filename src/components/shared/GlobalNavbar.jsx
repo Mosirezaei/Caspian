@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Menu, X, ChevronDown, ChevronRight,
   Home, Building2, Briefcase, MapPin,
-  GraduationCap, Compass, PartyPopper,
+  GraduationCap, Compass, PartyPopper, Key,
 } from 'lucide-react';
 
 import { useLang } from '@/lib/LanguageContext';
@@ -56,6 +56,7 @@ const blogCategories = {
     { icon: GraduationCap, label: 'تحصیل', href: '/blog?category=education' },
     { icon: Compass, label: 'گردشگری و دیدنی‌ها', href: '/blog?category=tourism' },
     { icon: PartyPopper, label: 'اخبار و فستیوال‌ها', href: '/blog?category=news' },
+          { icon: Key, label: 'اجاره و ملک', href: '/blog?category=apartment' },
   ],
   en: [
     { icon: Home, label: 'Residency & Immigration', href: '/blog?category=residency' },
@@ -65,6 +66,7 @@ const blogCategories = {
     { icon: GraduationCap, label: 'Education', href: '/blog?category=education' },
     { icon: Compass, label: 'Tourism & Sights', href: '/blog?category=tourism' },
     { icon: PartyPopper, label: 'News & Festivals', href: '/blog?category=news' },
+          { icon: Key, label: 'Rental & Property', href: '/blog?category=apartment' },
   ],
   ru: [
     { icon: Home, label: 'ВНЖ и миграция', href: '/blog?category=residency' },
@@ -74,6 +76,7 @@ const blogCategories = {
     { icon: GraduationCap, label: 'Образование', href: '/blog?category=education' },
     { icon: Compass, label: 'Туризм и достопримечательности', href: '/blog?category=tourism' },
     { icon: PartyPopper, label: 'Новости и фестивали', href: '/blog?category=news' },
+          { icon: Key, label: 'Аренда и недвижимость', href: '/blog?category=apartment' },
   ],
 };
 
