@@ -7,7 +7,7 @@
  *
  * Current dedicated pages (do NOT add their content here):
  *   /visa/russia         → pages/service/VisaRussia
- *   /residency/armenia   → pages/service/Residency
+ *   /residency/work   → pages/service/Residency
  *   /student-visa/armenia, /student-visa/russia → pages/service/StudentVisa*
  *   /services/company-registration → pages/service/CompanyReg
  *   /services/student-admission    → pages/service/StudentAdmission
