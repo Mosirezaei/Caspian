@@ -25,7 +25,7 @@ const articles = [
     tag: 'ویزا و اقامت',
   },
   {
-    href: '/residency/armenia',
+    href: '/residency/work',
     emoji: '🏡',
     titleFa: 'اقامت ارمنستان',
     titleEn: 'Armenia Residency',
