@@ -4,8 +4,16 @@ import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 import PageSidebar from '@/components/shared/PageSidebar';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import RelatedContent from '@/components/shared/RelatedContent.jsx';
+import { useSEO } from '@/hooks/useSEO';
 
 export default function ArmeniaVisaDocuments() {
+  useSEO({
+    title: 'مدارک ویزای ارمنستان — راهنمای کامل ۱۴۰۴ | کاسپین گروپ',
+    description: 'همه مدارک لازم برای ویزا و اقامت ارمنستان. ورود بدون ویزا، پاسپورت، عکس، رزرو هتل، و اقامت‌نامه که مورد نیازه.',
+    keywords: 'ویزای ارمنستان, مدارک ویزا, اقامت ارمنستان, ورود بدون ویزا, پاسپورت ارمنستان',
+    path: '/blog/armenia-visa-documents',
+  });
+
   return (
     <div className="min-h-screen" dir="rtl">
       <GlobalNavbar />

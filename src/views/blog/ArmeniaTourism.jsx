@@ -4,6 +4,7 @@ import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 import PageSidebar from '@/components/shared/PageSidebar';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import RelatedContent from '@/components/shared/RelatedContent.jsx';
+import { useSEO } from '@/hooks/useSEO';
 
 const sights = [
   {
@@ -41,6 +42,13 @@ const sights = [
 ];
 
 export default function ArmeniaTourism() {
+  useSEO({
+    title: 'راهنمای کامل جاهای دیدنی ارمنستان | کاسپین گروپ',
+    description: 'از میدان‌ها و کاسکید ایروان تا صخره‌های دیرینه، دریاچه سوان و تاتو — همه‌جا همراه عکس و توضیح کامل.',
+    keywords: 'جاهای دیدنی ارمنستان, گردشگری ارمنستان, تور ارمنستان, صومعه‌های ارمنستان, دریاچه سوان',
+    path: '/blog/armenia-tourism-guide',
+  });
+
   return (
     <div className="min-h-screen" dir="rtl">
       <GlobalNavbar />

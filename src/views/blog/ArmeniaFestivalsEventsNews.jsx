@@ -4,6 +4,7 @@ import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 import PageSidebar from '@/components/shared/PageSidebar';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import RelatedContent from '@/components/shared/RelatedContent.jsx';
+import { useSEO } from '@/hooks/useSEO';
 
 const festivals = [
   { month: 'خرداد – ژوئن', name: 'جشنواره باله ایروان', body: 'جشنواره‌ی بین‌المللی باله که هنرمندان ارمنی و مهمانان خارجی رو روی صحنه‌ی تئاتر اپرای ایروان کنار هم می‌آره.' },
@@ -32,6 +33,13 @@ const concerts = [
 ];
 
 export default function ArmeniaFestivalsEventsNews() {
+  useSEO({
+    title: 'فستیوال‌های سالانه ارمنستان، کنسرت‌های پیش‌رو و اخبار مهاجرت | کاسپین گروپ',
+    description: 'تقویم کامل فستیوال‌های سالانه ارمنستان، کنسرت‌های تا سه ماه آینده در ایروان، و آخرین اخبار روابط اروپا و ارمنستان.',
+    keywords: 'فستیوال ارمنستان, رویدادهای ایروان, کنسرت ایروان, اخبار ارمنستان, ارمنستان اروپا',
+    path: '/blog/armenia-festivals-events-news',
+  });
+
   return (
     <div className="min-h-screen" dir="rtl">
       <GlobalNavbar />

@@ -3,8 +3,16 @@ import { GraduationCap, School, DollarSign, FileCheck2, Globe2, BookOpen, Users 
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 import PageSidebar from '@/components/shared/PageSidebar';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
+import { useSEO } from '@/hooks/useSEO';
 
 export default function EducationArmenia() {
+  useSEO({
+    title: 'تحصیل در ارمنستان: مدارس ایرانی، دانشگاه‌ها و هزینه‌ها | کاسپین گروپ',
+    description: 'راهنمای کامل مدارس ایرانی در ایروان، برتر دانشگاه‌های ارمنستان، شهریه و هزینه‌های زندگی دانشجویی برای ایرانیان.',
+    keywords: 'تحصیل در ارمنستان, دانشگاه‌های ارمنستان, مدارس ایرانی ایروان, اقامت تحصیلی ارمنستان, شهریه دانشگاه ارمنستان',
+    path: '/blog/education-armenia',
+  });
+
   return (
     <div className="min-h-screen" dir="rtl">
       <GlobalNavbar />

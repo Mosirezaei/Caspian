@@ -8,6 +8,7 @@ import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 import PageSidebar from '@/components/shared/PageSidebar';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import RelatedContent from '@/components/shared/RelatedContent.jsx';
+import { useSEO } from '@/hooks/useSEO';
 
 const stats = [
   { icon: PlaneTakeoff, value: '۹۰ روز', label: 'اقامت اولیه بدون ویزا' },
@@ -89,6 +90,13 @@ function AccordionFAQ() {
 }
 
 export default function JobsInArmenia() {
+  useSEO({
+    title: 'راهنمای جامع اشتغال و کاریابی در ارمنستان برای متقاضیان ایرانی | کاسپین گروپ',
+    description: 'مسیرهای یافتن شغل، مشاغل پرتقاضا و بازه حقوقی و مراحل قانونی مجوز کار و اقامت کاری در ارمنستان.',
+    keywords: 'کار در ارمنستان, اقامت کاری ارمنستان, استخدام ارمنستان, مجوز کار ارمنستان, حقوق در ارمنستان',
+    path: '/blog/jobs-in-armenia',
+  });
+
   return (
     <div className="min-h-screen" dir="rtl">
       <GlobalNavbar />

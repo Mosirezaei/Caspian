@@ -4,6 +4,7 @@ import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 import PageSidebar from '@/components/shared/PageSidebar';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import RelatedContent from '@/components/shared/RelatedContent.jsx';
+import { useSEO } from '@/hooks/useSEO';
 
 const content = {
   fa: {
@@ -71,6 +72,13 @@ const content = {
 };
 
 export default function LivingCostYerevan() {
+  useSEO({
+    title: 'هزینه‌های زندگی در ایروان — راهنمای کامل ماهانه | کاسپین گروپ',
+    description: 'هزینه‌های اجاره خانه، خواروبار، حمل‌ونقل و بودجه ماهانه در ایروان. راهنمای عملی برای برنامه‌ریزی مهاجرت به ارمنستان.',
+    keywords: 'هزینه زندگی ایروان, اجاره خانه ایروان, هزینه زندگی ارمنستان, بودجه ماهانه ایروان, مهاجرت به ارمنستان',
+    path: '/blog/living-cost-yerevan',
+  });
+
   const { lang } = useLang();
   const t = content.fa; // فعلاً فقط فارسی
 
