@@ -22,8 +22,8 @@ export default function ApartmentRentalGuide() {
         <section className="glass-panel rounded-2xl p-6 mb-6">
           <h2 className="text-xl font-black text-primary mb-3 flex items-center gap-2"><Home className="w-5 h-5" /> بازار مسکن ایروان برای ایرانیان</h2>
           <div className="text-sm text-foreground/70 leading-7 space-y-3">
-            <p>انتخاب مدت اقامت و محله پیش از جست‌وجوی آپارتمان، هزینه نهایی شما رو تا حد زیادی تعیین می‌کنه. در ایروان، مرکز شهر دسترسی و امکانات بیشتری داره، در حالی که آرابگیر، کومیتاس و محله‌های دورتر گزینه‌های متعادل‌تری برای بودجه‌های محدود فراهم می‌کنن.</p>
-            <p>بازه قیمت خیلی متنوعه — آپارتمان‌های ساده‌تر در مناطق اقتصادی‌تر از حدود ۲۰۰ دلار شروع می‌شن و بسته به امکانات، متراژ و محله تا ۵۰۰ دلار یا بیشتر افزایش پیدا می‌کنن.</p>
+            <p>انتخاب مدت اقامت و محله پیش از جست‌وجوی آپارتمان، هزینه نهایی شما رو تا حد زیادی تعیین می‌کنه. در ایروان، مرکز شهر دسترسی و امکانات بیشتری داره، در حالی که آرابگیر و محله‌های دورتر گزینه‌های متعادل‌تری برای بودجه‌های محدود فراهم می‌کنن.</p>
+            <p>بازه قیمت خیلی متنوعه — آپارتمان‌های ساده‌تر در مناطق اقتصادی‌تر از حدود ۵۰۰ دلار شروع می‌شن و بسته به امکانات، متراژ و محله تا ۱,۵۰۰ دلار یا بیشتر افزایش پیدا می‌کنن.</p>
           </div>
         </section>
 
@@ -48,22 +48,22 @@ export default function ApartmentRentalGuide() {
           <div className="text-sm text-foreground/70 leading-7 space-y-3">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-                <div className="text-primary font-black text-xl">$۲۰۰–$۴۰۰</div>
-                <div className="text-xs text-foreground/50 mt-1 font-semibold">یک‌خوابه</div>
-                <div className="text-[10px] text-foreground/40">۲۵۰ تا ۴۵۰ هزار درام</div>
+                <div className="text-primary font-black text-xl">$۶۵۰–$۱,۰۰۰</div>
+                <div className="text-xs text-foreground/50 mt-1 font-semibold">یک‌خوابه (متوسط)</div>
+                <div className="text-[10px] text-foreground/40">بسته به محله و امکانات</div>
               </div>
               <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-                <div className="text-primary font-black text-xl">$۳۵۰–$۶۰۰</div>
+                <div className="text-primary font-black text-xl">$۸۰۰–$۱,۲۰۰</div>
                 <div className="text-xs text-foreground/50 mt-1 font-semibold">دوخوابه</div>
                 <div className="text-[10px] text-foreground/40">بسته به محله و امکانات</div>
               </div>
               <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-                <div className="text-primary font-black text-xl">$۵۰۰+</div>
+                <div className="text-primary font-black text-xl">$۱,۰۰۰+</div>
                 <div className="text-xs text-foreground/50 mt-1 font-semibold">سه‌خوابه/ویلایی</div>
                 <div className="text-[10px] text-foreground/40">برای خانواده‌ها</div>
               </div>
             </div>
-            <p className="text-xs text-foreground/50">عوامل افزایش قیمت: مرکز شهر، نوساز، مبله کامل، آسانسور، پارکینگ اختصاصی. ودیعه معمولاً ۱ تا ۲ ماه اجاره.</p>
+            <p className="text-xs text-foreground/50">این قیمت‌ها برای آپارتمان‌های استاندارد و معمولی هستن. نوساز/قدیمی‌ساز بودن، امکانات و فصل سال روی قیمت اثر می‌ذاره. ودیعه معمولاً ۱ تا ۲ ماه اجاره.</p>
           </div>
         </section>
 
