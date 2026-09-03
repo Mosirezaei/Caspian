@@ -170,7 +170,7 @@ export default function EducationArmenia() {
         <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 text-center mb-6">
           <h3 className="text-lg font-bold text-foreground mb-2">مشاوره‌ی تحصیلی رایگان</h3>
           <p className="text-sm text-foreground/60 mb-4">گروه کاسپین برای انتخاب دانشگاه، ثبت‌نام و اخذ اقامت تحصیلی در کنارتونه.</p>
-          <a href="/contact" className="inline-flex items-center gap-2 bg-primary text-black font-bold px-6 py-3 rounded-xl hover:bg-primary/90 transition text-sm">تماس با کارشناسان</a>
+          <a href="https://wa.me/37433149327" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-primary text-black font-bold px-6 py-3 rounded-xl hover:bg-primary/90 transition text-sm">تماس با کارشناسان</a>
         </div>
 
         <RelatedServices currentPath="/blog/education-armenia" />
