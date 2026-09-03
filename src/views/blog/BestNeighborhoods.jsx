@@ -1,0 +1,86 @@
+'use client';
+import { MapPin, Star, Bus, DollarSign, Mountain } from 'lucide-react';
+import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
+import PageSidebar from '@/components/shared/PageSidebar';
+import RelatedServices from '@/components/shared/RelatedServices.jsx';
+
+export default function BestNeighborhoods() {
+  const neighborhoods = [
+    { name: 'کِنترون (مرکز شهر)', nameLat: 'Kentron', price: '$۳۰۰–$۵۰۰+', color: 'amber', pros: ['دسترسی به همه چیز بدون ماشین', 'نزدیک میدان جمهوری و کاسکاد', 'رستوران‌ها و کافه‌ها'], cons: ['اجاره بالاتر', 'صدای خیابان', 'پارکینگ محدود'], best: 'شاغلین در مرکز، دانشجویان، سفرهای کوتاه' },
+    { name: 'عربکیر', nameLat: 'Arabkir', price: '$۲۵۰–$۴۰۰', color: 'emerald', pros: ['تعادل خوب قیمت و دسترسی', 'فروشگاه و مدرسه نزدیک', 'ساختمان‌های متنوع'], cons: ['شیب خیابان‌ها', 'فاصله پیاده تا مرکز'], best: 'خانواده‌ها، کار در مرکز، زندگی طولانی‌مدت' },
+    { name: 'کومیتاس', nameLat: 'Komitas', price: '$۲۲۰–$۳۵۰', color: 'blue', pros: ['خدمات محلی کامل', 'مسیرهای اتوبوس مناسب', 'درمانگاه و فروشگاه نزدیک'], cons: ['فاصله بیشتر از مرکز', 'ساختمان‌های قدیمی‌تر'], best: 'خانواده‌ها با بودجه متوسط' },
+    { name: 'داوتاشن', nameLat: 'Davtashen', price: '$۱۸۰–$۳۰۰', color: 'rose', pros: ['اجاره پایین‌تر', 'فضای بزرگ‌تر', 'ساختمان‌های نسبتاً جدید'], cons: ['فاصله از مرکز', 'هزینه رفت‌وآمد اضافه'], best: 'بودجه محدود، خانواده‌های بزرگ' },
+    { name: 'آجاپنیاک و مالاتیا-سباستیا', nameLat: 'Ajapnyak / Malatia', price: '$۱۵۰–$۲۵۰', color: 'violet', pros: ['ارزان‌ترین گزینه‌ها', 'آپارتمان‌های بزرگ'], cons: ['دسترسی شبانه ضعیف', 'کیفیت ساختمان متغیر', 'فاصله زیاد از مرکز'], best: 'بودجه خیلی محدود، اقامت موقت' },
+  ];
+
+  const colors = { amber: 'from-amber-500/10 border-amber-500/20', emerald: 'from-emerald-500/10 border-emerald-500/20', blue: 'from-blue-500/10 border-blue-500/20', rose: 'from-rose-500/10 border-rose-500/20', violet: 'from-violet-500/10 border-violet-500/20' };
+
+  return (
+    <div className="min-h-screen" dir="rtl">
+      <GlobalNavbar />
+      <main className="max-w-6xl mx-auto px-4 py-12 sm:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2">
+
+        <section className="mb-8">
+          <span className="text-xs text-primary/70 font-semibold bg-primary/8 px-3 py-1 rounded-full">اجاره و ملک</span>
+          <h1 className="text-3xl sm:text-4xl font-black text-foreground mt-4 leading-tight">بهترین محله‌های ایروان برای اجاره خانه</h1>
+          <p className="text-foreground/60 mt-3 text-lg">مقایسه محله‌ها از نظر قیمت، دسترسی و کیفیت زندگی</p>
+        </section>
+
+        <div className="space-y-5 mb-6">
+          {neighborhoods.map((n, i) => (
+            <section key={i} className={`rounded-2xl p-5 bg-gradient-to-br ${colors[n.color]} to-transparent border`}>
+              <div className="flex items-center justify-between mb-3">
+                <h2 className="text-lg font-black text-foreground flex items-center gap-2">
+                  <MapPin className="w-5 h-5 text-primary" /> {n.name}
+                </h2>
+                <span className="text-sm font-bold text-primary bg-primary/10 px-3 py-1 rounded-lg">{n.price}/ماه</span>
+              </div>
+              <p className="text-xs text-foreground/40 mb-3">{n.nameLat}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                <div>
+                  <h4 className="font-bold text-green-400 mb-1.5">مزایا</h4>
+                  {n.pros.map((p, j) => <p key={j} className="text-foreground/60 mb-1">✓ {p}</p>)}
+                </div>
+                <div>
+                  <h4 className="font-bold text-red-400 mb-1.5">معایب</h4>
+                  {n.cons.map((c, j) => <p key={j} className="text-foreground/60 mb-1">✗ {c}</p>)}
+                </div>
+                <div>
+                  <h4 className="font-bold text-primary mb-1.5">مناسب برای</h4>
+                  <p className="text-foreground/60">{n.best}</p>
+                </div>
+              </div>
+            </section>
+          ))}
+        </div>
+
+        <section className="glass-panel rounded-2xl p-6 mb-6">
+          <h2 className="text-xl font-black text-primary mb-3 flex items-center gap-2"><Mountain className="w-5 h-5" /> اقامت لوکس کنار کاسکاد</h2>
+          <div className="text-sm text-foreground/70 leading-7 space-y-2">
+            <p>محدوده‌ی کاسکاد برای کسایی مناسبه که طراحی داخلی، منظره، دسترسی فرهنگی و خدمات ساختمان براشون اولویت داره. آسانسور، پارکینگ، نگهبانی، هزینه شارژ و شرایط نظافت رو پیش از امضا بپرسید.</p>
+            <p>واحدهای لوکس ممکنه مبله باشن، ولی فهرست وسایل و مسئولیت تعمیر تجهیزات باید دقیقاً تو قرارداد درج بشه.</p>
+          </div>
+        </section>
+
+        <section className="glass-panel rounded-2xl p-6 mb-6">
+          <h2 className="text-xl font-black text-primary mb-3 flex items-center gap-2"><Bus className="w-5 h-5" /> نکته‌ی مهم: هزینه رفت‌وآمد رو اضافه کنید</h2>
+          <div className="text-sm text-foreground/70 leading-7">
+            <p>محله‌ی ارزان‌تر = لزوماً هزینه‌ی کمتر نیست. هزینه‌ی تاکسی یا اتوبوس روزانه رو به اجاره ماهانه اضافه کنید. مثلاً اگه محل کارتون مرکز شهره و تو داوتاشن زندگی می‌کنید، ماهانه ۳۰-۵۰ دلار هزینه رفت‌وآمد اضافه می‌شه.</p>
+          </div>
+        </section>
+
+        <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 text-center mb-6">
+          <h3 className="text-lg font-bold text-foreground mb-2">کمک در انتخاب محله و آپارتمان</h3>
+          <a href="https://wa.me/37433149327" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-primary text-black font-bold px-6 py-3 rounded-xl hover:bg-primary/90 transition text-sm">مشاوره رایگان</a>
+        </div>
+
+        <RelatedServices currentPath="/blog/best-neighborhoods-yerevan-rent" />
+        </div>
+          <PageSidebar tags={['apartment', 'yerevan', 'accommodation', 'life']} currentPath="/blog/best-neighborhoods-yerevan-rent" />
+        </div>
+      </main>
+    </div>
+  );
+}
