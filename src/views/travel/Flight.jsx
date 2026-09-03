@@ -213,7 +213,7 @@ function FlightContent() {
           </ul>
           <h2 className="text-xl font-bold text-amber-400">نکات رزرو</h2>
           <ul className="space-y-1.5 text-sm text-gray-300">
-            <li>✅ بلیط ایروان-تهران رفت‌وبرگشت از ۱۵۰ دلار</li>
+            <li>✅ بلیط ایروان-تهران رفت‌وبرگشت </li>
             <li>✅ پرداخت ریالی از طریق کاسپین امکان‌پذیر است</li>
             <li>⚠️ فصل اوج (تابستان-نوروز): قیمت ۳۰-۵۰٪ بالاتر — زود رزرو کنید</li>
           </ul>
