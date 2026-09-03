@@ -102,6 +102,22 @@ export const blogPosts = [
       excerpt: 'LLC registration in 3 days, 5% tax, international bank account — a practical guide for Iranians.',
     },
   },
+  {
+    slug: 'education-armenia',
+    href: '/blog/education-armenia',
+    category: 'education',
+    tags: ['education', 'student', 'armenia', 'residency'],
+    thumbnail: '/images/residency.webp',
+    date: '2026-09-03',
+    fa: {
+      title: 'تحصیل در ارمنستان: مدارس ایرانی، دانشگاه\u200cها و هزینه\u200cها',
+      excerpt: 'راهنمای کامل مدارس ایرانی ایروان، دانشگاه\u200cهای برتر ارمنستان، شهریه و هزینه\u200cی زندگی دانشجویی برای ایرانیان.',
+    },
+    en: {
+      title: 'Studying in Armenia: Iranian Schools, Universities & Costs',
+      excerpt: 'A complete guide to Iranian schools in Yerevan, top Armenian universities, tuition and student living costs.',
+    },
+  },
 ];
 
 export const CATEGORY_LABELS = {
