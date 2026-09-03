@@ -122,7 +122,7 @@ export default function ArmeniaTourism() {
           <p className="text-sm text-foreground/60 mb-4">
             گروه کاسپین تورهای روزانه و چندروزه به این مقاصد رو با راهنمای فارسی‌زبان و رزرو هتل هماهنگ می‌کنه.
           </p>
-          <a href="/contact" className="inline-flex items-center gap-2 bg-primary text-black font-bold px-6 py-3 rounded-xl hover:bg-primary/90 transition text-sm">
+          <a href="https://wa.me/37433149327" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-primary text-black font-bold px-6 py-3 rounded-xl hover:bg-primary/90 transition text-sm">
             درخواست برنامه‌ی سفر
           </a>
         </div>
