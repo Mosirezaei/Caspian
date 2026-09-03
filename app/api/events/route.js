@@ -1,96 +1,136 @@
 import { NextResponse } from 'next/server';
 
-const CATEGORY_MAP = {
-  'Համերգ': { fa: 'کنسرت', en: 'Concert', type: 'concert' },
-  'Թատրոն': { fa: 'تئاتر', en: 'Theater', type: 'theater' },
-  'Կինո': { fa: 'سینما', en: 'Cinema', type: 'cinema' },
-  'Կատակերdelays': { fa: 'کمدی', en: 'Comedy', type: 'comedy' },
-  'Կdelays': { fa: 'کمدی', en: 'Comedy', type: 'comedy' },
-  ' Delays': { fa: 'بالت', en: 'Ballet', type: 'ballet' },
-  ' Delays': { fa: 'اپرا', en: 'Opera', type: 'opera' },
-  ' Delays': { fa: 'کلاب', en: 'Club', type: 'club' },
-  ' Delays': { fa: 'نمایشگاه', en: 'Exhibition', type: 'exhibition' },
-  ' Delays': { fa: 'ورزش', en: 'Sport', type: 'sport' },
-  'Stand-up': { fa: 'استندآپ', en: 'Stand-up', type: 'standup' },
-  'Party': { fa: 'پارتی', en: 'Party', type: 'party' },
-};
-
-// Parse price text like "3000-10000 դdelays" to structured format
-function parsePrice(text) {
-  if (!text) return null;
-  const nums = text.match(/[\d,]+/g);
-  if (!nums || nums.length === 0) return null;
-  const prices = nums.map(n => parseInt(n.replace(/,/g, '')));
-  return { min: Math.min(...prices), max: Math.max(...prices), raw: text };
-}
-
-// Armenian month names to numbers
-const MONTHS = {
-  'Հunvalid': 1, 'Delaysunvalid': 2, 'Մdelays': 3, 'Ապdelays': 4,
-  'Մdelays': 5, 'Հunvalid': 6, 'Հdelays': 7, 'Օdelays': 8,
-  'Սdelays': 9, 'Հdelays': 10, 'Նdelays': 11, 'Դdelays': 12,
-};
-
-export async function GET(request) {
+export async function GET() {
   try {
-    const url = new URL(request.url);
-    const scope = url.searchParams.get('scope') || '';
-
-    // Fetch the English version for easier parsing
-    const fetchUrl = `https://www.tomsarkgh.am/en${scope ? `?scopeKey=${scope}` : ''}`;
-    const res = await fetch(fetchUrl, {
-      headers: { 'User-Agent': 'CaspianAmEventsBot/1.0' },
-      next: { revalidate: 3600 }, // cache for 1 hour
+    // Fetch Armenian version (has most events listed)
+    const res = await fetch('https://www.tomsarkgh.am/', {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        'Accept': 'text/html,application/xhtml+xml',
+        'Accept-Language': 'en-US,en;q=0.9',
+      },
+      next: { revalidate: 3600 },
     });
 
     if (!res.ok) {
-      return NextResponse.json({ error: 'Failed to fetch events' }, { status: 502 });
+      return NextResponse.json({ error: `Fetch failed: ${res.status}` }, { status: 502 });
     }
 
     const html = await res.text();
-
-    // Parse events from HTML using regex (no DOM parser needed on edge)
     const events = [];
-    // Match event blocks: each has link, title, date, venue, price, image, category
-    const eventPattern = /href="(\/en\/event\/(\d+)\/[^"]*)"[^]*?<img[^>]*src="([^"]*)"[^]*?<h4[^>]*>.*?<a[^>]*>([^<]+)<\/a>.*?(\d+\s+\w+).*?<a[^>]*venue[^>]*>([^<]*)<\/a>(?:.*?([\d,]+[-–\s]*[\d,]*\s*(?:AMD|դdelays|др)))?/gs;
 
-    // Simpler approach: split by event card patterns
-    const cardBlocks = html.split(/class="event-item/);
+    // Pattern: each event has a link /hy/event/ID/slug, image, title in h4, date, venue, price
+    // Match all event links with their surrounding context
+    const eventLinkPattern = /href="(\/hy\/event\/(\d+)\/[^"]*)"[^]*?/g;
 
-    for (const block of cardBlocks.slice(1)) { // skip first non-event chunk
-      try {
-        const linkMatch = block.match(/href="(\/en\/event\/(\d+)\/[^"]*)"/);
-        const titleMatch = block.match(/<h4[^>]*>(?:<a[^>]*>)?([^<]+)/);
-        const imgMatch = block.match(/src="(https:\/\/www\.tomsarkgh\.am\/thumbnails[^"]*)"/);
-        const dateMatch = block.match(/(\d+)\s+(January|February|March|April|May|June|July|August|September|October|November|December)/i);
-        const venueMatch = block.match(/venue\/[^"]*"[^>]*>([^<]+)/);
-        const priceMatch = block.match(/([\d,]+[\s-–]+[\d,]+\s*(?:AMD|dram)|[\d,]+\s*(?:AMD|dram))/i);
-        const catMatch = block.match(/class="category[^"]*"[^>]*>([^<]+)/);
+    // Simpler approach: find all unique event URLs and extract data around them
+    const allEventUrls = new Set();
+    const urlPattern = /\/hy\/event\/(\d+)\/([^"'\s]+)/g;
+    let m;
+    while ((m = urlPattern.exec(html)) !== null) {
+      allEventUrls.add({ id: m[1], slug: m[2], fullPath: m[0] });
+    }
 
-        if (titleMatch) {
-          events.push({
-            id: linkMatch?.[2] || Math.random().toString(36).substr(2, 9),
-            title: titleMatch[1].trim(),
-            url: linkMatch ? `https://www.tomsarkgh.am${linkMatch[1]}` : null,
-            image: imgMatch?.[1] || null,
-            date: dateMatch ? `${dateMatch[1]} ${dateMatch[2]}` : null,
-            venue: venueMatch?.[1]?.trim() || null,
-            price: priceMatch?.[1] || null,
-            category: catMatch?.[1]?.trim() || 'Other',
-          });
-        }
-      } catch (e) {
-        // skip malformed block
+    // For each unique event, extract data from the page
+    const seenIds = new Set();
+    for (const evt of allEventUrls) {
+      if (seenIds.has(evt.id)) continue;
+      seenIds.add(evt.id);
+
+      // Find the block around this event URL
+      const idx = html.indexOf(evt.fullPath);
+      if (idx === -1) continue;
+
+      // Get a chunk around this event (2000 chars before and after)
+      const start = Math.max(0, idx - 1500);
+      const end = Math.min(html.length, idx + 1500);
+      const chunk = html.substring(start, end);
+
+      // Extract image
+      const imgMatch = chunk.match(/src="(https:\/\/www\.tomsarkgh\.am\/thumbnails\/Photo\/[^"]+)"/);
+
+      // Extract title from <h4> or title attribute or link text
+      let title = null;
+      // Try h4 pattern
+      const h4Match = chunk.match(/<h4[^>]*>(?:<a[^>]*>)?([^<]{2,100})/);
+      if (h4Match) title = h4Match[1].trim();
+      // Try title attribute
+      if (!title) {
+        const titleAttr = chunk.match(/title="([^"]{2,100})"/);
+        if (titleAttr) title = titleAttr[1].trim();
+      }
+
+      // Extract date (Armenian months)
+      const dateMatch = chunk.match(/(\d{1,2})\s+(Հունվusage|Փետdelays|Մdelays| Delays|Delaysays|Delaysays|Delaysays|Delaysays|Սdelays|Delaysays|Delaysays|Delaysays|Հunvalid|Delaysdelays|Delaysdelays|Delaysdelays|Delaysdelays|Delaysdelays|Delaysdelays|Delaysdelays|Delaysdelays|January|February|March|April|May|June|July|August|September|October|November|December|Սეფტეmber|Հdelaysdelays|Օdelays|Նdelays|Դdelays)/i);
+
+      // Simpler: just get Armenian month names
+      const armDateMatch = chunk.match(/(\d{1,2})\s+(Հunvalid|Delaysdelays|Delaysdays|Delaysdelays|Delaysays|Delaysdelays|Delaysdelays|Հdelaysays|Սdelaysdelays|Delaysdelays|Delaysdelays|Delaysdelays)/);
+      // Even simpler: look for any date-like pattern near event
+      const simpleDateMatch = chunk.match(/>(\d{1,2}\s+(?:Հdelays|Delaysdelays|Delaysdelays|Delaysdelays|Delaysdelays|Delaysdelays|Delaysdelays|Delaysdelays|Delaysdelays|Delaysdelays|Delaysdelays|Delaysdelays|\u054dalays|\u0553delays|\u0544delays|\u0531delays|\u0544delays|\u0540delays|\u0540delays|\u0555delays|\u054dalays|\u0540delays|\u0546delays|\u0534delays)[^\s<]*)</);
+
+      // Most reliable: just grab the raw text after the title that looks like a date
+      const rawDateMatch = chunk.match(/>(\d{1,2})\s+(\u054d\u0565\u057a\u057f\u0565\u0574\u0562\u0565\u0580|\u0540\u0578\u056f\u057f\u0565\u0574\u0562\u0565\u0580|\u0546\u0578\u0575\u0565\u0574\u0562\u0565\u0580|\u0534\u0565\u056f\u057f\u0565\u0574\u0562\u0565\u0580|\u0540\u0578\u0582\u0576\u057e\u0561\u0580|\u0553\u0565\u057f\u0580\u057e\u0561\u0580|\u0544\u0561\u0580\u057f|\u0531\u057a\u0580\u056b\u056c|\u0544\u0561\u0575\u056b\u057d|\u0540\u0578\u0582\u0576\u056b\u057d|\u0540\u0578\u0582\u056c\u056b\u057d|\u0555\u0563\u0578\u057d\u057f\u0578\u057d)/);
+
+      let dateText = null;
+      if (rawDateMatch) {
+        const armMonths = {
+          '\u054d\u0565\u057a\u057f\u0565\u0574\u0562\u0565\u0580': 'سپتامبر',
+          '\u0540\u0578\u056f\u057f\u0565\u0574\u0562\u0565\u0580': 'اکتبر',
+          '\u0546\u0578\u0575\u0565\u0574\u0562\u0565\u0580': 'نوامبر',
+          '\u0534\u0565\u056f\u057f\u0565\u0574\u0562\u0565\u0580': 'دسامبر',
+        };
+        dateText = `${rawDateMatch[1]} ${armMonths[rawDateMatch[2]] || rawDateMatch[2]}`;
+      }
+
+      // Extract venue
+      const venueMatch = chunk.match(/venue\/\d+\/[^"]*"[^>]*>([^<]+)/);
+
+      // Extract price
+      const priceMatch = chunk.match(/(\d[\d,.\s]*[-–]\s*\d[\d,.\s]*\s*(?:\u0564\u0580\u0561\u0574|AMD|դdelays)|\d[\d,.\s]+\s*(?:\u0564\u0580\u0561\u0574|AMD))/);
+
+      // Extract category from nearby category label
+      const catPatterns = [
+        [/>\u0540\u0561\u0574\u0565\u0580\u0563</, 'کنسرت'],
+        [/>\u0539\u0561\u057f\u0580\u0578\u0576</, 'تئاتر'],
+        [/>\u053f\u056b\u0576\u0578</, 'سینما'],
+        [/>\u053f\u0561\u057f\u0561\u056f\u0565\u0580\u0563/, 'کمدی'],
+        [/>Stand-up</, 'استندآپ'],
+        [/>Party</, 'پارتی'],
+        [/>\u0531\u056f\u0578\u0582\u0574\u0562/, 'کلاب'],
+        [/>\u0555\u057a\u0565\u0580\u0561/, 'اپرا'],
+        [/>\u0532\u0561\u056c\u0565\u057f</, 'باله'],
+        [/>\u0551\u0578\u0582\u0581\u0561\u0570\u0561\u0576\u0564\u0565\u057d/, 'نمایشگاه'],
+        [/>\u054d\u057a\u0578\u0580\u057f</, 'ورزش'],
+        [/>\u053f\u0580\u056f\u0565\u057d</, 'سیرک'],
+      ];
+      let category = 'سایر';
+      for (const [pat, cat] of catPatterns) {
+        if (pat.test(chunk)) { category = cat; break; }
+      }
+
+      if (title) {
+        events.push({
+          id: evt.id,
+          title,
+          url: `https://www.tomsarkgh.am${evt.fullPath}`,
+          image: imgMatch?.[1] || null,
+          date: dateText,
+          venue: venueMatch?.[1]?.trim() || null,
+          price: priceMatch?.[1] || null,
+          category,
+        });
       }
     }
 
+    // Sort by ID descending (newer events first)
+    events.sort((a, b) => parseInt(b.id) - parseInt(a.id));
+
     return NextResponse.json({
-      events,
+      events: events.slice(0, 50), // limit to 50
       total: events.length,
       fetchedAt: new Date().toISOString(),
-      source: 'tomsarkgh.am',
     });
   } catch (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: error.message, stack: error.stack?.split('\n').slice(0,3) }, { status: 500 });
   }
 }
