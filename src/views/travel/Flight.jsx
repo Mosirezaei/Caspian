@@ -202,9 +202,9 @@ function FlightContent() {
           <h2 className="text-xl font-bold text-amber-400">پروازهای مستقیم از ایروان به ایران</h2>
           <ul className="space-y-1.5 text-sm text-gray-300">
             <li>✈️ <strong>تهران</strong> (IKA/THR) — روزانه، ماهان ایر، ایران ایر، Flyone</li>
-            <li>✈️ <strong>مشهد</strong> (MHD) — چند بار در هفته</li>
-            <li>✈️ <strong>شیراز</strong> (SYZ) — چند بار در هفته</li>
-            <li>✈️ <strong>اصفهان</strong> (IFN) — برخی روزها</li>
+            <li>✈️ <strong>مشهد</strong> (MHD) — به صورت فصلی نه در همه طول سال </li>
+            <li>✈️ <strong>شیراز</strong> (SYZ) — به صورت فصلی نه در همه طول سال</li>
+            <li>✈️ <strong>اصفهان</strong> (IFN) — برخی ماهها</li>
           </ul>
           <h2 className="text-xl font-bold text-amber-400">پروازهای بین‌المللی از ایروان</h2>
           <ul className="space-y-1.5 text-sm text-gray-300">
