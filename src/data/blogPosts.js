@@ -81,6 +81,21 @@ export const blogPosts = [
       excerpt: "A full calendar of Armenia's annual festivals, concerts in Yerevan over the next three months, and the latest on Armenia-EU relations.",
     },
   },
+  {
+    slug: 'company-registration-armenia',
+    href: '/blog/company-registration-armenia',
+    category: 'company',
+    tags: ['company', 'residency', 'armenia', 'investment', 'business'],
+    date: '2026-09-03',
+    fa: {
+      title: 'راهنمای ثبت شرکت در ارمنستان: هزینه، مراحل و مالیات',
+      excerpt: 'ثبت LLC در ۳ روز، مالیات ۵٪، حساب بانکی بین‌المللی — راهنمای واقعی هزینه‌ها و مراحل ثبت شرکت ارمنستان برای ایرانیان.',
+    },
+    en: {
+      title: 'Company Registration in Armenia: Costs, Steps & Taxes',
+      excerpt: 'LLC registration in 3 days, 5% tax, international bank account — a practical guide for Iranians.',
+    },
+  },
 ];
 
 export const CATEGORY_LABELS = {
