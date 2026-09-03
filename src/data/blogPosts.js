@@ -230,19 +230,70 @@ export const blogPosts = [
       excerpt: 'A complete guide to Iranian schools in Yerevan, top Armenian universities, tuition and student living costs.',
     },
   },
+  {
+    slug: 'apartment-rental-yerevan-guide',
+    href: '/blog/apartment-rental-yerevan-guide',
+    category: 'apartment',
+    tags: ['apartment', 'yerevan', 'accommodation', 'life', 'cost-of-living'],
+    thumbnail: '/images/hotel.webp',
+    date: '2026-09-03',
+    fa: {
+      title: 'راهنمای اجاره آپارتمان در ایروان: قیمت\u200cها و نکات کلیدی',
+      excerpt: 'بازه قیمت اجاره، تفاوت کوتاه\u200cمدت و بلندمدت، هزینه\u200cهای جانبی و نکات مهم برای ایرانیان.',
+    },
+    en: {
+      title: 'Yerevan Apartment Rental Guide: Prices & Key Tips',
+      excerpt: 'Rental price ranges, short-term vs long-term, utility costs and essential tips for Iranians.',
+    },
+  },
+  {
+    slug: 'best-neighborhoods-yerevan-rent',
+    href: '/blog/best-neighborhoods-yerevan-rent',
+    category: 'apartment',
+    tags: ['apartment', 'yerevan', 'accommodation', 'life'],
+    thumbnail: '/images/tourism/yerevan-republic-square.webp',
+    date: '2026-09-03',
+    fa: {
+      title: 'بهترین محله\u200cهای ایروان برای اجاره خانه',
+      excerpt: 'مقایسه محله\u200cهای کنترون، عربکیر، کومیتاس و داوتاشن از نظر قیمت، دسترسی و امکانات.',
+    },
+    en: {
+      title: 'Best Yerevan Neighborhoods for Renting',
+      excerpt: 'Comparing Kentron, Arabkir, Komitas and Davtashen by price, access and amenities.',
+    },
+  },
+  {
+    slug: 'rental-contract-tips-armenia',
+    href: '/blog/rental-contract-tips-armenia',
+    category: 'apartment',
+    tags: ['apartment', 'armenia', 'life', 'residency'],
+    thumbnail: '/images/company/yerevan-bank-building.webp',
+    date: '2026-09-03',
+    fa: {
+      title: 'قرارداد اجاره در ارمنستان: ودیعه، مدارک و نکات حقوقی',
+      excerpt: 'همه چیز درباره قرارداد اجاره، ودیعه، کمیسیون آژانس و نشانه\u200cهای آگهی مشکوک.',
+    },
+    en: {
+      title: 'Rental Contracts in Armenia: Deposits, Documents & Legal Tips',
+      excerpt: 'Everything about rental contracts, deposits, agency fees and suspicious listing red flags.',
+    },
+  },
 ];
 
 export const CATEGORY_LABELS = {
   fa: {
     residency: 'اقامت و مهاجرت', company: 'ثبت شرکت و مالی', work: 'کار و اشتغال',
     life: 'زندگی در ایروان', education: 'تحصیل', tourism: 'گردشگری و دیدنی‌ها', news: 'اخبار و فستیوال‌ها',
+    apartment: 'اجاره و ملک',
   },
   en: {
     residency: 'Residency & Immigration', company: 'Company Registration & Finance', work: 'Work & Employment',
     life: 'Life in Yerevan', education: 'Education', tourism: 'Tourism & Sights', news: 'News & Festivals',
+    apartment: 'Rental & Property',
   },
   ru: {
     residency: 'ВНЖ и миграция', company: 'Регистрация компаний и финансы', work: 'Работа и трудоустройство',
     life: 'Жизнь в Ереване', education: 'Образование', tourism: 'Туризм и достопримечательности', news: 'Новости и фестивали',
+    apartment: 'Аренда и недвижимость',
   },
 };
