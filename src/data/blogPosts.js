@@ -10,6 +10,7 @@ export const blogPosts = [
     slug: 'armenia-visa-documents',
     href: '/blog/armenia-visa-documents',
     category: 'residency',
+    thumbnail: '/images/Yerevan_Residency.webp',
     tags: ['visa', 'documents', 'residency', 'armenia'],
     date: '2025-09-01',
     fa: {
@@ -25,6 +26,7 @@ export const blogPosts = [
     slug: 'living-cost-yerevan',
     href: '/blog/living-cost-yerevan',
     category: 'life',
+    thumbnail: '/images/tourism/yerevan-republic-square.webp',
     tags: ['yerevan', 'cost-of-living', 'residency', 'life'],
     date: '2025-09-01',
     fa: {
@@ -40,6 +42,7 @@ export const blogPosts = [
     slug: 'jobs-in-armenia',
     href: '/blog/jobs-in-armenia',
     category: 'work',
+    thumbnail: '/images/company/yerevan-city-center.webp',
     tags: ['jobs', 'employment', 'work-permit', 'armenia'],
     date: '2026-09-02',
     fa: {
@@ -55,6 +58,7 @@ export const blogPosts = [
     slug: 'armenia-tourism-guide',
     href: '/blog/armenia-tourism-guide',
     category: 'tourism',
+    thumbnail: '/images/tourism/yerevan-cascade.webp',
     tags: ['tourism', 'yerevan', 'sightseeing', 'armenia'],
     date: '2026-09-02',
     fa: {
@@ -70,6 +74,7 @@ export const blogPosts = [
     slug: 'armenia-festivals-events-news',
     href: '/blog/armenia-festivals-events-news',
     category: 'news',
+    thumbnail: '/images/fest.png',
     tags: ['festivals', 'events', 'concerts', 'news', 'eu', 'armenia'],
     date: '2026-09-02',
     fa: {
@@ -85,6 +90,7 @@ export const blogPosts = [
     slug: 'company-registration-armenia',
     href: '/blog/company-registration-armenia',
     category: 'company',
+    thumbnail: '/images/company/yerevan-bank-building.webp',
     tags: ['company', 'residency', 'armenia', 'investment', 'business'],
     date: '2026-09-03',
     fa: {
