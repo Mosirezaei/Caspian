@@ -167,6 +167,54 @@ export const blogPosts = [
     },
   },
   {
+    slug: 'apartment-rental-yerevan-guide',
+    href: '/blog/apartment-rental-yerevan-guide',
+    category: 'life',
+    thumbnail: 'https://images.unsplash.com/photo-1730569000295-49a648e4f1e3?w=800&q=80',
+    tags: ['yerevan', 'apartment', 'rent', 'life', 'residency'],
+    date: '2026-09-03',
+    fa: {
+      title: 'اجاره آپارتمان در ایروان: راهنمای قیمت، مدت اقامت و انواع مسکن',
+      excerpt: 'کوتاه\u200cمدت یا بلندمدت، آپارتمان یا خانه ویلایی؛ بازه قیمت اجاره، ودیعه و هزینه\u200cهای جانبی در ایروان.',
+    },
+    en: {
+      title: 'Apartment Rental in Yerevan: Prices, Stay Length & Housing Types',
+      excerpt: 'Short-term or long-term, apartment or villa — rental price ranges, deposits, and extra costs in Yerevan.',
+    },
+  },
+  {
+    slug: 'best-neighborhoods-yerevan-rent',
+    href: '/blog/best-neighborhoods-yerevan-rent',
+    category: 'life',
+    thumbnail: '/images/tourism/yerevan-republic-square.webp',
+    tags: ['yerevan', 'neighborhoods', 'apartment', 'life', 'kentron'],
+    date: '2026-09-03',
+    fa: {
+      title: 'بهترین محله\u200cهای ایروان برای اجاره: کِنترون، عربکیر، کومیتاس و گزینه\u200cهای اقتصادی',
+      excerpt: 'مقایسه محله\u200cهای ایروان برای اجاره خانه — دسترسی، هزینه و کیفیت زندگی در کِنترون، عربکیر، کومیتاس، داوتاشن و کاسکاد.',
+    },
+    en: {
+      title: "Best Neighborhoods to Rent in Yerevan: Kentron, Arabkir, Komitas & Budget Options",
+      excerpt: 'Comparing Yerevan neighborhoods for renting — access, cost and quality of life across Kentron, Arabkir, Komitas, Davtashen and Cascade.',
+    },
+  },
+  {
+    slug: 'rental-contract-armenia-guide',
+    href: '/blog/rental-contract-armenia-guide',
+    category: 'life',
+    thumbnail: 'https://images.unsplash.com/photo-1722487631997-cf1e0f92c2c4?w=800&q=80',
+    tags: ['yerevan', 'contract', 'deposit', 'life', 'rent'],
+    date: '2026-09-03',
+    fa: {
+      title: 'قرارداد اجاره خانه در ارمنستان: مدارک، ودیعه و نکاتی که باید قبل از امضا بدانید',
+      excerpt: 'از پیدا کردن آگهی معتبر تا تحویل کلید؛ مدارک لازم، بندهای ضروری قرارداد و نشانه\u200cهای آگهی مشکوک.',
+    },
+    en: {
+      title: 'Rental Contract in Armenia: Documents, Deposit & What to Check Before Signing',
+      excerpt: 'From finding a legitimate listing to key handover — required documents, essential contract clauses and warning signs.',
+    },
+  },
+  {
     slug: 'education-armenia',
     href: '/blog/education-armenia',
     category: 'education',
