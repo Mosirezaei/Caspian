@@ -45,7 +45,7 @@ export default function PageSidebar({ tags, currentPath, serviceType }) {
 
       {tags && tags.length > 0 && (
         <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
-          <RelatedContent currentTags={tags} currentPath={currentPath} maxItems={4} variant="sidebar" />
+          <RelatedContent currentTags={tags} currentPath={currentPath} maxItems={6} variant="sidebar" />
         </div>
       )}
 
