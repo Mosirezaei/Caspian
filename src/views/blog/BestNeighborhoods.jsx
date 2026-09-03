@@ -6,14 +6,13 @@ import RelatedServices from '@/components/shared/RelatedServices.jsx';
 
 export default function BestNeighborhoods() {
   const neighborhoods = [
-    { name: 'کِنترون (مرکز شهر)', nameLat: 'Kentron', price: '$۳۰۰–$۵۰۰+', color: 'amber', pros: ['دسترسی به همه چیز بدون ماشین', 'نزدیک میدان جمهوری و کاسکاد', 'رستوران‌ها و کافه‌ها'], cons: ['اجاره بالاتر', 'صدای خیابان', 'پارکینگ محدود'], best: 'شاغلین در مرکز، دانشجویان، سفرهای کوتاه' },
-    { name: 'آرابگیر', nameLat: 'Arabkir', price: '$۲۵۰–$۴۰۰', color: 'emerald', pros: ['تعادل خوب قیمت و دسترسی', 'فروشگاه و مدرسه نزدیک', 'ساختمان‌های متنوع'], cons: ['شیب خیابان‌ها', 'فاصله پیاده تا مرکز'], best: 'خانواده‌ها، کار در مرکز، زندگی طولانی‌مدت' },
-    { name: 'کومیتاس', nameLat: 'Komitas', price: '$۲۲۰–$۳۵۰', color: 'blue', pros: ['خدمات محلی کامل', 'مسیرهای اتوبوس مناسب', 'درمانگاه و فروشگاه نزدیک'], cons: ['فاصله بیشتر از مرکز', 'ساختمان‌های قدیمی‌تر'], best: 'خانواده‌ها با بودجه متوسط' },
-    { name: 'داوتاشن', nameLat: 'Davtashen', price: '$۱۸۰–$۳۰۰', color: 'rose', pros: ['اجاره پایین‌تر', 'فضای بزرگ‌تر', 'ساختمان‌های نسبتاً جدید'], cons: ['فاصله از مرکز', 'هزینه رفت‌وآمد اضافه'], best: 'بودجه محدود، خانواده‌های بزرگ' },
-    { name: 'آجاپنیاک و مالاتیا-سباستیا', nameLat: 'Ajapnyak / Malatia', price: '$۱۵۰–$۲۵۰', color: 'violet', pros: ['ارزان‌ترین گزینه‌ها', 'آپارتمان‌های بزرگ'], cons: ['دسترسی شبانه ضعیف', 'کیفیت ساختمان متغیر', 'فاصله زیاد از مرکز'], best: 'بودجه خیلی محدود، اقامت موقت' },
+    { name: 'کِنترون (مرکز شهر)', nameLat: 'Kentron', price: '$۹۰۰–$۱,۵۰۰+', color: 'amber', pros: ['دسترسی به همه چیز بدون ماشین', 'نزدیک میدان جمهوری و کاسکاد', 'رستوران‌ها و کافه‌ها'], cons: ['اجاره بالاتر', 'صدای خیابان', 'پارکینگ محدود'], best: 'شاغلین در مرکز، دانشجویان، سفرهای کوتاه' },
+    { name: 'آرابگیر', nameLat: 'Arabkir', price: '$۶۵۰–$۱,۰۰۰', color: 'emerald', pros: ['تعادل خوب قیمت و دسترسی', 'فروشگاه و مدرسه نزدیک', 'ساختمان‌های متنوع'], cons: ['شیب خیابان‌ها', 'فاصله پیاده تا مرکز'], best: 'خانواده‌ها، کار در مرکز، زندگی طولانی‌مدت' },
+        { name: 'داوتاشن', nameLat: 'Davtashen', price: '$۵۵۰–$۸۵۰', color: 'rose', pros: ['اجاره متعادل‌تر', 'فضای بزرگ‌تر', 'ساختمان‌های نسبتاً جدید'], cons: ['فاصله از مرکز', 'هزینه رفت‌وآمد اضافه'], best: 'خانواده‌ها، بودجه متوسط' },
+    { name: 'آجاپنیاک و مالاتیا-سباستیا', nameLat: 'Ajapnyak / Malatia', price: '$۵۰۰–$۸۰۰', color: 'violet', pros: ['اقتصادی‌ترین گزینه‌ها', 'آپارتمان‌های بزرگ'], cons: ['دسترسی شبانه ضعیف', 'کیفیت ساختمان متغیر', 'فاصله زیاد از مرکز'], best: 'بودجه محدود، اقامت موقت' },
   ];
 
-  const colors = { amber: 'from-amber-500/10 border-amber-500/20', emerald: 'from-emerald-500/10 border-emerald-500/20', blue: 'from-blue-500/10 border-blue-500/20', rose: 'from-rose-500/10 border-rose-500/20', violet: 'from-violet-500/10 border-violet-500/20' };
+  const colors = { amber: 'from-amber-500/10 border-amber-500/20', emerald: 'from-emerald-500/10 border-emerald-500/20', rose: 'from-rose-500/10 border-rose-500/20', violet: 'from-violet-500/10 border-violet-500/20' };
 
   return (
     <div className="min-h-screen" dir="rtl">
@@ -55,6 +54,12 @@ export default function BestNeighborhoods() {
             </section>
           ))}
         </div>
+
+        <section className="rounded-2xl p-4 mb-6 bg-amber-500/10 border border-amber-500/20">
+          <p className="text-xs text-foreground/60 leading-6">
+            ⚠️ قیمت‌های بالا برای آپارتمان‌های استاندارد و معمولی هستن. با توجه به نوساز یا قدیمی‌ساز بودن ساختمان، امکانات، مبله بودن و شرایط مختلف، قیمت هر منطقه می‌تونه بالاتر یا پایین‌تر باشه. همچنین در فصل‌های مختلف سال (به‌خصوص تابستان) قیمت‌ها متغیره.
+          </p>
+        </section>
 
         <section className="glass-panel rounded-2xl p-6 mb-6">
           <h2 className="text-xl font-black text-primary mb-3 flex items-center gap-2"><Mountain className="w-5 h-5" /> اقامت لوکس کنار کاسکاد</h2>
