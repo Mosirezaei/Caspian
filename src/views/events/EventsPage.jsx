@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, useMemo } from 'react';
-import { Search, Filter, Calendar, Music, Theater, Film, PartyPopper, Ticket, MapPin, Loader2, ExternalLink } from 'lucide-react';
+import { Search, Filter, Calendar, Music, Theater, Film, PartyPopper, Ticket, MapPin, Loader2 } from 'lucide-react';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 
 const CATEGORY_ICONS = {
@@ -106,7 +106,7 @@ export default function EventsPage() {
           <h1 className="text-3xl sm:text-4xl font-black text-foreground">
             <span className="gold-gradient-text">رویدادها و کنسرت‌های ایروان</span>
           </h1>
-          <p className="text-foreground/60 mt-2">برنامه‌ی تئاتر، کنسرت، فستیوال و نمایشگاه‌های ایروان — به‌روز از tomsarkgh.am</p>
+          <p className="text-foreground/60 mt-2">برنامه‌ی تئاتر، کنسرت، فستیوال و نمایشگاه‌های ایروان</p>
           {translating && (
             <div className="flex items-center justify-center gap-2 mt-3 text-primary text-sm">
               <Loader2 className="w-4 h-4 animate-spin" /> در حال ترجمه به فارسی...
@@ -160,12 +160,9 @@ export default function EventsPage() {
               const faCat = CATEGORY_FA[event.category] || event.category;
 
               return (
-                <a
+                <div
                   key={event.id}
-                  href={event.url || '#'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
+                  className="group rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
                 >
                   {/* Image */}
                   {event.image && (
@@ -203,22 +200,29 @@ export default function EventsPage() {
                         </div>
                       )}
                     </div>
-                    <div className="mt-3 flex items-center gap-1 text-[11px] text-primary/60 font-medium">
-                      خرید بلیط <ExternalLink className="w-3 h-3" />
-                    </div>
+                    <button
+                      onClick={() => {
+                        const msg = encodeURIComponent(
+                          `سلام، می‌خوام بلیط این رویداد رو تهیه کنم:\n\n` +
+                          `🎫 ${faTitle}\n` +
+                          `📅 ${event.date || 'تاریخ نامشخص'}\n` +
+                          `📍 ${event.venue || 'محل نامشخص'}\n` +
+                          `💰 ${event.price || 'قیمت نامشخص'}\n\n` +
+                          `لطفاً راهنمایی کنید.`
+                        );
+                        window.open(`https://wa.me/37433149327?text=${msg}`, '_blank');
+                      }}
+                      className="mt-3 w-full flex items-center justify-center gap-2 py-2 rounded-xl bg-green-600 hover:bg-green-500 transition text-white text-xs font-bold">
+                      <Ticket className="w-3.5 h-3.5" /> تهیه بلیط
+                    </button>
                   </div>
-                </a>
+                </div>
               );
             })}
           </div>
         )}
 
-        {/* Footer note */}
-        <div className="mt-10 text-center">
-          <p className="text-xs text-foreground/30">
-            اطلاعات رویدادها از <a href="https://www.tomsarkgh.am" target="_blank" rel="noopener noreferrer" className="text-primary/50 hover:text-primary">tomsarkgh.am</a> دریافت و به فارسی ترجمه شده. برای خرید بلیط روی هر رویداد کلیک کنید.
-          </p>
-        </div>
+
       </main>
     </div>
   );
