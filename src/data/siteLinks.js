@@ -32,6 +32,8 @@ export const SERVICE_LINKS = [
     fa: { label: 'بلیط هوایی و زمینی' }, en: { label: 'Flight & Ground Tickets' }, ru: { label: 'Авиа и наземные билеты' } },
   { href: '/travel/transfer', tags: ['tourism', 'armenia', 'transport'],
     fa: { label: 'ترانسفر فرودگاهی ایروان' }, en: { label: 'Yerevan Airport Transfer' }, ru: { label: 'Трансфер из аэропорта Еревана' } },
+  { href: '/travel/exchange', tags: ['tourism', 'armenia', 'finance', 'company'],
+    fa: { label: 'صرافی ارزی کاسپین' }, en: { label: 'Caspian Currency Exchange' }, ru: { label: 'Обмен валют Caspian' } },
 ];
 
 const BLOG_LINKS = blogPosts.map(p => ({
@@ -57,5 +59,6 @@ export const SERVICE_TYPE_TAGS = {
   apartment: ['tourism', 'armenia', 'accommodation', 'life'],
   tour: ['tourism', 'armenia', 'sightseeing'],
   transfer: ['tourism', 'armenia', 'transport'],
+  exchange: ['tourism', 'armenia', 'finance', 'company'],
   default: ['armenia'],
 };

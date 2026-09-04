@@ -56,19 +56,26 @@ const SERVICES = {
     ru: { title: 'Туры по Армении', desc: 'Наземные и авиатуры с русскоязычным гидом' },
     href: '/travel/tour', icon: '🗺️',
   },
+  exchange: {
+    fa: { title: 'صرافی ارزی کاسپین', desc: 'تبدیل ریال، دلار، یورو، روبل و تتر با نرخ شفاف' },
+    en: { title: 'Caspian Currency Exchange', desc: 'Rial, USD, EUR, RUB & USDT at transparent rates' },
+    ru: { title: 'Обмен валют Caspian', desc: 'Риал, доллар, евро, рубль и USDT по прозрачному курсу' },
+    href: '/travel/exchange', icon: '💱',
+  },
 };
 
 // نقشه ارتباطات: هر صفحه چه لینک‌هایی باید داشته باشه
 const RELATED_MAP = {
   'hotel':        ['apartment', 'transfer', 'tour', 'residency'],
   'apartment':    ['hotel', 'transfer', 'residency', 'company'],
-  'residency':    ['company', 'hotel', 'apartment', 'studentVisa'],
-  'company':      ['residency', 'hotel', 'apartment', 'tour'],
+  'residency':    ['company', 'hotel', 'apartment', 'exchange'],
+  'company':      ['residency', 'hotel', 'apartment', 'exchange'],
   'visa-russia':  ['hotel', 'tour', 'transfer', 'visaRussia'],
   'student-visa': ['studentVisa', 'hotel', 'apartment', 'residency'],
-  'tour':         ['hotel', 'apartment', 'transfer', 'company'],
+  'tour':         ['hotel', 'apartment', 'transfer', 'exchange'],
   'transfer':     ['hotel', 'apartment', 'tour', 'residency'],
-  'default':      ['hotel', 'apartment', 'residency', 'visaRussia'],
+  'exchange':     ['apartment', 'residency', 'company', 'hotel'],
+  'default':      ['hotel', 'apartment', 'residency', 'exchange'],
 };
 
 export default function RelatedServices({ pageType = 'default', variant = 'grid' }) {
