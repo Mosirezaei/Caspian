@@ -135,8 +135,8 @@ export const blogPosts = [
     },
   },
   {
-    slug: 'sabt-sherktat-armenia-marahel',
-    href: '/blog/sabt-sherktat-armenia-marahel',
+    slug: 'company-registration-steps-armenia',
+    href: '/blog/company-registration-steps-armenia',
     category: 'company',
     thumbnail: '/images/company/yerevan-bank-building.webp',
     tags: ['company', 'registration', 'documents', 'armenia', 'LLC'],
@@ -151,8 +151,8 @@ export const blogPosts = [
     },
   },
   {
-    slug: 'sakhtare-hoqooqi-sherktat-armenia',
-    href: '/blog/sakhtare-hoqooqi-sherktat-armenia',
+    slug: 'company-legal-structures-armenia',
+    href: '/blog/company-legal-structures-armenia',
     category: 'company',
     thumbnail: '/images/company/yerevan-city-center.webp',
     tags: ['LLC', 'IE', 'CJSC', 'legal-structure', 'armenia', 'company'],
@@ -167,8 +167,8 @@ export const blogPosts = [
     },
   },
   {
-    slug: 'hazine-maliyat-bank-armenia',
-    href: '/blog/hazine-maliyat-bank-armenia',
+    slug: 'company-costs-tax-banking-armenia',
+    href: '/blog/company-costs-tax-banking-armenia',
     category: 'company',
     thumbnail: '/images/company/yerevan-bank-building.webp',
     tags: ['cost', 'tax', 'bank', 'armenia', 'company', 'finance'],
@@ -183,8 +183,8 @@ export const blogPosts = [
     },
   },
   {
-    slug: 'eqamat-armenia-az-tarigh-sherktat',
-    href: '/blog/eqamat-armenia-az-tarigh-sherktat',
+    slug: 'residency-via-company-registration',
+    href: '/blog/residency-via-company-registration',
     category: 'company',
     thumbnail: '/images/Yerevan_Residency.webp',
     tags: ['residency', 'company', 'armenia', 'immigration', 'EAEU'],
