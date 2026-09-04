@@ -13,7 +13,7 @@ import { ALL_SITE_LINKS } from '@/data/siteLinks';
  */
 export default function SeoFooterLinks({ variant = 'default', currentTags = [], currentPath = '' }) {
   const { lang } = useLang();
-  const label = lang === 'fa' ? 'لینک\u200cهای مفید' : lang === 'ru' ? 'Полезные ссылки' : 'Useful Links';
+  const label = lang === 'fa' ? 'لینک‌های مفید' : lang === 'ru' ? 'Полезные ссылки' : 'Useful Links';
 
   const items = useMemo(() => {
     const pool = ALL_SITE_LINKS.filter(l => l.href !== currentPath);
