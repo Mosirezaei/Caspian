@@ -167,32 +167,12 @@ export const blogPosts = [
     },
   },
   {
-    slug: 'apartment-rental-yerevan-guide',
-    href: '/blog/apartment-rental-yerevan-guide',
-    category: 'life',
-    thumbnail: 'https://images.unsplash.com/photo-1730569000295-49a648e4f1e3?w=800&q=80',
-    tags: ['yerevan', 'apartment', 'rent', 'life', 'residency'],
-    date: '2026-09-03',
-    fa: {
-      title: 'اجاره آپارتمان در ایروان: راهنمای قیمت، مدت اقامت و انواع مسکن',
-      excerpt: 'کوتاه\u200cمدت یا بلندمدت، آپارتمان یا خانه ویلایی؛ بازه قیمت اجاره، ودیعه و هزینه\u200cهای جانبی در ایروان.',
-    },
     en: {
       title: 'Apartment Rental in Yerevan: Prices, Stay Length & Housing Types',
       excerpt: 'Short-term or long-term, apartment or villa — rental price ranges, deposits, and extra costs in Yerevan.',
     },
   },
   {
-    slug: 'best-neighborhoods-yerevan-rent',
-    href: '/blog/best-neighborhoods-yerevan-rent',
-    category: 'life',
-    thumbnail: '/images/tourism/yerevan-republic-square.webp',
-    tags: ['yerevan', 'neighborhoods', 'apartment', 'life', 'kentron'],
-    date: '2026-09-03',
-    fa: {
-      title: 'بهترین محله\u200cهای ایروان برای اجاره: کِنترون، آرابگیر و گزینه\u200cهای اقتصادی',
-      excerpt: 'مقایسه محله\u200cهای ایروان برای اجاره خانه — دسترسی، هزینه و کیفیت زندگی در کِنترون، آرابگیر، داوتاشن و کاسکاد.',
-    },
     en: {
       title: "Best Neighborhoods to Rent in Yerevan: Kentron, Arabkir, Komitas & Budget Options",
       excerpt: 'Comparing Yerevan neighborhoods for renting — access, cost and quality of life across Kentron, Arabkir, Komitas, Davtashen and Cascade.',
@@ -201,7 +181,7 @@ export const blogPosts = [
   {
     slug: 'rental-contract-armenia-guide',
     href: '/blog/rental-contract-armenia-guide',
-    category: 'life',
+    category: 'apartment',
     thumbnail: 'https://images.unsplash.com/photo-1722487631997-cf1e0f92c2c4?w=800&q=80',
     tags: ['yerevan', 'contract', 'deposit', 'life', 'rent'],
     date: '2026-09-03',
@@ -276,6 +256,54 @@ export const blogPosts = [
     en: {
       title: 'Rental Contracts in Armenia: Deposits, Documents & Legal Tips',
       excerpt: 'Everything about rental contracts, deposits, agency fees and suspicious listing red flags.',
+    },
+  },
+  {
+    slug: 'residency-paths-comparison-armenia',
+    href: '/blog/residency-paths-comparison-armenia',
+    category: 'residency',
+    tags: ['residency', 'armenia', 'work', 'education', 'investment', 'family'],
+    thumbnail: '/images/Yerevan_Residency.webp',
+    date: '2026-09-04',
+    fa: {
+      title: '\u0645\u0642\u0627\u06cc\u0633\u0647 \u0645\u0633\u06cc\u0631\u0647\u0627\u06cc \u0627\u0642\u0627\u0645\u062a \u0627\u0631\u0645\u0646\u0633\u062a\u0627\u0646: \u06a9\u0627\u0631\u06cc\u060c \u062a\u062d\u0635\u06cc\u0644\u06cc\u060c \u0633\u0631\u0645\u0627\u06cc\u0647\u200c\u06af\u0630\u0627\u0631\u06cc \u06cc\u0627 \u062a\u0648\u0644\u062f \u0641\u0631\u0632\u0646\u062f',
+      excerpt: '\u0645\u0642\u0627\u06cc\u0633\u0647\u200c\u06cc \u06a9\u0627\u0645\u0644 \u0686\u0647\u0627\u0631 \u0631\u0648\u0634 \u0627\u0642\u0627\u0645\u062a \u0627\u0631\u0645\u0646\u0633\u062a\u0627\u0646: \u0647\u0632\u06cc\u0646\u0647\u060c \u0645\u062f\u062a \u0632\u0645\u0627\u0646\u060c \u0645\u062f\u0627\u0631\u06a9 \u0648 \u0645\u0632\u0627\u06cc\u0627/\u0645\u0639\u0627\u06cc\u0628 \u0647\u0631 \u0645\u0633\u06cc\u0631.',
+    },
+    en: {
+      title: 'Armenia Residency Paths Compared: Work, Study, Investment or Child Birth',
+      excerpt: 'Full comparison of four residency routes: cost, timeline, documents and pros/cons.',
+    },
+  },
+  {
+    slug: 'best-time-visit-armenia-souvenirs',
+    href: '/blog/best-time-visit-armenia-souvenirs',
+    category: 'tourism',
+    tags: ['tourism', 'armenia', 'sightseeing', 'festivals'],
+    thumbnail: '/images/tourism/noravank-monastery.webp',
+    date: '2026-09-04',
+    fa: {
+      title: '\u0628\u0647\u062a\u0631\u06cc\u0646 \u0632\u0645\u0627\u0646 \u0633\u0641\u0631 \u0628\u0647 \u0627\u0631\u0645\u0646\u0633\u062a\u0627\u0646 \u0648 \u0633\u0648\u063a\u0627\u062a\u06cc\u200c\u0647\u0627\u06cc \u0627\u0631\u0645\u0646\u06cc',
+      excerpt: '\u0631\u0627\u0647\u0646\u0645\u0627\u06cc \u0641\u0635\u0644\u200c\u0628\u0647\u200c\u0641\u0635\u0644 \u0633\u0641\u0631\u060c \u0622\u0628\u200c\u0648\u200c\u0647\u0648\u0627 \u0648 \u0628\u0647\u062a\u0631\u06cc\u0646 \u0633\u0648\u063a\u0627\u062a\u06cc\u200c\u0647\u0627\u06cc \u0627\u0631\u0645\u0646\u0633\u062a\u0627\u0646 \u0628\u0631\u0627\u06cc \u0627\u06cc\u0631\u0627\u0646\u06cc\u0627\u0646.',
+    },
+    en: {
+      title: 'Best Time to Visit Armenia & Armenian Souvenirs',
+      excerpt: 'Season-by-season travel guide, weather and best Armenian souvenirs for Iranians.',
+    },
+  },
+  {
+    slug: 'work-without-degree-armenia',
+    href: '/blog/work-without-degree-armenia',
+    category: 'work',
+    tags: ['work', 'employment', 'armenia', 'jobs'],
+    thumbnail: '/images/company/yerevan-city-center.webp',
+    date: '2026-09-04',
+    fa: {
+      title: '\u06a9\u0627\u0631 \u0628\u062f\u0648\u0646 \u0645\u062f\u0631\u06a9 \u062a\u062d\u0635\u06cc\u0644\u06cc \u062f\u0631 \u0627\u0631\u0645\u0646\u0633\u062a\u0627\u0646: \u0641\u0631\u0635\u062a\u200c\u0647\u0627 \u0648 \u0648\u0627\u0642\u0639\u06cc\u062a\u200c\u0647\u0627',
+      excerpt: '\u0686\u0647 \u06a9\u0627\u0631\u0647\u0627\u06cc\u06cc \u0628\u062f\u0648\u0646 \u0645\u062f\u0631\u06a9 \u062f\u0627\u0646\u0634\u06af\u0627\u0647\u06cc \u062f\u0631 \u0627\u0631\u0645\u0646\u0633\u062a\u0627\u0646 \u0645\u0648\u062c\u0648\u062f\u0647\u061f \u062d\u0642\u0648\u0642\u060c \u0634\u0631\u0627\u06cc\u0637 \u0648 \u0631\u0627\u0647\u0646\u0645\u0627\u06cc \u0639\u0645\u0644\u06cc.',
+    },
+    en: {
+      title: 'Working in Armenia Without a Degree: Opportunities & Realities',
+      excerpt: 'What jobs are available without a university degree? Salaries, conditions and practical guide.',
     },
   },
 ];
