@@ -269,7 +269,6 @@ function HotelContent() {
   const isFa = lang === 'fa';
   const isRu = lang === 'ru';
 
-
   const note = {
     fa: '* قیمت‌ها میانگین تخمینی برای اتاق دبل در فصل معمولی هستند. در فصل اوج (تابستان، نوروز) ۲۰ تا ۴۰ درصد بیشتر می‌شود.',
     en: '* Prices are estimated averages for a double room in regular season. Peak season (summer, Nowruz) may be 20–40% higher.',
@@ -278,12 +277,14 @@ function HotelContent() {
 
   return (
     <ServicePageLayout
-      titleEn="Hotel Booking in Yerevan, Armenia" titleFa="رزرو هتل در ایروان و ارمنستان" titleRu="Бронирование отелей в Армении"
+      titleEn="Hotel Booking in Yerevan, Armenia"
+      titleFa="رزرو هتل در ایروان و ارمنستان"
+      titleRu="Бронирование отелей в Армении"
       subtitleEn="3, 4 & 5-star hotels — official voucher, best prices via Caspian Group"
       subtitleFa="هتل‌های ۳، ۴ و ۵ ستاره — واچر رسمی، بهترین قیمت از طریق کاسپین"
       subtitleRu="Отели 3, 4 и 5 звёзд — официальный ваучер, лучшие цены"
       heroImage="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200&q=80"
-      serviceType="hotel">
+      showFaq={false}>
 
       {isFa && <>
         <InfoBlock title="چرا رزرو هتل ایروان از طریق کاسپین؟">
@@ -414,6 +415,7 @@ function HotelContent() {
 
       <p className="text-xs text-foreground/40 text-center mt-2 mb-6">{note[lang]}</p>
 
+      {/* بخش اختصاصی سوالات متداول هتل */}
       <HotelFAQ />
     </ServicePageLayout>
   );
