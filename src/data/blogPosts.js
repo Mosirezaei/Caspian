@@ -214,6 +214,22 @@ export const blogPosts = [
       excerpt: 'A complete guide to Iranian schools in Yerevan, top Armenian universities, tuition and student living costs.',
     },
   },
+  {
+    slug: 'armenia-immigration-law-changes',
+    href: '/blog/armenia-immigration-law-changes',
+    category: 'residency',
+    thumbnail: '/images/Yerevan_Residency.webp',
+    tags: ['residency', 'immigration', 'armenia', 'work-visa', 'law'],
+    date: '2026-09-04',
+    fa: {
+      title: 'قوانین جدید مهاجرتی ارمنستان: تحولات اساسی در اقامت و مهاجرت',
+      excerpt: 'تحلیل کامل اصلاحات جدید قانون اتباع خارجی: دیجیتالی‌سازی، حداقل سرمایه ثبتی، قانون ۱۸۰ روز مالیات، حذف اقامت ۱۰ ساله، ویزای ورود کاری و سهمیه‌بندی سالانه.',
+    },
+    en: {
+      title: 'Armenia\'s New Immigration Law: Major Reforms Explained',
+      excerpt: 'Full breakdown of the new foreign-nationals law: digitalization, minimum registered capital, the 180-day tax rule, the end of the 10-year permit, the Work Entry Visa, and annual quotas.',
+    },
+  },
 ];
 
 export const CATEGORY_LABELS = {
