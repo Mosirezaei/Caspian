@@ -1,5 +1,5 @@
 'use client';
-import { Suspense, useMemo, useState } from 'react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { ArrowLeft, ArrowRight, Calendar, FileCheck2, Building2, Briefcase, Home, GraduationCap, Mountain, PartyPopper, Key } from 'lucide-react';
@@ -44,6 +44,10 @@ function BlogArchiveInner() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get('category') || 'all';
   const [activeCategory, setActiveCategory] = useState(initialCategory);
+
+  useEffect(() => {
+    setActiveCategory(searchParams.get('category') || 'all');
+  }, [searchParams]);
 
   const catLabels = CATEGORY_LABELS[lang] || CATEGORY_LABELS.fa;
   const categoryKeys = Object.keys(catLabels);
