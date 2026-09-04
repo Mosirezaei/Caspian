@@ -4,11 +4,11 @@ export const metadata = {
   title: 'رزرو پرواز از ایروان | تهران، مسکو، دوبی',
   description: 'رزرو بلیط هواپیما از فرودگاه زوارتنوتس ایروان (EVN) به تهران، مشهد، مسکو، دوبی و اروپا. پشتیبانی فارسی، بهترین قیمت.',
   keywords: 'رزرو پرواز ایروان, بلیط ایروان تهران, پرواز ایروان مسکو',
-  alternates: { canonical: 'https://caspian.am/travel/flight' },
+  alternates: { canonical: 'https://caspian.am/travel/flight-bus' },
   openGraph: {
     title: 'رزرو پرواز از ایروان | بلیط هواپیما به تهران، مسکو، دوبی و اروپا',
     description: 'رزرو بلیط هواپیما از فرودگاه زوارتنوتس ایروان (EVN) به تهران، مشهد، مسکو، دوبی و اروپا. پشتیبانی فارسی، بهترین قیمت.',
-    url: 'https://caspian.am/travel/flight',
+    url: 'https://caspian.am/travel/flight-bus',
   },
 };
 

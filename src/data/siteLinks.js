@@ -28,7 +28,7 @@ export const SERVICE_LINKS = [
     fa: { label: 'رزرو هتل ایروان' }, en: { label: 'Yerevan Hotel Booking' }, ru: { label: 'Бронирование отеля в Ереване' } },
   { href: '/travel/apartment', tags: ['tourism', 'armenia', 'accommodation', 'life'],
     fa: { label: 'اجاره آپارتمان مبله' }, en: { label: 'Furnished Apartment Rental' }, ru: { label: 'Аренда квартиры в Ереване' } },
-  { href: '/travel/flight', tags: ['tourism', 'armenia', 'transport'],
+  { href: '/travel/flight-bus', tags: ['tourism', 'armenia', 'transport'],
     fa: { label: 'بلیط هوایی و زمینی' }, en: { label: 'Flight & Ground Tickets' }, ru: { label: 'Авиа и наземные билеты' } },
   { href: '/travel/transfer', tags: ['tourism', 'armenia', 'transport'],
     fa: { label: 'ترانسفر فرودگاهی ایروان' }, en: { label: 'Yerevan Airport Transfer' }, ru: { label: 'Трансфер из аэропорта Еревана' } },
