@@ -167,18 +167,6 @@ export const blogPosts = [
     },
   },
   {
-    en: {
-      title: 'Apartment Rental in Yerevan: Prices, Stay Length & Housing Types',
-      excerpt: 'Short-term or long-term, apartment or villa — rental price ranges, deposits, and extra costs in Yerevan.',
-    },
-  },
-  {
-    en: {
-      title: "Best Neighborhoods to Rent in Yerevan: Kentron, Arabkir, Komitas & Budget Options",
-      excerpt: 'Comparing Yerevan neighborhoods for renting — access, cost and quality of life across Kentron, Arabkir, Komitas, Davtashen and Cascade.',
-    },
-  },
-  {
     slug: 'rental-contract-armenia-guide',
     href: '/blog/rental-contract-armenia-guide',
     category: 'apartment',
