@@ -1,28 +1,30 @@
 'use client';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
+import { 
+  MapPin, 
+  Calendar, 
+  Users, 
+  BedDouble, 
+  Plus, 
+  Minus, 
+  ChevronDown,
+  Send
+} from 'lucide-react';
 
-// لیست شهرها
-const ALL_CITIES = [
-  { fa: 'ایروان', en: 'Yerevan' }, { fa: 'تهران', en: 'Tehran' }, { fa: 'دبی', en: 'Dubai' },
-  { fa: 'استانبول', en: 'Istanbul' }, { fa: 'تفلیس', en: 'Tbilisi' }, { fa: 'مسکو', en: 'Moscow' },
-  { fa: 'لندن', en: 'London' }, { fa: 'پاریس', en: 'Paris' }, { fa: 'برلین', en: 'Berlin' }, { fa: 'رم', en: 'Rome' },
-  { fa: 'بارسلون', en: 'Barcelona' }, { fa: 'آمستردام', en: 'Amsterdam' }, { fa: 'وین', en: 'Vienna' }, { fa: 'پراگ', en: 'Prague' },
-  { fa: 'بوداپست', en: 'Budapest' }, { fa: 'میلان', en: 'Milan' }, { fa: 'مادرید', en: 'Madrid' }, { fa: 'مونیخ', en: 'Munich' },
-  { fa: 'زوریخ', en: 'Zurich' }, { fa: 'استکهلم', en: 'Stockholm' }, { fa: 'اسلو', en: 'Oslo' }, { fa: 'کپنهاگ', en: 'Copenhagen' },
-  { fa: 'بروکسل', en: 'Brussels' }, { fa: 'لیسبون', en: 'Lisbon' }, { fa: 'آتن', en: 'Athens' }, { fa: 'ورشو', en: 'Warsaw' },
-  { fa: 'بخارست', en: 'Bucharest' }, { fa: 'صوفیه', en: 'Sofia' }, { fa: 'بلگراد', en: 'Belgrade' }, { fa: 'زاگرب', en: 'Zagreb' },
-  { fa: 'آنکارا', en: 'Ankara' }, { fa: 'باکو', en: 'Baku' }, { fa: 'تاشکند', en: 'Tashkent' }, { fa: 'آلماتی', en: 'Almaty' },
-  { fa: 'بیشکک', en: 'Bishkek' }, { fa: 'کوالالامپور', en: 'Kuala Lumpur' }, { fa: 'بانکوک', en: 'Bangkok' }, { fa: 'سنگاپور', en: 'Singapore' },
-  { fa: 'توکیو', en: 'Tokyo' }, { fa: 'سئول', en: 'Seoul' }, { fa: 'پکن', en: 'Beijing' }, { fa: 'شانگهای', en: 'Shanghai' },
-  { fa: 'دهلی', en: 'Delhi' }, { fa: 'بمبئی', en: 'Mumbai' }, { fa: 'کراچی', en: 'Karachi' }, { fa: 'دوحه', en: 'Doha' },
-  { fa: 'ریاض', en: 'Riyadh' }, { fa: 'ابوظبی', en: 'Abu Dhabi' }, { fa: 'مسقط', en: 'Muscat' }, { fa: 'کویت', en: 'Kuwait City' },
-  { fa: 'بیروت', en: 'Beirut' }, { fa: 'امان', en: 'Amman' }, { fa: 'قاهره', en: 'Cairo' }, { fa: 'بوینس آیرس', en: 'Buenos Aires' },
-  { fa: 'سائوپائولو', en: 'Sao Paulo' }, { fa: 'مکزیکو سیتی', en: 'Mexico City' }
+// مقاصد و مناطق ارمنستان
+const ARMENIA_LOCATIONS = [
+  { fa: 'ایروان — مرکز شهر (کنترون)', en: 'Yerevan — Kentron (City Center)', ru: 'Ереван — Кентрон (Центр)' },
+  { fa: 'ایروان — خیابان شمالی و میدان جمهوری', en: 'Yerevan — Northern Ave & Republic Sq', ru: 'Ереван — Северный пр. и пл. Республики' },
+  { fa: 'ایروان — منطقه کاسکاد', en: 'Yerevan — Cascade Area', ru: 'Ереван — Каскад' },
+  { fa: 'ایروان — آرابکیر (خیابان کومیتاس)', en: 'Yerevan — Arabkir (Komitas Ave)', ru: 'Ереван — Арабкир (пр. Комитаса)' },
+  { fa: 'ایروان — داوتاشن و نور نورک', en: 'Yerevan — Davtashen & Nor Nork', ru: 'Ереван — Давташен и Нор Норк' },
+  { fa: 'زاخکادزور (منطقه کوهستانی و پیست اسکی)', en: 'Tsaghkadzor (Ski Resort)', ru: 'Цахкадзор (Горнолыжный курорт)' },
+  { fa: 'دیلیجان (طبیعت سرسبز)', en: 'Dilijan (Resort Town)', ru: 'Дилижан' },
+  { fa: 'دریاچه سوان', en: 'Lake Sevan', ru: 'Озеро Севан' }
 ];
 
-// تصاویر نمونه — چون موجودی آپارتمان‌ها هرروز تغییر می‌کند، این تصاویر برای نمایش استایل و کیفیت کلی است
 const GALLERY = [
   { src: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800&q=75', altFa: 'نمونه فضای نشیمن آپارتمان مبله در ایروان', altEn: 'Sample furnished living room in Yerevan' },
   { src: 'https://images.unsplash.com/photo-1697700257503-1b6e2034eb37?w=800&q=75', altFa: 'ساختمان و فواره در نزدیکی میدان جمهوری ایروان', altEn: 'Building and fountain near Republic Square, Yerevan' },
@@ -35,35 +37,266 @@ function ApartmentContent() {
   const isFa = lang === 'fa';
   const isRu = lang === 'ru';
 
+  const [formData, setFormData] = useState({
+    destination: 'ایروان — مرکز شهر (کنترون)',
+    checkIn: '',
+    checkOut: '',
+    bedrooms: '1',
+    adults: 2,
+    childrenAbove7: 0,
+    childrenUnder7: 0
+  });
 
-  const [formData, setFormData] = useState({ destination: '', checkIn: '', checkOut: '', adults: 1, childWithBed: 0, childNoBed: 0, bedrooms: '' });
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const [showGuests, setShowGuests] = useState(false);
+  const [showGuestsDropdown, setShowGuestsDropdown] = useState(false);
+  const dropdownRef = useRef(null);
+  const checkInRef = useRef(null);
+  const checkOutRef = useRef(null);
 
-  const dateRef1 = useRef(null);
-  const dateRef2 = useRef(null);
   const today = new Date().toISOString().split('T')[0];
 
-  const filteredCities = ALL_CITIES.filter(c =>
-    c.fa.includes(formData.destination) || c.en.toLowerCase().includes(formData.destination.toLowerCase())
-  );
+  // بستن منوی کشویی نفرات در صورت کلیک بیرون از آن
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowGuestsDropdown(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const updateCount = (key, delta, min = 0, max = 20) => {
+    setFormData(prev => ({
+      ...prev,
+      [key]: Math.min(max, Math.max(min, prev[key] + delta))
+    }));
+  };
+
+  const totalGuests = formData.adults + formData.childrenAbove7 + formData.childrenUnder7;
 
   const handleWhatsAppBooking = () => {
-    const text = `رزرو اقامتگاه در ${formData.destination}:
-    📅 ${formData.checkIn} تا ${formData.checkOut}
-    🛏 ${formData.bedrooms}
-    👥 بزرگسال: ${formData.adults} | 🧸 با تخت: ${formData.childWithBed} | 👶 بدون تخت: ${formData.childNoBed}`;
+    const text = isFa 
+      ? `درخواست رزرو آپارتمان در ارمنستان:
+📍 مقصد / منطقه: ${formData.destination}
+📅 تاریخ ورود: ${formData.checkIn || 'نامشخص'}
+📅 تاریخ خروج: ${formData.checkOut || 'نامشخص'}
+🛏 تعداد اتاق خواب: ${formData.bedrooms === 'studio' ? 'استودیو (بدون اتاق)' : `${formData.bedrooms} خوابه`}
+👥 بزرگسال: ${formData.adults} نفر
+🧒 کودک ۷ سال به بالا: ${formData.childrenAbove7} نفر
+👶 کودک زیر ۷ سال: ${formData.childrenUnder7} نفر`
+      : `Apartment Booking Inquiry in Armenia:
+📍 Destination / Area: ${formData.destination}
+📅 Check-in: ${formData.checkIn || 'Not specified'}
+📅 Check-out: ${formData.checkOut || 'Not specified'}
+🛏 Bedrooms: ${formData.bedrooms}
+👥 Adults: ${formData.adults}
+🧒 Children (7+ yrs): ${formData.childrenAbove7}
+👶 Children (<7 yrs): ${formData.childrenUnder7}`;
+
     window.open(`https://wa.me/37433149327?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (
     <ServicePageLayout
-      titleFa="اجاره آپارتمان مبله در ایروان" titleEn="Furnished Apartment Rental in Yerevan" titleRu="Аренда меблированных квартир в Ереване"
+      titleFa="اجاره آپارتمان مبله در ایروان"
+      titleEn="Furnished Apartment Rental in Yerevan"
+      titleRu="Аренда меблированных квартир в Ереване"
       subtitleFa="اقامتگاه روزانه و ماهانه با آشپزخانه کامل، عکس واقعی و بهترین قیمت"
       subtitleEn="Daily & monthly stays with a full kitchen at the best price"
       subtitleRu="Посуточное и помесячное проживание с полной кухней"
       heroImage="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=80"
-      serviceType="apartment">
+      showFaq={false}>
+
+      {/* فرم رزرو شکیل و اختصاصی */}
+      <div className="glass-panel p-5 sm:p-7 rounded-3xl border border-primary/20 mb-10 bg-black/60 backdrop-blur-xl shadow-2xl">
+        <div className="flex items-center gap-2 mb-6 border-b border-white/10 pb-4">
+          <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
+          <h3 className="text-base sm:text-lg font-bold text-white">
+            {isFa ? 'استعلام قیمت و رزرو سریع آپارتمان در ارمنستان' : 'Check Availability & Instant Quote'}
+          </h3>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* شهر / منطقه ارمنستان */}
+          <div className="space-y-1.5">
+            <label className="text-xs font-medium text-foreground/70 flex items-center gap-1.5">
+              <MapPin className="w-3.5 h-3.5 text-primary" />
+              {isFa ? 'شهر / منطقه ارمنستان' : 'Destination / Area'}
+            </label>
+            <select
+              value={formData.destination}
+              onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
+              className="w-full bg-white/5 border border-white/10 p-3 rounded-2xl text-white text-sm focus:border-primary focus:outline-none transition-colors">
+              {ARMENIA_LOCATIONS.map((loc, idx) => (
+                <option key={idx} value={loc.fa} className="bg-neutral-900 text-white">
+                  {isFa ? loc.fa : isRu ? loc.ru : loc.en}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* تعداد اتاق خواب */}
+          <div className="space-y-1.5">
+            <label className="text-xs font-medium text-foreground/70 flex items-center gap-1.5">
+              <BedDouble className="w-3.5 h-3.5 text-primary" />
+              {isFa ? 'تعداد اتاق خواب' : 'Bedrooms'}
+            </label>
+            <select
+              value={formData.bedrooms}
+              onChange={(e) => setFormData({ ...formData, bedrooms: e.target.value })}
+              className="w-full bg-white/5 border border-white/10 p-3 rounded-2xl text-white text-sm focus:border-primary focus:outline-none transition-colors">
+              <option value="studio" className="bg-neutral-900 text-white">{isFa ? 'استودیو (سوئیت بدون خواب)' : 'Studio'}</option>
+              <option value="1" className="bg-neutral-900 text-white">{isFa ? 'یک خوابه' : '1 Bedroom'}</option>
+              <option value="2" className="bg-neutral-900 text-white">{isFa ? 'دو خوابه' : '2 Bedrooms'}</option>
+              <option value="3" className="bg-neutral-900 text-white">{isFa ? 'سه خوابه' : '3 Bedrooms'}</option>
+              <option value="4+" className="bg-neutral-900 text-white">{isFa ? 'چهار خوابه یا بزرگتر' : '4+ Bedrooms'}</option>
+            </select>
+          </div>
+
+          {/* تاریخ ورود */}
+          <div className="space-y-1.5">
+            <label className="text-xs font-medium text-foreground/70 flex items-center gap-1.5">
+              <Calendar className="w-3.5 h-3.5 text-primary" />
+              {isFa ? 'تاریخ ورود' : 'Check-in'}
+            </label>
+            <input
+              ref={checkInRef}
+              type="date"
+              min={today}
+              value={formData.checkIn}
+              onClick={() => checkInRef.current?.showPicker?.()}
+              onChange={(e) => setFormData({ ...formData, checkIn: e.target.value })}
+              className="w-full bg-white/5 border border-white/10 p-3 rounded-2xl text-white text-sm focus:border-primary focus:outline-none cursor-pointer [color-scheme:dark]"
+            />
+          </div>
+
+          {/* تاریخ خروج */}
+          <div className="space-y-1.5">
+            <label className="text-xs font-medium text-foreground/70 flex items-center gap-1.5">
+              <Calendar className="w-3.5 h-3.5 text-primary" />
+              {isFa ? 'تاریخ خروج' : 'Check-out'}
+            </label>
+            <input
+              ref={checkOutRef}
+              type="date"
+              min={formData.checkIn || today}
+              value={formData.checkOut}
+              onClick={() => checkOutRef.current?.showPicker?.()}
+              onChange={(e) => setFormData({ ...formData, checkOut: e.target.value })}
+              className="w-full bg-white/5 border border-white/10 p-3 rounded-2xl text-white text-sm focus:border-primary focus:outline-none cursor-pointer [color-scheme:dark]"
+            />
+          </div>
+        </div>
+
+        {/* بخش تعداد مسافران و دکمه ارسال */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4 items-end">
+          {/* منوی انتخاب تفکیکی مسافران */}
+          <div className="sm:col-span-2 relative" ref={dropdownRef}>
+            <label className="text-xs font-medium text-foreground/70 mb-1.5 flex items-center gap-1.5">
+              <Users className="w-3.5 h-3.5 text-primary" />
+              {isFa ? 'مسافران و همراهان' : 'Guests'}
+            </label>
+            
+            <button
+              type="button"
+              onClick={() => setShowGuestsDropdown(!showGuestsDropdown)}
+              className="w-full bg-white/5 border border-white/10 p-3 rounded-2xl text-white text-sm flex items-center justify-between hover:border-white/20 transition-all text-right">
+              <span className="truncate">
+                {isFa 
+                  ? `${formData.adults} بزرگسال` +
+                    (formData.childrenAbove7 > 0 ? ` • ${formData.childrenAbove7} کودک بالای ۷ سال` : '') +
+                    (formData.childrenUnder7 > 0 ? ` • ${formData.childrenUnder7} کودک زیر ۷ سال` : '')
+                  : `${totalGuests} Guests (${formData.adults} Adults, ${formData.childrenAbove7 + formData.childrenUnder7} Children)`}
+              </span>
+              <ChevronDown className={`w-4 h-4 text-primary transition-transform duration-200 ${showGuestsDropdown ? 'rotate-180' : ''}`} />
+            </button>
+
+            {showGuestsDropdown && (
+              <div className="absolute z-50 right-0 left-0 mt-2 bg-neutral-900/95 border border-white/15 p-4 rounded-2xl shadow-2xl backdrop-blur-xl space-y-4">
+                {/* بزرگسالان */}
+                <div className="flex items-center justify-between pb-3 border-b border-white/5">
+                  <div>
+                    <div className="text-sm font-semibold text-white">{isFa ? 'بزرگسال' : 'Adults'}</div>
+                    <div className="text-xs text-foreground/50">{isFa ? 'سن ۱۲ سال به بالا' : 'Age 12+'}</div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => updateCount('adults', -1, 1, 15)}
+                      disabled={formData.adults <= 1}
+                      className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white disabled:opacity-30 hover:bg-white/10 transition-colors">
+                      <Minus className="w-3.5 h-3.5" />
+                    </button>
+                    <span className="w-6 text-center font-bold text-white text-sm">{formData.adults}</span>
+                    <button
+                      type="button"
+                      onClick={() => updateCount('adults', 1, 1, 15)}
+                      className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white hover:bg-white/10 transition-colors">
+                      <Plus className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* کودک بالای ۷ سال */}
+                <div className="flex items-center justify-between pb-3 border-b border-white/5">
+                  <div>
+                    <div className="text-sm font-semibold text-white">{isFa ? 'کودک (۷ تا ۱۲ سال)' : 'Children (Age 7-12)'}</div>
+                    <div className="text-xs text-foreground/50">{isFa ? 'نیازمند تخت مجزا' : 'With separate bed'}</div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => updateCount('childrenAbove7', -1, 0, 6)}
+                      disabled={formData.childrenAbove7 <= 0}
+                      className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white disabled:opacity-30 hover:bg-white/10 transition-colors">
+                      <Minus className="w-3.5 h-3.5" />
+                    </button>
+                    <span className="w-6 text-center font-bold text-white text-sm">{formData.childrenAbove7}</span>
+                    <button
+                      type="button"
+                      onClick={() => updateCount('childrenAbove7', 1, 0, 6)}
+                      className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white hover:bg-white/10 transition-colors">
+                      <Plus className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* کودک زیر ۷ سال */}
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-sm font-semibold text-white">{isFa ? 'کودک (زیر ۷ سال)' : 'Toddlers / Infants (<7)'}</div>
+                    <div className="text-xs text-foreground/50">{isFa ? 'بدون نیاز به تخت مجزا' : 'Sharing bed / Cot'}</div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => updateCount('childrenUnder7', -1, 0, 6)}
+                      disabled={formData.childrenUnder7 <= 0}
+                      className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white disabled:opacity-30 hover:bg-white/10 transition-colors">
+                      <Minus className="w-3.5 h-3.5" />
+                    </button>
+                    <span className="w-6 text-center font-bold text-white text-sm">{formData.childrenUnder7}</span>
+                    <button
+                      type="button"
+                      onClick={() => updateCount('childrenUnder7', 1, 0, 6)}
+                      className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white hover:bg-white/10 transition-colors">
+                      <Plus className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* دکمه اقدام */}
+          <button
+            onClick={handleWhatsAppBooking}
+            className="w-full p-3.5 bg-primary text-black font-extrabold rounded-2xl hover:opacity-90 active:scale-[0.99] transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+            <Send className="w-4 h-4" />
+            <span>{isFa ? 'ارسال درخواست در واتساپ' : 'Send WhatsApp Inquiry'}</span>
+          </button>
+        </div>
+      </div>
 
       {/* گالری تصاویر نمونه */}
       <div className="grid grid-cols-2 gap-2 mb-2 rounded-2xl overflow-hidden">
@@ -163,152 +396,32 @@ function ApartmentContent() {
 
       {lang === 'en' && <>
         <InfoBlock title="Why Rent an Apartment Instead of a Hotel?">
-          <p>For most Iranian travelers visiting Yerevan, a furnished apartment is a more affordable and comfortable option than a hotel room — whether it's a short tourist trip or a longer stay for work, study, or handling residency and company registration matters. Unlike a hotel room, a furnished apartment gives you a full kitchen, a washing machine, more space for families, and real privacy. For stays longer than three nights, the total cost is usually lower than an equivalent hotel room, especially when traveling with family.</p>
+          <p>For most travelers visiting Yerevan, a furnished apartment is a more affordable and comfortable option than a hotel room. Unlike a hotel room, a furnished apartment gives you a full kitchen, washing machine, more space for families, and real privacy.</p>
         </InfoBlock>
 
         <InfoBlock title="Best Neighborhoods in Yerevan for Apartment Rental">
-          <p className="mb-3">Rental prices in Yerevan vary sharply by neighborhood — the gap between the city center and the outskirts can be two to three times. Choose based on your real priority: access, quiet, or savings.</p>
           <h3 className="text-base font-bold text-foreground/90 mt-4 mb-1">Kentron (City Center) & Republic Square</h3>
-          <p className="mb-3">Yerevan's beating heart and the most expensive district. Walking distance to cafés, restaurants, museums and shopping. A furnished studio here typically runs $700–900/month.</p>
+          <p className="mb-3">Yerevan's beating heart and the most convenient district. Walking distance to cafés, restaurants, museums and shopping.</p>
           <h3 className="text-base font-bold text-foreground/90 mt-4 mb-1">Cascade</h3>
-          <p className="mb-3">Along the famous Cascade complex, close to Northern Avenue and Republic Square. Lively, with art galleries and well-known cafés — ideal for those who value nightlife and a touristy atmosphere.</p>
+          <p className="mb-3">Lively and walkable, near art galleries, cafés, and nightlife.</p>
           <h3 className="text-base font-bold text-foreground/90 mt-4 mb-1">Arabkir</h3>
-          <p className="mb-3">A family-friendly, modern district a bit further from the center but with full amenities. Prices run roughly 20–30% lower than Kentron — a balanced choice for mid-term family stays.</p>
-          <h3 className="text-base font-bold text-foreground/90 mt-4 mb-1">Nor Nork, Avan & Davtashen</h3>
-          <p>The most budget-friendly options — a studio that costs $700–900 in Kentron typically runs $300–400/month here. Good for travelers on a tighter budget who don't mind a 15–25 minute commute to the center.</p>
+          <p className="mb-3">Quiet, family-friendly, and modern, with quick metro and bus access to the center.</p>
         </InfoBlock>
 
-        <InfoBlock title="How to Make Sure the Apartment Is Real and Scam-Free">
+        <InfoBlock title="Scam-Free Booking Guarantee">
           <CheckList items={[
-            'Real, current photos and video of the actual available unit are sent before final confirmation and payment',
-            'Exact location on the map and distance to key landmarks is shared upfront',
-            'No full payment is collected before your final confirmation',
-            'If the apartment doesn\'t match what was shown, a free replacement is arranged',
+            'Real photos and video of the exact unit are sent before confirmation',
+            'Clear address and pinned location',
+            'Free replacement if the apartment differs from photos',
           ]} />
-        </InfoBlock>
-
-        <InfoBlock title="Payment Methods for Iranian Travelers">
-          <CheckList items={[
-            'Rial bank transfer to an account inside Iran — no currency conversion needed on your end',
-            'Cash USD or valid USD cards',
-            'USDT cryptocurrency for fast, bank-free payment',
-          ]} />
-        </InfoBlock>
-
-        <InfoBlock title="Apartment Types & Sizes">
-          <CheckList items={[
-            'Studio — for solo travelers or couples, from $30/night',
-            'One-bedroom — for couples or small families, from $45/night',
-            'Two-bedroom — for families up to 4–5 people, from $65/night',
-            'Three-bedroom and larger — for groups and large families, price on request',
-          ]} />
-        </InfoBlock>
-
-        <InfoBlock title="Booking Steps with Caspian Group">
-          <ol className="space-y-2 list-decimal list-inside text-sm text-foreground/70">
-            <li>Send your travel dates, preferred area and group size via WhatsApp</li>
-            <li>Caspian's team sends available options with real, current photos and video</li>
-            <li>Once you confirm, the booking is locked in with a deposit</li>
-            <li>On arrival day, airport transfer from Zvartnots to your apartment door can be arranged</li>
-            <li>Keys and a full walkthrough of the apartment's amenities are handed over</li>
-          </ol>
         </InfoBlock>
       </>}
 
       {isRu && <>
         <InfoBlock title="Почему квартира лучше отеля?">
-          <p>Для большинства путешественников меблированная квартира в Ереване — более выгодный и удобный вариант, чем номер в отеле, будь то короткая поездка или длительное пребывание по работе или учёбе. В отличие от отеля, квартира даёт полностью оборудованную кухню, стиральную машину, больше пространства для семьи и настоящую приватность.</p>
-        </InfoBlock>
-
-        <InfoBlock title="Лучшие районы Еревана для аренды">
-          <h3 className="text-base font-bold text-foreground/90 mt-4 mb-1">Кентрон (центр) и площадь Республики</h3>
-          <p className="mb-3">Самый дорогой и оживлённый район. Студия здесь обычно стоит $700–900 в месяц.</p>
-          <h3 className="text-base font-bold text-foreground/90 mt-4 mb-1">Каскад</h3>
-          <p className="mb-3">Рядом со знаменитым комплексом Каскад, кафе и галереями — для тех, кто ценит ночную жизнь.</p>
-          <h3 className="text-base font-bold text-foreground/90 mt-4 mb-1">Арабкир</h3>
-          <p className="mb-3">Семейный современный район, на 20–30% дешевле центра.</p>
-          <h3 className="text-base font-bold text-foreground/90 mt-4 mb-1">Нор Норк, Аван, Давташен</h3>
-          <p>Самые доступные варианты — та же студия здесь стоит $300–400 в месяц, в 15–25 минутах от центра.</p>
-        </InfoBlock>
-
-        <InfoBlock title="Как убедиться, что квартира настоящая?">
-          <CheckList items={[
-            'Реальные фото и видео именно той квартиры, которая свободна, отправляются перед оплатой',
-            'Точное расположение на карте указывается заранее',
-            'Полная оплата не взимается до вашего окончательного подтверждения',
-          ]} />
-        </InfoBlock>
-
-        <InfoBlock title="Способы оплаты">
-          <CheckList items={[
-            'Банковский перевод в риалах на счёт в Иране',
-            'Наличные доллары или действующие долларовые карты',
-            'Криптовалюта USDT',
-          ]} />
-        </InfoBlock>
-
-        <InfoBlock title="Этапы бронирования">
-          <ol className="space-y-2 list-decimal list-inside text-sm text-foreground/70">
-            <li>Отправьте даты, район и количество гостей в WhatsApp</li>
-            <li>Получите варианты с реальными фото и видео</li>
-            <li>После подтверждения бронирование фиксируется депозитом</li>
-            <li>В день прилёта возможен трансфер из аэропорта Звартноц</li>
-          </ol>
+          <p>Для большинства путешественников меблированная квартира в Ереване — более выгодный и удобный вариант, чем номер в отеле. Полная кухня, стиральная машина и семейный уют.</p>
         </InfoBlock>
       </>}
-
-      <div className="glass-panel p-6 rounded-2xl border border-primary/30 mb-10 bg-black/40 backdrop-blur-md relative">
-        <div className="space-y-4">
-
-          {/* مقصد با اتوکامپلیت */}
-          <div className="relative">
-            <input type="text" placeholder="مقصد (شهر)" className="w-full bg-black/50 border border-white/10 p-3 rounded-xl text-white"
-              value={formData.destination}
-              onChange={(e) => { setFormData({...formData, destination: e.target.value}); setShowSuggestions(true); }} />
-
-            {showSuggestions && formData.destination.length > 0 && (
-              <div className="absolute z-50 w-full bg-black border border-white/20 mt-1 rounded-xl max-h-40 overflow-y-auto">
-                {filteredCities.map((city, i) => (
-                  <div key={i} className="p-3 hover:bg-primary/20 cursor-pointer text-white border-b border-white/5"
-                    onClick={() => { setFormData({...formData, destination: `${city.fa} / ${city.en}`}); setShowSuggestions(false); }}>
-                    {city.fa} - {city.en}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <select className="w-full bg-black/50 border border-white/10 p-3 rounded-xl text-white" onChange={(e) => setFormData({...formData, bedrooms: e.target.value})}>
-            <option value="">تعداد اتاق خواب</option>
-            <option value="1">یک خوابه</option><option value="2">دو خوابه</option>
-            <option value="3">سه خوابه</option><option value="4">چهار خوابه</option>
-            <option value="5+">پنج خوابه یا بیشتر</option>
-          </select>
-
-          <div className="grid grid-cols-2 gap-4">
-            <input ref={dateRef1} type="date" min={today} className="w-full bg-black/50 border border-white/10 p-3 rounded-xl text-white cursor-pointer [color-scheme:dark]" onClick={() => dateRef1.current.showPicker()} onChange={(e) => setFormData({...formData, checkIn: e.target.value})} />
-            <input ref={dateRef2} type="date" min={formData.checkIn || today} className="w-full bg-black/50 border border-white/10 p-3 rounded-xl text-white cursor-pointer [color-scheme:dark]" onClick={() => dateRef2.current.showPicker()} onChange={(e) => setFormData({...formData, checkOut: e.target.value})} />
-          </div>
-
-          <div className="relative">
-            <button onClick={() => setShowGuests(!showGuests)} className="w-full bg-black/50 border border-white/10 p-3 rounded-xl text-white text-right">
-              {formData.adults} بزرگسال، {formData.childWithBed + formData.childNoBed} کودک
-            </button>
-            {showGuests && (
-              <div className="absolute z-50 w-full bg-black border border-white/20 p-4 rounded-xl mt-2 shadow-2xl">
-                {[ { label: 'بزرگسال (تا ۲۰)', key: 'adults', max: 20 }, { label: 'کودک با تخت (تا ۵)', key: 'childWithBed', max: 5 }, { label: 'کودک بدون تخت (تا ۵)', key: 'childNoBed', max: 5 } ].map((item) => (
-                  <div key={item.key} className="flex justify-between items-center py-2">
-                    <span className="text-white text-sm">{item.label}</span>
-                    <input type="number" min="0" max={item.max} className="w-16 bg-white/10 text-white text-center rounded-lg" value={formData[item.key]} onChange={(e) => setFormData({...formData, [item.key]: Math.min(item.max, parseInt(e.target.value) || 0)})} />
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <button onClick={handleWhatsAppBooking} className="w-full py-4 bg-primary text-black font-black rounded-xl hover:bg-yellow-500">ارسال درخواست رزرو</button>
-        </div>
-      </div>
     </ServicePageLayout>
   );
 }
