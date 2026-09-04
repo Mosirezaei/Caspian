@@ -6,10 +6,10 @@ import RelatedServices from '@/components/shared/RelatedServices.jsx';
 
 export default function ResidencyPathsComparison() {
   const paths = [
-    { icon: Briefcase, name: 'اقامت کاری', color: 'blue', time: '۱ تا ۳ هفته', cost: '$۳۰۰–$۶۰۰', duration: '۱ ساله (قابل تمدید)', needs: ['قرارداد کار با شرکت ارمنی', 'پاسپورت معتبر', 'گواهی عدم سوءپیشینه'], pros: ['سریع\u200cترین مسیر', 'نیاز به سرمایه ندارد', 'شامل حق کار می\u200cشه'], cons: ['وابسته به کارفرمای ارمنی', 'تغییر شغل = تمدید جدید'] },
-    { icon: Building2, name: 'ثبت شرکت', color: 'amber', time: '۲ تا ۴ هفته', cost: '$۱,۰۰۰–$۳,۰۰۰ (سال اول)', duration: '۱ ساله (قابل تمدید)', needs: ['ثبت LLC یا IE', 'طرح کسب\u200cوکار', 'حساب بانکی شرکتی', 'فعالیت اقتصادی واقعی'], pros: ['استقلال کامل — خودت کارفرمایی', 'دسترسی به SWIFT و کارت بین\u200cالمللی', 'مسیر به اقامت دائم'], cons: ['هزینه\u200cی بالاتر (حسابداری ماهانه)', 'نیاز به فعالیت واقعی'] },
-    { icon: GraduationCap, name: 'اقامت تحصیلی', color: 'emerald', time: '۱ تا ۲ ماه', cost: '$۸۰۰–$۴,۰۰۰/سال شهریه', duration: '۱ ساله (تا پایان تحصیل)', needs: ['پذیرش دانشگاه ارمنی', 'ریزنمرات ترجمه\u200cشده', 'گواهی مالی'], pros: ['شهریه\u200cی خیلی پایین', 'مدرک بین\u200cالمللی', 'مسیر به اقامت دائم'], cons: ['حق کار محدود', 'وابسته به ادامه تحصیل'] },
-    { icon: Baby, name: 'تولد فرزند', color: 'rose', time: '۲ تا ۶ هفته', cost: '$۵۰۰–$۲,۰۰۰ (زایمان)', duration: '۱ ساله (قابل تمدید)', needs: ['شناسنامه\u200cی تولد ارمنی فرزند', 'پاسپورت والدین', 'مدرک اقامت فعلی'], pros: ['هر دو والد واجد شرایط', 'نیاز به شرکت/کار ندارد'], cons: ['نیاز به تولد فرزند در ارمنستان', 'مسیر خاص — برای همه مناسب نیست'] },
+    { icon: Briefcase, name: 'اقامت کاری', color: 'blue', time: '۱ تا ۳ هفته', cost: '$۳۰۰–$۶۰۰', duration: '۱ ساله (قابل تمدید)', needs: ['قرارداد کار با شرکت ارمنی', 'پاسپورت معتبر', 'گواهی عدم سوءپیشینه'], pros: ['سریع‌ترین مسیر', 'نیاز به سرمایه ندارد', 'شامل حق کار می‌شه'], cons: ['وابسته به کارفرمای ارمنی', 'تغییر شغل = تمدید جدید'] },
+    { icon: Building2, name: 'ثبت شرکت', color: 'amber', time: '۲ تا ۴ هفته', cost: '$۱,۰۰۰–$۳,۰۰۰ (سال اول)', duration: '۱ ساله (قابل تمدید)', needs: ['ثبت LLC یا IE', 'طرح کسب‌وکار', 'حساب بانکی شرکتی', 'فعالیت اقتصادی واقعی'], pros: ['استقلال کامل — خودت کارفرمایی', 'دسترسی به SWIFT و کارت بین‌المللی', 'مسیر به اقامت دائم'], cons: ['هزینه‌ی بالاتر (حسابداری ماهانه)', 'نیاز به فعالیت واقعی'] },
+    { icon: GraduationCap, name: 'اقامت تحصیلی', color: 'emerald', time: '۱ تا ۲ ماه', cost: '$۸۰۰–$۴,۰۰۰/سال شهریه', duration: '۱ ساله (تا پایان تحصیل)', needs: ['پذیرش دانشگاه ارمنی', 'ریزنمرات ترجمه‌شده', 'گواهی مالی'], pros: ['شهریه‌ی خیلی پایین', 'مدرک بین‌المللی', 'مسیر به اقامت دائم'], cons: ['حق کار محدود', 'وابسته به ادامه تحصیل'] },
+    { icon: Baby, name: 'تولد فرزند', color: 'rose', time: '۲ تا ۶ هفته', cost: '$۵۰۰–$۲,۰۰۰ (زایمان)', duration: '۱ ساله (قابل تمدید)', needs: ['شناسنامه‌ی تولد ارمنی فرزند', 'پاسپورت والدین', 'مدرک اقامت فعلی'], pros: ['هر دو والد واجد شرایط', 'نیاز به شرکت/کار ندارد'], cons: ['نیاز به تولد فرزند در ارمنستان', 'مسیر خاص — برای همه مناسب نیست'] },
   ];
   const colors = { blue: 'from-blue-500/10 border-blue-500/20', amber: 'from-amber-500/10 border-amber-500/20', emerald: 'from-emerald-500/10 border-emerald-500/20', rose: 'from-rose-500/10 border-rose-500/20' };
 
@@ -22,7 +22,7 @@ export default function ResidencyPathsComparison() {
         <section className="mb-8">
           <span className="text-xs text-primary/70 font-semibold bg-primary/8 px-3 py-1 rounded-full">اقامت و مهاجرت</span>
           <h1 className="text-3xl sm:text-4xl font-black text-foreground mt-4 leading-tight">مقایسه مسیرهای اقامت ارمنستان</h1>
-          <p className="text-foreground/60 mt-3 text-lg">کاری، تحصیلی، سرمایه\u200cگذاری یا تولد فرزند — کدوم مسیر برای شما مناسب\u200cتره؟</p>
+          <p className="text-foreground/60 mt-3 text-lg">کاری، تحصیلی، سرمایه‌گذاری یا تولد فرزند — کدوم مسیر برای شما مناسب‌تره؟</p>
         </section>
 
         <div className="space-y-5 mb-6">
@@ -52,9 +52,9 @@ export default function ResidencyPathsComparison() {
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                  <div><h4 className="font-bold text-foreground/80 mb-1.5">مدارک لازم</h4>{p.needs.map((n, j) => <p key={j} className="text-foreground/60 mb-1">\u2022 {n}</p>)}</div>
-                  <div><h4 className="font-bold text-green-400 mb-1.5">مزایا</h4>{p.pros.map((pr, j) => <p key={j} className="text-foreground/60 mb-1">\u2713 {pr}</p>)}</div>
-                  <div><h4 className="font-bold text-red-400 mb-1.5">معایب</h4>{p.cons.map((co, j) => <p key={j} className="text-foreground/60 mb-1">\u2717 {co}</p>)}</div>
+                  <div><h4 className="font-bold text-foreground/80 mb-1.5">مدارک لازم</h4>{p.needs.map((n, j) => <p key={j} className="text-foreground/60 mb-1">• {n}</p>)}</div>
+                  <div><h4 className="font-bold text-green-400 mb-1.5">مزایا</h4>{p.pros.map((pr, j) => <p key={j} className="text-foreground/60 mb-1">✓ {pr}</p>)}</div>
+                  <div><h4 className="font-bold text-red-400 mb-1.5">معایب</h4>{p.cons.map((co, j) => <p key={j} className="text-foreground/60 mb-1">✗ {co}</p>)}</div>
                 </div>
               </section>
             );
@@ -64,10 +64,10 @@ export default function ResidencyPathsComparison() {
         <section className="glass-panel rounded-2xl p-6 mb-6">
           <h2 className="text-xl font-black text-primary mb-3 flex items-center gap-2"><Scale className="w-5 h-5" /> کدوم مسیر رو انتخاب کنم؟</h2>
           <div className="text-sm text-foreground/70 leading-7 space-y-2">
-            <p>\u2714 اگه <strong>شاغل</strong> هستید و کارفرمای ارمنی دارید \u2192 اقامت کاری (سریع\u200cترین)</p>
-            <p>\u2714 اگه <strong>فریلنسر یا کارآفرین</strong> هستید \u2192 ثبت شرکت (مستقل\u200cترین)</p>
-            <p>\u2714 اگه <strong>جوان</strong> هستید و می\u200cخواید مدرک بین\u200cالمللی بگیرید \u2192 تحصیلی (ارزان\u200cترین)</p>
-            <p>\u2714 اگه <strong>فرزندتون</strong> در ارمنستان به دنیا اومده \u2192 تولد فرزند (خاص\u200cترین)</p>
+            <p>✔ اگه <strong>شاغل</strong> هستید و کارفرمای ارمنی دارید → اقامت کاری (سریع‌ترین)</p>
+            <p>✔ اگه <strong>فریلنسر یا کارآفرین</strong> هستید → ثبت شرکت (مستقل‌ترین)</p>
+            <p>✔ اگه <strong>جوان</strong> هستید و می‌خواید مدرک بین‌المللی بگیرید → تحصیلی (ارزان‌ترین)</p>
+            <p>✔ اگه <strong>فرزندتون</strong> در ارمنستان به دنیا اومده → تولد فرزند (خاص‌ترین)</p>
           </div>
         </section>
 
