@@ -97,8 +97,8 @@ export default function YandexDeliveryArmenia() {
             {/* Hero Image */}
             <div className="relative w-full h-56 sm:h-72 rounded-2xl overflow-hidden mb-8">
               <Image
-                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80"
-                alt="پیک دلیوری یاندکس در خیابان‌های ایروان"
+                src="/images/delivery/yandex-delivery-bike-courier.webp"
+                alt="پیک دوچرخه‌سوار یاندکس دلیوری در حال تحویل سفارش"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 700px"

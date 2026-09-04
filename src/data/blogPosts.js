@@ -74,7 +74,7 @@ export const blogPosts = [
     slug: 'yandex-delivery-armenia',
     href: '/blog/yandex-delivery-armenia',
     category: 'work',
-    thumbnail: '/images/company/yerevan-city-center.webp',
+    thumbnail: '/images/delivery/yandex-delivery-scooter.webp',
     tags: ['yandex', 'delivery', 'work', 'armenia', 'courier'],
     date: '2026-09-04',
     fa: {
