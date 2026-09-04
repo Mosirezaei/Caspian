@@ -1,0 +1,104 @@
+'use client';
+import { Stethoscope, GraduationCap, DollarSign, Globe2, Clock, FileCheck2, AlertTriangle } from 'lucide-react';
+import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
+import PageSidebar from '@/components/shared/PageSidebar';
+import RelatedServices from '@/components/shared/RelatedServices.jsx';
+
+export default function MedicalUniversitiesArmenia() {
+  const unis = [
+    { name: 'دانشگاه دولتی پزشکی ایروان (YSMU)', nameLat: 'Yerevan State Medical University', color: 'blue', founded: '۱۹۲۰', lang: 'انگلیسی / روسی', fee: '$۴,۰۰۰–$۶,۰۰۰/سال', duration: '۶ سال (پزشکی عمومی)', students: '+۱,۵۰۰ دانشجوی خارجی', recognition: 'WHO, WFME, بیش از ۴۰ کشور', desc: 'قدیمی\u200cترین و معتبرترین دانشگاه پزشکی ارمنستان. رشته\u200cهای پزشکی عمومی، دندانپزشکی، داروسازی و پرستاری. بخش انگلیسی\u200cزبان از ۲۰۱۱ فعاله و دانشجویان هندی، عراقی، سوری و ایرانی داره.' },
+    { name: 'دانشگاه اروپایی (EUA) — رشته\u200cهای بهداشت', nameLat: 'European University of Armenia', color: 'emerald', founded: '۲۰۰۱', lang: 'ارمنی / انگلیسی', fee: '$۲,۰۰۰–$۳,۵۰۰/سال', duration: '۴ سال (بهداشت عمومی)', students: 'پذیرش محدود خارجی', recognition: 'وزارت علوم ارمنستان', desc: 'رشته\u200cهای بهداشت عمومی و مدیریت سلامت. شهریه\u200cی پایین\u200cتر از YSMU ولی محدودتر از نظر رشته\u200cهای بالینی. برای کسایی که بودجه\u200cی محدودتری دارن مناسبه.' },
+    { name: 'دانشگاه آمریکایی ارمنستان (AUA) — بهداشت', nameLat: 'American University of Armenia', color: 'amber', founded: '۱۹۹۱', lang: 'انگلیسی', fee: '$۸,۰۰۰–$۱۲,۰۰۰/سال', duration: '۲ سال (MPH)', students: 'بین\u200cالمللی', recognition: 'WFME, آمریکا', desc: 'فقط مقطع کارشناسی ارشد بهداشت عمومی (MPH). برای کسایی که لیسانس پزشکی یا پرستاری دارن و می\u200cخوان تخصص مدیریت سلامت بگیرن. مدرک بین\u200cالمللی با اعتبار بالا.' },
+  ];
+  const colors = { blue: 'from-blue-500/10 border-blue-500/20', emerald: 'from-emerald-500/10 border-emerald-500/20', amber: 'from-amber-500/10 border-amber-500/20' };
+
+  return (
+    <div className="min-h-screen" dir="rtl">
+      <GlobalNavbar />
+      <main className="max-w-6xl mx-auto px-4 py-12 sm:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2">
+        <section className="mb-8">
+          <span className="text-xs text-primary/70 font-semibold bg-primary/8 px-3 py-1 rounded-full">تحصیل</span>
+          <h1 className="text-3xl sm:text-4xl font-black text-foreground mt-4 leading-tight">دانشگاه\u200cهای پزشکی ارمنستان: شرایط پذیرش و شهریه</h1>
+          <p className="text-foreground/60 mt-3 text-lg">پزشکی، دندانپزشکی و داروسازی به زبان انگلیسی با شهریه\u200cی ۳ تا ۱۰ برابر ارزان\u200cتر از اروپا</p>
+        </section>
+
+        <section className="glass-panel rounded-2xl p-6 mb-6">
+          <h2 className="text-lg font-black text-primary mb-3 flex items-center gap-2"><Stethoscope className="w-5 h-5" /> چرا پزشکی در ارمنستان؟</h2>
+          <div className="text-sm text-foreground/70 leading-7 space-y-2">
+            <p>ارمنستان از مقاصد ناشناخته ولی جذاب تحصیل پزشکی برای ایرانیانه. دلایل:</p>
+            <p>\u2714 شهریه\u200cی سالانه $۴,۰۰۰ تا $۶,۰۰۰ (در مقابل $۳۰,۰۰۰+ در اروپا)</p>
+            <p>\u2714 تدریس به زبان انگلیسی (نیاز به ارمنی نیست)</p>
+            <p>\u2714 مدرک مورد تأیید WHO — قابل\u200cقبول در بیش از ۴۰ کشور</p>
+            <p>\u2714 پرواز مستقیم تهران-ایروان (۲ ساعت) — نزدیک\u200cترین مقصد پزشکی</p>
+            <p>\u2714 هزینه\u200cی زندگی $۴۰۰–$۷۰۰/ماه (خیلی کمتر از اروپا)</p>
+            <p>\u2714 بدون ویزا (تا ۱۸۰ روز) + اقامت تحصیلی آسان</p>
+          </div>
+        </section>
+
+        <h2 className="text-xl font-black text-primary mb-4 flex items-center gap-2"><GraduationCap className="w-5 h-5" /> دانشگاه\u200cها و شهریه</h2>
+        <div className="space-y-5 mb-6">
+          {unis.map((u, i) => (
+            <section key={i} className={`rounded-2xl p-5 bg-gradient-to-br ${colors[u.color]} to-transparent border`}>
+              <h3 className="text-lg font-black text-foreground mb-1">{u.name}</h3>
+              <p className="text-xs text-foreground/40 mb-3">{u.nameLat} — تأسیس {u.founded}</p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
+                <div className="p-2 rounded-lg bg-white/5 text-center">
+                  <div className="text-primary font-bold text-xs">{u.fee}</div>
+                  <div className="text-[9px] text-foreground/40">شهریه</div>
+                </div>
+                <div className="p-2 rounded-lg bg-white/5 text-center">
+                  <div className="text-primary font-bold text-xs">{u.duration}</div>
+                  <div className="text-[9px] text-foreground/40">مدت تحصیل</div>
+                </div>
+                <div className="p-2 rounded-lg bg-white/5 text-center">
+                  <div className="text-primary font-bold text-xs">{u.lang}</div>
+                  <div className="text-[9px] text-foreground/40">زبان تدریس</div>
+                </div>
+                <div className="p-2 rounded-lg bg-white/5 text-center">
+                  <div className="text-primary font-bold text-xs">{u.recognition}</div>
+                  <div className="text-[9px] text-foreground/40">اعتبار</div>
+                </div>
+              </div>
+              <p className="text-xs text-foreground/60 leading-6">{u.desc}</p>
+            </section>
+          ))}
+        </div>
+
+        <section className="glass-panel rounded-2xl p-6 mb-6">
+          <h2 className="text-lg font-black text-primary mb-3 flex items-center gap-2"><FileCheck2 className="w-5 h-5" /> مدارک لازم برای پذیرش پزشکی</h2>
+          <div className="text-sm text-foreground/70 leading-7">
+            <ol className="space-y-2 list-decimal list-inside">
+              <li><strong>دیپلم دبیرستان</strong> با معدل بالای ۱۴ (ترجیحاً رشته\u200cی تجربی)</li>
+              <li><strong>ریزنمرات</strong> ترجمه\u200cشده به انگلیسی یا ارمنی با تأیید دادگستری</li>
+              <li><strong>گواهی زبان انگلیسی</strong> (IELTS 5.5+ یا TOEFL 60+ — بعضی دانشگاه\u200cها آزمون داخلی دارن)</li>
+              <li><strong>پاسپورت معتبر</strong> با حداقل ۱ سال اعتبار</li>
+              <li><strong>نامه\u200cی انگیزه</strong> (Motivation Letter) — ۱ تا ۲ صفحه</li>
+              <li><strong>گواهی سلامت</strong> و آزمایش HIV (بعد از پذیرش)</li>
+            </ol>
+          </div>
+        </section>
+
+        <section className="rounded-2xl p-5 mb-6 bg-amber-500/10 border border-amber-500/20">
+          <h3 className="font-bold text-foreground mb-2 flex items-center gap-2"><AlertTriangle className="w-4 h-4 text-amber-400" /> نکات مهم</h3>
+          <div className="text-xs text-foreground/60 leading-6 space-y-2">
+            <p>\u2022 مدرک YSMU در ایران قابل معادل\u200cسازی از طریق سامانه\u200cی میخک سفارت ایرانه — ولی فرآیندش زمان\u200cبره</p>
+            <p>\u2022 برای کار تو اروپا/آمریکا بعد از فارغ\u200cالتحصیلی، باید آزمون\u200cهای ملی اون کشور رو بدید (USMLE, PLAB و...)</p>
+            <p>\u2022 دانشجویان خارجی حق کار پاره\u200cوقت حین تحصیل رو ندارن — بودجه\u200cی کافی از قبل داشته باشید</p>
+            <p>\u2022 ددلاین پذیرش معمولاً ژوئن-ژوئیه هر ساله — زودتر اپلای کنید</p>
+          </div>
+        </section>
+
+        <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 text-center mb-6">
+          <h3 className="text-lg font-bold text-foreground mb-2">مشاوره\u200cی تحصیل پزشکی در ارمنستان</h3>
+          <a href="https://wa.me/37433149327" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-primary text-black font-bold px-6 py-3 rounded-xl hover:bg-primary/90 transition text-sm">مشاوره واتساپ</a>
+        </div>
+        <RelatedServices currentPath="/blog/medical-universities-armenia" />
+        </div>
+          <PageSidebar tags={['education', 'student', 'armenia', 'residency']} currentPath="/blog/medical-universities-armenia" />
+        </div>
+      </main>
+    </div>
+  );
+}
