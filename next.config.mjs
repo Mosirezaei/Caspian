@@ -28,6 +28,10 @@ const nextConfig = {
       { source: '/services/embassy-appointment',  destination: '/contact',             permanent: true },
       { source: '/services/student-visa',         destination: '/student-visa/russia', permanent: true },
       { source: '/services/company-registration', destination: '/residency/business',  permanent: true },
+      { source: '/blog/eqamat-armenia-az-tarigh-sherktat', destination: '/blog/residency-via-company-registration', permanent: true },
+      { source: '/blog/hazine-maliyat-bank-armenia',      destination: '/blog/company-costs-tax-banking-armenia',  permanent: true },
+      { source: '/blog/sabt-sherktat-armenia-marahel',    destination: '/blog/company-registration-steps-armenia',  permanent: true },
+      { source: '/blog/sakhtare-hoqooqi-sherktat-armenia', destination: '/blog/company-legal-structures-armenia',   permanent: true },
     ];
   },
 };
