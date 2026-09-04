@@ -306,6 +306,54 @@ export const blogPosts = [
       excerpt: 'What jobs are available without a university degree? Salaries, conditions and practical guide.',
     },
   },
+  {
+    slug: 'simcard-internet-apps-yerevan',
+    href: '/blog/simcard-internet-apps-yerevan',
+    category: 'life',
+    tags: ['yerevan', 'life', 'cost-of-living', 'armenia'],
+    thumbnail: '/images/tourism/yerevan-republic-square.webp',
+    date: '2026-09-04',
+    fa: {
+      title: 'سیم\u200cکارت، اینترنت و اپلیکیشن\u200cهای ضروری ایروان',
+      excerpt: 'راهنمای خرید سیم\u200cکارت، اینترنت خانگی، اپ\u200cهای تاکسی و پرداخت و نکات پرداخت بدون نقد.',
+    },
+    en: {
+      title: 'SIM Cards, Internet & Essential Apps in Yerevan',
+      excerpt: 'Guide to buying a SIM card, home internet, taxi apps, payment apps and going cashless.',
+    },
+  },
+  {
+    slug: 'medical-universities-armenia',
+    href: '/blog/medical-universities-armenia',
+    category: 'education',
+    tags: ['education', 'student', 'armenia', 'residency'],
+    thumbnail: '/images/residency.webp',
+    date: '2026-09-04',
+    fa: {
+      title: 'دانشگاه\u200cهای پزشکی ارمنستان: شرایط پذیرش و شهریه',
+      excerpt: 'پزشکی به زبان انگلیسی با شهریه\u200cی $۴,۰۰۰/سال — شرایط YSMU، مدارک لازم و نکات مهم.',
+    },
+    en: {
+      title: 'Medical Universities in Armenia: Admission & Tuition',
+      excerpt: 'Study medicine in English for $4,000/year — YSMU admission, documents and key tips.',
+    },
+  },
+  {
+    slug: 'startup-tech-ecosystem-yerevan',
+    href: '/blog/startup-tech-ecosystem-yerevan',
+    category: 'news',
+    tags: ['company', 'work', 'armenia', 'business'],
+    thumbnail: '/images/company/yerevan-city-center.webp',
+    date: '2026-09-04',
+    fa: {
+      title: 'اکوسیستم استارتاپ و فناوری ایروان: فرصت\u200cها برای ایرانیان',
+      excerpt: 'چرا ایروان سیلیکون\u200cولی قفقاز شده؟ کوورکینگ، مالیات IT و فرصت\u200cهای فریلنسری و استارتاپ.',
+    },
+    en: {
+      title: "Yerevan's Startup & Tech Ecosystem: Opportunities for Iranians",
+      excerpt: "Why Yerevan became the Caucasus Silicon Valley — coworking, IT tax and freelancing opportunities.",
+    },
+  },
 ];
 
 export const CATEGORY_LABELS = {
