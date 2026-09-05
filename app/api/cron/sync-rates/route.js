@@ -10,13 +10,11 @@ import { createClient } from '@supabase/supabase-js';
 // unlimited paid plan is purchased, this can be scheduled more frequently
 // (e.g. every 5 minutes) without changing anything else here.
 //
-// Pricing logic: our published USD sell price is the source's USD sell
-// price plus a flat MARKUP_TOMAN. Every other currency is NOT bumped by
-// that same flat amount -- instead we compute the ratio that flat markup
-// represents on USD, and apply that same ratio (percentage) to every other
-// currency so the whole board stays internally consistent with the USD
-// markup, exactly as requested.
-const MARKUP_TOMAN = 6000;
+// Pricing logic: MARKUP_TOMAN is 0 -- published rates are the source's
+// rates exactly as-is, no markup added. (Previously this added a flat
+// markup to USD and scaled every other currency by the same ratio; the
+// user decided the raw source rate should be shown untouched instead.)
+const MARKUP_TOMAN = 0;
 
 export async function GET(request) {
   const auth = request.headers.get('authorization');
@@ -58,6 +56,7 @@ export async function GET(request) {
         sell: Math.round(d.sell * ratio),
         buy: Math.round(d.buy * ratio),
         ratio,
+        dolar_rate: typeof d.dolar_rate === 'number' ? d.dolar_rate : null,
       }));
 
     if (rates.length === 0) {
