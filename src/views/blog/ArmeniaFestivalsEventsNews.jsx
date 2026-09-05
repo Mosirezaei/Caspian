@@ -1,5 +1,6 @@
 'use client';
 import { PartyPopper, Music, Newspaper, CalendarDays, Info } from 'lucide-react';
+import Link from 'next/link';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 import PageSidebar from '@/components/shared/PageSidebar';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
@@ -58,6 +59,14 @@ export default function ArmeniaFestivalsEventsNews() {
             تقویم کامل جشن‌های سالانه، رویدادهای موسیقی تا سه ماه آینده در ایروان، و آخرین وضعیت روابط ارمنستان و اتحادیه اروپا
           </p>
           <p className="text-xs text-foreground/40 mt-2">آپدیت: شهریور ۱۴۰۵</p>
+
+          <Link
+            href="/events"
+            className="mt-5 inline-flex items-center gap-2 bg-primary text-black font-bold px-6 py-3 rounded-xl hover:bg-primary/90 transition text-sm"
+          >
+            <CalendarDays className="w-4 h-4" />
+            بررسی فستیوال های و کنسرت های پیش رو در ارمنستان
+          </Link>
         </div>
 
         {/* Annual Festivals */}
