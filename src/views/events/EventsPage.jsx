@@ -60,7 +60,7 @@ export default function EventsPage() {
     const venue = event.venueFa || event.venueEn || event.venue;
     const price = event.priceDisplay || event.price;
     const msg = encodeURIComponent(
-      `سلام، می‌خوام کاسپین این بلیط رو برام تهیه کنه:\n\n` +
+      `سلام، می‌خوام برای این رویداد بلیط برام تهیه کنید:\n\n` +
       `🎫 ${title}\n` +
       (event.date ? `📅 ${event.date}\n` : '') +
       (venue ? `📍 ${venue}\n` : '') +
@@ -238,18 +238,18 @@ export default function EventsPage() {
                 <a href={selectedEvent.url} target="_blank" rel="noopener noreferrer"
                   className="mt-6 w-full flex items-center justify-center gap-2.5 py-3.5 rounded-xl bg-primary hover:bg-yellow-500 transition text-black font-bold text-sm">
                   <ExternalLink className="w-5 h-5" />
-                  خرید آنلاین از سایت اصلی
+                  خرید با ویزا/مسترکارت از سایت اصلی
                 </a>
               )}
 
+              <button onClick={() => requestCaspianPurchase(selectedEvent)}
+                className="mt-3 w-full flex items-center justify-center gap-2.5 py-3.5 rounded-xl bg-white/5 border border-primary/40 hover:bg-primary/10 transition text-primary font-bold text-sm">
+                <MessageCircle className="w-5 h-5" />
+                خرید ریالی از کاسپین (با کارمزد و نرخ حواله روز)
+              </button>
+
               <p className="text-[11px] text-foreground/40 text-center mt-3 leading-relaxed">
-                برای رزرو می‌توانید مستقیم و آنلاین از سایت اصلی برگزارکننده خریداری کنید.
-                اگر مایل باشید کاسپین بلیط را برایتان تهیه کند، مبلغی به‌عنوان کارمزد رزرو دریافت می‌شود —
-                {' '}
-                <button onClick={() => requestCaspianPurchase(selectedEvent)}
-                  className="text-primary/70 hover:text-primary underline underline-offset-2">
-                  تهیه توسط کاسپین
-                </button>
+                برای رزرو می‌توانید مستقیم و آنلاین از سایت اصلی برگزارکننده خریداری کنید. اگر مایل باشید کاسپین بلیط را برایتان تهیه کند، مبلغی به‌عنوان کارمزد تهیه دریافت می‌شود.
               </p>
             </div>
           </div>
