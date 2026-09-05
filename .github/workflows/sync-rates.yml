@@ -1,14 +1,12 @@
 name: Sync exchange rates
 
+# Scheduling now lives on cron-job.org (two jobs: every 2 minutes during
+# 08:00-20:00 Yerevan time, hourly outside it), configured with the exact
+# same CRON_SECRET bearer token this workflow used. The automatic schedule
+# trigger below is intentionally removed so this workflow doesn't ALSO fire
+# and double the real request count against the paid alanchand quota.
+# workflow_dispatch is kept for manual runs/testing only.
 on:
-  schedule:
-    # Every 5 minutes -- the shortest interval GitHub Actions supports.
-    # The route itself (app/api/cron/sync-rates/route.js) only actually
-    # calls alanchand on every tick during 08:00-20:00 Yerevan time; outside
-    # that window it throttles to once an hour. This keeps monthly request
-    # usage around ~4,700 of the account's 15,000/month paid quota while
-    # maximizing freshness during business hours.
-    - cron: '*/5 * * * *'
   workflow_dispatch: {}
 
 jobs:
