@@ -10,81 +10,60 @@ import { scrapeAllEvents } from '@/lib/tomsarkghScraper';
 // through a SECURITY DEFINER RPC (sync_events_cache) gated by CRON_SECRET --
 // this route only ever holds the public anon key, never a service-role key.
 //
-// The public-facing /api/events route just reads from events_cache; it never
-// calls Claude at request time, so a slow or failing translation here can
-// never slow down or break the live page.
+// Translation uses MyMemory (api.mymemory.translated.net), a free,
+// keyless translation API -- NOT the Claude API. This was switched from
+// Claude after discovering the Anthropic API key on this project has no
+// remaining credit balance, which silently failed every single batch.
+// MyMemory's free anonymous tier (~5,000 words/day) comfortably covers a
+// once-daily sync of ~100-150 short titles/venue names, and needs no
+// billing or API key at all. Quality is a notch below an LLM for nuanced
+// phrasing, but is more than adequate for short event titles and venue
+// names.
+//
+// The public-facing /api/events route just reads from events_cache; it
+// never calls any translation API at request time, so a slow or failing
+// translation here can never slow down or break the live page.
 
-function chunk(arr, size) {
-  const out = [];
-  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
-  return out;
+// MyMemory needs a source language hint. Armenian and Russian have
+// non-overlapping Unicode blocks, so a quick character-range check is
+// enough to pick the right one. Already-Latin text (band names, English
+// titles) is left untouched -- there's nothing to translate.
+function detectSourceLang(text) {
+  if (!text) return null;
+  if (/[\u0530-\u058F]/.test(text)) return 'hy';
+  if (/[\u0400-\u04FF]/.test(text)) return 'ru';
+  return null;
 }
 
-// Translates one small batch (title + venue pairs) in a single Claude call.
-// Batches are kept small (12 events) on purpose: the old implementation sent
-// every event on the site in one giant request, which could time out or
-// exceed max_tokens, and would then fail with *nothing* translated. A failed
-// batch here only leaves that batch untranslated -- it gets retried on the
-// next daily run since those events still won't have a title_fa in the DB.
-async function translateBatch(batch, debug) {
-  const result = {};
-  if (!process.env.ANTHROPIC_API_KEY) {
-    if (debug) debug.push('NO_API_KEY');
-    return result;
-  }
-  if (batch.length === 0) return result;
-
-  const linesText = batch
-    .map((e, i) => `${i + 1}. TITLE: ${e.title}\n${i + 1}. VENUE: ${e.venue || ''}`)
-    .join('\n');
-
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 20000);
+async function translateText(text) {
+  const lang = detectSourceLang(text);
+  if (!lang) return null;
 
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': process.env.ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-5',
-        max_tokens: 2000,
-        messages: [{
-          role: 'user',
-          content: `Translate these Armenian/English/Russian event titles and venue names to Persian (Farsi). Keep proper nouns, band names and English words as-is. Return ONLY lines in the exact same "N. TITLE: ..." / "N. VENUE: ..." format, matching the input numbering. No explanations.\n\n${linesText}`,
-        }],
-      }),
-      signal: controller.signal,
-    });
-    clearTimeout(timeout);
-    if (!res.ok) {
-      if (debug) debug.push(`HTTP_${res.status}: ${(await res.text()).slice(0, 300)}`);
-      return result;
-    }
+    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${lang}|fa`;
+    const res = await fetch(url, { signal: AbortSignal.timeout(10000) });
+    if (!res.ok) return null;
 
     const data = await res.json();
-    const translated = data.content?.[0]?.text || '';
-    for (const line of translated.split('\n')) {
-      const m = line.match(/^(\d+)\.\s*(TITLE|VENUE):\s*(.+)/);
-      if (!m) continue;
-      const idx = parseInt(m[1], 10) - 1;
-      if (idx < 0 || idx >= batch.length) continue;
-      const id = batch[idx].id;
-      result[id] = result[id] || {};
-      if (m[2] === 'TITLE') result[id].titleFa = m[3].trim();
-      else if (m[2] === 'VENUE' && m[3].trim()) result[id].venueFa = m[3].trim();
-    }
+    const translated = data?.responseData?.translatedText;
+    if (!translated) return null;
+    // MyMemory returns the request text back (sometimes wrapped in a
+    // quota-warning string) when it can't translate or the daily quota is
+    // hit -- treat that as "no translation" rather than caching garbage.
+    if (translated.trim() === text.trim()) return null;
+    if (/MYMEMORY WARNING|QUERY LENGTH LIMIT/i.test(translated)) return null;
+    return translated.trim();
   } catch (e) {
-    clearTimeout(timeout);
-    if (debug) debug.push(`EXCEPTION: ${e.message || String(e)}`);
-    // Timed out, no key, or API error -- this batch just stays untranslated
-    // and gets retried tomorrow.
+    return null;
   }
+}
 
-  return result;
+async function translateEvent(event) {
+  const [titleFa, venueFa] = await Promise.all([
+    translateText(event.title),
+    translateText(event.venue),
+  ]);
+  return { titleFa, venueFa };
 }
 
 export async function GET(request) {
@@ -122,13 +101,10 @@ export async function GET(request) {
     );
 
     const toTranslate = events.filter((e) => !alreadyTranslated.has(e.id));
-    const batches = chunk(toTranslate, 12);
 
     const translations = {};
-    const debug = [];
-    for (const batch of batches) {
-      const result = await translateBatch(batch, debug);
-      Object.assign(translations, result);
+    for (const event of toTranslate) {
+      translations[event.id] = await translateEvent(event);
     }
 
     const payload = events.map((e) => ({
@@ -154,11 +130,15 @@ export async function GET(request) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
+    const newlyTranslated = Object.values(translations).filter(
+      (t) => t.titleFa || t.venueFa
+    ).length;
+
     return NextResponse.json({
       total: events.length,
-      newlyTranslated: Object.keys(translations).length,
+      attempted: toTranslate.length,
+      newlyTranslated,
       alreadyCached: alreadyTranslated.size,
-      debug, // TEMPORARY -- remove once translation is confirmed working
     });
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
