@@ -129,9 +129,13 @@ function chunk(arr, size) {
 // exceed max_tokens, and would then fail with *nothing* translated. A failed
 // batch here only leaves that batch untranslated -- it gets retried on the
 // next daily run since those events still won't have a title_fa in the DB.
-async function translateBatch(batch) {
+async function translateBatch(batch, debug) {
   const result = {};
-  if (!process.env.ANTHROPIC_API_KEY || batch.length === 0) return result;
+  if (!process.env.ANTHROPIC_API_KEY) {
+    if (debug) debug.push('NO_API_KEY');
+    return result;
+  }
+  if (batch.length === 0) return result;
 
   const linesText = batch
     .map((e, i) => `${i + 1}. TITLE: ${e.title}\n${i + 1}. VENUE: ${e.venue || ''}`)
@@ -159,7 +163,10 @@ async function translateBatch(batch) {
       signal: controller.signal,
     });
     clearTimeout(timeout);
-    if (!res.ok) return result;
+    if (!res.ok) {
+      if (debug) debug.push(`HTTP_${res.status}: ${(await res.text()).slice(0, 300)}`);
+      return result;
+    }
 
     const data = await res.json();
     const translated = data.content?.[0]?.text || '';
@@ -175,6 +182,7 @@ async function translateBatch(batch) {
     }
   } catch (e) {
     clearTimeout(timeout);
+    if (debug) debug.push(`EXCEPTION: ${e.message || String(e)}`);
     // Timed out, no key, or API error -- this batch just stays untranslated
     // and gets retried tomorrow.
   }
@@ -214,8 +222,9 @@ export async function GET(request) {
     const batches = chunk(toTranslate, 12);
 
     const translations = {};
+    const debug = [];
     for (const batch of batches) {
-      const result = await translateBatch(batch);
+      const result = await translateBatch(batch, debug);
       Object.assign(translations, result);
     }
 
@@ -246,6 +255,7 @@ export async function GET(request) {
       total: events.length,
       newlyTranslated: Object.keys(translations).length,
       alreadyCached: alreadyTranslated.size,
+      debug, // TEMPORARY -- remove once translation is confirmed working
     });
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
