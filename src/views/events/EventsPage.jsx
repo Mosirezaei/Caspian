@@ -41,23 +41,26 @@ export default function EventsPage() {
       if (selectedCategory !== 'all' && e.category !== selectedCategory) return false;
       if (searchQuery) {
         const q = searchQuery.toLowerCase();
-        const t = (e.titleFa || e.title || '').toLowerCase();
-        const v = (e.venue || '').toLowerCase();
-        if (!t.includes(q) && !v.includes(q) && !(e.title || '').toLowerCase().includes(q)) return false;
+        const haystack = [e.titleFa, e.titleEn, e.title, e.venueFa, e.venueEn, e.venue]
+          .filter(Boolean)
+          .join(' ')
+          .toLowerCase();
+        if (!haystack.includes(q)) return false;
       }
       return true;
     });
   }, [events, selectedCategory, searchQuery]);
 
   function requestCaspianPurchase(event) {
-    const title = event.titleFa || event.title;
-    const venue = event.venueFa || event.venue;
+    const title = event.titleFa || event.titleEn || event.title;
+    const venue = event.venueFa || event.venueEn || event.venue;
+    const price = event.priceDisplay || event.price;
     const msg = encodeURIComponent(
       `سلام، می‌خوام کاسپین این بلیط رو برام تهیه کنه:\n\n` +
       `🎫 ${title}\n` +
       (event.date ? `📅 ${event.date}\n` : '') +
       (venue ? `📍 ${venue}\n` : '') +
-      (event.price ? `💰 ${event.price}\n` : '') +
+      (price ? `💰 ${price}\n` : '') +
       `\nلطفاً راهنمایی کنید.`
     );
     window.open(`https://wa.me/37433149327?text=${msg}`, '_blank');
@@ -108,7 +111,9 @@ export default function EventsPage() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {filtered.map(event => {
-              const title = event.titleFa || event.title;
+              const title = event.titleFa || event.titleEn || event.title;
+              const venue = event.venueFa || event.venueEn || event.venue;
+              const price = event.priceDisplay || event.price;
               return (
                 <div key={event.id}
                   onClick={() => setSelectedEvent(event)}
@@ -135,25 +140,19 @@ export default function EventsPage() {
                     <h3 className="font-bold text-foreground text-sm leading-snug line-clamp-2 group-hover:text-primary transition-colors mb-2">
                       {title}
                     </h3>
-                    {event.titleFa && event.title !== event.titleFa && (
+                    {title !== event.title && (
                       <p className="text-[11px] text-foreground/30 line-clamp-1 mb-2">{event.title}</p>
                     )}
                     <div className="space-y-1.5">
-                      {event.date && (
-                        <div className="flex items-center gap-1.5 text-xs text-foreground/50">
-                          <Calendar className="w-3.5 h-3.5 shrink-0 text-primary/60" /> {event.date}
-                        </div>
-                      )}
-                      {event.venue && (
-                        <div className="flex items-center gap-1.5 text-xs text-foreground/50">
-                          <MapPin className="w-3.5 h-3.5 shrink-0 text-primary/60" /> <span className="line-clamp-1">{event.venueFa || event.venue}</span>
-                        </div>
-                      )}
-                      {event.price && (
-                        <div className="flex items-center gap-1.5 text-xs text-primary/80 font-semibold">
-                          <Ticket className="w-3.5 h-3.5 shrink-0" /> {event.price}
-                        </div>
-                      )}
+                      <div className="flex items-center gap-1.5 text-xs text-foreground/50">
+                        <Calendar className="w-3.5 h-3.5 shrink-0 text-primary/60" /> {event.date || '—'}
+                      </div>
+                      <div className="flex items-center gap-1.5 text-xs text-foreground/50">
+                        <MapPin className="w-3.5 h-3.5 shrink-0 text-primary/60" /> <span className="line-clamp-1">{venue || '—'}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 text-xs text-primary/80 font-semibold">
+                        <Ticket className="w-3.5 h-3.5 shrink-0" /> {price || 'قیمت نامشخص'}
+                      </div>
                     </div>
 
                     <div className="mt-3 pt-3 border-t border-white/10" onClick={(e) => e.stopPropagation()}>
@@ -197,36 +196,39 @@ export default function EventsPage() {
               {selectedEvent.categoryFa && (
                 <span className="text-xs text-primary font-bold bg-primary/10 px-2.5 py-1 rounded-full">{selectedEvent.categoryFa}</span>
               )}
-              <h2 className="text-xl font-black text-foreground mt-3 leading-snug">
-                {selectedEvent.titleFa || selectedEvent.title}
-              </h2>
-              {selectedEvent.titleFa && selectedEvent.title !== selectedEvent.titleFa && (
-                <p className="text-sm text-foreground/40 mt-1">{selectedEvent.title}</p>
-              )}
+              {(() => {
+                const modalTitle = selectedEvent.titleFa || selectedEvent.titleEn || selectedEvent.title;
+                const modalVenue = selectedEvent.venueFa || selectedEvent.venueEn || selectedEvent.venue;
+                const modalPrice = selectedEvent.priceDisplay || selectedEvent.price;
+                return (
+                  <>
+                    <h2 className="text-xl font-black text-foreground mt-3 leading-snug">
+                      {modalTitle}
+                    </h2>
+                    {modalTitle !== selectedEvent.title && (
+                      <p className="text-sm text-foreground/40 mt-1">{selectedEvent.title}</p>
+                    )}
 
-              <div className="mt-4 space-y-3">
-                {selectedEvent.date && (
-                  <div className="flex items-center gap-3 text-sm text-foreground/70">
-                    <Calendar className="w-5 h-5 text-primary/70 shrink-0" />
-                    <span>{selectedEvent.date}</span>
-                  </div>
-                )}
-                {selectedEvent.venue && (
-                  <div className="flex items-center gap-3 text-sm text-foreground/70">
-                    <MapPin className="w-5 h-5 text-primary/70 shrink-0" />
-                    <span>{selectedEvent.venueFa || selectedEvent.venue}</span>
-                  </div>
-                )}
-                {selectedEvent.price && (
-                  <div className="flex items-center gap-3">
-                    <Ticket className="w-5 h-5 text-primary/70 shrink-0" />
-                    <div>
-                      <div className="text-sm font-bold text-primary">{selectedEvent.price}</div>
-                      <div className="text-[11px] text-foreground/40">قیمت بلیط (درام ارمنی)</div>
+                    <div className="mt-4 space-y-3">
+                      <div className="flex items-center gap-3 text-sm text-foreground/70">
+                        <Calendar className="w-5 h-5 text-primary/70 shrink-0" />
+                        <span>{selectedEvent.date || 'تاریخ نامشخص'}</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-sm text-foreground/70">
+                        <MapPin className="w-5 h-5 text-primary/70 shrink-0" />
+                        <span>{modalVenue || 'محل نامشخص'}</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <Ticket className="w-5 h-5 text-primary/70 shrink-0" />
+                        <div>
+                          <div className="text-sm font-bold text-primary">{modalPrice || 'قیمت نامشخص'}</div>
+                          <div className="text-[11px] text-foreground/40">قیمت بلیط (درام ارمنی)</div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
+                  </>
+                );
+              })()}
 
               {selectedEvent.url && (
                 <a href={selectedEvent.url} target="_blank" rel="noopener noreferrer"
