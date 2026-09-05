@@ -1,5 +1,5 @@
 'use client';
-import { PartyPopper, Music, Newspaper, CalendarDays, Info } from 'lucide-react';
+import { PartyPopper, Music, Newspaper, CalendarDays, Info, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 import PageSidebar from '@/components/shared/PageSidebar';
@@ -60,13 +60,16 @@ export default function ArmeniaFestivalsEventsNews() {
           </p>
           <p className="text-xs text-foreground/40 mt-2">آپدیت: شهریور ۱۴۰۵</p>
 
-          <Link
-            href="/events"
-            className="mt-5 inline-flex items-center gap-2 bg-primary text-black font-bold px-6 py-3 rounded-xl hover:bg-primary/90 transition text-sm"
-          >
-            <CalendarDays className="w-4 h-4" />
-            بررسی فستیوال های و کنسرت های پیش رو در ارمنستان
-          </Link>
+          <div className="mt-6 flex justify-center">
+            <Link
+              href="/events"
+              className="group inline-flex items-center gap-2.5 bg-primary text-black font-bold px-7 py-4 rounded-full shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 text-sm sm:text-base animate-pulse hover:animate-none"
+            >
+              <CalendarDays className="w-5 h-5" />
+              بررسی فستیوال‌ها و کنسرت‌های پیش رو در ارمنستان
+              <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+            </Link>
+          </div>
         </div>
 
         {/* Annual Festivals */}
