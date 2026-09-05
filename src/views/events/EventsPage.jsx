@@ -236,14 +236,14 @@ export default function EventsPage() {
 
               {selectedEvent.url && (
                 <a href={selectedEvent.url} target="_blank" rel="noopener noreferrer"
-                  className="mt-6 w-full flex items-center justify-center gap-2.5 py-3.5 rounded-xl bg-primary hover:bg-yellow-500 transition text-black font-bold text-sm">
+                  className="mt-6 w-full flex items-center justify-center gap-2.5 py-3.5 rounded-xl bg-white/5 border border-primary/40 hover:bg-primary/10 transition text-primary font-bold text-sm">
                   <ExternalLink className="w-5 h-5" />
                   خرید با ویزا/مسترکارت از سایت اصلی
                 </a>
               )}
 
               <button onClick={() => requestCaspianPurchase(selectedEvent)}
-                className="mt-3 w-full flex items-center justify-center gap-2.5 py-3.5 rounded-xl bg-white/5 border border-primary/40 hover:bg-primary/10 transition text-primary font-bold text-sm">
+                className="mt-3 w-full flex items-center justify-center gap-2.5 py-3.5 rounded-xl bg-primary hover:bg-yellow-500 transition text-black font-bold text-sm">
                 <MessageCircle className="w-5 h-5" />
                 خرید ریالی از کاسپین (با کارمزد و نرخ حواله روز)
               </button>
