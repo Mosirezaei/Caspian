@@ -1,121 +1,18 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { scrapeAllEvents } from '@/lib/tomsarkghScraper';
 
 // Runs once a day (see vercel.json -- Vercel Hobby caps cron jobs at one run
-// per day). Scrapes tomsarkgh.am, translates whichever events aren't already
-// cached, and upserts everything into Supabase through a SECURITY DEFINER
-// RPC (sync_events_cache) gated by CRON_SECRET -- this route only ever holds
-// the public anon key, never a service-role key.
+// per day). Scrapes tomsarkgh.am's Concert/Exhibition/Ballet category pages
+// (via the SAME scraper used by /api/events, so the two routes can never
+// disagree about which categories/events exist), translates whichever
+// events aren't already cached, and upserts everything into Supabase
+// through a SECURITY DEFINER RPC (sync_events_cache) gated by CRON_SECRET --
+// this route only ever holds the public anon key, never a service-role key.
 //
 // The public-facing /api/events route just reads from events_cache; it never
 // calls Claude at request time, so a slow or failing translation here can
 // never slow down or break the live page.
-
-const CAT_FA = {
-  'Համերգ': 'کنسرت',
-  'Թատրոն': 'تئاتر',
-  'Կինո': 'سینما',
-  'Կատակերգություն': 'کمدی',
-  'Stand-up': 'استندآپ',
-  'Party': 'پارتی',
-  'Ակումբ': 'کلاب',
-  'Փաբ': 'پاب',
-  'Օպերա և բալետ': 'اپرا و باله',
-  'Ցուցահանդես': 'نمایشگاه',
-  'Սպորտ': 'ورزش',
-  'Կրկես': 'سیرک',
-  'Ակումբ և փաբ': 'کلاب و پاب',
-  'Այլ': 'سایر',
-};
-
-const MONTH_FA = {
-  'Սեպտեմբեր': 'سپتامبر',
-  'Հոկտեմբեր': 'اکتبر',
-  'Նոյեմբեր': 'نوامبر',
-  'Դեկտեմբեր': 'دسامبر',
-  'Հունվար': 'ژانویه',
-  'Փետրվար': 'فوریه',
-  'Մարտ': 'مارس',
-  'Ապրիլ': 'آوریل',
-  'Մայիս': 'مه',
-  'Հունիս': 'ژوئن',
-  'Հուլիս': 'ژوئیه',
-  'Օգոստոս': 'اوت',
-};
-
-function proxyImage(url) {
-  if (!url) return null;
-  const origUrl = url.replace(/\/\d+_\d+_center_[A-F0-9]+\//, '/orig/');
-  return `/api/image-proxy?src=${encodeURIComponent(origUrl)}`;
-}
-
-async function scrapeEvents() {
-  const res = await fetch('https://www.tomsarkgh.am/', {
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-      'Accept': 'text/html',
-    },
-  });
-  if (!res.ok) throw new Error('Fetch failed: ' + res.status);
-
-  const html = await res.text();
-  const events = [];
-  const seenIds = new Set();
-  const blocks = html.split('event-box-item');
-
-  for (let i = 1; i < blocks.length; i++) {
-    const block = blocks[i];
-    try {
-      const linkMatch = block.match(/href="\/hy\/event\/(\d+)\/([^"]+)"/);
-      if (!linkMatch) continue;
-      const eid = linkMatch[1];
-      if (seenIds.has(eid)) continue;
-      seenIds.add(eid);
-
-      const imgMatch = block.match(/<img\s+src="(\/thumbnails\/Photo\/[^"]+)"/);
-      let imageUrl = null;
-      if (imgMatch) {
-        imageUrl = 'https://www.tomsarkgh.am' + imgMatch[1];
-      }
-
-      const catMatch = block.match(/event-type">([^<]+)</);
-      const titleMatch = block.match(/event-title">\s*(?:<a[^>]*>)?([^<]+)/);
-      const dateMatch = block.match(/event-date">\s*(\d+)&nbsp;(\S+)/);
-      const venueMatch = block.match(/event-venue">\s*(?:<a[^>]*>)?([^<]+)/);
-
-      let priceText = null;
-      const priceDiv = block.match(/event-price[^>]*>([^<]+)/);
-      if (priceDiv) priceText = priceDiv[1].trim();
-      if (!priceText) {
-        const pg = block.match(/(\d[\d\s,.]*[-\u2013]?\s*\d*[\d\s,.]*\s*(?:դրամ|AMD|др))/);
-        if (pg) priceText = pg[1].trim();
-      }
-
-      let dateFa = null;
-      if (dateMatch) {
-        dateFa = dateMatch[1] + ' ' + (MONTH_FA[dateMatch[2]] || dateMatch[2]);
-      }
-
-      const catFa = catMatch ? (CAT_FA[catMatch[1].trim()] || catMatch[1].trim()) : null;
-
-      if (titleMatch) {
-        events.push({
-          id: eid,
-          title: titleMatch[1].trim(),
-          url: 'https://www.tomsarkgh.am/hy/event/' + eid + '/' + linkMatch[2],
-          image: proxyImage(imageUrl),
-          category: catMatch ? catMatch[1].trim() : null,
-          categoryFa: catFa,
-          date: dateFa,
-          venue: venueMatch ? venueMatch[1].trim() : null,
-          price: priceText,
-        });
-      }
-    } catch (e) { /* skip */ }
-  }
-
-  return events;
-}
 
 function chunk(arr, size) {
   const out = [];
@@ -204,7 +101,13 @@ export async function GET(request) {
   const supabase = createClient(supabaseUrl, supabaseKey);
 
   try {
-    const events = await scrapeEvents();
+    // Same scraper as /api/events: reads the Concert/Exhibition/Ballet
+    // category pages in full (not the homepage), and already tags
+    // festival-by-title events as categoryFa: 'فستیوال'. Keeping this in
+    // sync with /api/events is the whole point of sharing the function --
+    // previously this route had its own separate homepage-based scraper
+    // that included theater/cinema/sport/etc. and never detected festivals.
+    const events = await scrapeAllEvents();
     if (events.length === 0) {
       return NextResponse.json({ synced: 0, translated: 0, total: 0 });
     }
