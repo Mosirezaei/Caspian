@@ -59,13 +59,35 @@ const MONTH_FA = {
 
 const FESTIVAL_RE = /festival|fest\b|փառատոն/i;
 
+// tomsarkgh.am's own "today" tab leaves the date field completely blank in
+// the HTML (verified: <div class="event-date">&nbsp;</div> with no digits
+// at all) -- there's no date text to scrape there, presumably because the
+// site assumes "today" doesn't need spelling out. We fill that gap with
+// today's actual date instead of leaving it null, since we know the scope.
+const GREG_MONTH_FA = [
+  'ژانویه', 'فوریه', 'مارس', 'آوریل', 'مه', 'ژوئن',
+  'ژوئیه', 'اوت', 'سپتامبر', 'اکتبر', 'نوامبر', 'دسامبر',
+];
+
+function todayDateFa() {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Yerevan',
+    day: 'numeric',
+    month: 'numeric',
+  }).formatToParts(new Date());
+  const day = parts.find((p) => p.type === 'day')?.value;
+  const month = parts.find((p) => p.type === 'month')?.value;
+  if (!day || !month) return null;
+  return `${day} ${GREG_MONTH_FA[parseInt(month, 10) - 1]}`;
+}
+
 function proxyImage(url) {
   if (!url) return null;
   const origUrl = url.replace(/\/\d+_\d+_center_[A-F0-9]+\//, '/orig/');
   return `/api/image-proxy?src=${encodeURIComponent(origUrl)}`;
 }
 
-function parseEventBlocks(html) {
+function parseEventBlocks(html, scopeKey) {
   const events = [];
   const blocks = html.split('event-box-item');
 
@@ -95,6 +117,8 @@ function parseEventBlocks(html) {
       let dateFa = null;
       if (dateMatch) {
         dateFa = dateMatch[1] + ' ' + (MONTH_FA[dateMatch[2]] || dateMatch[2]);
+      } else if (scopeKey === 'today') {
+        dateFa = todayDateFa();
       }
 
       const title = titleMatch ? titleMatch[1].trim() : null;
@@ -153,7 +177,7 @@ async function fetchCategoryFull(slug) {
         break;
       }
 
-      const pageEvents = parseEventBlocks(html);
+      const pageEvents = parseEventBlocks(html, scopeKey);
       if (pageEvents.length === 0) break;
 
       const fresh = pageEvents.filter((e) => !seen.has(e.id));

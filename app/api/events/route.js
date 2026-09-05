@@ -39,19 +39,35 @@ async function mergeFarsiTranslations(events) {
   }
 }
 
-// Extracts every number group out of a raw price string (Armenian/Russian/
-// English digits are identical, only the currency word differs) and turns
-// it into one consistent "X AMD" / "X-Y AMD" string. Filters out anything
-// under 100 so age-restriction badges like "14+" that sometimes leak into
-// the price block don't get treated as a price.
+// Extracts prices out of a raw price string (Armenian/Russian/English
+// digits are identical, only the currency word differs) and turns it into
+// one consistent "X AMD" / "X-Y AMD" string. Filters out anything under
+// 100 so age-restriction badges like "14+" that sometimes leak into the
+// price block don't get treated as a price.
+//
+// Some events list several ticket tiers separated by commas, e.g.
+// "8300, 9700, 13700 դրամ" -- those commas are tier separators, NOT
+// thousands separators, and must NOT be merged into one number. A comma
+// is only treated as a thousands separator when it's followed by exactly
+// 3 digits, matching how real grouped numbers are printed ("12,345").
 function normalizePrice(raw) {
   if (!raw) return null;
-  const nums = (raw.match(/\d[\d,.\s]*\d|\d/g) || [])
-    .map((m) => parseInt(m.replace(/[^\d]/g, ''), 10))
-    .filter((n) => Number.isFinite(n) && n >= 100);
-  if (nums.length === 0) return null;
-  const min = Math.min(...nums);
-  const max = Math.max(...nums);
+  const tokens = raw.match(/\d[\d,]*\d|\d/g) || [];
+  const nums = [];
+  for (const tok of tokens) {
+    if (/^\d{1,3}(,\d{3})+$/.test(tok)) {
+      nums.push(parseInt(tok.replace(/,/g, ''), 10));
+    } else {
+      for (const piece of tok.split(',')) {
+        const n = parseInt(piece, 10);
+        if (Number.isFinite(n)) nums.push(n);
+      }
+    }
+  }
+  const filtered = nums.filter((n) => Number.isFinite(n) && n >= 100);
+  if (filtered.length === 0) return null;
+  const min = Math.min(...filtered);
+  const max = Math.max(...filtered);
   const fmt = (n) => n.toLocaleString('en-US');
   return min === max ? `${fmt(min)} AMD` : `${fmt(min)}\u2013${fmt(max)} AMD`;
 }
