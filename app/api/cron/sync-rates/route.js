@@ -1,20 +1,53 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-// Runs periodically (see vercel.json comment -- Vercel Hobby's built-in
-// cron only fires once a day, so this route is actually triggered by an
-// external scheduler such as cron-job.org or a GitHub Actions workflow,
-// hitting this URL once an hour with the CRON_SECRET bearer token). Once an
-// hour also happens to match alan chand's free-tier rate limit (1 request
-// per hour per token) -- see https://alanchand.com/media/api. If/when the
-// unlimited paid plan is purchased, this can be scheduled more frequently
-// (e.g. every 5 minutes) without changing anything else here.
+// Runs periodically (see .github/workflows/sync-rates.yml, which now pings
+// this URL every 5 minutes -- GitHub Actions' shortest supported cron
+// interval -- with the CRON_SECRET bearer token; Vercel Hobby's own cron
+// only fires once a day, so it can't drive this on its own). The account
+// is now on a paid alanchand plan (~15,000 requests/month), so the real
+// request budgeting happens below via the peak/off-peak throttle, not via
+// the schedule itself.
 //
 // Pricing logic: MARKUP_TOMAN is 0 -- published rates are the source's
 // rates exactly as-is, no markup added. (Previously this added a flat
 // markup to USD and scaled every other currency by the same ratio; the
 // user decided the raw source rate should be shown untouched instead.)
 const MARKUP_TOMAN = 0;
+
+// Request budget: the paid alanchand plan allows up to 15,000 requests
+// (assumed monthly). Most people check rates during business hours, so we
+// spend the budget refreshing every 5 minutes (GitHub Actions' shortest
+// supported cron interval) during 08:00-20:00 Yerevan time, and only once
+// an hour outside that window. This workflow now pings this route every
+// 5 minutes around the clock (see .github/workflows/sync-rates.yml); the
+// off-peak throttle below is what keeps quota usage down outside the
+// 08:00-20:00 window instead of also calling alanchand every 5 minutes.
+//
+// Budget check: peak = 12h * 12 pings/hour = 144 calls/day.
+// off-peak = 12h / 60min throttle = 12 calls/day.
+// Daily total 156 -> ~4,680/month for a 30-day month, comfortably under
+// the 15,000 cap with plenty of headroom (e.g. to tighten the off-peak
+// throttle further, or shorten it, without ever approaching the limit).
+const PEAK_START_HOUR = 8; // 08:00 Yerevan
+const PEAK_END_HOUR = 20; // 20:00 Yerevan
+const OFF_PEAK_MIN_GAP_MINUTES = 60;
+
+function currentYerevanHour() {
+  return parseInt(
+    new Intl.DateTimeFormat('en-US', {
+      timeZone: 'Asia/Yerevan',
+      hour: 'numeric',
+      hour12: false,
+    }).format(new Date()),
+    10
+  );
+}
+
+function isPeakHour() {
+  const hour = currentYerevanHour();
+  return hour >= PEAK_START_HOUR && hour < PEAK_END_HOUR;
+}
 
 export async function GET(request) {
   const auth = request.headers.get('authorization');
@@ -29,6 +62,29 @@ export async function GET(request) {
     return NextResponse.json({ error: 'Missing required env vars' }, { status: 500 });
   }
   const supabase = createClient(supabaseUrl, supabaseKey);
+
+  if (!isPeakHour()) {
+    // Off-peak: only refresh once per OFF_PEAK_MIN_GAP_MINUTES so we don't
+    // burn through the monthly request quota overnight when almost nobody
+    // is checking rates. usd's updated_at stands in for "when did we last
+    // actually sync" since every row is written together in one batch.
+    const { data: existing } = await supabase
+      .from('exchange_rates_cache')
+      .select('updated_at')
+      .eq('symbol', 'usd')
+      .maybeSingle();
+
+    if (existing?.updated_at) {
+      const ageMinutes = (Date.now() - new Date(existing.updated_at).getTime()) / 60000;
+      if (ageMinutes < OFF_PEAK_MIN_GAP_MINUTES) {
+        return NextResponse.json({
+          skipped: true,
+          reason: 'off-peak throttle',
+          ageMinutes: Math.round(ageMinutes),
+        });
+      }
+    }
+  }
 
   try {
     const res = await fetch(
