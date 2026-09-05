@@ -1,6 +1,7 @@
 'use client';
 import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
+import CurrencyTicker from '@/components/shared/CurrencyTicker';
 
 function ExchangeContent() {
   const { lang } = useLang();
@@ -20,6 +21,8 @@ function ExchangeContent() {
       subtitleRu="Обмен риала, доллара, евро, рубля и USDT по прозрачному курсу"
       heroImage="https://images.unsplash.com/photo-1629339938591-ec5e73815e47?w=1200&q=80"
       serviceType="exchange">
+
+      <CurrencyTicker />
 
       {isFa && <>
         <InfoBlock title="چرا مدیریت ارز در سفر به ارمنستان مهم است؟">

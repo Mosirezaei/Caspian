@@ -1,0 +1,19 @@
+name: Sync exchange rates
+
+on:
+  schedule:
+    # Hourly -- matches alan chand's free-tier limit of 1 request/hour per
+    # token (see https://alanchand.com/media/api). If a paid/unlimited plan
+    # is purchased later, just tighten this cron expression (e.g. "*/5 * * * *")
+    # to poll more often; nothing else needs to change.
+    - cron: '0 * * * *'
+  workflow_dispatch: {}
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call sync-rates endpoint
+        run: |
+          curl -sf -X GET "https://caspian.am/api/cron/sync-rates" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}"
