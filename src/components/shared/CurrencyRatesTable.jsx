@@ -35,6 +35,22 @@ const WHATSAPP_MESSAGE = {
   ru: 'Здравствуйте, хочу узнать актуальный курс и условия перевода.',
 };
 
+const CLOCK_LABEL = {
+  fa: 'ساعت ایروان',
+  en: 'Yerevan Time',
+  ru: 'Время в Ереване',
+};
+
+function yerevanClock() {
+  return new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Asia/Yerevan',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  }).format(new Date());
+}
+
 function openWhatsApp(lang) {
   const text = WHATSAPP_MESSAGE[lang] || WHATSAPP_MESSAGE.fa;
   window.open(`https://wa.me/37433149327?text=${encodeURIComponent(text)}`, '_blank');
@@ -45,6 +61,15 @@ export default function CurrencyRatesTable() {
   const [rows, setRows] = useState(null);
   const [loading, setLoading] = useState(true);
   const [lastUpdate, setLastUpdate] = useState('');
+  const [clock, setClock] = useState(yerevanClock());
+
+  // Ticks every second regardless of when the data itself last changed --
+  // this is what gives the page a visibly "alive" feel between the ~1-minute
+  // rate syncs, on top of the real Realtime-driven rate updates below.
+  useEffect(() => {
+    const tick = setInterval(() => setClock(yerevanClock()), 1000);
+    return () => clearInterval(tick);
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -104,16 +129,20 @@ export default function CurrencyRatesTable() {
   return (
     <section className="mb-10">
       <div className="glass-panel rounded-2xl p-5 border border-primary/20 overflow-x-auto">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-1">
           <span className="text-sm font-bold text-primary">
             {lang === 'fa' ? 'جدول کامل نرخ ارز' : lang === 'ru' ? 'Полный курс валют' : 'Full Exchange Rate Table'}
           </span>
-          {lastUpdate && (
-            <span className="text-xs text-foreground/40">
-              {lang === 'fa' ? `بروزرسانی: ${lastUpdate}` : lang === 'ru' ? `Обновлено: ${lastUpdate}` : `Updated: ${lastUpdate}`}
-            </span>
-          )}
+          <span className="flex items-center gap-1.5 text-xs font-bold gold-gradient-text">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+            {CLOCK_LABEL[lang] || CLOCK_LABEL.fa}: <span className="tabular-nums">{clock}</span>
+          </span>
         </div>
+        {lastUpdate && (
+          <div className="text-[11px] text-foreground/30 mb-3">
+            {lang === 'fa' ? `آخرین بروزرسانی نرخ‌ها: ${lastUpdate}` : lang === 'ru' ? `Курс обновлён: ${lastUpdate}` : `Rates last synced: ${lastUpdate}`}
+          </div>
+        )}
 
         {loading ? (
           <div className="flex justify-center py-8">
