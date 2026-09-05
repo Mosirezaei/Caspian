@@ -23,6 +23,23 @@ const DISCLAIMER = {
   ru: 'Для получения актуального курса и условий денежного перевода уточняйте у наших партнёров.',
 };
 
+const WHATSAPP_BUTTON_LABEL = {
+  fa: 'استعلام لحظه‌ای و نرخ حواله در واتساپ',
+  en: 'Get Live Rates & Transfer Info on WhatsApp',
+  ru: 'Узнать курс и условия перевода в WhatsApp',
+};
+
+const WHATSAPP_MESSAGE = {
+  fa: 'سلام، برای استعلام نرخ لحظه‌ای و حواله ارز پیام دادم.',
+  en: "Hi, I'm messaging for a live exchange rate and money-transfer quote.",
+  ru: 'Здравствуйте, хочу узнать актуальный курс и условия перевода.',
+};
+
+function openWhatsApp(lang) {
+  const text = WHATSAPP_MESSAGE[lang] || WHATSAPP_MESSAGE.fa;
+  window.open(`https://wa.me/37433149327?text=${encodeURIComponent(text)}`, '_blank');
+}
+
 export default function CurrencyRatesTable() {
   const { lang } = useLang();
   const [rows, setRows] = useState(null);
@@ -114,6 +131,13 @@ export default function CurrencyRatesTable() {
         <p className="text-xs text-foreground/40 mt-4 pt-4 border-t border-white/10 text-center leading-relaxed">
           {DISCLAIMER[lang] || DISCLAIMER.fa}
         </p>
+
+        <button
+          onClick={() => openWhatsApp(lang)}
+          className="mt-3 w-full flex items-center justify-center gap-2 py-3.5 px-6 bg-primary text-black font-black rounded-xl hover:bg-yellow-500 transition"
+        >
+          {WHATSAPP_BUTTON_LABEL[lang] || WHATSAPP_BUTTON_LABEL.fa}
+        </button>
       </div>
     </section>
   );
