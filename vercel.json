@@ -18,5 +18,8 @@
     { "source": "/services/residency",       "destination": "/residency/business",  "permanent": true },
     { "source": "/services/hotel",           "destination": "/travel/hotel",        "permanent": true },
     { "source": "/vip",                      "destination": "/contact",             "permanent": true }
+  ],
+  "crons": [
+    { "path": "/api/cron/sync-events", "schedule": "0 3 * * *" }
   ]
 }

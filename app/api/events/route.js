@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { createClient } from '@supabase/supabase-js';
 
 // Cache the whole response for 10 minutes. Without this, Next.js 15 refetches
 // tomsarkgh.am's full homepage (hundreds of events) and re-parses it on every
@@ -43,49 +44,35 @@ function proxyImage(url) {
   return `/api/image-proxy?src=${encodeURIComponent(origUrl)}`;
 }
 
-// Translates event titles to Farsi with the Claude API, batched in one call.
-// Guarded so a slow/failed/unconfigured translation NEVER blocks or breaks
-// the events response -- worst case, titles stay in their original language.
-async function translateTitles(events) {
-  if (!process.env.ANTHROPIC_API_KEY || events.length === 0) return;
-
+// Reads any already-translated titles/venues out of the events_cache table
+// (kept up to date by the daily /api/cron/sync-events job). No live call to
+// Claude ever happens on this request path -- if an event isn't cached yet
+// (e.g. it appeared today), it just shows in its original language until
+// tomorrow's sync picks it up.
+async function mergeFarsiTranslations(events) {
+  if (events.length === 0) return;
   try {
-    const linesText = events.map((e, i) => `${i + 1}. TITLE: ${e.title}\n${i + 1}. VENUE: ${e.venue || ''}`).join('\n');
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 12000);
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    if (!supabaseUrl || !supabaseKey) return;
 
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': process.env.ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-5',
-        max_tokens: 4000,
-        messages: [{
-          role: 'user',
-          content: `Translate these Armenian/English/Russian event titles and venue names to Persian (Farsi). Keep proper nouns, band names and English words as-is. Return ONLY lines in the exact same "N. TITLE: ..." / "N. VENUE: ..." format, matching the input numbering. No explanations.\n\n${linesText}`,
-        }],
-      }),
-      signal: controller.signal,
-    });
-    clearTimeout(timeout);
+    const supabase = createClient(supabaseUrl, supabaseKey);
+    const ids = events.map((e) => e.id);
+    const { data, error } = await supabase
+      .from('events_cache')
+      .select('event_id, title_fa, venue_fa')
+      .in('event_id', ids);
 
-    if (!res.ok) return;
-    const data = await res.json();
-    const translated = data.content?.[0]?.text || '';
-    for (const line of translated.split('\n')) {
-      const m = line.match(/^(\d+)\.\s*(TITLE|VENUE):\s*(.+)/);
-      if (!m) continue;
-      const idx = parseInt(m[1], 10) - 1;
-      if (idx < 0 || idx >= events.length) continue;
-      if (m[2] === 'TITLE') events[idx].titleFa = m[3].trim();
-      else if (m[2] === 'VENUE' && m[3].trim()) events[idx].venueFa = m[3].trim();
+    if (error || !data) return;
+
+    const byId = new Map(data.map((row) => [row.event_id, row]));
+    for (const event of events) {
+      const cached = byId.get(event.id);
+      if (cached?.title_fa) event.titleFa = cached.title_fa;
+      if (cached?.venue_fa) event.venueFa = cached.venue_fa;
     }
   } catch (e) {
-    // Timed out, no key, or API error -- titles/venues just stay untranslated.
+    // Supabase unreachable -- events just stay untranslated, same as before.
   }
 }
 
@@ -131,7 +118,7 @@ export async function GET() {
         const priceDiv = block.match(/event-price[^>]*>([^<]+)/);
         if (priceDiv) priceText = priceDiv[1].trim();
         if (!priceText) {
-          const pg = block.match(/(\d[\d\s,.]*[-\u2013]?\s*\d*[\d\s,.]*\s*(?:\u0564\u0580\u0561\u0574|AMD|\u0434\u0440))/);
+          const pg = block.match(/(\d[\d\s,.]*[-\u2013]?\s*\d*[\d\s,.]*\s*(?:դրամ|AMD|др))/);
           if (pg) priceText = pg[1].trim();
         }
 
@@ -158,10 +145,10 @@ export async function GET() {
       } catch (e) { /* skip */ }
     }
 
-    // Best-effort Farsi translation of titles. Bounded to 8s and fully
-    // cached alongside the rest of this response (revalidate: 600), so it
-    // only ever runs once per 10-minute window, not per visitor.
-    await translateTitles(events);
+    // Merge in any Farsi translations we already have cached. This is a
+    // single fast Supabase read -- no dependency on Claude API latency or
+    // uptime at request time.
+    await mergeFarsiTranslations(events);
 
     return NextResponse.json({ events, total: events.length, fetchedAt: new Date().toISOString() });
   } catch (error) {
