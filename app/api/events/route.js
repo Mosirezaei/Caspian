@@ -38,7 +38,9 @@ const MONTH_FA = {
 };
 
 function proxyImage(url) {
-  return url ? `/api/image-proxy?src=${encodeURIComponent(url)}` : null;
+  if (!url) return null;
+  const origUrl = url.replace(/\/\d+_\d+_center_[A-F0-9]+\//, '/orig/');
+  return `/api/image-proxy?src=${encodeURIComponent(origUrl)}`;
 }
 
 // Translates event titles to Farsi with the Claude API, batched in one call.
@@ -48,9 +50,9 @@ async function translateTitles(events) {
   if (!process.env.ANTHROPIC_API_KEY || events.length === 0) return;
 
   try {
-    const titlesText = events.map((e, i) => `${i + 1}. ${e.title}`).join('\n');
+    const linesText = events.map((e, i) => `${i + 1}. TITLE: ${e.title}\n${i + 1}. VENUE: ${e.venue || ''}`).join('\n');
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 8000);
+    const timeout = setTimeout(() => controller.abort(), 12000);
 
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -60,11 +62,11 @@ async function translateTitles(events) {
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
+        model: 'claude-sonnet-5',
         max_tokens: 4000,
         messages: [{
           role: 'user',
-          content: `Translate these Armenian/English/Russian event titles to Persian (Farsi). Keep proper nouns, band names and English words as-is. Return ONLY numbered translations, one per line, matching the input numbering. No explanations.\n\n${titlesText}`,
+          content: `Translate these Armenian/English/Russian event titles and venue names to Persian (Farsi). Keep proper nouns, band names and English words as-is. Return ONLY lines in the exact same "N. TITLE: ..." / "N. VENUE: ..." format, matching the input numbering. No explanations.\n\n${linesText}`,
         }],
       }),
       signal: controller.signal,
@@ -75,13 +77,15 @@ async function translateTitles(events) {
     const data = await res.json();
     const translated = data.content?.[0]?.text || '';
     for (const line of translated.split('\n')) {
-      const m = line.match(/^(\d+)\.\s*(.+)/);
+      const m = line.match(/^(\d+)\.\s*(TITLE|VENUE):\s*(.+)/);
       if (!m) continue;
       const idx = parseInt(m[1], 10) - 1;
-      if (idx >= 0 && idx < events.length) events[idx].titleFa = m[2].trim();
+      if (idx < 0 || idx >= events.length) continue;
+      if (m[2] === 'TITLE') events[idx].titleFa = m[3].trim();
+      else if (m[2] === 'VENUE' && m[3].trim()) events[idx].venueFa = m[3].trim();
     }
   } catch (e) {
-    // Timed out, no key, or API error -- titles just stay untranslated.
+    // Timed out, no key, or API error -- titles/venues just stay untranslated.
   }
 }
 
@@ -115,8 +119,7 @@ export async function GET() {
         const imgMatch = block.match(/<img\s+src="(\/thumbnails\/Photo\/[^"]+)"/);
         let imageUrl = null;
         if (imgMatch) {
-          const path = imgMatch[1].replace(/\/\d+_\d+_center_[A-F0-9]+\//, '/260_146_center_FF0000/');
-          imageUrl = 'https://www.tomsarkgh.am' + path;
+          imageUrl = 'https://www.tomsarkgh.am' + imgMatch[1];
         }
 
         const catMatch = block.match(/event-type">([^<]+)</);

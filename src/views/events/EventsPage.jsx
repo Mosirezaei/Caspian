@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, useMemo } from 'react';
-import { Search, Calendar, Music, Ticket, MapPin, Loader2, X, MessageCircle } from 'lucide-react';
+import { Search, Calendar, Music, Ticket, MapPin, Loader2, X, MessageCircle, ExternalLink } from 'lucide-react';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 
 export default function EventsPage() {
@@ -49,13 +49,14 @@ export default function EventsPage() {
     });
   }, [events, selectedCategory, searchQuery]);
 
-  function openWhatsApp(event) {
+  function requestCaspianPurchase(event) {
     const title = event.titleFa || event.title;
+    const venue = event.venueFa || event.venue;
     const msg = encodeURIComponent(
-      `سلام، می‌خوام بلیط این رویداد رو تهیه کنم:\n\n` +
+      `سلام، می‌خوام کاسپین این بلیط رو برام تهیه کنه:\n\n` +
       `🎫 ${title}\n` +
       (event.date ? `📅 ${event.date}\n` : '') +
-      (event.venue ? `📍 ${event.venue}\n` : '') +
+      (venue ? `📍 ${venue}\n` : '') +
       (event.price ? `💰 ${event.price}\n` : '') +
       `\nلطفاً راهنمایی کنید.`
     );
@@ -145,7 +146,7 @@ export default function EventsPage() {
                       )}
                       {event.venue && (
                         <div className="flex items-center gap-1.5 text-xs text-foreground/50">
-                          <MapPin className="w-3.5 h-3.5 shrink-0 text-primary/60" /> <span className="line-clamp-1">{event.venue}</span>
+                          <MapPin className="w-3.5 h-3.5 shrink-0 text-primary/60" /> <span className="line-clamp-1">{event.venueFa || event.venue}</span>
                         </div>
                       )}
                       {event.price && (
@@ -153,6 +154,19 @@ export default function EventsPage() {
                           <Ticket className="w-3.5 h-3.5 shrink-0" /> {event.price}
                         </div>
                       )}
+                    </div>
+
+                    <div className="mt-3 pt-3 border-t border-white/10" onClick={(e) => e.stopPropagation()}>
+                      {event.url && (
+                        <a href={event.url} target="_blank" rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 text-[11px] font-bold text-primary hover:text-primary/80 transition">
+                          <ExternalLink className="w-3 h-3 shrink-0" />
+                          برای رزرو، آنلاین از سایت اصلی خریداری کنید
+                        </a>
+                      )}
+                      <p className="text-[10.5px] text-foreground/35 mt-1.5 leading-relaxed">
+                        اگر مایل باشید کاسپین بلیط را برایتان تهیه کند، مبلغی به‌عنوان کارمزد رزرو دریافت می‌شود.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -200,7 +214,7 @@ export default function EventsPage() {
                 {selectedEvent.venue && (
                   <div className="flex items-center gap-3 text-sm text-foreground/70">
                     <MapPin className="w-5 h-5 text-primary/70 shrink-0" />
-                    <span>{selectedEvent.venue}</span>
+                    <span>{selectedEvent.venueFa || selectedEvent.venue}</span>
                   </div>
                 )}
                 {selectedEvent.price && (
@@ -214,15 +228,22 @@ export default function EventsPage() {
                 )}
               </div>
 
-              {/* WhatsApp CTA */}
-              <button onClick={() => openWhatsApp(selectedEvent)}
-                className="mt-6 w-full flex items-center justify-center gap-2.5 py-3.5 rounded-xl bg-green-600 hover:bg-green-500 transition text-white font-bold text-sm">
-                <MessageCircle className="w-5 h-5" />
-                تهیه بلیط از طریق واتساپ
-              </button>
+              {selectedEvent.url && (
+                <a href={selectedEvent.url} target="_blank" rel="noopener noreferrer"
+                  className="mt-6 w-full flex items-center justify-center gap-2.5 py-3.5 rounded-xl bg-primary hover:bg-yellow-500 transition text-black font-bold text-sm">
+                  <ExternalLink className="w-5 h-5" />
+                  خرید آنلاین از سایت اصلی
+                </a>
+              )}
 
-              <p className="text-[11px] text-foreground/30 text-center mt-3">
-                با زدن دکمه، اطلاعات این رویداد برای کارشناس ما ارسال می‌شه
+              <p className="text-[11px] text-foreground/40 text-center mt-3 leading-relaxed">
+                برای رزرو می‌توانید مستقیم و آنلاین از سایت اصلی برگزارکننده خریداری کنید.
+                اگر مایل باشید کاسپین بلیط را برایتان تهیه کند، مبلغی به‌عنوان کارمزد رزرو دریافت می‌شود —
+                {' '}
+                <button onClick={() => requestCaspianPurchase(selectedEvent)}
+                  className="text-primary/70 hover:text-primary underline underline-offset-2">
+                  تهیه توسط کاسپین
+                </button>
               </p>
             </div>
           </div>
