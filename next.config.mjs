@@ -34,6 +34,7 @@ const nextConfig = {
       { source: '/blog/sakhtare-hoqooqi-sherktat-armenia', destination: '/blog/company-legal-structures-armenia',   permanent: true },
       { source: '/travel/flight', destination: '/travel/flight-bus', permanent: true },
       { source: '/travel/bus',    destination: '/travel/flight-bus', permanent: true },
+      { source: '/travel/festivals', destination: '/events', permanent: true },
     ];
   },
 };
