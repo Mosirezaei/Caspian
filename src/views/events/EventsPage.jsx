@@ -30,15 +30,19 @@ export default function EventsPage() {
     fetchEvents();
   }, []);
 
+  // Dedupe tabs by the Persian label, not the raw Armenian category --
+  // several raw categories (e.g. Համերգ/Ռոք/Ըազ/Դասական/Ժողովրդական/Փոփ) all map to the
+  // same کنسرت tab, so keying by raw category produced one duplicate tab per
+  // raw subtype instead of a single merged tab.
   const categories = useMemo(() => {
-    const cats = {};
-    events.forEach(e => { if (e.categoryFa) cats[e.category] = e.categoryFa; });
-    return Object.entries(cats);
+    const cats = new Set();
+    events.forEach(e => { if (e.categoryFa) cats.add(e.categoryFa); });
+    return Array.from(cats);
   }, [events]);
 
   const filtered = useMemo(() => {
     return events.filter(e => {
-      if (selectedCategory !== 'all' && e.category !== selectedCategory) return false;
+      if (selectedCategory !== 'all' && e.categoryFa !== selectedCategory) return false;
       if (searchQuery) {
         const q = searchQuery.toLowerCase();
         const haystack = [e.titleFa, e.titleEn, e.title, e.venueFa, e.venueEn, e.venue]
@@ -75,7 +79,7 @@ export default function EventsPage() {
           <h1 className="text-3xl sm:text-4xl font-black text-foreground">
             <span className="gold-gradient-text">رویدادها و کنسرت‌های ایروان</span>
           </h1>
-          <p className="text-foreground/60 mt-2">تئاتر، کنسرت، فستیوال و نمایشگاه</p>
+          <p className="text-foreground/60 mt-2">کنسرت، فستیوال، نمایشگاه، رقص و باله</p>
         </div>
 
         {/* Filters */}
@@ -91,9 +95,9 @@ export default function EventsPage() {
               className={`px-3 py-2 rounded-xl text-xs font-bold transition ${selectedCategory === 'all' ? 'bg-primary text-black' : 'bg-white/5 border border-white/10 text-foreground/60 hover:border-primary/30'}`}>
               همه
             </button>
-            {categories.map(([key, label]) => (
-              <button key={key} onClick={() => setSelectedCategory(key)}
-                className={`px-3 py-2 rounded-xl text-xs font-bold transition ${selectedCategory === key ? 'bg-primary text-black' : 'bg-white/5 border border-white/10 text-foreground/60 hover:border-primary/30'}`}>
+            {categories.map((label) => (
+              <button key={label} onClick={() => setSelectedCategory(label)}
+                className={`px-3 py-2 rounded-xl text-xs font-bold transition ${selectedCategory === label ? 'bg-primary text-black' : 'bg-white/5 border border-white/10 text-foreground/60 hover:border-primary/30'}`}>
                 {label}
               </button>
             ))}
