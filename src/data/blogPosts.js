@@ -230,6 +230,166 @@ export const blogPosts = [
       excerpt: 'Full breakdown of the new foreign-nationals law: digitalization, minimum registered capital, the 180-day tax rule, the end of the 10-year permit, the Work Entry Visa, and annual quotas.',
     },
   },
+  {
+    slug: 'apartment-rental-yerevan-guide',
+    href: '/blog/apartment-rental-yerevan-guide',
+    category: 'life',
+    thumbnail: '/images/tourism/yerevan-republic-square.webp',
+    tags: ['rental', 'apartment', 'yerevan', 'life'],
+    date: '2026-09-01',
+    fa: {
+      title: 'راهنمای اجاره آپارتمان در ایروان',
+      excerpt: 'بازه قیمت اجاره، تفاوت کوتاه‌مدت و بلندمدت، هزینه‌های جانبی و نکات کلیدی برای ایرانیان.',
+    },
+    en: {
+      title: 'Renting an Apartment in Yerevan — Complete Guide',
+      excerpt: 'Rental price ranges, short-term vs long-term differences, extra costs, and key tips for Iranians.',
+    },
+  },
+  {
+    slug: 'best-neighborhoods-yerevan-rent',
+    href: '/blog/best-neighborhoods-yerevan-rent',
+    category: 'life',
+    thumbnail: '/images/company/yerevan-city-center.webp',
+    tags: ['yerevan', 'neighborhoods', 'rental', 'life'],
+    date: '2026-09-01',
+    fa: {
+      title: 'بهترین محله‌های ایروان برای اجاره',
+      excerpt: 'مقایسه محله‌های کنترون، عربکیر و داوتاشن از نظر قیمت، دسترسی و امکانات.',
+    },
+    en: {
+      title: 'Best Neighborhoods in Yerevan for Renting',
+      excerpt: 'Comparing Kentron, Arabkir, and Davtashen by price, access, and amenities.',
+    },
+  },
+  {
+    slug: 'best-time-visit-armenia-souvenirs',
+    href: '/blog/best-time-visit-armenia-souvenirs',
+    category: 'tourism',
+    thumbnail: '/images/tourism/noravank-monastery.webp',
+    tags: ['tourism', 'souvenirs', 'armenia', 'travel'],
+    date: '2026-09-01',
+    fa: {
+      title: 'بهترین زمان سفر به ارمنستان و سوغاتی‌ها',
+      excerpt: 'راهنمای فصل‌به‌فصل آب‌وهوا، بهترین سوغاتی‌های ارمنی و نکات گمرکی.',
+    },
+    en: {
+      title: 'Best Time to Visit Armenia & Souvenirs Guide',
+      excerpt: 'A season-by-season weather guide, the best Armenian souvenirs, and customs tips.',
+    },
+  },
+  {
+    slug: 'medical-universities-armenia',
+    href: '/blog/medical-universities-armenia',
+    category: 'education',
+    thumbnail: '/images/company.webp',
+    tags: ['education', 'medical', 'university', 'armenia'],
+    date: '2026-09-02',
+    fa: {
+      title: 'دانشگاه‌های پزشکی ارمنستان: شرایط پذیرش و شهریه',
+      excerpt: 'معرفی دانشگاه‌های پزشکی معتبر ارمنستان، شرایط پذیرش دانشجوی خارجی و شهریه هر رشته.',
+    },
+    en: {
+      title: 'Medical Universities in Armenia: Admission & Tuition',
+      excerpt: "An overview of Armenia's accredited medical universities, international admission requirements, and tuition fees.",
+    },
+  },
+  {
+    slug: 'rental-contract-armenia-guide',
+    href: '/blog/rental-contract-armenia-guide',
+    category: 'life',
+    thumbnail: '/images/about.webp',
+    tags: ['rental-contract', 'deposit', 'legal', 'life'],
+    date: '2026-09-02',
+    fa: {
+      title: 'قرارداد اجاره خانه در ارمنستان: مدارک، ودیعه و نکاتی که باید قبل از امضا بدانید',
+      excerpt: 'از پیدا کردن آگهی معتبر تا تحویل کلید؛ مدارک لازم، بندهای ضروری قرارداد و نشانه‌های آگهی مشکوک.',
+    },
+    en: {
+      title: 'Rental Contracts in Armenia: Documents, Deposit & What to Check Before Signing',
+      excerpt: 'From finding a legitimate listing to key handover: required documents, essential contract clauses, and red flags to watch for.',
+    },
+  },
+  {
+    slug: 'rental-contract-tips-armenia',
+    href: '/blog/rental-contract-tips-armenia',
+    category: 'life',
+    thumbnail: '/images/about.webp',
+    tags: ['rental-contract', 'deposit', 'legal', 'tips'],
+    date: '2026-09-02',
+    fa: {
+      title: 'قرارداد اجاره در ارمنستان | ودیعه و نکات حقوقی',
+      excerpt: 'همه چیز درباره قرارداد اجاره، ودیعه، کمیسیون آژانس، مدارک لازم و نشانه‌های آگهی مشکوک.',
+    },
+    en: {
+      title: 'Rental Agreements in Armenia — Deposit & Legal Tips',
+      excerpt: 'Everything about rental contracts, deposits, agency commission, required documents, and warning signs of scam listings.',
+    },
+  },
+  {
+    slug: 'residency-paths-comparison-armenia',
+    href: '/blog/residency-paths-comparison-armenia',
+    category: 'residency',
+    thumbnail: '/images/visa.webp',
+    tags: ['residency', 'comparison', 'armenia'],
+    date: '2026-09-02',
+    fa: {
+      title: 'مقایسه مسیرهای اقامت ارمنستان',
+      excerpt: 'مقایسه کامل اقامت کاری، تحصیلی، سرمایه‌گذاری و تولد فرزند: هزینه، زمان و مدارک.',
+    },
+    en: {
+      title: "Comparing Armenia's Residency Paths",
+      excerpt: 'A full comparison of work, student, investment, and childbirth residency routes: cost, timeline, and documents.',
+    },
+  },
+  {
+    slug: 'simcard-internet-apps-yerevan',
+    href: '/blog/simcard-internet-apps-yerevan',
+    category: 'life',
+    thumbnail: '/images/tourism/yerevan-cascade.webp',
+    tags: ['simcard', 'internet', 'apps', 'yerevan'],
+    date: '2026-09-01',
+    fa: {
+      title: 'سیم‌کارت، اینترنت و اپلیکیشن‌های ضروری ایروان',
+      excerpt: 'همه چیز درباره‌ی خرید سیم‌کارت، اینترنت خانگی و اپ‌هایی که بدونشون نمی‌تونید تو ایروان زندگی کنید.',
+    },
+    en: {
+      title: 'SIM Cards, Internet & Essential Apps in Yerevan',
+      excerpt: "Everything about buying a SIM card, home internet, and the apps you can't live without in Yerevan.",
+    },
+  },
+  {
+    slug: 'startup-tech-ecosystem-yerevan',
+    href: '/blog/startup-tech-ecosystem-yerevan',
+    category: 'work',
+    thumbnail: '/images/company/yerevan-bank-building.webp',
+    tags: ['startup', 'tech', 'yerevan', 'work'],
+    date: '2026-09-02',
+    fa: {
+      title: 'اکوسیستم استارتاپ و فناوری ایروان',
+      excerpt: 'فرصت‌ها برای توسعه‌دهندگان، فریلنسرها و کارآفرینان ایرانی در هاب فناوری ایروان.',
+    },
+    en: {
+      title: "Yerevan's Startup & Tech Ecosystem",
+      excerpt: "Opportunities for developers, freelancers, and Iranian entrepreneurs in Yerevan's growing tech hub.",
+    },
+  },
+  {
+    slug: 'work-without-degree-armenia',
+    href: '/blog/work-without-degree-armenia',
+    category: 'work',
+    thumbnail: '/images/company/yerevan-city-center.webp',
+    tags: ['work', 'no-degree', 'armenia', 'jobs'],
+    date: '2026-09-02',
+    fa: {
+      title: 'کار بدون مدرک تحصیلی در ارمنستان',
+      excerpt: 'حوزه‌های کاری بدون مدرک دانشگاهی، حقوق تقریبی و شرایط مجوز کار.',
+    },
+    en: {
+      title: 'Working in Armenia Without a Degree',
+      excerpt: 'Job fields open without a university degree, approximate salaries, and work permit requirements.',
+    },
+  },
 ];
 
 export const CATEGORY_LABELS = {
