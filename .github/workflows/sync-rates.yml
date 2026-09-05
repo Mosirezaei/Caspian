@@ -2,11 +2,13 @@ name: Sync exchange rates
 
 on:
   schedule:
-    # Hourly -- matches alan chand's free-tier limit of 1 request/hour per
-    # token (see https://alanchand.com/media/api). If a paid/unlimited plan
-    # is purchased later, just tighten this cron expression (e.g. "*/5 * * * *")
-    # to poll more often; nothing else needs to change.
-    - cron: '0 * * * *'
+    # Every 5 minutes -- the shortest interval GitHub Actions supports.
+    # The route itself (app/api/cron/sync-rates/route.js) only actually
+    # calls alanchand on every tick during 08:00-20:00 Yerevan time; outside
+    # that window it throttles to once an hour. This keeps monthly request
+    # usage around ~4,700 of the account's 15,000/month paid quota while
+    # maximizing freshness during business hours.
+    - cron: '*/5 * * * *'
   workflow_dispatch: {}
 
 jobs:
