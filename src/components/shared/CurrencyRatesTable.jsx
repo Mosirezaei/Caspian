@@ -48,6 +48,7 @@ export default function CurrencyRatesTable() {
 
   useEffect(() => {
     let cancelled = false;
+    let debounceTimer = null;
 
     async function load() {
       try {
@@ -67,10 +68,33 @@ export default function CurrencyRatesTable() {
     }
 
     load();
-    const iv = setInterval(load, 5 * 60 * 1000);
+
+    // Live updates: the daily sync writes a fresh batch to exchange_rates_cache
+    // roughly every minute, so instead of polling on a timer we subscribe to
+    // Postgres changes and re-fetch the instant new rows land. A single sync
+    // touches all ~44 rows at once, so incoming change events are debounced
+    // to a single re-fetch rather than one per row.
+    const channel = supabase
+      .channel('exchange_rates_cache_live')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'exchange_rates_cache' },
+        () => {
+          if (debounceTimer) clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(load, 500);
+        }
+      )
+      .subscribe();
+
+    // Fallback poll in case the realtime connection drops for any reason --
+    // infrequent since it's just a safety net, not the primary update path.
+    const fallbackIv = setInterval(load, 2 * 60 * 1000);
+
     return () => {
       cancelled = true;
-      clearInterval(iv);
+      if (debounceTimer) clearTimeout(debounceTimer);
+      clearInterval(fallbackIv);
+      supabase.removeChannel(channel);
     };
   }, []);
 
