@@ -110,7 +110,7 @@ export default function SimcardInternetYerevan() {
           <h2 className="text-lg font-black text-primary mb-3 flex items-center gap-2"><CreditCard className="w-5 h-5" /> پرداخت بدون نقد</h2>
           <div className="text-sm text-foreground/70 leading-7 space-y-2">
             <p>ایروان تقریباً کاملاً cashless شده — از تاکسی تا نانوایی، همه‌جا کارت می‌پذیرن. اما:</p>
-            <p>✔ کارت ایرانی کار نمی‌کنه — باید کارت بانکی ارمنی بگیرید (Visa/Mastercard ظرف ۱ ساعت صادر می‌شه)</p>
+            <p>✔ کارت ایرانی کار نمی‌کنه — باید کارت بانکی ارمنی (Visa/Mastercard) بگیرید؛ برای افتتاح حساب باید اقامت داشته باشید، تأیید حساب (در صورت نداشتن کسری مدرک) ۱ تا ۳ روز کاری و صدور کارت بعد از تأیید حساب هم ۱ تا ۳ روز کاری دیگه طول می‌کشه.</p>
             <p>✔ Apple Pay و Google Pay با کارت ارمنی کار می‌کنه</p>
             <p>✔ IDram برای پرداخت‌های کوچک (پارکینگ، اتوبوس، خرید از بقالی) عالیه</p>
             <p>✔ دلار نقد برای روزهای اول لازمه — صرافی‌ها تو خیابان مسکوویان و ساریان زیادن</p>
