@@ -1,4 +1,6 @@
 import YandexTaxiArmenia from '@/views/blog/YandexTaxiArmenia';
+import JsonLd from '@/components/shared/JsonLd';
+import { articleSchema } from '@/lib/schema';
 
 export const metadata = {
   title: 'کار با یاندکس تاکسی در ارمنستان | شرایط، درآمد و ثبت‌نام | گروه کاسپین',
@@ -15,21 +17,13 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Article',
-            headline: 'کار با یاندکس تاکسی در ارمنستان: شرایط، درآمد و ثبت‌نام',
-            author: { '@type': 'Organization', name: 'Caspian Business Group' },
-            publisher: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-            datePublished: '2026-09-04',
-            url: 'https://caspian.am/blog/yandex-taxi-armenia',
-            inLanguage: 'fa',
-          }),
-        }}
-      />
+      <JsonLd data={articleSchema({
+        headline: 'کار با یاندکس تاکسی در ارمنستان: شرایط، درآمد و ثبت‌نام',
+        description: 'راهنمای جامع کار با یاندکس تاکسی (Yandex Go) در ارمنستان: مدارک لازم، شرایط ثبت‌نام، درآمد روزانه ۱۵ تا ۳۰ هزار درام، کمیسیون و الزامات قانونی برای مهاجران ایرانی.',
+        url: 'https://caspian.am/blog/yandex-taxi-armenia',
+        datePublished: '2026-09-04',
+        dateModified: '2026-09-04',
+      })} />
       <YandexTaxiArmenia />
     </>
   );
