@@ -19,7 +19,7 @@ export default function Page() {
     <>
       <JsonLd data={articleSchema({
         headline: 'سیم‌کارت، اینترنت و اپلیکیشن‌های ضروری ایروان',
-        description: 'سیم‌کارت، اینترنت و اپلیکیشن‌های ضروری ایروان',
+        description: 'راهنمای خرید سیم‌کارت، تعرفه اینترنت موبایل و اپلیکیشن‌های ضروری روزمره (تاکسی، پرداخت، پیام‌رسان) برای زندگی و سفر در ایروان.',
         url: 'https://caspian.am/blog/simcard-internet-apps-yerevan',
         datePublished: '2026-09-02',
         dateModified: '2026-09-02',
