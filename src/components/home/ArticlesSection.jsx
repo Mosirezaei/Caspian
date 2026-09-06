@@ -47,7 +47,7 @@ const articles = [
     tag: 'کسب‌وکار',
   },
   {
-    href: '/services/student-admission',
+    href: '/residency/student',
     emoji: '🎓',
     titleFa: 'تحصیل در ارمنستان',
     titleEn: 'Study in Armenia',
@@ -58,7 +58,7 @@ const articles = [
     tag: 'تحصیل',
   },
   {
-    href: '/travel/armenia-guide',
+    href: '/blog/armenia-tourism-guide',
     emoji: '🗺️',
     titleFa: 'جاذبه‌های دیدنی ارمنستان',
     titleEn: 'Armenia Travel Guide',
