@@ -17,6 +17,13 @@ export default function StartupTechYerevan() {
           <p className="text-foreground/60 mt-3 text-lg">فرصت‌ها برای توسعه‌دهندگان، فریلنسرها و کارآفرینان ایرانی</p>
         </section>
 
+        <img
+          src="https://images.unsplash.com/photo-1572021335469-31706a17aaef?w=1200&q=75"
+          alt="فضای کار اشتراکی استارتاپی، تصویر مرتبط با اکوسیستم فناوری ایروان"
+          className="w-full h-64 sm:h-80 object-cover rounded-2xl mb-8"
+          loading="lazy"
+        />
+
         <section className="glass-panel rounded-2xl p-6 mb-6">
           <h2 className="text-lg font-black text-primary mb-3 flex items-center gap-2"><Rocket className="w-5 h-5" /> چرا ایروان «سیلیکون‌ولی قفقاز» شده؟</h2>
           <div className="text-sm text-foreground/70 leading-7 space-y-3">
