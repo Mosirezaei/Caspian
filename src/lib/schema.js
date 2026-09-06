@@ -169,13 +169,51 @@ export function tourSchema({ name, description, itineraryPlaces, events }) {
   return [touristTrip, ...eventSchemas];
 }
 
+// tomsarkgh.am only publishes "day + Gregorian month name" (in Persian
+// transliteration), never a year -- see src/lib/tomsarkghScraper.js's
+// GREG_MONTH_FA. To get a real ISO startDate we infer the year from
+// "today" in Yerevan time, rolling over to next year for dates that would
+// otherwise land more than ~90 days in the past (handles events scraped
+// in Nov/Dec for Jan/Feb of the following year).
+const GREG_MONTH_FA = [
+  'ژانویه', 'فوریه', 'مارس', 'آوریل', 'مه', 'ژوئن',
+  'ژوئیه', 'اوت', 'سپتامبر', 'اکتبر', 'نوامبر', 'دسامبر',
+];
+const FA_DIGITS = '۰۱۲۳۴۵۶۷۸۹';
+
+function faDigitsToEn(str) {
+  return str.replace(/[۰-۹]/g, (d) => String(FA_DIGITS.indexOf(d)));
+}
+
+export function armenianEventDateToISO(dateFa, now = new Date()) {
+  if (!dateFa) return null;
+  const normalized = faDigitsToEn(dateFa).trim();
+  const match = normalized.match(/(\d{1,2})\s+(\S+)/);
+  if (!match) return null;
+  const day = parseInt(match[1], 10);
+  const monthIdx = GREG_MONTH_FA.indexOf(match[2]);
+  if (monthIdx === -1 || !day) return null;
+
+  const nowInYerevan = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Yerevan' }));
+  let year = nowInYerevan.getFullYear();
+  let candidate = new Date(Date.UTC(year, monthIdx, day));
+  const diffDays = (candidate.getTime() - nowInYerevan.getTime()) / 86400000;
+  if (diffDays < -90) {
+    year += 1;
+    candidate = new Date(Date.UTC(year, monthIdx, day));
+  }
+  return candidate.toISOString().slice(0, 10);
+}
+
 /**
  * Events listing page: one Event entry per event actually returned by
  * the tomsarkgh.am scrape for this request, wrapped in an ItemList.
- * Skips events with no parseable start date rather than guessing one.
+ * Skips events whose date string doesn't parse rather than guessing one.
  */
 export function eventsListSchema(events) {
-  const withDates = events.filter((e) => e.startDate);
+  const withDates = events
+    .map((e) => ({ ...e, _startDate: armenianEventDateToISO(e.date) }))
+    .filter((e) => e._startDate);
   if (withDates.length === 0) return null;
   return {
     '@context': 'https://schema.org',
@@ -186,7 +224,7 @@ export function eventsListSchema(events) {
       item: {
         '@type': 'Event',
         name: e.titleFa || e.titleEn || e.title,
-        startDate: e.startDate,
+        startDate: e._startDate,
         location: { '@type': 'Place', name: e.venueFa || e.venueEn || e.venue || 'Yerevan, Armenia' },
         image: e.image || undefined,
         offers: e.priceDisplay ? { '@type': 'Offer', description: e.priceDisplay } : undefined,
