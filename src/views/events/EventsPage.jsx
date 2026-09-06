@@ -3,9 +3,13 @@ import { useState, useEffect, useMemo } from 'react';
 import { Search, Calendar, Music, Ticket, MapPin, Loader2, X, MessageCircle, ExternalLink } from 'lucide-react';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 
-export default function EventsPage() {
-  const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(true);
+export default function EventsPage({ initialEvents = [] }) {
+  // Seeded from the server component's own fetch (used for the page's
+  // Event/ItemList schema) so there's no loading flash on first paint;
+  // we still re-fetch client-side below to pick up anything that's
+  // changed since this request was rendered.
+  const [events, setEvents] = useState(initialEvents);
+  const [loading, setLoading] = useState(initialEvents.length === 0);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -18,16 +22,17 @@ export default function EventsPage() {
         const data = await res.json();
         if (data.events && data.events.length > 0) {
           setEvents(data.events);
-        } else {
+        } else if (initialEvents.length === 0) {
           setError(data.error || 'رویدادی یافت نشد');
         }
       } catch (e) {
-        setError('خطا در اتصال');
+        if (initialEvents.length === 0) setError('خطا در اتصال');
       } finally {
         setLoading(false);
       }
     }
     fetchEvents();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Dedupe tabs by the Persian label, not the raw Armenian category --
