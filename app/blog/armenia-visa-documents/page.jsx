@@ -1,4 +1,6 @@
 import ArmeniaVisaDocuments from '@/views/blog/ArmeniaVisaDocuments';
+import JsonLd from '@/components/shared/JsonLd';
+import { articleSchema } from '@/lib/schema';
 
 export const metadata = {
   title: 'مدارک ویزای ارمنستان ۱۴۰۴ | راهنمای کامل اقامت و ویزا',
@@ -15,23 +17,13 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Article',
-            headline: 'مدارک ویزای ارمنستان ۱۴۰۴',
-            description: 'همه مدارک لازم برای ویزا و اقامت ارمنستان برای ایرانیان',
-            author: { '@type': 'Organization', name: 'Caspian Business Group' },
-            publisher: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-            datePublished: '2025-09-01',
-            dateModified: '2025-09-01',
-            url: 'https://caspian.am/blog/armenia-visa-documents',
-            inLanguage: 'fa',
-          }),
-        }}
-      />
+      <JsonLd data={articleSchema({
+        headline: 'مدارک ویزای ارمنستان ۱۴۰۴',
+        description: 'همه مدارک لازم برای ویزا و اقامت ارمنستان برای ایرانیان',
+        url: 'https://caspian.am/blog/armenia-visa-documents',
+        datePublished: '2025-09-01',
+        dateModified: '2025-09-01',
+      })} />
       <ArmeniaVisaDocuments />
     </>
   );
