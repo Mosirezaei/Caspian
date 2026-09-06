@@ -1,4 +1,6 @@
 import ResidencyViaCompany from '@/views/blog/ResidencyViaCompany';
+import JsonLd from '@/components/shared/JsonLd';
+import { articleSchema } from '@/lib/schema';
 
 export const metadata = {
   title: 'اقامت ارمنستان از طریق ثبت شرکت: شرایط، مراحل و نکات مهم | گروه کاسپین',
@@ -15,21 +17,13 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Article',
-            headline: 'اقامت ارمنستان از طریق ثبت شرکت: شرایط، مراحل و نکات مهم',
-            author: { '@type': 'Organization', name: 'Caspian Business Group' },
-            publisher: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-            datePublished: '2026-09-03',
-            url: 'https://caspian.am/blog/residency-via-company-registration',
-            inLanguage: 'fa',
-          }),
-        }}
-      />
+      <JsonLd data={articleSchema({
+        headline: 'اقامت ارمنستان از طریق ثبت شرکت: شرایط، مراحل و نکات مهم',
+        description: 'راهنمای کامل اخذ اقامت ارمنستان از طریق فعالیت تجاری: شرایط اداره مهاجرت، چرا ثبت صوری کافی نیست و چگونه Caspian Group کل مسیر را پشتیبانی می‌کند.',
+        url: 'https://caspian.am/blog/residency-via-company-registration',
+        datePublished: '2026-09-03',
+        dateModified: '2026-09-03',
+      })} />
       <ResidencyViaCompany />
     </>
   );
