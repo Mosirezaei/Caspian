@@ -1,4 +1,6 @@
 import YandexDeliveryArmenia from '@/views/blog/YandexDeliveryArmenia';
+import JsonLd from '@/components/shared/JsonLd';
+import { articleSchema } from '@/lib/schema';
 
 export const metadata = {
   title: 'کار با یاندکس دلیوری در ارمنستان | پیک، درآمد و ثبت‌نام | گروه کاسپین',
@@ -15,21 +17,13 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Article',
-            headline: 'کار با یاندکس دلیوری در ارمنستان: پیک موتوری، درآمد و ثبت‌نام',
-            author: { '@type': 'Organization', name: 'Caspian Business Group' },
-            publisher: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-            datePublished: '2026-09-04',
-            url: 'https://caspian.am/blog/yandex-delivery-armenia',
-            inLanguage: 'fa',
-          }),
-        }}
-      />
+      <JsonLd data={articleSchema({
+        headline: 'کار با یاندکس دلیوری در ارمنستان: پیک موتوری، درآمد و ثبت‌نام',
+        description: 'راهنمای کامل کار با یاندکس دلیوری و یاندکس ایتس در ارمنستان: پیک موتوری، دوچرخه یا خودرو — درآمد ۸ تا ۱۵ هزار درام روزانه، مدارک لازم و الزامات قانونی.',
+        url: 'https://caspian.am/blog/yandex-delivery-armenia',
+        datePublished: '2026-09-04',
+        dateModified: '2026-09-04',
+      })} />
       <YandexDeliveryArmenia />
     </>
   );
