@@ -19,7 +19,7 @@ export default function Page() {
     <>
       <JsonLd data={articleSchema({
         headline: 'اکوسیستم استارتاپ و فناوری ایروان',
-        description: 'اکوسیستم استارتاپ و فناوری ایروان',
+        description: 'معرفی اکوسیستم استارتاپی و فناوری ایروان: فضاهای کار اشتراکی، شرکت‌های فناوری فعال و فرصت‌های شغلی و سرمایه‌گذاری برای علاقه‌مندان به حوزه تک.',
         url: 'https://caspian.am/blog/startup-tech-ecosystem-yerevan',
         datePublished: '2026-09-02',
         dateModified: '2026-09-02',
