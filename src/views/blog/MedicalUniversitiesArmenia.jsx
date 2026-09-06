@@ -24,6 +24,13 @@ export default function MedicalUniversitiesArmenia() {
           <p className="text-foreground/60 mt-3 text-lg">پزشکی، دندانپزشکی و داروسازی به زبان انگلیسی با شهریه‌ی ۳ تا ۱۰ برابر ارزان‌تر از اروپا</p>
         </section>
 
+        <img
+          src="https://images.unsplash.com/photo-1697980825665-10b25a70bd1d?w=1200&q=75"
+          alt="دانشجویان پزشکی در محیط بالینی، تصویر مرتبط با تحصیل پزشکی در ارمنستان"
+          className="w-full h-64 sm:h-80 object-cover rounded-2xl mb-8"
+          loading="lazy"
+        />
+
         <section className="glass-panel rounded-2xl p-6 mb-6">
           <h2 className="text-lg font-black text-primary mb-3 flex items-center gap-2"><Stethoscope className="w-5 h-5" /> چرا پزشکی در ارمنستان؟</h2>
           <div className="text-sm text-foreground/70 leading-7 space-y-2">
