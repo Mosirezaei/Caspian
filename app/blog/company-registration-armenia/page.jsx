@@ -1,4 +1,6 @@
 import CompanyRegistrationGuide from '@/views/blog/CompanyRegistrationGuide';
+import JsonLd from '@/components/shared/JsonLd';
+import { articleSchema } from '@/lib/schema';
 
 export const metadata = {
   title: 'راهنمای ثبت شرکت در ارمنستان | هزینه، مراحل و مالیات | گروه کاسپین',
@@ -15,21 +17,13 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Article',
-            headline: 'راهنمای ثبت شرکت در ارمنستان: هزینه، مراحل و مالیات',
-            author: { '@type': 'Organization', name: 'Caspian Business Group' },
-            publisher: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-            datePublished: '2026-09-02',
-            url: 'https://caspian.am/blog/company-registration-armenia',
-            inLanguage: 'fa',
-          }),
-        }}
-      />
+      <JsonLd data={articleSchema({
+        headline: 'راهنمای ثبت شرکت در ارمنستان: هزینه، مراحل و مالیات',
+        description: 'راهنمای کامل ثبت شرکت LLC در ارمنستان برای ایرانیان: هزینه‌های واقعی، مراحل گام‌به‌گام، سیستم مالیاتی ۵٪، حساب بانکی و نکات کلیدی.',
+        url: 'https://caspian.am/blog/company-registration-armenia',
+        datePublished: '2026-09-02',
+        dateModified: '2026-09-02',
+      })} />
       <CompanyRegistrationGuide />
     </>
   );
