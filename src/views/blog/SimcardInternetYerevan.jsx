@@ -18,6 +18,13 @@ export default function SimcardInternetYerevan() {
           <p className="text-xs text-foreground/40 mt-2">آپدیت: شهریور ۱۴۰۵</p>
         </section>
 
+        <img
+          src="https://images.unsplash.com/photo-1562774555-079298a31cbe?w=1200&q=75"
+          alt="سیم‌کارت موبایل، تصویر مرتبط با راهنمای اینترنت و سیم‌کارت در ایروان"
+          className="w-full h-64 sm:h-80 object-cover rounded-2xl mb-8"
+          loading="lazy"
+        />
+
         <section className="glass-panel rounded-2xl p-6 mb-6">
           <h2 className="text-xl font-black text-primary mb-4 flex items-center gap-2"><Smartphone className="w-5 h-5" /> اپراتورهای موبایل ارمنستان</h2>
           <div className="text-sm text-foreground/70 leading-7 space-y-3">
