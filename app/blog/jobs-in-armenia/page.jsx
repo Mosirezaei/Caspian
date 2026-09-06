@@ -1,4 +1,6 @@
 import JobsInArmenia from '@/views/blog/JobsInArmenia';
+import JsonLd from '@/components/shared/JsonLd';
+import { articleSchema } from '@/lib/schema';
 
 export const metadata = {
   title: 'کار و اشتغال در ارمنستان | راهنمای جامع ایرانیان',
@@ -15,24 +17,14 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Article',
-            headline: 'راهنمای جامع اشتغال و کاریابی در ارمنستان',
-            description: 'راهنمای جامع اشتغال و کاریابی در ارمنستان برای متقاضیان ایرانی',
-            author: { '@type': 'Organization', name: 'Caspian Business Group' },
-            publisher: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-            datePublished: '2026-09-02',
-            dateModified: '2026-09-02',
-            url: 'https://caspian.am/blog/jobs-in-armenia',
-            inLanguage: 'fa',
-            about: { '@type': 'Place', name: 'Armenia' },
-          }),
-        }}
-      />
+      <JsonLd data={articleSchema({
+        headline: 'راهنمای جامع اشتغال و کاریابی در ارمنستان',
+        description: 'راهنمای جامع اشتغال و کاریابی در ارمنستان برای متقاضیان ایرانی',
+        url: 'https://caspian.am/blog/jobs-in-armenia',
+        datePublished: '2026-09-02',
+        dateModified: '2026-09-02',
+        about: { '@type': 'Place', name: 'Armenia' },
+      })} />
       <JobsInArmenia />
     </>
   );
