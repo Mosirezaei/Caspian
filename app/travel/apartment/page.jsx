@@ -1,4 +1,6 @@
 import Apartment from '@/views/travel/Apartment';
+import JsonLd from '@/components/shared/JsonLd';
+import { apartmentServiceSchema } from '@/lib/schema';
 
 export const metadata = {
   title: 'اجاره آپارتمان مبله ایروان | از ۳۰ دلار',
@@ -13,39 +15,22 @@ export const metadata = {
   },
 };
 
-// JSON-LD — باید export جداگانه باشه تا Next.js درست پردازش کنه
+// Mirrors ARMENIA_LOCATIONS in src/views/travel/Apartment.jsx.
+const LOCATIONS_FOR_SCHEMA = [
+  'Yerevan — Kentron (City Center)',
+  'Yerevan — Northern Ave & Republic Square',
+  'Yerevan — Cascade Area',
+  'Yerevan — Arabkir (Komitas Ave)',
+  'Yerevan — Davtashen & Nor Nork',
+  'Tsaghkadzor',
+  'Dilijan',
+  'Lake Sevan',
+];
+
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Service',
-            name: 'اجاره آپارتمان مبله در ایروان',
-            description: 'اجاره آپارتمان مبله روزانه و ماهانه در ایروان ارمنستان با پرداخت ریالی',
-            provider: {
-              '@type': 'Organization',
-              name: 'Caspian Business Group',
-              url: 'https://caspian.am',
-              telephone: '+37433149327',
-            },
-            areaServed: {
-              '@type': 'City',
-              name: 'Yerevan',
-              containedInPlace: { '@type': 'Country', name: 'Armenia' },
-            },
-            offers: {
-              '@type': 'AggregateOffer',
-              priceCurrency: 'USD',
-              lowPrice: '30',
-              highPrice: '300',
-              description: 'اجاره روزانه از ۳۰ دلار، ماهانه از ۳۰۰ دلار',
-            },
-          }),
-        }}
-      />
+      <JsonLd data={apartmentServiceSchema(LOCATIONS_FOR_SCHEMA)} />
       <Apartment />
     </>
   );
