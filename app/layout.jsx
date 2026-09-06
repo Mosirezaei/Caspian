@@ -76,6 +76,13 @@ export default function RootLayout({ children }) {
           contactPoint: { '@type': 'ContactPoint', telephone: '+37433149327', contactType: 'customer service', availableLanguage: ['Persian', 'English', 'Russian'] },
           sameAs: ['https://t.me/caspianbusinessgroup', 'https://www.instagram.com/caspian.am'],
         })}} />
+        <script type="text/javascript" dangerouslySetInnerHTML={{ __html: `
+          (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "ydxpams0e3");
+        ` }} />
         <style>{`html,body{background-color:#0a0a0a;color:#fafafa;}#__next{min-height:100vh;background-color:#0a0a0a;}`}</style>
       </head>
       <body style={{ backgroundColor: '#0a0a0a', margin: 0, overflowX: 'hidden', maxWidth: '100vw' }}>
