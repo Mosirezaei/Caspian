@@ -1,4 +1,6 @@
 import CompanyRegistrationSteps from '@/views/blog/CompanyRegistrationSteps';
+import JsonLd from '@/components/shared/JsonLd';
+import { articleSchema } from '@/lib/schema';
 
 export const metadata = {
   title: 'ثبت شرکت در ارمنستان: مراحل، مدارک و زمان‌بندی کامل | گروه کاسپین',
@@ -15,21 +17,13 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Article',
-            headline: 'ثبت شرکت در ارمنستان: مراحل، مدارک و زمان‌بندی کامل',
-            author: { '@type': 'Organization', name: 'Caspian Business Group' },
-            publisher: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-            datePublished: '2026-09-03',
-            url: 'https://caspian.am/blog/company-registration-steps-armenia',
-            inLanguage: 'fa',
-          }),
-        }}
-      />
+      <JsonLd data={articleSchema({
+        headline: 'ثبت شرکت در ارمنستان: مراحل، مدارک و زمان‌بندی کامل',
+        description: 'راهنمای کامل مراحل ثبت شرکت در ارمنستان برای ایرانیان: مدارک لازم، فرایند اداره ثبت، وکالت‌نامه و اقدامات پس از ثبت. ثبت LLC یا IE در ۱ تا ۳ روز کاری.',
+        url: 'https://caspian.am/blog/company-registration-steps-armenia',
+        datePublished: '2026-09-03',
+        dateModified: '2026-09-03',
+      })} />
       <CompanyRegistrationSteps />
     </>
   );
