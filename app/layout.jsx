@@ -3,6 +3,7 @@ import { Vazirmatn } from 'next/font/google';
 const vazirmatn = Vazirmatn({ subsets: ['arabic', 'latin'], weight: ['400', '600', '700', '900'], variable: '--font-vazir', display: 'swap' });
 
 import Providers from './providers';
+import Script from 'next/script';
 
 
 
@@ -43,9 +44,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl" className={vazirmatn.variable}>
       <head>
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-W5JQEDHKNC" />
-        <script dangerouslySetInnerHTML={{ __html: `
+        {/* Google tag (gtag.js) — loaded after the page is interactive so it doesn't block rendering */}
+        <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-W5JQEDHKNC" />
+        <Script id="ga-gtag-init" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: `
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
@@ -84,7 +85,7 @@ export default function RootLayout({ children }) {
           contactPoint: { '@type': 'ContactPoint', telephone: '+37433149327', contactType: 'customer service', availableLanguage: ['Persian', 'English', 'Russian'] },
           sameAs: ['https://t.me/caspianbusinessgroup', 'https://www.instagram.com/caspian.am'],
         })}} />
-        <script type="text/javascript" dangerouslySetInnerHTML={{ __html: `
+        <Script id="ms-clarity" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: `
           (function(c,l,a,r,i,t,y){
               c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
               t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
