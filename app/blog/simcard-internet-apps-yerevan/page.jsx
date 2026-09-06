@@ -1,4 +1,6 @@
 import SimcardInternetYerevan from '@/views/blog/SimcardInternetYerevan';
+import JsonLd from '@/components/shared/JsonLd';
+import { articleSchema } from '@/lib/schema';
 
 export const metadata = {
   title: 'سیم‌کارت، اینترنت و اپلیکیشن‌های ضروری ایروان | گروه کاسپین',
@@ -6,5 +8,16 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <SimcardInternetYerevan />;
+  return (
+    <>
+      <JsonLd data={articleSchema({
+        headline: 'سیم‌کارت، اینترنت و اپلیکیشن‌های ضروری ایروان',
+        description: 'سیم‌کارت، اینترنت و اپلیکیشن‌های ضروری ایروان',
+        url: 'https://caspian.am/blog/simcard-internet-apps-yerevan',
+        datePublished: '2026-09-02',
+        dateModified: '2026-09-02',
+      })} />
+      <SimcardInternetYerevan />
+    </>
+  );
 }
