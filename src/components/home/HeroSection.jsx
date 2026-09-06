@@ -111,7 +111,7 @@ export default function HeroSection() {
           </div>
           <div className="grid grid-cols-4 gap-2 w-full">
             {[
-              { icon: Plane, label: lang === 'fa' ? 'پرواز' : lang === 'en' ? 'Flight' : 'Авиа', href: '/travel/flight' },
+              { icon: Plane, label: lang === 'fa' ? 'پرواز' : lang === 'en' ? 'Flight' : 'Авиа', href: '/travel/flight-bus' },
               { icon: Hotel, label: lang === 'fa' ? 'هتل' : lang === 'en' ? 'Hotel' : 'Отель', href: '/travel/hotel' },
               { icon: HomeIcon, label: lang === 'fa' ? 'آپارتمان' : lang === 'en' ? 'Apartment' : 'Квартира', href: '/travel/apartment' },
               { icon: Star, label: 'VIP', href: '/travel/transfer' },
