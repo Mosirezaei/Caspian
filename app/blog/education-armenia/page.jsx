@@ -1,4 +1,6 @@
 import EducationArmenia from '@/views/blog/EducationArmenia';
+import JsonLd from '@/components/shared/JsonLd';
+import { articleSchema } from '@/lib/schema';
 
 export const metadata = {
   title: 'تحصیل در ارمنستان: مدارس ایرانی، دانشگاه‌ها و هزینه‌ها | گروه کاسپین',
@@ -15,21 +17,13 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Article',
-            headline: 'تحصیل در ارمنستان: مدارس ایرانی، دانشگاه‌ها و هزینه‌ها',
-            author: { '@type': 'Organization', name: 'Caspian Business Group' },
-            publisher: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-            datePublished: '2026-09-03',
-            url: 'https://caspian.am/blog/education-armenia',
-            inLanguage: 'fa',
-          }),
-        }}
-      />
+      <JsonLd data={articleSchema({
+        headline: 'تحصیل در ارمنستان: مدارس ایرانی، دانشگاه‌ها و هزینه‌ها',
+        description: 'راهنمای کامل تحصیل در ارمنستان برای ایرانیان: مدرسه‌ی شهید فهمیده ایروان، دانشگاه آمریکایی ارمنستان، شهریه و هزینه‌ی زندگی دانشجویی.',
+        url: 'https://caspian.am/blog/education-armenia',
+        datePublished: '2026-09-03',
+        dateModified: '2026-09-03',
+      })} />
       <EducationArmenia />
     </>
   );
