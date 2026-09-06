@@ -1,4 +1,6 @@
 import ArmeniaTourism from '@/views/blog/ArmeniaTourism';
+import JsonLd from '@/components/shared/JsonLd';
+import { articleSchema } from '@/lib/schema';
 
 export const metadata = {
   title: 'جاهای دیدنی ارمنستان | راهنمای کامل گردشگری',
@@ -15,24 +17,14 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Article',
-            headline: 'راهنمای کامل جاهای دیدنی ارمنستان',
-            description: 'راهنمای کامل جاذبه‌های گردشگری ارمنستان با عکس و توضیحات کامل',
-            author: { '@type': 'Organization', name: 'Caspian Business Group' },
-            publisher: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-            datePublished: '2026-09-02',
-            dateModified: '2026-09-02',
-            url: 'https://caspian.am/blog/armenia-tourism-guide',
-            inLanguage: 'fa',
-            about: { '@type': 'Country', name: 'Armenia' },
-          }),
-        }}
-      />
+      <JsonLd data={articleSchema({
+        headline: 'راهنمای کامل جاهای دیدنی ارمنستان',
+        description: 'راهنمای کامل جاذبه‌های گردشگری ارمنستان با عکس و توضیحات کامل',
+        url: 'https://caspian.am/blog/armenia-tourism-guide',
+        datePublished: '2026-09-02',
+        dateModified: '2026-09-02',
+        about: { '@type': 'Country', name: 'Armenia' },
+      })} />
       <ArmeniaTourism />
     </>
   );
