@@ -98,7 +98,7 @@ export default function HeroSection() {
             {[
               { icon: MapPin, label: lang === 'fa' ? 'اقامت' : lang === 'en' ? 'Residency' : 'ВНЖ', href: '/residency/work' },
               { icon: Building2, label: lang === 'fa' ? 'ثبت شرکت' : lang === 'en' ? 'Company' : 'Компания', href: '/services/company-registration' },
-              { icon: GraduationCap, label: lang === 'fa' ? 'تحصیلی' : lang === 'en' ? 'Student' : 'Учёба', href: '/student-visa/armenia' },
+              { icon: GraduationCap, label: lang === 'fa' ? 'تحصیلی' : lang === 'en' ? 'Student' : 'Учёба', href: '/residency/student' },
               { icon: Globe, label: lang === 'fa' ? 'ویزای روسیه' : lang === 'en' ? 'Russia Visa' : 'Виза РФ', href: '/visa/russia' },
             ].map(({ icon: Icon, label, href }) => (
               <Link key={label} href={href}
