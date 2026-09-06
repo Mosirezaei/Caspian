@@ -1,4 +1,6 @@
 import CompanyCostsTaxBanking from '@/views/blog/CompanyCostsTaxBanking';
+import JsonLd from '@/components/shared/JsonLd';
+import { articleSchema } from '@/lib/schema';
 
 export const metadata = {
   title: 'هزینه ثبت شرکت در ارمنستان، مالیات و افتتاح حساب بانکی | گروه کاسپین',
@@ -15,21 +17,13 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Article',
-            headline: 'هزینه ثبت شرکت در ارمنستان، مالیات و افتتاح حساب بانکی',
-            author: { '@type': 'Organization', name: 'Caspian Business Group' },
-            publisher: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-            datePublished: '2026-09-03',
-            url: 'https://caspian.am/blog/company-costs-tax-banking-armenia',
-            inLanguage: 'fa',
-          }),
-        }}
-      />
+      <JsonLd data={articleSchema({
+        headline: 'هزینه ثبت شرکت در ارمنستان، مالیات و افتتاح حساب بانکی',
+        description: 'راهنمای کامل هزینه‌های ثبت شرکت در ارمنستان، رژیم‌های مالیاتی (۱۸٪ و گردش مالی)، شرایط افتتاح حساب بانکی و اهمیت حسابداری منظم.',
+        url: 'https://caspian.am/blog/company-costs-tax-banking-armenia',
+        datePublished: '2026-09-03',
+        dateModified: '2026-09-03',
+      })} />
       <CompanyCostsTaxBanking />
     </>
   );
