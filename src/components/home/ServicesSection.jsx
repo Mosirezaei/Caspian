@@ -12,7 +12,7 @@ const serviceIcons = [FileText, Globe, Building2, Plane, Hotel, Star];
 const serviceRoutes = {
   0: '/visa/russia',
   1: '/residency/work',
-  2: '/services/company-registration',
+  2: '/residency/business',
   3: '/travel/flight-bus',
   4: '/travel/hotel',
   5: '/travel/transfer',
