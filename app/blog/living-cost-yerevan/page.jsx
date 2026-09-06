@@ -1,4 +1,6 @@
 import LivingCostYerevan from '@/views/blog/LivingCostYerevan';
+import JsonLd from '@/components/shared/JsonLd';
+import { articleSchema } from '@/lib/schema';
 
 export const metadata = {
   title: 'هزینه زندگی در ایروان | راهنمای کامل ',
@@ -15,24 +17,14 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Article',
-            headline: 'هزینه زندگی در ایروان ۱۴۰۴',
-            description: 'راهنمای کامل هزینه‌های زندگی در ارمنستان برای ایرانیان',
-            author: { '@type': 'Organization', name: 'Caspian Business Group' },
-            publisher: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-            datePublished: '2025-09-01',
-            dateModified: '2025-09-01',
-            url: 'https://caspian.am/blog/living-cost-yerevan',
-            inLanguage: 'fa',
-            about: { '@type': 'Place', name: 'Yerevan', containedInPlace: { '@type': 'Country', name: 'Armenia' } },
-          }),
-        }}
-      />
+      <JsonLd data={articleSchema({
+        headline: 'هزینه زندگی در ایروان ۱۴۰۴',
+        description: 'راهنمای کامل هزینه‌های زندگی در ارمنستان برای ایرانیان',
+        url: 'https://caspian.am/blog/living-cost-yerevan',
+        datePublished: '2025-09-01',
+        dateModified: '2025-09-01',
+        about: { '@type': 'Place', name: 'Yerevan' },
+      })} />
       <LivingCostYerevan />
     </>
   );
