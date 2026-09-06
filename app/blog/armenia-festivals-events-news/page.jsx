@@ -1,4 +1,6 @@
 import ArmeniaFestivalsEventsNews from '@/views/blog/ArmeniaFestivalsEventsNews';
+import JsonLd from '@/components/shared/JsonLd';
+import { articleSchema } from '@/lib/schema';
 
 export const metadata = {
   title: 'فستیوال‌ها، کنسرت‌ها و اخبار مهاجرتی ارمنستان | گروه کاسپین',
@@ -15,24 +17,14 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Article',
-            headline: 'فستیوال‌های سالانه ارمنستان',
-            description: 'تقویم مهمترین فستیوال‌های سالانه ارمنستان،  ',
-            author: { '@type': 'Organization', name: 'Caspian Business Group' },
-            publisher: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am' },
-            datePublished: '2026-09-02',
-            dateModified: '2026-09-02',
-            url: 'https://caspian.am/blog/armenia-festivals-events-news',
-            inLanguage: 'fa',
-            about: { '@type': 'Country', name: 'Armenia' },
-          }),
-        }}
-      />
+      <JsonLd data={articleSchema({
+        headline: 'فستیوال‌های سالانه ارمنستان',
+        description: 'تقویم مهمترین فستیوال‌های سالانه ارمنستان،  ',
+        url: 'https://caspian.am/blog/armenia-festivals-events-news',
+        datePublished: '2026-09-02',
+        dateModified: '2026-09-02',
+        about: { '@type': 'Country', name: 'Armenia' },
+      })} />
       <ArmeniaFestivalsEventsNews />
     </>
   );
