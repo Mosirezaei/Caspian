@@ -26,6 +26,13 @@ export default function WorkWithoutDegree() {
           <p className="text-foreground/60 mt-3 text-lg">فرصت‌ها، حقوق و واقعیت‌های بازار کار برای ایرانیان</p>
         </section>
 
+        <img
+          src="https://images.unsplash.com/photo-1577199001468-44c049e7603f?w=1200&q=75"
+          alt="کارگران با کلاه ایمنی، تصویر مرتبط با کار بدون مدرک تحصیلی"
+          className="w-full h-64 sm:h-80 object-cover rounded-2xl mb-8"
+          loading="lazy"
+        />
+
         <section className="glass-panel rounded-2xl p-6 mb-6">
           <h2 className="text-lg font-black text-primary mb-3">واقعیت بازار کار ارمنستان</h2>
           <div className="text-sm text-foreground/70 leading-7 space-y-3">
