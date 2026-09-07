@@ -30,7 +30,7 @@ export default function FlightSearch() {
         date: formData.date,
         passengers: formData.passengers,
       }).toString();
-      window.location.href = `/travel/flight?${query}`;
+      window.location.href = `/travel/flight-bus?${query}`;
     }
   };
 
