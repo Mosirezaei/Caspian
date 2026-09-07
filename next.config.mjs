@@ -26,6 +26,8 @@ const nextConfig = {
       { source: '/services/hotel',               destination: '/travel/hotel',         permanent: true },
       { source: '/vip',                           destination: '/contact',             permanent: true },
       { source: '/services/embassy-appointment',  destination: '/contact',             permanent: true },
+      { source: '/services/visa-south-america',   destination: '/contact',             permanent: true },
+      { source: '/services/visa-romania',         destination: '/contact',             permanent: true },
       { source: '/services/student-visa',         destination: '/student-visa/russia', permanent: true },
       { source: '/services/company-registration', destination: '/residency/business',  permanent: true },
       { source: '/blog/eqamat-armenia-az-tarigh-sherktat', destination: '/blog/residency-via-company-registration', permanent: true },
