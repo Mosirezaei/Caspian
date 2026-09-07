@@ -77,7 +77,7 @@ const HIGHLIGHT_IMAGES = [
 const HIGHLIGHT_HREFS = [
   null, // Yerevan
   '/travel/tour/sevan-lake', // Lake Sevan
-  null, // Garni & Geghard
+  '/travel/tour/garni-geghard', // Garni & Geghard
   null, // Khor Virap
   null, // Dilijan
   null, // Gyumri
