@@ -156,6 +156,13 @@ export default function JobsInArmenia() {
           </div>
         </section>
 
+        <img
+          src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?w=1200&q=75"
+          alt="جلسه کاری با لپ‌تاپ، تصویر مرتبط با کاریابی در ارمنستان"
+          className="w-full h-64 sm:h-80 object-cover rounded-2xl mb-8"
+          loading="lazy"
+        />
+
         {/* Job search paths */}
         <section className="mb-12">
           <h2 className="text-xl font-bold text-foreground mb-5 flex items-center gap-2">
