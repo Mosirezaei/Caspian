@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Link from 'next/link';
 import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 import { MessageCircle, PartyPopper, CalendarDays } from 'lucide-react';
@@ -71,6 +72,15 @@ const HIGHLIGHT_IMAGES = [
   'https://images.unsplash.com/photo-1677864109159-34eb97228c65?w=800&q=80&auto=format&fit=crop', // Khor Virap
   'https://images.unsplash.com/photo-1633450077736-4195e1053002?w=800&q=80&auto=format&fit=crop', // Dilijan
   'https://images.unsplash.com/photo-1584294672682-fa86591eded1?w=800&q=80&auto=format&fit=crop', // Gyumri
+];
+
+const HIGHLIGHT_HREFS = [
+  null, // Yerevan
+  '/travel/tour/sevan-lake', // Lake Sevan
+  null, // Garni & Geghard
+  null, // Khor Virap
+  null, // Dilijan
+  null, // Gyumri
 ];
 
 function TourContent() {
@@ -153,21 +163,40 @@ function TourContent() {
 
       <InfoBlock title={t.highlightsTitle}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-2">
-          {highlights.map((h, i) => (
-            <div key={i} className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-primary/40 transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-1">
-              <div className="relative h-48 w-full overflow-hidden">
-                <img
-                  src={HIGHLIGHT_IMAGES[i]}
-                  alt={h.name}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-                <h3 className="absolute bottom-3 right-4 left-4 font-black text-white text-base drop-shadow-md">{h.name}</h3>
+          {highlights.map((h, i) => {
+            const href = HIGHLIGHT_HREFS[i];
+            const cardInner = (
+              <>
+                <div className="relative h-48 w-full overflow-hidden">
+                  <img
+                    src={HIGHLIGHT_IMAGES[i]}
+                    alt={h.name}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                  <h3 className="absolute bottom-3 right-4 left-4 font-black text-white text-base drop-shadow-md">{h.name}</h3>
+                  {href && (
+                    <span className="absolute top-3 left-3 text-[10px] font-bold text-primary bg-background/80 backdrop-blur rounded-full px-2.5 py-1">
+                      مشاهده تور ↗
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs text-foreground/60 leading-relaxed p-4">{h.desc}</p>
+              </>
+            );
+            const cardClass = "group relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-primary/40 transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-1";
+            return href ? (
+              <Link key={i} href={href} className={cardClass}>
+                {cardInner}
+              </Link>
+            ) : (
+              <div key={i} className={cardClass}>
+                {cardInner}
               </div>
-              <p className="text-xs text-foreground/60 leading-relaxed p-4">{h.desc}</p>
-            </div>
-          ))}
+            );
+          })}
+
         </div>
       </InfoBlock>
 
