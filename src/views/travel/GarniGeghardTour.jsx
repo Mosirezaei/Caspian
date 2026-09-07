@@ -1,5 +1,5 @@
 'use client';
-import { Clock, Backpack, Phone } from 'lucide-react';
+import { Clock, Backpack, Phone, MessageCircle } from 'lucide-react';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 import PageSidebar from '@/components/shared/PageSidebar';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
@@ -20,7 +20,7 @@ export default function GarniGeghardTour() {
       <div className="relative pt-14">
         <div className="relative h-56 sm:h-72 overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1657968641725-deb8d1a24142?w=1600&q=80"
+            src="https://images.unsplash.com/photo-1629761905941-a3801e2874e2?w=1600&q=80"
             alt="معبد باستانی گارنی و صومعه صخره‌ای گغارد، ارمنستان"
             className="w-full h-full object-cover opacity-40"
             loading="eager"
@@ -124,8 +124,8 @@ export default function GarniGeghardTour() {
                   </p>
 
                   <img
-                    src="https://images.unsplash.com/photo-1609669712881-d9bc36df5ab3?w=1200&q=80"
-                    alt="چشم‌انداز طبیعی دره و کوهستان ارمنستان، مشابه فضای دره گارنی"
+                    src="https://images.unsplash.com/photo-1629761905941-a3801e2874e2?w=1200&q=80"
+                    alt="معبد باستانی گارنی، تنها معبد هلنیستی باقی‌مانده در قفقاز"
                     className="w-full h-56 sm:h-72 object-cover rounded-2xl my-2"
                     loading="lazy"
                   />
@@ -156,8 +156,8 @@ export default function GarniGeghardTour() {
                   </p>
 
                   <img
-                    src="https://images.unsplash.com/photo-1666093894171-faed137507c6?w=1200&q=80"
-                    alt="چشم‌انداز کوهستانی ارمنستان، مشابه فضای اطراف صومعه گغارد و دره گارنی"
+                    src="https://images.unsplash.com/photo-1603872864781-798ed261b79d?w=1200&q=80"
+                    alt="خاچکارها بر دیواره صومعه صخره‌ای گغارد، ارمنستان"
                     className="w-full h-56 sm:h-72 object-cover rounded-2xl my-2"
                     loading="lazy"
                   />
@@ -168,6 +168,19 @@ export default function GarniGeghardTour() {
                   </p>
                 </div>
               </section>
+
+              <div className="text-center p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-primary/15 to-transparent border border-primary/25">
+                <h3 className="text-lg font-black text-foreground mb-2">همین حالا جای خودت رو رزرو کن</h3>
+                <p className="text-sm text-foreground/60 mb-5">برای رزرو آنلاین، اطلاعات بیشتر یا هماهنگی تاریخ، در واتساپ با ما در ارتباط باش</p>
+                <a
+                  href="https://wa.me/37433149327?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D9%85%DB%8C%E2%80%8C%D8%AE%D9%88%D8%A7%D9%85%20%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87%20%D8%AA%D9%88%D8%B1%20%DA%AF%D8%A7%D8%B1%D9%86%DB%8C%D8%8C%20%DA%AF%D8%BA%D8%A7%D8%B1%D8%AF%20%D9%88%20%D8%B3%D9%85%D9%81%D9%88%D9%86%DB%8C%20%D8%B3%D9%86%DA%AF%E2%80%8C%D9%87%D8%A7%20%D8%A7%D8%B7%D9%84%D8%A7%D8%B9%D8%A7%D8%AA%20%D8%A8%DB%8C%D8%B4%D8%AA%D8%B1%DB%8C%20%D8%A8%DA%AF%DB%8C%D8%B1%D9%85"
+                  target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-l from-primary to-yellow-500 text-black font-black px-8 py-3.5 rounded-xl shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  رزرو آنلاین و اطلاعات بیشتر
+                </a>
+              </div>
 
             </article>
 
