@@ -32,7 +32,7 @@ export default function TicketSection() {
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
           {/* Flight Card */}
-          <Link href="/travel/flight">
+          <Link href="/travel/flight-bus">
             <motion.div
               whileHover={{ translateY: -4 }}
               className="group glass-panel rounded-2xl md:rounded-3xl border border-primary/20 p-6 md:p-8 transition-all hover:border-primary/40 cursor-pointer"
@@ -58,7 +58,7 @@ export default function TicketSection() {
           </Link>
 
           {/* Ground Card */}
-          <Link href="/travel/flight">
+          <Link href="/travel/flight-bus">
             <motion.div
               whileHover={{ translateY: -4 }}
               className="group glass-panel rounded-2xl md:rounded-3xl border border-primary/20 p-6 md:p-8 transition-all hover:border-primary/40 cursor-pointer"
