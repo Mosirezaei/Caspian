@@ -20,11 +20,11 @@ export const FESTIVALS = [
     desc: 'یکی از طولانی‌ترین دوره‌های جشن در ارمنستان. میدان جمهوری و خیابان‌های مرکزی ایروان با چراغ‌ها، درخت‌های کریسمس و بازارهای فصلی تزئین می‌شوند. مناسب برای خانواده‌ها و گردشگران زمستانی.', image: null },
   { id: 'christmas', month: 1, star: 5, nameFa: 'کریسمس ارمنی و عید ظهور', nameEn: 'Armenian Christmas', date: '۶ ژانویه (ثابت)', location: 'سراسر ارمنستان، مراسم اصلی در اچمیادزین',
     desc: 'کلیسای حواری ارمنی میلاد مسیح و عید ظهور را در ۶ ژانویه جشن می‌گیرد — برخلاف بیشتر کلیساهای جهان. مراسم مذهبی، حضور در کلیسا و آیین «آب مقدس» از بخش‌های مهم این روز هستند.',
-    image: { url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Etchmiadzin%20cathedral.jpg', credit: 'Wikimedia Commons, CC BY 3.0' } },
+    image: { url: 'https://images.unsplash.com/photo-1768553088949-516c53f7abb7?w=1200&q=80', credit: 'Jack Sparrow / Unsplash License' } },
   { id: 'post-christmas', month: 1, star: 1, nameFa: 'روز یادبود پس از کریسمس و ظهور', nameEn: 'Day after Christmas', date: '۷ ژانویه', location: 'سراسر ارمنستان', desc: 'در تقویم ارمنستان به‌عنوان روز یادبود پس از کریسمس و ظهور شناخته می‌شود.', image: null },
 
   { id: 'trndez', month: 2, star: 5, nameFa: 'ترندز', nameEn: 'Trndez / Tiarnndaraj', date: '۱۴ فوریه (۲۰۲۶: ۱۴ فوریه)', location: 'سراسر ارمنستان',
-    desc: 'یکی از جذاب‌ترین جشن‌های سنتی ارمنستان؛ شب جشن آتش‌های بزرگ روشن می‌شوند و مردم دورشان جمع می‌شوند. در سنت ارمنی با پاکی، نور، عشق و برکت زوج‌های تازه‌ازدواج‌کرده پیوند دارد. کلیسا این روز را جشن تقدیم مسیح در معبد هم می‌داند.', image: null },
+    desc: 'یکی از جذاب‌ترین جشن‌های سنتی ارمنستان؛ شب جشن آتش‌های بزرگ روشن می‌شوند و مردم دورشان جمع می‌شوند. در سنت ارمنی با پاکی، نور، عشق و برکت زوج‌های تازه‌ازدواج‌کرده پیوند دارد. کلیسا این روز را جشن تقدیم مسیح در معبد هم می‌داند.', image: { url: 'https://images.unsplash.com/photo-1697700257503-1b6e2034eb37?w=1200&q=80', credit: 'Yuri Oparin / Unsplash License' } },
   { id: 'amasia-winter', month: 2, star: 2, nameFa: 'جشن زمستانی آماسیا (−۴۶ درجه)', nameEn: 'Amasia -46°C Winter Festival', date: 'اواخر فوریه (متغیر)', location: 'آماسیا، استان شیراک',
     desc: 'جشن زمستانی و ورزشی در یکی از سردترین مناطق ارمنستان؛ اسنوموبیل، اسکی و سورتمه‌سواری همراه با موسیقی و فضای جشن.', image: null },
 
@@ -37,16 +37,16 @@ export const FESTIVALS = [
     desc: 'شهرداری ایروان در تقویم رویدادهای ۲۰۲۶، ۳۰ آوریل را به‌عنوان روز جهانی جاز در برنامه سالانه خود ثبت کرده است.', image: null },
 
   { id: 'tolma-fest', month: 5, star: 3, nameFa: 'جشنواره تولما', nameEn: 'Tolma Festival', date: 'اواخر مه یا اوایل ژوئن (متغیر)', location: 'متغیر',
-    desc: 'یکی از معروف‌ترین غذاهای سنتی ارمنستان با انواع مختلف تولما، موسیقی، رقص و برنامه‌های فرهنگی. سابقه این جشنواره به سال ۲۰۱۱ برمی‌گردد.', image: null },
+    desc: 'یکی از معروف‌ترین غذاهای سنتی ارمنستان با انواع مختلف تولما، موسیقی، رقص و برنامه‌های فرهنگی. سابقه این جشنواره به سال ۲۰۱۱ برمی‌گردد.', image: { url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Dolma%20Festival%2C%20Musa%20Ler%20(2).JPG', credit: 'Wikimedia Commons' } },
   { id: 'meghri-crafts', month: 5, star: 2, nameFa: 'جشنواره صنایع‌دستی مِغری', nameEn: 'Meghri International Crafts Festival', date: 'معمولاً مه (۲۰۲۶: ۱۶ و ۱۷ مه)', location: 'مِغری، جنوب ارمنستان',
     desc: 'جشنواره‌ای با محوریت صنایع‌دستی، هنرهای سنتی، غذا و فرهنگ محلی؛ در نسخه ۲۰۲۶ حدود ۴۰ هنرمند و صنعتگر حضور داشتند.', image: null },
   { id: 'zatik-wine', month: 5, star: 2, nameFa: 'جشنواره شراب زاتیک', nameEn: 'Zatik Wine Festival', date: 'همزمان با عید پاک (متغیر)', location: 'ایروان',
     desc: 'جشنواره‌ای با محوریت شراب، موسیقی، غذا و فضای خانوادگی در تقویم بهاری گردشگری ارمنستان.', image: null },
 
   { id: 'wine-days', month: 6, star: 5, nameFa: 'روزهای شراب ایروان', nameEn: 'Yerevan Wine Days', date: 'اوایل ژوئن (۲۰۲۶: ۵ تا ۷ ژوئن)', location: 'خیابان‌های ساریان، تومانیان و مسکوویان، ایروان',
-    desc: 'یکی از معروف‌ترین فستیوال‌های مدرن ارمنستان؛ ده‌ها تا بیش از ۱۰۰ تولیدکننده شراب، رستوران و موسیقی زنده. از سال ۲۰۱۷ برگزار می‌شود و در ۲۰۲۵ حدود ۱۸۰ هزار بازدیدکننده داشت. در ۲۰۲۶ بیش از ۱۰۰ شرکت تولیدکننده شراب حضور داشتند.', image: null },
+    desc: 'یکی از معروف‌ترین فستیوال‌های مدرن ارمنستان؛ ده‌ها تا بیش از ۱۰۰ تولیدکننده شراب، رستوران و موسیقی زنده. از سال ۲۰۱۷ برگزار می‌شود و در ۲۰۲۵ حدود ۱۸۰ هزار بازدیدکننده داشت. در ۲۰۲۶ بیش از ۱۰۰ شرکت تولیدکننده شراب حضور داشتند.', image: { url: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1200&q=80', credit: 'Kelsey Knight / Unsplash License' } },
   { id: 'sheep-shearing', month: 6, star: 4, nameFa: 'جشنواره پشم‌چینی گوسفند', nameEn: 'Sheep Shearing Festival', date: 'ژوئن', location: 'خوت، منطقه سیونیک',
-    desc: 'از متفاوت‌ترین فستیوال‌های فرهنگی ارمنستان؛ مسابقه پشم‌چینی گوسفندان، نمایش تبدیل پشم به فرش، صنایع‌دستی، موسیقی و بازار محلی.', image: null },
+    desc: 'از متفاوت‌ترین فستیوال‌های فرهنگی ارمنستان؛ مسابقه پشم‌چینی گوسفندان، نمایش تبدیل پشم به فرش، صنایع‌دستی، موسیقی و بازار محلی.', image: { url: 'https://images.unsplash.com/photo-1508112304775-4f32d35ccdba?w=1200&q=80', credit: 'Ardiss Hutaff / Unsplash License' } },
   { id: 'haybuis', month: 6, star: 4, nameFa: 'جشنواره گیاهان و گل‌های ارمنی (HayBuis)', nameEn: 'HayBuis Armenian Herb & Flower Festival', date: 'اواخر ژوئن', location: 'یِنوکاوان، استان تاووش',
     desc: 'جشنواره‌ای برای آشنایی با گیاهان دارویی و خوراکی ارمنستان؛ چای گیاهی، آشپزی، آموزش شناخت گیاهان و فعالیت کودکان.', image: null },
   { id: 'color-fest', month: 6, star: 3, nameFa: 'جشنواره رنگ ایروان', nameEn: 'Yerevan Color Festival', date: 'ژوئن', location: 'ایروان', desc: 'فستیوالی مدرن با موسیقی، پودرهای رنگی و فضای جوانانه.', image: null },
