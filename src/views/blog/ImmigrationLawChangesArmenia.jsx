@@ -4,7 +4,7 @@ import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 import PageSidebar from '@/components/shared/PageSidebar';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
 
-const heroImg = '/images/Yerevan_Residency.webp';
+const heroImg = 'https://images.unsplash.com/photo-1619418602850-35ad20aa1700?w=1200&q=80';
 
 export default function ImmigrationLawChangesArmenia() {
   return (
