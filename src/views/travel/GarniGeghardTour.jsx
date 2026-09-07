@@ -37,10 +37,6 @@ export default function GarniGeghardTour() {
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
-          <div className="lg:hidden mb-8">
-            <PageSidebar tags={['tourism', 'garni', 'geghard', 'tour']} />
-          </div>
-
           <div className="grid lg:grid-cols-[1fr_300px] gap-10">
             <article className="space-y-8">
 
@@ -184,8 +180,8 @@ export default function GarniGeghardTour() {
 
             </article>
 
-            <aside className="hidden lg:block space-y-6">
-              <div className="glass-panel rounded-2xl p-5 sticky top-20">
+            <aside className="space-y-6">
+              <div className="glass-panel rounded-2xl p-5 lg:sticky lg:top-20">
                 <PageSidebar tags={['tourism', 'garni', 'geghard', 'tour']} />
               </div>
             </aside>
