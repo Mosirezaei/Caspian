@@ -95,6 +95,13 @@ export default function ArmeniaFestivalsEventsNews() {
           </p>
         </section>
 
+        <img
+          src="https://images.unsplash.com/photo-1768053921689-1bc09db904c9?w=1200&q=75"
+          alt="جمعیت کنسرت با نورپردازی صحنه، تصویر مرتبط با فستیوال‌ها و رویدادهای ارمنستان"
+          className="w-full h-64 sm:h-80 object-cover rounded-2xl mb-8"
+          loading="lazy"
+        />
+
         {/* Upcoming concerts (next 3 months) */}
         <section className="mb-14">
           <h2 className="text-2xl font-bold text-foreground mb-5 flex items-center gap-2">
