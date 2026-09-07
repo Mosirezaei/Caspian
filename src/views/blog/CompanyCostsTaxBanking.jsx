@@ -5,7 +5,7 @@ import PageSidebar from '@/components/shared/PageSidebar';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import { useSEO } from '@/hooks/useSEO';
 
-const heroImg = '/images/company/armenian-dram-currency.webp';
+const heroImg = 'https://images.unsplash.com/photo-1762427355235-dd22e5cb010c?w=1200&q=80';
 
 export default function CompanyCostsTaxBanking() {
   useSEO({
