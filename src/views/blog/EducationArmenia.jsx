@@ -31,6 +31,13 @@ export default function EducationArmenia() {
           <p className="text-xs text-foreground/40 mt-2">آپدیت: شهریور ۱۴۰۵</p>
         </section>
 
+        <img
+          src="https://images.unsplash.com/photo-1758270704524-596810e891b5?w=1200&q=75"
+          alt="دانشجویان در کلاس درس دانشگاه، تصویر مرتبط با تحصیل در ارمنستان"
+          className="w-full h-64 sm:h-80 object-cover rounded-2xl mb-8"
+          loading="lazy"
+        />
+
         {/* مدارس ایرانی */}
         <section className="glass-panel rounded-2xl p-6 mb-6">
           <h2 className="text-xl font-black text-primary mb-3 flex items-center gap-2">
