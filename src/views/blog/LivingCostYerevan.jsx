@@ -101,6 +101,13 @@ export default function LivingCostYerevan() {
           <p className="text-xs text-foreground/40 mt-2">{t.updated}</p>
         </div>
 
+        <img
+          src="https://images.unsplash.com/photo-1484848560771-c55afee65e0f?w=1200&q=75"
+          alt="سبد سبزیجات و میوه تازه در بازار، تصویر مرتبط با هزینه‌های زندگی"
+          className="w-full h-64 sm:h-80 object-cover rounded-2xl mb-8"
+          loading="lazy"
+        />
+
         {/* Intro */}
         <div className="p-4 rounded-2xl border border-primary/15 bg-primary/5 mb-8 text-sm text-foreground/70 leading-relaxed">
           ارمنستان در سال‌های اخیر به یکی از محبوب‌ترین مقصدهای مهاجرتی ایرانیان تبدیل شده. هزینه زندگی در ایروان نسبت به کشورهای اروپایی بسیار پایین‌تر و نسبت به ایران معقول است. در این راهنما همه هزینه‌های اصلی را با قیمت‌های واقعی سال ۱۴۰۴ بررسی می‌کنیم.
