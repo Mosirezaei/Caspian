@@ -25,8 +25,8 @@ export default function MedicalUniversitiesArmenia() {
         </section>
 
         <img
-          src="https://images.unsplash.com/photo-1697980825665-10b25a70bd1d?w=1200&q=75"
-          alt="دانشجویان پزشکی در محیط بالینی، تصویر مرتبط با تحصیل پزشکی در ارمنستان"
+          src="https://images.unsplash.com/photo-1741637335289-c99652d3155f?w=1200&q=75"
+          alt="دانشجویان در محوطه دانشگاه، تصویر مرتبط با تحصیل و زندگی دانشجویی در ارمنستان"
           className="w-full h-64 sm:h-80 object-cover rounded-2xl mb-8"
           loading="lazy"
         />
