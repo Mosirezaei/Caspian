@@ -19,6 +19,13 @@ export default function ApartmentRentalGuide() {
           <p className="text-xs text-foreground/40 mt-2">آپدیت: شهریور ۱۴۰۵</p>
         </section>
 
+        <img
+          src="https://images.unsplash.com/photo-1722487631997-cf1e0f92c2c4?w=1200&q=75"
+          alt="کلید در دست، تصویر مرتبط با اجاره آپارتمان در ایروان"
+          className="w-full h-64 sm:h-80 object-cover rounded-2xl mb-8"
+          loading="lazy"
+        />
+
         <section className="glass-panel rounded-2xl p-6 mb-6">
           <h2 className="text-xl font-black text-primary mb-3 flex items-center gap-2"><Home className="w-5 h-5" /> بازار مسکن ایروان برای ایرانیان</h2>
           <div className="text-sm text-foreground/70 leading-7 space-y-3">
