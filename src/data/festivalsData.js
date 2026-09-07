@@ -24,7 +24,7 @@ export const FESTIVALS = [
   { id: 'post-christmas', month: 1, star: 1, nameFa: 'روز یادبود پس از کریسمس و ظهور', nameEn: 'Day after Christmas', date: '۷ ژانویه', location: 'سراسر ارمنستان', desc: 'در تقویم ارمنستان به‌عنوان روز یادبود پس از کریسمس و ظهور شناخته می‌شود.', image: null },
 
   { id: 'trndez', month: 2, star: 5, nameFa: 'ترندز', nameEn: 'Trndez / Tiarnndaraj', date: '۱۴ فوریه (۲۰۲۶: ۱۴ فوریه)', location: 'سراسر ارمنستان',
-    desc: 'یکی از جذاب‌ترین جشن‌های سنتی ارمنستان؛ شب جشن آتش‌های بزرگ روشن می‌شوند و مردم دورشان جمع می‌شوند. در سنت ارمنی با پاکی، نور، عشق و برکت زوج‌های تازه‌ازدواج‌کرده پیوند دارد. کلیسا این روز را جشن تقدیم مسیح در معبد هم می‌داند.', image: { url: 'https://images.unsplash.com/photo-1697700257503-1b6e2034eb37?w=1200&q=80', credit: 'Yuri Oparin / Unsplash License' } },
+    desc: 'یکی از جذاب‌ترین جشن‌های سنتی ارمنستان؛ شب جشن آتش‌های بزرگ روشن می‌شوند و مردم دورشان جمع می‌شوند. در سنت ارمنی با پاکی، نور، عشق و برکت زوج‌های تازه‌ازدواج‌کرده پیوند دارد. کلیسا این روز را جشن تقدیم مسیح در معبد هم می‌داند.', image: { url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Trndez%20in%20Dadivanq.jpg', credit: 'Wikimedia Commons — Wiki Loves Folklore 2020 Armenia' } },
   { id: 'amasia-winter', month: 2, star: 2, nameFa: 'جشن زمستانی آماسیا (−۴۶ درجه)', nameEn: 'Amasia -46°C Winter Festival', date: 'اواخر فوریه (متغیر)', location: 'آماسیا، استان شیراک',
     desc: 'جشن زمستانی و ورزشی در یکی از سردترین مناطق ارمنستان؛ اسنوموبیل، اسکی و سورتمه‌سواری همراه با موسیقی و فضای جشن.', image: null },
 
