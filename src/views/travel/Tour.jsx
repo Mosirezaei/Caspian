@@ -66,192 +66,41 @@ const HIGHLIGHTS = {
 };
 
 const HIGHLIGHT_IMAGES = [
-  'https://images.unsplash.com/photo-1693071486458-810787f9d465?w=800&q=80&auto=format&fit=crop', // Yerevan
-  'https://images.unsplash.com/photo-1702675231835-ba8c6136b173?w=800&q=80&auto=format&fit=crop', // Lake Sevan
-  'https://images.unsplash.com/photo-1657968641725-deb8d1a24142?w=800&q=80&auto=format&fit=crop', // Garni & Geghard
-  'https://images.unsplash.com/photo-1677864109159-34eb97228c65?w=800&q=80&auto=format&fit=crop', // Khor Virap
-  'https://images.unsplash.com/photo-1633450077736-4195e1053002?w=800&q=80&auto=format&fit=crop', // Dilijan
-  'https://images.unsplash.com/photo-1584294672682-fa86591eded1?w=800&q=80&auto=format&fit=crop', // Gyumri
+  'https://images.unsplash.com/photo-1693071486458-810787f9d465?w=800&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1702675231835-ba8c6136b173?w=800&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1657968641725-deb8d1a24142?w=800&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1677864109159-34eb97228c65?w=800&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1633450077736-4195e1053002?w=800&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1584294672682-fa86591eded1?w=800&q=80&auto=format&fit=crop',
 ];
 
 const HIGHLIGHT_HREFS = [
-  '/travel/tour/yerevan-city', // Yerevan
-  '/travel/tour/sevan-lake', // Lake Sevan
-  '/travel/tour/garni-geghard', // Garni & Geghard
-  null, // Khor Virap
-  null, // Dilijan
-  null, // Gyumri
+  '/travel/tour/yerevan-city',
+  '/travel/tour/sevan-lake',
+  '/travel/tour/garni-geghard',
+  '/travel/tour/khor-virap',
+  null,
+  null,
 ];
 
 function TourContent() {
   const { lang } = useLang();
-
-
   const t = {
-    fa: {
-      why: 'چرا تور ارمنستان با کاسپین؟',
-      whyBody: 'کاسپین تور از سال ۲۰۰۷ به‌صورت تخصصی تورهای ارمنستان را برای مسافران ایرانی برگزار می‌کند. بدون نیاز به ویزا، با پرواز کوتاه از تهران و راهنمای فارسی‌زبان، ارمنستان یکی از بهترین مقاصد برای سفر فرهنگی، طبیعت‌گردی و حتی سفرهای کاری کوتاه است.',
-      typesTitle: 'انواع تور ارمنستان',
-      types: ['تور گروهی — با گروه‌های ثابت و راهنمای مشترک، مقرون‌به‌صرفه‌تر', 'تور اختصاصی (خصوصی) — خودرو و برنامه اختصاصی برای خانواده یا گروه دوستانه', 'تور آخر هفته — ۲ تا ۳ شب برای بازدید سریع از ایروان و اطراف', 'تور کامل ۶-۷ شبه — پوشش کامل جاذبه‌های اصلی ارمنستان'],
-      includesTitle: 'بسته تور شامل چه مواردی می‌شود؟',
-      includes: ['اقامت در هتل ۳، ۴ یا ۵ ستاره منتخب', 'ترانسفر فرودگاهی رفت و برگشت', 'گشت‌های تعیین‌شده با راهنمای فارسی‌زبان', 'صبحانه در هتل', 'پشتیبانی ۲۴ ساعته در طول سفر'],
-      highlightsTitle: 'مقاصد اصلی تور ارمنستان',
-      cta: 'مشاوره رایگان تور از طریق واتساپ',
-    },
-    en: {
-      why: 'Why Book an Armenia Tour with Caspian?',
-      whyBody: 'Caspian Tour has specialized in Armenia tours for Iranian travelers since 2007. With no visa required, a short flight from Tehran, and a Persian-speaking guide, Armenia is one of the best destinations for cultural travel, nature trips, and even short business visits.',
-      typesTitle: 'Types of Armenia Tours',
-      types: ['Group Tour — fixed groups with a shared guide, more affordable', 'Private Tour — dedicated car and itinerary for families or friend groups', 'Weekend Tour — 2-3 nights for a quick look at Yerevan and surroundings', 'Full 6-7 Night Tour — complete coverage of Armenia\'s main attractions'],
-      includesTitle: "What's Included in the Tour Package?",
-      includes: ['Stay at a selected 3, 4 or 5-star hotel', 'Round-trip airport transfer', 'Scheduled excursions with a Persian-speaking guide', 'Breakfast at the hotel', '24-hour support throughout your trip'],
-      highlightsTitle: 'Main Armenia Tour Destinations',
-      cta: 'Free Tour Consultation via WhatsApp',
-    },
-    ru: {
-      why: 'Почему тур по Армении с Caspian?',
-      whyBody: 'Caspian Tour с 2007 года специализируется на турах по Армении. Виза не требуется, короткий перелёт из Тегерана и русскоговорящий/персоязычный гид делают Армению отличным направлением для культурного и природного туризма.',
-      typesTitle: 'Виды туров по Армении',
-      types: ['Групповой тур — фиксированные группы с общим гидом, более доступно', 'Индивидуальный тур — отдельный автомобиль и программа для семей и компаний', 'Тур выходного дня — 2-3 ночи для быстрого знакомства с Ереваном', 'Полный тур на 6-7 ночей — все главные достопримечательности Армении'],
-      includesTitle: 'Что входит в тур?',
-      includes: ['Проживание в отеле 3, 4 или 5 звёзд', 'Трансфер из аэропорта и обратно', 'Запланированные экскурсии с гидом', 'Завтрак в отеле', 'Поддержка 24 часа в течение поездки'],
-      highlightsTitle: 'Главные направления тура по Армении',
-      cta: 'Бесплатная консультация в WhatsApp',
-    },
+    fa: { why: 'چرا تور ارمنستان با کاسپین؟', whyBody: 'کاسپین تور از سال ۲۰۰۷ به‌صورت تخصصی تورهای ارمنستان را برای مسافران ایرانی برگزار می‌کند. بدون نیاز به ویزا، با پرواز کوتاه از تهران و راهنمای فارسی‌زبان، ارمنستان یکی از بهترین مقاصد برای سفر فرهنگی، طبیعت‌گردی و حتی سفرهای کاری کوتاه است.', typesTitle: 'انواع تور ارمنستان', types: ['تور گروهی — با گروه‌های ثابت و راهنمای مشترک، مقرون‌به‌صرفه‌تر', 'تور اختصاصی (خصوصی) — خودرو و برنامه اختصاصی برای خانواده یا گروه دوستانه', 'تور آخر هفته — ۲ تا ۳ شب برای بازدید سریع از ایروان و اطراف', 'تور کامل ۶-۷ شبه — پوشش کامل جاذبه‌های اصلی ارمنستان'], includesTitle: 'بسته تور شامل چه مواردی می‌شود؟', includes: ['اقامت در هتل ۳، ۴ یا ۵ ستاره منتخب', 'ترانسفر فرودگاهی رفت و برگشت', 'گشت‌های تعیین‌شده با راهنمای فارسی‌زبان', 'صبحانه در هتل', 'پشتیبانی ۲۴ ساعته در طول سفر'], highlightsTitle: 'مقاصد اصلی تور ارمنستان', cta: 'مشاوره رایگان تور از طریق واتساپ' },
+    en: { why: 'Why Book an Armenia Tour with Caspian?', whyBody: 'Caspian Tour has specialized in Armenia tours for Iranian travelers since 2007. With no visa required, a short flight from Tehran, and a Persian-speaking guide, Armenia is one of the best destinations for cultural travel, nature trips, and even short business visits.', typesTitle: 'Types of Armenia Tours', types: ['Group Tour — fixed groups with a shared guide, more affordable', 'Private Tour — dedicated car and itinerary for families or friend groups', 'Weekend Tour — 2-3 nights for a quick look at Yerevan and surroundings', 'Full 6-7 Night Tour — complete coverage of Armenia\'s main attractions'], includesTitle: "What's Included in the Tour Package?", includes: ['Stay at a selected 3, 4 or 5-star hotel', 'Round-trip airport transfer', 'Scheduled excursions with a Persian-speaking guide', 'Breakfast at the hotel', '24-hour support throughout your trip'], highlightsTitle: 'Main Armenia Tour Destinations', cta: 'Free Tour Consultation via WhatsApp' },
+    ru: { why: 'Почему тур по Армении с Caspian?', whyBody: 'Caspian Tour с 2007 года специализируется на турах по Армении. Виза не требуется, короткий перелёт из Тегерана и русскоговорящий/персоязычный гид делают Армению отличным направлением для культурного и природного туризма.', typesTitle: 'Виды туров по Армении', types: ['Групповой тур — фиксированные группы с общим гидом, более доступно', 'Индивидуальный тур — отдельный автомобиль и программа для семей и компаний', 'Тур выходного дня — 2-3 ночи для быстрого знакомства с Ереваном', 'Полный тур на 6-7 ночей — все главные достопримечательности Армении'], includesTitle: 'Что входит в тур?', includes: ['Проживание в отеле 3, 4 или 5 звёзд', 'Трансфер из аэропорта и обратно', 'Запланированные экскурсии с гидом', 'Завтрак в отеле', 'Поддержка 24 часа в течение поездки'], highlightsTitle: 'Главные направления тура по Армении', cta: 'Бесплатная консультация в WhatsApp' },
   }[lang] || {};
-
   const highlights = HIGHLIGHTS[lang] || HIGHLIGHTS.fa;
   const ev = EVENTS[lang] || EVENTS.fa;
-
   return (
-    <ServicePageLayout
-      titleFa="تور ارمنستان" titleEn="Armenia Tour" titleRu="Тур по Армении"
-      subtitleFa="تور گروهی و اختصاصی به ایروان، سوان، گارنی و دیلیجان از سال ۲۰۰۷"
-      subtitleEn="Group & private tours to Yerevan, Sevan, Garni and Dilijan since 2007"
-      subtitleRu="Групповые и индивидуальные туры с 2007 года"
-      heroImage="https://images.unsplash.com/photo-1609669712881-d9bc36df5ab3?w=1200&q=80"
-      serviceType="tour">
-
-      <div className="glass-panel rounded-2xl p-6 mb-6 border border-primary/30 bg-gradient-to-br from-primary/10 to-transparent">
-        <span className="inline-block text-xs font-bold text-primary bg-primary/15 rounded-full px-3 py-1 mb-3">{ev.badge}</span>
-        <h2 className="text-xl font-black text-foreground mb-2 flex items-center gap-2">
-          <PartyPopper className="w-5 h-5 text-primary flex-shrink-0" />
-          {ev.title}
-        </h2>
-        <p className="text-sm text-foreground/70 leading-relaxed mb-4">{ev.intro}</p>
-        <div className="space-y-3 mb-4">
-          {ev.items.map((it, i) => (
-            <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
-              <CalendarDays className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="text-sm font-bold text-foreground">{it.name}</p>
-                <p className="text-xs text-foreground/60 mt-0.5">{it.date} — {it.place}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <a href="https://wa.me/37433149327" target="_blank" rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 w-full py-3 px-5 rounded-xl bg-primary text-black font-bold text-sm hover:bg-yellow-500 transition-all duration-300">
-          <MessageCircle className="w-4 h-4" />
-          {ev.cta}
-        </a>
-      </div>
-
-      <InfoBlock title={t.why}>
-        <p>{t.whyBody}</p>
-      </InfoBlock>
-
-      <InfoBlock title={t.highlightsTitle}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-2">
-          {highlights.map((h, i) => {
-            const href = HIGHLIGHT_HREFS[i];
-            const cardInner = (
-              <>
-                <div className="relative h-48 w-full overflow-hidden">
-                  <img
-                    src={HIGHLIGHT_IMAGES[i]}
-                    alt={h.name}
-                    loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-                  <h3 className="absolute bottom-3 right-4 left-4 font-black text-white text-base drop-shadow-md">{h.name}</h3>
-                  {href && (
-                    <span className="absolute top-3 left-3 text-[10px] font-bold text-primary bg-background/80 backdrop-blur rounded-full px-2.5 py-1">
-                      مشاهده تور ↗
-                    </span>
-                  )}
-                </div>
-                <p className="text-xs text-foreground/60 leading-relaxed p-4">{h.desc}</p>
-              </>
-            );
-            const cardClass = "group relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-primary/40 transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-1";
-            return href ? (
-              <Link key={i} href={href} className={cardClass}>
-                {cardInner}
-              </Link>
-            ) : (
-              <div key={i} className={cardClass}>
-                {cardInner}
-              </div>
-            );
-          })}
-
-        </div>
-      </InfoBlock>
-
-      <InfoBlock title={t.typesTitle}>
-        <CheckList items={t.types} />
-      </InfoBlock>
-
-      <InfoBlock title={t.includesTitle}>
-        <CheckList items={t.includes} />
-      </InfoBlock>
-
-      {lang === 'fa' && <>
-        <InfoBlock title="بهترین جاذبه‌های ارمنستان که نباید از دست بدهید">
-          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">دریاچه سوان (Lake Sevan)</h3>
-          <p className="mb-3">یکی از بزرگ‌ترین دریاچه‌های آب شیرین دنیا در ارتفاع ۱۹۰۰ متری. کلیساهای تاریخی سواناوانک روی شبه‌جزیره، ماهی ایشخان (قزل‌آلای بومی) و هوای خنک تابستانی از دلایل اصلی بازدید هستند. حدود ۶۰ کیلومتر از ایروان.</p>
-
-          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">قرناهبد (Garni) و معبد گغارد</h3>
-          <p className="mb-3">معبد یونانی-رومی قرناهبد تنها ساختمان دوره پیش از مسیحیت باقی‌مانده در ارمنستان است. معبد صخره‌ای گغارد در دل کوه کنده شده و در فهرست میراث یونسکو قرار دارد. ۳۰ کیلومتر از ایروان.</p>
-
-          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">نوراوانک و کانیون آهنجا</h3>
-          <p className="mb-3">صومعه قرن سیزدهمی نوراوانک در دل کانیون آهنجا با دیواره‌های صخره‌ای نارنجی. یکی از فتوژنیک‌ترین مناطق ارمنستان. ۱۲۰ کیلومتر از ایروان.</p>
-
-          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">خور ویراپ (Khor Virap)</h3>
-          <p>صومعه تاریخی با چشم‌انداز مستقیم به کوه آرارات — نمادین‌ترین تصویر ارمنستان. محل زندانی شدن گریگور روشن‌بخش در قرن چهارم. ۴۵ کیلومتر از ایروان.</p>
-        </InfoBlock>
-
-        <InfoBlock title="بهترین فصل برای تور ارمنستان">
-          <CheckList items={[
-            'بهار (اردیبهشت-خرداد) — گل‌های وحشی، دریاچه سوان آبی-سبز، قیمت متعادل. بهترین انتخاب',
-            'تابستان (تیر-شهریور) — گرمای ایروان ولی آب‌وهوای کوهستان خنک. فصل اوج — هتل‌ها زودتر رزرو می‌شوند',
-            'پاییز (مهر-آبان) — رنگ‌آمیزی طبیعی جنگل‌ها، جشنواره انار آرنی. توصیه‌شده',
-            'زمستان (آذر-بهمن) — اسکی در تسخکاذور، ایروان آرام و ارزان. مناسب کسانی که شلوغی دوست ندارند',
-          ]} />
-        </InfoBlock>
-      </>}
-
-      {lang === 'en' && <>
-        <InfoBlock title="Top Armenia Attractions">
-          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">Lake Sevan</h3>
-          <p className="mb-2">One of the world's largest high-altitude lakes at 1,900m. Sevanavank monastery, fresh trout, and cool summer air. 60km from Yerevan.</p>
-          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">Garni Temple & Geghard Monastery</h3>
-          <p className="mb-2">Armenia's only pre-Christian Greco-Roman temple, plus the UNESCO-listed rock-hewn Geghard Monastery. 30km from Yerevan.</p>
-          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">Noravank & Areni Canyon</h3>
-          <p>13th-century monastery in a stunning orange-walled canyon. One of Armenia's most photogenic spots. 120km from Yerevan.</p>
-        </InfoBlock>
-      </>}
-
-      <a href="https://wa.me/37433149327?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D9%85%DB%8C%E2%80%8C%D8%AE%D9%88%D8%A7%D9%85%20%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87%20%D8%AA%D9%88%D8%B1%20%D8%A7%D8%B1%D9%85%D9%86%D8%B3%D8%AA%D8%A7%D9%86%20%D9%85%D8%B4%D8%A7%D9%88%D8%B1%D9%87%20%D8%A8%DA%AF%DB%8C%D8%B1%D9%85"
-        target="_blank" rel="noopener noreferrer"
-        className="flex items-center justify-center gap-3 w-full py-4 px-6 rounded-2xl bg-primary text-black font-black hover:bg-yellow-500 transition-all duration-300 shadow-lg mt-4">
-        <MessageCircle className="w-5 h-5" />
-        {t.cta}
-      </a>
+    <ServicePageLayout titleFa="تور ارمنستان" titleEn="Armenia Tour" titleRu="Тур по Армении" subtitleFa="تور گروهی و اختصاصی به ایروان، سوان، گارنی و دیلیجان از سال ۲۰۰۷" subtitleEn="Group & private tours to Yerevan, Sevan, Garni and Dilijan since 2007" subtitleRu="Групповые и индивидуальные туры с 2007 года" heroImage="https://images.unsplash.com/photo-1693071486458-810787f9d465?w=1600&q=85&auto=format&fit=crop">
+      <InfoBlock title={t.why} body={t.whyBody} />
+      <InfoBlock title={t.typesTitle} body={t.types} />
+      <InfoBlock title={t.includesTitle} body={t.includes} />
+      <section className="mt-10"><h2 className="text-2xl font-black mb-5">{t.highlightsTitle}</h2><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">{highlights.map((h, i) => { const href = HIGHLIGHT_HREFS[i]; const inner = <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 h-full"><img src={HIGHLIGHT_IMAGES[i]} alt={h.name} className="w-full h-44 object-cover" /><div className="p-4"><h3 className="font-black">{h.name}</h3><p className="text-sm text-foreground/60 mt-1">{h.desc}</p></div></div>; return href ? <Link href={href} key={h.name}>{inner}</Link> : <div key={h.name}>{inner}</div>; })}</div></section>
+      <section className="mt-10 rounded-3xl border border-primary/20 bg-primary/10 p-6"><h2 className="text-xl font-black">{ev.title}</h2><p className="mt-2 text-foreground/70">{ev.intro}</p><div className="mt-5 space-y-3">{ev.items.map((item) => <div key={item.name} className="rounded-2xl bg-black/10 p-4"><strong>{item.name}</strong><p className="text-sm mt-1">{item.date} — {item.place}</p></div>)}</div><a href="https://wa.me/37433149327" target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 font-black text-black"><MessageCircle className="w-5 h-5" /> {ev.cta}</a></section>
     </ServicePageLayout>
   );
 }
 
-export default TourContent;
+export default function Tour() { return <TourContent />; }
