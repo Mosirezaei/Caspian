@@ -80,7 +80,7 @@ const HIGHLIGHT_HREFS = [
   '/travel/tour/garni-geghard',
   '/travel/tour/khor-virap',
   null,
-  null,
+  '/travel/tour/gyumri',
 ];
 
 function TourContent() {
