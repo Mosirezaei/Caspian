@@ -55,7 +55,7 @@ export const FESTIVALS = [
     desc: 'نماد تفریحات تابستانی ارمنستان؛ مردم در خیابان‌ها با سطل، بطری و تفنگ آب به یکدیگر آب می‌پاشند. ریشه‌اش به سنت‌های پیش از مسیحیت ارمنستان برمی‌گردد و بعدها با جشن دگرگونی مسیح پیوند خورده است.',
     image: { url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Vardavar%20lake4%2C%20Yerevan.jpg', credit: 'Spetsnaz1991 / Wikimedia Commons, CC BY-SA 2.0' } },
   { id: 'golden-apricot', month: 7, star: 5, nameFa: 'جشنواره بین‌المللی فیلم زردآلوی طلایی', nameEn: 'Golden Apricot International Film Festival', date: 'ژوئیه (۲۰۲۶: ۱۲ تا ۱۹ ژوئیه)', location: 'ایروان',
-    desc: 'مهم‌ترین جشنواره سینمایی قفقاز جنوبی؛ از سال ۲۰۰۴ در ایروان برگزار می‌شود و فیلم‌های بین‌المللی، منطقه‌ای و مستقل را نمایش می‌دهد.', image: null },
+    desc: 'مهم‌ترین جشنواره سینمایی قفقاز جنوبی؛ از سال ۲۰۰۴ در ایروان برگزار می‌شود و فیلم‌های بین‌المللی، منطقه‌ای و مستقل را نمایش می‌دهد.', image: { url: 'https://images.unsplash.com/photo-1694101708291-1bb361a2d4d1?w=1200&q=80', credit: 'Raju Reddy / Unsplash License' } },
   { id: 'beer-days', month: 7, star: 4, nameFa: 'روزهای آبجو ایروان', nameEn: 'Beer Days Yerevan', date: 'ژوئیه یا اوت (۲۰۲۶: ۱۷ تا ۱۹ ژوئیه)', location: 'خیابان زاکیان، ایروان',
     desc: 'جشنواره‌ای برای علاقه‌مندان به آبجو، غذای خیابانی و موسیقی؛ از سال ۲۰۲۱ برگزار می‌شود. نکته: تاریخ این رویداد هرسال تغییر می‌کند و باید سالانه به‌روزرسانی شود.', image: null },
   { id: 'honey-fest', month: 7, star: 3, nameFa: 'جشنواره عسل', nameEn: 'Honey Festival', date: 'معمولاً تابستان', location: 'گنیشیک، وایوتس‌دزور',
