@@ -25,6 +25,13 @@ export default function ResidencyPathsComparison() {
           <p className="text-foreground/60 mt-3 text-lg">کاری، تحصیلی، سرمایه‌گذاری یا تولد فرزند — کدوم مسیر برای شما مناسب‌تره؟</p>
         </section>
 
+        <img
+          src="https://images.unsplash.com/photo-1583521214690-73421a1829a9?w=1200&q=75"
+          alt="دسته پوشه و مدارک، تصویر مرتبط با مقایسه مسیرهای اقامت"
+          className="w-full h-64 sm:h-80 object-cover rounded-2xl mb-8"
+          loading="lazy"
+        />
+
         <div className="space-y-5 mb-6">
           {paths.map((p, i) => {
             const Icon = p.icon;
