@@ -5,25 +5,29 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '@/lib/LanguageContext';
 
+// نکته: این لیست باید همیشه با src/data/siteLinks.js (SERVICE_LINKS) و روت‌های واقعی app/ هماهنگ باشه.
 const sitePages = [
   { fa: 'صفحه اصلی', en: 'Home', ru: 'Главная', href: '/' },
-  { fa: 'ویزای شینگن', en: 'Schengen Visa', ru: 'Шенгенская виза', href: '/services/visa-schengen' },
-  { fa: 'ویزای رومانی', en: 'Romania Visa', ru: 'Виза в Румынию', href: '/services/visa-romania' },
-  { fa: 'ویزای روسیه', en: 'Russia Visa', ru: 'Виза в Россию', href: '/services/visa-russia' },
-  { fa: 'ویزای آمریکای جنوبی', en: 'South America Visa', ru: 'Виза в Южную Америку', href: '/services/visa-south-america' },
-  { fa: 'وقت سفارت آمریکا و کانادا', en: 'US/Canada Embassy Appointment', ru: 'Запись в посольство', href: '/services/embassy-appointment' },
-  { fa: 'اقامت ارمنستان', en: 'Armenia Residency', ru: 'ВНЖ Армении', href: '/services/residency' },
-  { fa: 'ثبت شرکت در ارمنستان', en: 'Company Registration', ru: 'Регистрация компании', href: '/services/company-registration' },
-  { fa: 'پذیرش تحصیلی', en: 'Student Admission', ru: 'Поступление в вузы', href: '/services/student-admission' },
-  { fa: 'صرافی و رمزارز', en: 'Exchange & Crypto', ru: 'Обмен и криптовалюта', href: '/services/exchange' },
-  { fa: 'رزرو بلیط هواپیما', en: 'Flight Ticket Booking', ru: 'Бронирование билетов', href: '/travel/flight' },
-  { fa: 'رزرو هتل و آپارتمان', en: 'Hotel & Apartment Booking', ru: 'Бронирование отелей', href: '/services/hotel' },
-  { fa: 'پشتیبانی VIP', en: 'VIP Support', ru: 'VIP поддержка', href: '/vip' },
+  { fa: 'اقامت کاری ارمنستان', en: 'Armenia Work Residency', ru: 'Рабочий ВНЖ Армении', href: '/residency/work' },
+  { fa: 'ثبت شرکت ارمنستان', en: 'Armenia Company Registration', ru: 'Регистрация компании в Армении', href: '/residency/business' },
+  { fa: 'اقامت تحصیلی ارمنستان', en: 'Armenia Student Residency', ru: 'Учебный ВНЖ Армении', href: '/residency/student' },
+  { fa: 'اقامت از طریق تولد فرزند', en: 'Residency via Child Birth', ru: 'ВНЖ через рождение ребёнка', href: '/residency/child-birth' },
+  { fa: 'اقامت از طریق سرمایه‌گذاری', en: 'Residency via Investment', ru: 'ВНЖ через инвестиции', href: '/residency/investment' },
+  { fa: 'ویزای توریستی روسیه', en: 'Russia Tourist Visa', ru: 'Туристическая виза в Россию', href: '/visa/russia' },
+  { fa: 'ویزای تجاری روسیه', en: 'Russia Business Visa', ru: 'Деловая виза в Россию', href: '/visa/russia/business' },
+  { fa: 'ویزای مولتی روسیه', en: 'Russia Multi-Entry Visa', ru: 'Многократная виза в Россию', href: '/visa/russia/multi' },
+  { fa: 'ویزای تحصیلی روسیه', en: 'Russia Student Visa', ru: 'Студенческая виза России', href: '/student-visa/russia' },
+  { fa: 'تور ارمنستان', en: 'Armenia Tours', ru: 'Туры по Армении', href: '/travel/tour' },
+  { fa: 'رزرو هتل ایروان', en: 'Yerevan Hotel Booking', ru: 'Бронирование отеля в Ереване', href: '/travel/hotel' },
+  { fa: 'اجاره آپارتمان مبله', en: 'Furnished Apartment Rental', ru: 'Аренда квартиры в Ереване', href: '/travel/apartment' },
+  { fa: 'بلیط هوایی و زمینی', en: 'Flight & Ground Tickets', ru: 'Авиа и наземные билеты', href: '/travel/flight-bus' },
+  { fa: 'ترانسفر فرودگاهی ایروان', en: 'Yerevan Airport Transfer', ru: 'Трансфер из аэропорта Еревана', href: '/travel/transfer' },
+  { fa: 'صرافی ارزی کاسپین', en: 'Caspian Currency Exchange', ru: 'Обмен валют Caspian', href: '/travel/exchange' },
+  { fa: 'وبلاگ', en: 'Blog', ru: 'Блог', href: '/blog' },
+  { fa: 'رویدادها و کنسرت‌ها', en: 'Events & Concerts', ru: 'События и концерты', href: '/events' },
+  { fa: 'کنسرت رترو (Disko Legend)', en: 'Retro Concert (Disko Legend)', ru: 'Концерт Retro (Disko Legend)', href: '/retro' },
   { fa: 'درباره ما', en: 'About Us', ru: 'О нас', href: '/about' },
   { fa: 'تماس با ما', en: 'Contact Us', ru: 'Контакты', href: '/contact' },
-  { fa: 'رزرو مشاوره', en: 'Book Consultation', ru: 'Консультация', href: '/book' },
-  { fa: 'پیگیری سفارش', en: 'Track Order', ru: 'Отследить заказ', href: '/track' },
-  { fa: 'پنل کاربری', en: 'Dashboard', ru: 'Панель', href: '/profile' },
 ];
 
 const labels = {
