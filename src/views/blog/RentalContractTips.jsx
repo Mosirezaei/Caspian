@@ -18,6 +18,13 @@ export default function RentalContractTips() {
           <p className="text-foreground/60 mt-3 text-lg">از جست‌وجوی آگهی تا تحویل کلید — همه چیز درباره قرارداد امن</p>
         </section>
 
+        <img
+          src="https://images.unsplash.com/photo-1758518731462-d091b0b4ed0d?w=1200&q=75"
+          alt="امضای قرارداد اجاره، تصویر مرتبط با قرارداد اجاره خانه"
+          className="w-full h-64 sm:h-80 object-cover rounded-2xl mb-8"
+          loading="lazy"
+        />
+
         <section className="glass-panel rounded-2xl p-6 mb-6">
           <h2 className="text-xl font-black text-primary mb-3 flex items-center gap-2"><Search className="w-5 h-5" /> آگهی معتبر و آژانس قابل‌اعتماد</h2>
           <div className="text-sm text-foreground/70 leading-7 space-y-3">
