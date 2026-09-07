@@ -9,10 +9,7 @@ const servicesList = {
   fa: [
     { value: 'hotel', label: 'رزرو هتل' },
     { value: 'ticket-booking', label: 'رزرو بلیط' },
-    { value: 'visa-schengen', label: 'ویزای شینگن' },
     { value: 'visa-russia', label: 'ویزای روسیه' },
-    { value: 'visa-romania', label: 'ویزای رومانی' },
-    { value: 'visa-south-america', label: 'ویزای آمریکای جنوبی' },
     { value: 'residency', label: 'اقامت ارمنستان' },
     { value: 'company-registration', label: 'ثبت شرکت' },
     { value: 'student-admission', label: 'پذیرش دانشجویی' },
