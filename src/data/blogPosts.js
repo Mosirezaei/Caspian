@@ -26,7 +26,7 @@ export const blogPosts = [
     slug: 'living-cost-yerevan',
     href: '/blog/living-cost-yerevan',
     category: 'life',
-    thumbnail: 'https://images.unsplash.com/photo-1622219999459-ab5b14e5f45a?w=400&q=75',
+    thumbnail: 'https://images.unsplash.com/photo-1484848560771-c55afee65e0f?w=400&q=75',
     tags: ['yerevan', 'cost-of-living', 'residency', 'life'],
     date: '2025-09-01',
     fa: {
@@ -138,7 +138,7 @@ export const blogPosts = [
     slug: 'company-registration-steps-armenia',
     href: '/blog/company-registration-steps-armenia',
     category: 'company',
-    thumbnail: 'https://images.unsplash.com/photo-1521790797524-b2497295b8a0?w=400&q=75',
+    thumbnail: 'https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?w=400&q=75',
     tags: ['company', 'registration', 'documents', 'armenia', 'LLC'],
     date: '2026-09-03',
     fa: {
@@ -186,7 +186,7 @@ export const blogPosts = [
     slug: 'residency-via-company-registration',
     href: '/blog/residency-via-company-registration',
     category: 'company',
-    thumbnail: 'https://images.unsplash.com/photo-1521790797524-b2497295b8a0?w=400&q=75',
+    thumbnail: 'https://images.unsplash.com/photo-1565688534245-05d6b5be184a?w=400&q=75',
     tags: ['residency', 'company', 'armenia', 'immigration', 'EAEU'],
     date: '2026-09-03',
     fa: {
@@ -218,7 +218,7 @@ export const blogPosts = [
     slug: 'armenia-immigration-law-changes',
     href: '/blog/armenia-immigration-law-changes',
     category: 'residency',
-    thumbnail: 'https://images.unsplash.com/photo-1618771623063-6c3faa854a61?w=400&q=75',
+    thumbnail: 'https://images.unsplash.com/photo-1619418602850-35ad20aa1700?w=400&q=75',
     tags: ['residency', 'immigration', 'armenia', 'work-visa', 'law'],
     date: '2026-09-04',
     fa: {
@@ -250,7 +250,7 @@ export const blogPosts = [
     slug: 'best-neighborhoods-yerevan-rent',
     href: '/blog/best-neighborhoods-yerevan-rent',
     category: 'life',
-    thumbnail: 'https://images.unsplash.com/photo-1722487631997-cf1e0f92c2c4?w=400&q=75',
+    thumbnail: 'https://images.unsplash.com/photo-1506092309076-af15fb0051e3?w=400&q=75',
     tags: ['yerevan', 'neighborhoods', 'rental', 'life'],
     date: '2026-09-01',
     fa: {
@@ -314,7 +314,7 @@ export const blogPosts = [
     slug: 'rental-contract-tips-armenia',
     href: '/blog/rental-contract-tips-armenia',
     category: 'life',
-    thumbnail: 'https://images.unsplash.com/photo-1758518731462-d091b0b4ed0d?w=400&q=75',
+    thumbnail: 'https://images.unsplash.com/photo-1733244766159-f58f4184fd38?w=400&q=75',
     tags: ['rental-contract', 'deposit', 'legal', 'tips'],
     date: '2026-09-02',
     fa: {
@@ -330,7 +330,7 @@ export const blogPosts = [
     slug: 'residency-paths-comparison-armenia',
     href: '/blog/residency-paths-comparison-armenia',
     category: 'residency',
-    thumbnail: 'https://images.unsplash.com/photo-1487274910620-1add53247020?w=400&q=75',
+    thumbnail: 'https://images.unsplash.com/photo-1583521214690-73421a1829a9?w=400&q=75',
     tags: ['residency', 'comparison', 'armenia'],
     date: '2026-09-02',
     fa: {
@@ -378,7 +378,7 @@ export const blogPosts = [
     slug: 'work-without-degree-armenia',
     href: '/blog/work-without-degree-armenia',
     category: 'work',
-    thumbnail: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?w=400&q=75',
+    thumbnail: 'https://images.unsplash.com/photo-1577199001468-44c049e7603f?w=400&q=75',
     tags: ['work', 'no-degree', 'armenia', 'jobs'],
     date: '2026-09-02',
     fa: {
