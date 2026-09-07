@@ -27,6 +27,13 @@ export default function BestNeighborhoods() {
           <p className="text-foreground/60 mt-3 text-lg">مقایسه محله‌ها از نظر قیمت، دسترسی و کیفیت زندگی</p>
         </section>
 
+        <img
+          src="https://images.unsplash.com/photo-1506092309076-af15fb0051e3?w=1200&q=75"
+          alt="نمای هوایی از خانه‌های مسکونی، تصویر مرتبط با بهترین محله‌های ایروان"
+          className="w-full h-64 sm:h-80 object-cover rounded-2xl mb-8"
+          loading="lazy"
+        />
+
         <div className="space-y-5 mb-6">
           {neighborhoods.map((n, i) => (
             <section key={i} className={`rounded-2xl p-5 bg-gradient-to-br ${colors[n.color]} to-transparent border`}>
