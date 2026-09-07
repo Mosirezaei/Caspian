@@ -5,6 +5,7 @@ import PageSidebar from '@/components/shared/PageSidebar';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import RelatedContent from '@/components/shared/RelatedContent.jsx';
 import { useSEO } from '@/hooks/useSEO';
+import TourBookingWidget from '@/components/shared/TourBookingWidget.jsx';
 
 export default function SevanLakeTour() {
   useSEO({
@@ -35,12 +36,12 @@ export default function SevanLakeTour() {
           </div>
         </div>
 
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
           <div className="lg:hidden mb-8">
             <PageSidebar tags={['tourism', 'sevan', 'tsaghkadzor', 'tour']} />
           </div>
 
-          <div className="grid lg:grid-cols-[1fr_280px] gap-10">
+          <div className="grid lg:grid-cols-[1fr_300px] gap-10">
             <article className="space-y-8">
 
               {/* === متن تبلیغاتی ارسالی کاربر — دست‌نخورده === */}
@@ -93,6 +94,10 @@ export default function SevanLakeTour() {
                 <div className="mt-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-sm text-foreground/80 flex items-start gap-2">
                   <Phone className="w-4 h-4 mt-0.5 shrink-0 text-emerald-400" />
                   <span>✨ برای اطلاعات بیشتر و ثبت‌نام سریع، همین حالا پیام بده یا با ما تماس بگیر! ظرفیت هر اجرا محدود است. 📲</span>
+                </div>
+
+                <div className="mt-5">
+                  <TourBookingWidget tourName="تور دریاچه سوان و دره گل‌ها" adultPrice={15000} childPrice={12000} />
                 </div>
               </section>
 
