@@ -170,7 +170,7 @@ export const blogPosts = [
     slug: 'company-costs-tax-banking-armenia',
     href: '/blog/company-costs-tax-banking-armenia',
     category: 'company',
-    thumbnail: 'https://images.unsplash.com/photo-1622219999459-ab5b14e5f45a?w=400&q=75',
+    thumbnail: 'https://images.unsplash.com/photo-1762427355235-dd22e5cb010c?w=400&q=75',
     tags: ['cost', 'tax', 'bank', 'armenia', 'company', 'finance'],
     date: '2026-09-03',
     fa: {
@@ -282,7 +282,7 @@ export const blogPosts = [
     slug: 'medical-universities-armenia',
     href: '/blog/medical-universities-armenia',
     category: 'education',
-    thumbnail: 'https://images.unsplash.com/photo-1697980825665-10b25a70bd1d?w=400&q=75',
+    thumbnail: 'https://images.unsplash.com/photo-1741637335289-c99652d3155f?w=400&q=75',
     tags: ['education', 'medical', 'university', 'armenia'],
     date: '2026-09-02',
     fa: {
