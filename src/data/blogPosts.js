@@ -10,7 +10,7 @@ export const blogPosts = [
     slug: 'armenia-visa-documents',
     href: '/blog/armenia-visa-documents',
     category: 'residency',
-    thumbnail: '/images/Yerevan_Residency.webp',
+    thumbnail: '/images/blog/armenia-visa-documents.svg',
     tags: ['visa', 'documents', 'residency', 'armenia'],
     date: '2025-09-01',
     fa: {
@@ -26,7 +26,7 @@ export const blogPosts = [
     slug: 'living-cost-yerevan',
     href: '/blog/living-cost-yerevan',
     category: 'life',
-    thumbnail: '/images/tourism/yerevan-republic-square.webp',
+    thumbnail: '/images/blog/living-cost-yerevan.svg',
     tags: ['yerevan', 'cost-of-living', 'residency', 'life'],
     date: '2025-09-01',
     fa: {
@@ -42,7 +42,7 @@ export const blogPosts = [
     slug: 'jobs-in-armenia',
     href: '/blog/jobs-in-armenia',
     category: 'work',
-    thumbnail: '/images/company/yerevan-city-center.webp',
+    thumbnail: '/images/blog/jobs-in-armenia.svg',
     tags: ['jobs', 'employment', 'work-permit', 'armenia'],
     date: '2026-09-02',
     fa: {
@@ -58,7 +58,7 @@ export const blogPosts = [
     slug: 'yandex-taxi-armenia',
     href: '/blog/yandex-taxi-armenia',
     category: 'work',
-    thumbnail: '/images/company/yerevan-city-center.webp',
+    thumbnail: '/images/blog/yandex-taxi-armenia.svg',
     tags: ['yandex', 'taxi', 'work', 'armenia', 'employment'],
     date: '2026-09-04',
     fa: {
@@ -74,7 +74,7 @@ export const blogPosts = [
     slug: 'yandex-delivery-armenia',
     href: '/blog/yandex-delivery-armenia',
     category: 'work',
-    thumbnail: '/images/delivery/yandex-delivery-scooter.webp',
+    thumbnail: '/images/blog/yandex-delivery-armenia.svg',
     tags: ['yandex', 'delivery', 'work', 'armenia', 'courier'],
     date: '2026-09-04',
     fa: {
@@ -90,7 +90,7 @@ export const blogPosts = [
     slug: 'armenia-tourism-guide',
     href: '/blog/armenia-tourism-guide',
     category: 'tourism',
-    thumbnail: '/images/tourism/yerevan-cascade.webp',
+    thumbnail: '/images/blog/armenia-tourism-guide.svg',
     tags: ['tourism', 'yerevan', 'sightseeing', 'armenia'],
     date: '2026-09-02',
     fa: {
@@ -106,7 +106,7 @@ export const blogPosts = [
     slug: 'armenia-festivals-events-news',
     href: '/blog/armenia-festivals-events-news',
     category: 'news',
-    thumbnail: '/images/fest.png',
+    thumbnail: '/images/blog/armenia-festivals-events-news.svg',
     tags: ['festivals', 'events', 'concerts', 'news', 'eu', 'armenia'],
     date: '2026-09-02',
     fa: {
@@ -122,7 +122,7 @@ export const blogPosts = [
     slug: 'company-registration-armenia',
     href: '/blog/company-registration-armenia',
     category: 'company',
-    thumbnail: '/images/company/yerevan-bank-building.webp',
+    thumbnail: '/images/blog/company-registration-armenia.svg',
     tags: ['company', 'residency', 'armenia', 'investment', 'business'],
     date: '2026-09-03',
     fa: {
@@ -138,7 +138,7 @@ export const blogPosts = [
     slug: 'company-registration-steps-armenia',
     href: '/blog/company-registration-steps-armenia',
     category: 'company',
-    thumbnail: '/images/company/yerevan-bank-building.webp',
+    thumbnail: '/images/blog/company-registration-steps-armenia.svg',
     tags: ['company', 'registration', 'documents', 'armenia', 'LLC'],
     date: '2026-09-03',
     fa: {
@@ -154,7 +154,7 @@ export const blogPosts = [
     slug: 'company-legal-structures-armenia',
     href: '/blog/company-legal-structures-armenia',
     category: 'company',
-    thumbnail: '/images/company/yerevan-city-center.webp',
+    thumbnail: '/images/blog/company-legal-structures-armenia.svg',
     tags: ['LLC', 'IE', 'CJSC', 'legal-structure', 'armenia', 'company'],
     date: '2026-09-03',
     fa: {
@@ -170,7 +170,7 @@ export const blogPosts = [
     slug: 'company-costs-tax-banking-armenia',
     href: '/blog/company-costs-tax-banking-armenia',
     category: 'company',
-    thumbnail: '/images/company/yerevan-bank-building.webp',
+    thumbnail: '/images/blog/company-costs-tax-banking-armenia.svg',
     tags: ['cost', 'tax', 'bank', 'armenia', 'company', 'finance'],
     date: '2026-09-03',
     fa: {
@@ -186,7 +186,7 @@ export const blogPosts = [
     slug: 'residency-via-company-registration',
     href: '/blog/residency-via-company-registration',
     category: 'company',
-    thumbnail: '/images/Yerevan_Residency.webp',
+    thumbnail: '/images/blog/residency-via-company-registration.svg',
     tags: ['residency', 'company', 'armenia', 'immigration', 'EAEU'],
     date: '2026-09-03',
     fa: {
@@ -203,7 +203,7 @@ export const blogPosts = [
     href: '/blog/education-armenia',
     category: 'education',
     tags: ['education', 'student', 'armenia', 'residency'],
-    thumbnail: '/images/residency.webp',
+    thumbnail: '/images/blog/education-armenia.svg',
     date: '2026-09-03',
     fa: {
       title: 'تحصیل در ارمنستان: مدارس ایرانی، دانشگاه‌ها و هزینه‌ها',
@@ -218,7 +218,7 @@ export const blogPosts = [
     slug: 'armenia-immigration-law-changes',
     href: '/blog/armenia-immigration-law-changes',
     category: 'residency',
-    thumbnail: '/images/Yerevan_Residency.webp',
+    thumbnail: '/images/blog/armenia-immigration-law-changes.svg',
     tags: ['residency', 'immigration', 'armenia', 'work-visa', 'law'],
     date: '2026-09-04',
     fa: {
@@ -234,7 +234,7 @@ export const blogPosts = [
     slug: 'apartment-rental-yerevan-guide',
     href: '/blog/apartment-rental-yerevan-guide',
     category: 'life',
-    thumbnail: '/images/tourism/yerevan-republic-square.webp',
+    thumbnail: '/images/blog/apartment-rental-yerevan-guide.svg',
     tags: ['rental', 'apartment', 'yerevan', 'life'],
     date: '2026-09-01',
     fa: {
@@ -250,7 +250,7 @@ export const blogPosts = [
     slug: 'best-neighborhoods-yerevan-rent',
     href: '/blog/best-neighborhoods-yerevan-rent',
     category: 'life',
-    thumbnail: '/images/company/yerevan-city-center.webp',
+    thumbnail: '/images/blog/best-neighborhoods-yerevan-rent.svg',
     tags: ['yerevan', 'neighborhoods', 'rental', 'life'],
     date: '2026-09-01',
     fa: {
@@ -266,7 +266,7 @@ export const blogPosts = [
     slug: 'best-time-visit-armenia-souvenirs',
     href: '/blog/best-time-visit-armenia-souvenirs',
     category: 'tourism',
-    thumbnail: '/images/tourism/noravank-monastery.webp',
+    thumbnail: '/images/blog/best-time-visit-armenia-souvenirs.svg',
     tags: ['tourism', 'souvenirs', 'armenia', 'travel'],
     date: '2026-09-01',
     fa: {
@@ -282,7 +282,7 @@ export const blogPosts = [
     slug: 'medical-universities-armenia',
     href: '/blog/medical-universities-armenia',
     category: 'education',
-    thumbnail: '/images/company.webp',
+    thumbnail: '/images/blog/medical-universities-armenia.svg',
     tags: ['education', 'medical', 'university', 'armenia'],
     date: '2026-09-02',
     fa: {
@@ -298,7 +298,7 @@ export const blogPosts = [
     slug: 'rental-contract-armenia-guide',
     href: '/blog/rental-contract-armenia-guide',
     category: 'life',
-    thumbnail: '/images/about.webp',
+    thumbnail: '/images/blog/rental-contract-armenia-guide.svg',
     tags: ['rental-contract', 'deposit', 'legal', 'life'],
     date: '2026-09-02',
     fa: {
@@ -314,7 +314,7 @@ export const blogPosts = [
     slug: 'rental-contract-tips-armenia',
     href: '/blog/rental-contract-tips-armenia',
     category: 'life',
-    thumbnail: '/images/about.webp',
+    thumbnail: '/images/blog/rental-contract-tips-armenia.svg',
     tags: ['rental-contract', 'deposit', 'legal', 'tips'],
     date: '2026-09-02',
     fa: {
@@ -330,7 +330,7 @@ export const blogPosts = [
     slug: 'residency-paths-comparison-armenia',
     href: '/blog/residency-paths-comparison-armenia',
     category: 'residency',
-    thumbnail: '/images/visa.webp',
+    thumbnail: '/images/blog/residency-paths-comparison-armenia.svg',
     tags: ['residency', 'comparison', 'armenia'],
     date: '2026-09-02',
     fa: {
@@ -346,7 +346,7 @@ export const blogPosts = [
     slug: 'simcard-internet-apps-yerevan',
     href: '/blog/simcard-internet-apps-yerevan',
     category: 'life',
-    thumbnail: '/images/tourism/yerevan-cascade.webp',
+    thumbnail: '/images/blog/simcard-internet-apps-yerevan.svg',
     tags: ['simcard', 'internet', 'apps', 'yerevan'],
     date: '2026-09-01',
     fa: {
@@ -362,7 +362,7 @@ export const blogPosts = [
     slug: 'startup-tech-ecosystem-yerevan',
     href: '/blog/startup-tech-ecosystem-yerevan',
     category: 'work',
-    thumbnail: '/images/company/yerevan-bank-building.webp',
+    thumbnail: '/images/blog/startup-tech-ecosystem-yerevan.svg',
     tags: ['startup', 'tech', 'yerevan', 'work'],
     date: '2026-09-02',
     fa: {
@@ -378,7 +378,7 @@ export const blogPosts = [
     slug: 'work-without-degree-armenia',
     href: '/blog/work-without-degree-armenia',
     category: 'work',
-    thumbnail: '/images/company/yerevan-city-center.webp',
+    thumbnail: '/images/blog/work-without-degree-armenia.svg',
     tags: ['work', 'no-degree', 'armenia', 'jobs'],
     date: '2026-09-02',
     fa: {
