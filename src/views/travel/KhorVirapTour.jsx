@@ -2,12 +2,12 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Clock, Backpack, Phone, MessageCircle, MapPin } from 'lucide-react';
+import { Clock, Backpack, Phone, MapPin } from 'lucide-react';
 import GlobalNavbar from '@/components/shared/GlobalNavbar';
 import PageSidebar from '@/components/shared/PageSidebar';
 import RelatedServices from '@/components/shared/RelatedServices';
 import RelatedContent from '@/components/shared/RelatedContent';
-import TourBookingWidget from '@/components/shared/TourBookingWidget';
+import TourInquiryWidget from '@/components/shared/TourInquiryWidget';
 
 export default function KhorVirapTour() {
   return (
@@ -58,8 +58,7 @@ export default function KhorVirapTour() {
               </div>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
-                <TourBookingWidget tourName="تور یک‌روزه خور ویراپ" adultPrice={25000} childPrice={19000} currency="درام" whatsappNumber="37433149327" />
-                <a href="https://wa.me/37433149327" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 font-bold hover:bg-white/5"><MessageCircle className="w-5 h-5" /> مشاوره در واتساپ</a>
+                <TourInquiryWidget tourName="تور یک‌روزه خور ویراپ" />
               </div>
             </section>
 
