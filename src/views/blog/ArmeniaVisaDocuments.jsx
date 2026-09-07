@@ -34,6 +34,13 @@ export default function ArmeniaVisaDocuments() {
           <p className="text-xs text-foreground/40 mt-2">آپدیت: شهریور ۱۴۰۴</p>
         </div>
 
+        <img
+          src="https://images.unsplash.com/photo-1487274910620-1add53247020?w=1200&q=75"
+          alt="پاسپورت و مدارک روی کلیپ‌بورد، تصویر مرتبط با مدارک ویزای ارمنستان"
+          className="w-full h-64 sm:h-80 object-cover rounded-2xl mb-8"
+          loading="lazy"
+        />
+
         <div className="p-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 mb-8 text-sm text-foreground/70 leading-relaxed">
           <span className="font-bold text-emerald-400">خبر خوب:</span> ایرانیان برای ورود به ارمنستان نیاز به ویزای از پیش دریافت‌شده ندارند. با پاسپورت ایرانی می‌توانید بدون ویزا وارد ارمنستان شده و تا ۱۸۰ روز در سال اقامت کنید.
         </div>
