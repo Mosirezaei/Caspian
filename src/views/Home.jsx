@@ -27,9 +27,9 @@ function HomeContent() {
         
         <ArticlesSection />
 
-        {/* Retro Stage / Disko Legend Banner */}
+        {/* Disko Legend / Retro Stage Banner */}
         <section className="max-w-6xl mx-auto px-4 py-8">
-          <Link href="/events"
+          <Link href="/retro"
             className="group relative block overflow-hidden rounded-2xl border border-white/10 hover:border-primary/40 transition-all duration-500">
             <div className="absolute inset-0 bg-gradient-to-l from-primary/20 via-fuchsia-500/10 to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
             <div className="relative flex items-center justify-between p-6 sm:p-8" dir="rtl">
@@ -39,9 +39,9 @@ function HomeContent() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-black text-foreground group-hover:text-primary transition-colors">
-                    تهیه بلیط کنسرت و فستیوال
+                    فستیوال Disco Legends در ایروان
                   </h3>
-                  <p className="text-sm text-foreground/50 mt-0.5">تئاتر · کنسرت · فستیوال · نمایشگاه — از tomsarkgh.am</p>
+                  <p className="text-sm text-foreground/50 mt-0.5">با حضور Haddaway، Boney M، Mr. President و Dr. Alban</p>
                 </div>
               </div>
               <div className="hidden sm:flex items-center gap-2 bg-primary/10 border border-primary/20 px-4 py-2 rounded-xl">
