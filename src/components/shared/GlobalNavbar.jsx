@@ -91,6 +91,7 @@ const navLinks = {
         { label: 'بلیط هوایی و زمینی', href: '/travel/flight-bus' },
         { label: 'ترانسفر فرودگاهی', href: '/travel/transfer' },
         { label: 'صرافی ارزی', href: '/travel/exchange' },
+        { label: 'رویدادها و بلیط', href: '/events' },
       ],
     },
     {
@@ -127,6 +128,7 @@ const navLinks = {
         { label: 'Flight & Ground Tickets', href: '/travel/flight-bus' },
         { label: 'Airport Transfer', href: '/travel/transfer' },
         { label: 'Currency Exchange', href: '/travel/exchange' },
+        { label: 'Events & Tickets', href: '/events' },
       ],
     },
     {
@@ -163,6 +165,7 @@ const navLinks = {
         { label: 'Авиа и наземные билеты', href: '/travel/flight-bus' },
         { label: 'Трансфер из аэропорта', href: '/travel/transfer' },
         { label: 'Обмен валют', href: '/travel/exchange' },
+        { label: 'События и билеты', href: '/events' },
       ],
     },
     {
