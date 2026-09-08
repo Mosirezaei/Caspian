@@ -22,6 +22,23 @@ async function callTelegram(method, payload) {
   return res.json();
 }
 
+// Builds the right inline keyboard for a comment's current state. Used both
+// right after an action (approve/reply/delete-reply) and to restore the
+// keyboard when the admin cancels a delete confirmation.
+function keyboardFor(status, hasReply) {
+  if (status === 'pending') {
+    return [[{ text: '✅ تایید', callback_data: 'approve' }, { text: '❌ رد', callback_data: 'reject' }]];
+  }
+  if (status === 'rejected') {
+    return [[{ text: '🗑 حذف نظر', callback_data: 'ask_delete' }]];
+  }
+  // approved
+  const row1 = hasReply
+    ? [{ text: '✏️ ویرایش پاسخ', callback_data: 'reply' }, { text: '🗑 حذف پاسخ', callback_data: 'del_reply' }]
+    : [{ text: '✍️ پاسخ به این نظر', callback_data: 'reply' }];
+  return [row1, [{ text: '🗑 حذف نظر', callback_data: 'ask_delete' }]];
+}
+
 // One-time setup helper: visit
 //   https://caspian.am/api/telegram-webhook?key=<TELEGRAM_WEBHOOK_SECRET>
 // once after deploy (or after rotating the bot token) to (re)register this
@@ -48,22 +65,21 @@ export async function GET(request) {
   return NextResponse.json(data);
 }
 
-// Receives Telegram updates for the moderation flow:
+// Receives Telegram updates for the full moderation flow:
 //
-//  1. Tapping "✅ تایید" under a comment -> approve it, edit the message to
-//     show "✅ منتشر شد", and swap the buttons for a single
-//     "✍️ پاسخ به این نظر" button.
-//  2. Tapping "❌ رد" -> reject it, edit the message to show "❌ رد شد",
-//     remove the buttons entirely. Nothing further happens.
-//  3. Tapping "✍️ پاسخ به این نظر" -> send a new force-reply prompt message
-//     (as a reply to the comment message) and remember its id on that
-//     comment's row (reply_prompt_message_id).
-//  4. The admin's next message, sent into that force-reply box, arrives as
-//     message.reply_to_message pointing at the *prompt* message (not the
-//     original comment) -- matched back to the right row via
-//     reply_prompt_message_id. This is what makes replying to several
-//     comments in any order, in parallel, unambiguous: each prompt message
-//     is tied to exactly one comment.
+//  Pending  -> ✅ تایید | ❌ رد
+//  Approved (no reply) -> ✍️ پاسخ به این نظر | 🗑 حذف نظر
+//  Approved (has reply) -> ✏️ ویرایش پاسخ | 🗑 حذف پاسخ | 🗑 حذف نظر
+//  Rejected -> 🗑 حذف نظر
+//
+// "حذف نظر" goes through a one-tap confirm step (ask_delete -> confirm/cancel)
+// since it permanently deletes the row (question + reply, if any). "حذف پاسخ"
+// only clears the reply and needs no confirmation -- the comment itself
+// stays live and can just be answered again.
+//
+// Replies are matched via reply_prompt_message_id (see set/reply RPCs), not
+// Telegram's native reply-to-original, so multiple comments can be answered
+// in any order without mixing them up.
 export async function POST(request) {
   const secretHeader = request.headers.get('x-telegram-bot-api-secret-token');
   if (secretHeader !== process.env.TELEGRAM_WEBHOOK_SECRET) {
@@ -79,7 +95,7 @@ export async function POST(request) {
     if (update.callback_query) {
       const cq = update.callback_query;
       const messageId = cq.message?.message_id;
-      const baseText = cq.message?.text || '';
+      const baseText = (cq.message?.text || '').replace(/\n\n(✅ منتشر شد|❌ رد شد|🗑 حذف شد)$/, '');
 
       if (cq.data === 'approve' || cq.data === 'reject') {
         const action = cq.data === 'approve' ? 'approved' : 'rejected';
@@ -89,33 +105,16 @@ export async function POST(request) {
           p_secret: secret,
         });
 
-        if (action === 'approved') {
-          await callTelegram('editMessageText', {
-            chat_id: chatId,
-            message_id: messageId,
-            text: `${baseText}\n\n✅ منتشر شد`,
-          });
-          await callTelegram('editMessageReplyMarkup', {
-            chat_id: chatId,
-            message_id: messageId,
-            reply_markup: { inline_keyboard: [[{ text: '✍️ پاسخ به این نظر', callback_data: 'reply' }]] },
-          });
-        } else {
-          await callTelegram('editMessageText', {
-            chat_id: chatId,
-            message_id: messageId,
-            text: `${baseText}\n\n❌ رد شد`,
-          });
-          await callTelegram('editMessageReplyMarkup', {
-            chat_id: chatId,
-            message_id: messageId,
-            reply_markup: { inline_keyboard: [] },
-          });
-        }
-
+        const suffix = action === 'approved' ? '✅ منتشر شد' : '❌ رد شد';
+        await callTelegram('editMessageText', {
+          chat_id: chatId, message_id: messageId, text: `${baseText}\n\n${suffix}`,
+        });
+        await callTelegram('editMessageReplyMarkup', {
+          chat_id: chatId, message_id: messageId,
+          reply_markup: { inline_keyboard: keyboardFor(action, false) },
+        });
         await callTelegram('answerCallbackQuery', {
-          callback_query_id: cq.id,
-          text: action === 'approved' ? 'تایید شد' : 'رد شد',
+          callback_query_id: cq.id, text: action === 'approved' ? 'تایید شد' : 'رد شد',
         });
       } else if (cq.data === 'reply') {
         const prompt = await callTelegram('sendMessage', {
@@ -125,7 +124,6 @@ export async function POST(request) {
           reply_markup: { force_reply: true, selective: true },
         });
         const promptMessageId = prompt?.result?.message_id;
-
         if (promptMessageId) {
           await supabase.rpc('set_reply_prompt_message_id', {
             p_telegram_message_id: messageId,
@@ -133,7 +131,48 @@ export async function POST(request) {
             p_secret: secret,
           });
         }
-
+        await callTelegram('answerCallbackQuery', { callback_query_id: cq.id });
+      } else if (cq.data === 'del_reply') {
+        await supabase.rpc('delete_comment_reply', {
+          p_telegram_message_id: messageId,
+          p_secret: secret,
+        });
+        await callTelegram('editMessageReplyMarkup', {
+          chat_id: chatId, message_id: messageId,
+          reply_markup: { inline_keyboard: keyboardFor('approved', false) },
+        });
+        await callTelegram('answerCallbackQuery', { callback_query_id: cq.id, text: 'پاسخ حذف شد' });
+      } else if (cq.data === 'ask_delete') {
+        await callTelegram('editMessageReplyMarkup', {
+          chat_id: chatId, message_id: messageId,
+          reply_markup: { inline_keyboard: [[
+            { text: '⚠️ بله، کامل حذف کن', callback_data: 'confirm_delete' },
+            { text: '↩️ انصراف', callback_data: 'cancel_delete' },
+          ]] },
+        });
+        await callTelegram('answerCallbackQuery', { callback_query_id: cq.id });
+      } else if (cq.data === 'confirm_delete') {
+        await supabase.rpc('delete_page_comment', {
+          p_telegram_message_id: messageId,
+          p_secret: secret,
+        });
+        await callTelegram('editMessageText', {
+          chat_id: chatId, message_id: messageId, text: `${baseText}\n\n🗑 حذف شد`,
+        });
+        await callTelegram('editMessageReplyMarkup', {
+          chat_id: chatId, message_id: messageId, reply_markup: { inline_keyboard: [] },
+        });
+        await callTelegram('answerCallbackQuery', { callback_query_id: cq.id, text: 'حذف شد' });
+      } else if (cq.data === 'cancel_delete') {
+        const { data: rows } = await supabase.rpc('get_comment_status', {
+          p_telegram_message_id: messageId,
+          p_secret: secret,
+        });
+        const row = rows?.[0];
+        await callTelegram('editMessageReplyMarkup', {
+          chat_id: chatId, message_id: messageId,
+          reply_markup: { inline_keyboard: keyboardFor(row?.status || 'pending', row?.has_reply || false) },
+        });
         await callTelegram('answerCallbackQuery', { callback_query_id: cq.id });
       }
     } else if (update.message?.reply_to_message) {
@@ -141,12 +180,19 @@ export async function POST(request) {
       const promptMessageId = update.message.reply_to_message.message_id;
 
       if (replyText) {
-        await supabase.rpc('reply_page_comment_by_prompt', {
+        const { data: telegramMessageId } = await supabase.rpc('reply_page_comment_by_prompt', {
           p_prompt_message_id: promptMessageId,
           p_reply: replyText,
           p_admin_name: ADMIN_NAME,
           p_secret: secret,
         });
+
+        if (telegramMessageId) {
+          await callTelegram('editMessageReplyMarkup', {
+            chat_id: chatId, message_id: telegramMessageId,
+            reply_markup: { inline_keyboard: keyboardFor('approved', true) },
+          });
+        }
 
         await callTelegram('sendMessage', {
           chat_id: chatId,
