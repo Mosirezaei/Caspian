@@ -63,7 +63,7 @@ export default function CurrencyTicker() {
   }, []);
 
   const label =
-    lang === 'fa' ? 'نرخ لحظه‌ای ارز (تومان)' : lang === 'ru' ? 'Курс валют (туман)' : 'Live Exchange Rates (Toman)';
+    lang === 'fa' ? 'نرخ لحظه‌ای ارز (تومان) در بازار آزاد ایران' : lang === 'ru' ? 'Курс валют (туман)' : 'Live Exchange Rates (Toman)';
 
   return (
     <section className="mb-6">
