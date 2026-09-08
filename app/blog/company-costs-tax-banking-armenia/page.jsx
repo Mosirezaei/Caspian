@@ -3,7 +3,7 @@ import JsonLd from '@/components/shared/JsonLd';
 import { articleSchema } from '@/lib/schema';
 
 export const metadata = {
-  title: 'هزینه ثبت شرکت در ارمنستان، مالیات و افتتاح حساب بانکی | گروه کاسپین',
+  title: 'هزینه ثبت شرکت در ارمنستان، مالیات و افتتاح حساب بانکی',
   description: 'راهنمای کامل هزینه‌های ثبت شرکت در ارمنستان، رژیم‌های مالیاتی (۱۸٪ و گردش مالی)، شرایط افتتاح حساب بانکی و اهمیت حسابداری منظم.',
   keywords: 'هزینه ثبت شرکت ارمنستان, مالیات ارمنستان, حساب بانکی ارمنستان, LLC هزینه, حسابداری ارمنستان',
   alternates: { canonical: 'https://caspian.am/blog/company-costs-tax-banking-armenia' },
