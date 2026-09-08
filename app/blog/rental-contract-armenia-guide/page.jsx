@@ -3,7 +3,7 @@ import JsonLd from '@/components/shared/JsonLd';
 import { articleSchema } from '@/lib/schema';
 
 export const metadata = {
-  title: 'قرارداد اجاره خانه در ارمنستان: مدارک، ودیعه و نکاتی که باید قبل از امضا بدانید | کاسپین گروپ',
+  title: 'قرارداد اجاره خانه در ارمنستان: مدارک، ودیعه و نکات مهم',
   description: 'از پیدا کردن آگهی معتبر تا تحویل کلید؛ مدارک لازم، بندهای ضروری قرارداد و نشانه‌های آگهی مشکوک.',
   alternates: { canonical: 'https://caspian.am/blog/rental-contract-armenia-guide' },
 };
