@@ -106,7 +106,6 @@ const navLinks = {
       label: 'روسیه', href: '#', children: [
         { label: 'ویزای توریستی', href: '/visa/russia' },
         { label: 'ویزای تجاری', href: '/visa/russia/business' },
-        { label: 'ویزای مولتی', href: '/visa/russia/multi' },
         { label: 'ویزای تحصیلی', href: '/student-visa/russia' },
       ],
     },
@@ -143,7 +142,6 @@ const navLinks = {
       label: 'Russia', href: '#', children: [
         { label: 'Tourist Visa', href: '/visa/russia' },
         { label: 'Business Visa', href: '/visa/russia/business' },
-        { label: 'Multi-entry Visa', href: '/visa/russia/multi' },
         { label: 'Student Visa', href: '/student-visa/russia' },
       ],
     },
@@ -180,7 +178,6 @@ const navLinks = {
       label: 'Россия', href: '#', children: [
         { label: 'Туристическая виза', href: '/visa/russia' },
         { label: 'Бизнес-виза', href: '/visa/russia/business' },
-        { label: 'Мульти-виза', href: '/visa/russia/multi' },
         { label: 'Студенческая виза', href: '/student-visa/russia' },
       ],
     },
