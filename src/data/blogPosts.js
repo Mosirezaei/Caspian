@@ -406,6 +406,22 @@ export const blogPosts = [
       excerpt: 'From Dalma Garden and Yerevan Mall to the Vernissage and Pak Shuka markets — addresses, hours, brands, and the best Armenian souvenirs.',
     },
   },
+  {
+    slug: 'buy-property-armenia-foreigners',
+    href: '/blog/buy-property-armenia-foreigners',
+    category: 'life',
+    thumbnail: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Yerevan_Cascade_2021.jpg/640px-Yerevan_Cascade_2021.jpg',
+    tags: ['property', 'buying-property', 'investment', 'armenia'],
+    date: '2026-09-08',
+    fa: {
+      title: 'خرید ملک در ارمنستان برای اتباع خارجی؛ مراحل، مدارک و ریسک‌ها',
+      excerpt: 'راهنمای بررسی ملک، قرارداد، انتقال رسمی مالکیت و ریسک‌های حقوقی خرید خانه در ارمنستان برای اتباع خارجی.',
+    },
+    en: {
+      title: 'Buying Property in Armenia as a Foreigner: Steps, Documents & Risks',
+      excerpt: 'A practical guide to property checks, contracts, official transfer and legal risks for foreign buyers in Armenia.',
+    },
+  },
 ];
 
 export const CATEGORY_LABELS = {
