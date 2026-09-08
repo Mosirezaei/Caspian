@@ -390,19 +390,38 @@ export const blogPosts = [
       excerpt: 'Job fields open without a university degree, approximate salaries, and work permit requirements.',
     },
   },
+  {
+    slug: 'yerevan-shopping-malls-guide',
+    href: '/blog/yerevan-shopping-malls-guide',
+    category: 'shopping',
+    thumbnail: 'https://commons.wikimedia.org/wiki/Special:FilePath/Dalma%20Garden%20Mall%20-%208%20-%20Yerevan.JPG?width=400',
+    tags: ['shopping', 'malls', 'yerevan', 'souvenirs', 'armenia'],
+    date: '2026-09-08',
+    fa: {
+      title: 'مراکز خرید ایروان ارمنستان — راهنمای کامل مال‌ها، بازارهای سنتی و سوغات',
+      excerpt: 'از دالما گاردن و ایروان مال تا بازار سنتی ورنیساژ و پاک شوکا؛ آدرس، ساعت کاری، برندها و بهترین سوغات ارمنستان در یک راهنمای کامل.',
+    },
+    en: {
+      title: 'Yerevan Shopping Malls & Markets — A Complete Guide',
+      excerpt: 'From Dalma Garden and Yerevan Mall to the Vernissage and Pak Shuka markets — addresses, hours, brands, and the best Armenian souvenirs.',
+    },
+  },
 ];
 
 export const CATEGORY_LABELS = {
   fa: {
     residency: 'اقامت و مهاجرت', company: 'ثبت شرکت و مالی', work: 'کار و اشتغال',
     life: 'زندگی در ایروان', education: 'تحصیل', tourism: 'گردشگری و دیدنی‌ها', news: 'اخبار و فستیوال‌ها',
+    shopping: 'خرید در ارمنستان',
   },
   en: {
     residency: 'Residency & Immigration', company: 'Company Registration & Finance', work: 'Work & Employment',
     life: 'Life in Yerevan', education: 'Education', tourism: 'Tourism & Sights', news: 'News & Festivals',
+    shopping: 'Shopping in Armenia',
   },
   ru: {
     residency: 'ВНЖ и миграция', company: 'Регистрация компаний и финансы', work: 'Работа и трудоустройство',
     life: 'Жизнь в Ереване', education: 'Образование', tourism: 'Туризм и достопримечательности', news: 'Новости и фестивали',
+    shopping: 'Шопинг в Армении',
   },
 };
