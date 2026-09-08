@@ -3,7 +3,7 @@ import JsonLd from '@/components/shared/JsonLd';
 import { articleSchema } from '@/lib/schema';
 
 export const metadata = {
-  title: 'راهنمای ثبت شرکت در ارمنستان | هزینه، مراحل و مالیات | گروه کاسپین',
+  title: 'راهنمای ثبت شرکت در ارمنستان | هزینه، مراحل و مالیات',
   description: 'راهنمای کامل ثبت شرکت LLC در ارمنستان برای ایرانیان: هزینه‌های واقعی، مراحل گام‌به‌گام، سیستم مالیاتی ۵٪، حساب بانکی و نکات کلیدی.',
   keywords: 'ثبت شرکت ارمنستان, ثبت LLC ارمنستان, مالیات ارمنستان, حساب بانکی ارمنستان, اقامت بیزینسی ارمنستان',
   alternates: { canonical: 'https://caspian.am/blog/company-registration-armenia' },
