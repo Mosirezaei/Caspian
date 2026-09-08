@@ -1,5 +1,7 @@
 'use client';
 import React from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 
@@ -15,7 +17,10 @@ function Content() {
       subtitleEn="Two routes: eVisa or embassy sticker visa from Yerevan"
       subtitleRu="Два способа: eVisa или стикерная виза через посольство в Ереване"
       heroImage="https://images.unsplash.com/photo-1513326738677-b964603b136d?w=1200&q=80"
-      serviceType="visa-russia">
+      serviceType="visa-russia-tourist"
+      seoTitle="ویزای توریستی روسیه برای ایرانیان | شرایط، مدارک و هزینه ۲۰۲۶ | گروه کاسپین"
+      seoDescription="ویزای توریستی روسیه برای ایرانیان از ایروان: eVisa از ۷۰ دلار در ۴ روز یا ویزای سفارت تا ۳۰ روز اقامت. مدارک، هزینه، دعوتنامه و مراحل کامل."
+      breadcrumbs={[{ label: 'خانه', href: '/' }, { label: 'ویزای روسیه', href: '/visa/russia' }, { label: 'ویزای توریستی' }]}>
 
       <div className="rounded-2xl overflow-hidden mb-6 aspect-video relative">
         <img src="https://images.unsplash.com/photo-1513326738677-b964603b136d?w=1200&q=80" alt={isFa ? 'میدان سرخ مسکو، مقصد سفر با ویزای روسیه' : isRu ? 'Красная площадь, Москва' : 'Moscow Red Square, Russia'} className="w-full h-full object-cover" loading="lazy" />
@@ -129,6 +134,31 @@ function Content() {
             'هزینه‌های کنسولی بسته به سیاست‌های سفارت ممکن است تغییر کنند — قبل از اقدام آخرین نرخ را از کاسپین بپرسید',
           ]} />
         </InfoBlock>
+
+        <InfoBlock title="تک‌ورودی، دوبار ورود یا چندبار ورود؟ (Single / Double / Multiple Entry)">
+          <p className="mb-2">ویزای استیکری توریستی روسیه معمولاً به‌صورت تک‌ورودی یا دوبار ورود صادر می‌شود و برای اکثر سفرهای گردشگری همین کافی است. اگر در یک بازه‌ی زمانی مشخص قصد چند سفر جداگانه به روسیه را دارید، گزینه‌ی ویزای <strong>چندبار ورود (Multiple Entry)</strong> — که بیشتر در قالب ویزای تجاری صادر می‌شود — می‌تواند مناسب‌تر باشد؛ جزئیات این نوع را در <Link href="/visa/russia/business" className="text-primary hover:underline">ویزای تجاری روسیه</Link> توضیح داده‌ایم.</p>
+        </InfoBlock>
+
+        <InfoBlock title="دلایل رایج رد شدن درخواست ویزا">
+          <CheckList items={[
+            'مغایرت اطلاعات فرم آنلاین با مندرجات پاسپورت',
+            'دعوتنامه‌ی نامعتبر یا صادرشده از منبع فاقد مجوز',
+            'اعتبار ناکافی پاسپورت (کمتر از ۶ ماه از تاریخ ورود) یا نبود صفحه‌ی خالی کافی',
+            'بیمه‌ی مسافرتی با پوشش کمتر از حداقل الزامی',
+            'سابقه‌ی مشکل در ویزاهای قبلی روسیه یا شینگن (بسته به ارزیابی کنسولگری)',
+          ]} />
+          <p className="text-xs text-foreground/50 mt-3">این موارد بر اساس رایج‌ترین دلایل مشاهده‌شده است و تصمیم نهایی همیشه با کنسولگری روسیه است؛ کاسپین در آماده‌سازی صحیح مدارک کمک می‌کند تا این ریسک‌ها به حداقل برسد.</p>
+        </InfoBlock>
+
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+          className="glass-panel rounded-2xl p-6 mb-6 text-center">
+          <h2 className="text-lg font-black text-foreground mb-2">آماده‌اید درخواست ویزای توریستی روسیه را ثبت کنید؟</h2>
+          <p className="text-sm text-foreground/60 mb-4">همین حالا با کارشناسان کاسپین در واتساپ صحبت کنید و مسیر eVisa یا ویزای سفارت را متناسب با برنامه‌ی سفرتان انتخاب کنید.</p>
+          <a href="https://wa.me/37433149327" target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-green-600 hover:bg-green-500 transition text-white text-sm font-bold">
+            درخواست ویزای روسیه در واتساپ
+          </a>
+        </motion.div>
       </>}
 
       {lang === 'en' && <>
