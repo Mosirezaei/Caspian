@@ -22,6 +22,7 @@ const nextConfig = {
       { source: '/blog/living-cost-yerevan-1404', destination: '/blog/living-cost-yerevan', permanent: true },
       { source: '/services/visa-schengen',        destination: '/contact',            permanent: true },
       { source: '/services/visa-russia',          destination: '/visa/russia',         permanent: true },
+      { source: '/visa/russia/multi',              destination: '/visa/russia/business', permanent: true },
       { source: '/services/residency',            destination: '/residency/business',  permanent: true },
       { source: '/services/hotel',               destination: '/travel/hotel',         permanent: true },
       { source: '/vip',                           destination: '/contact',             permanent: true },
