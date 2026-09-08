@@ -3,7 +3,7 @@ import JsonLd from '@/components/shared/JsonLd';
 import { articleSchema } from '@/lib/schema';
 
 export const metadata = {
-  title: 'تحصیل در ارمنستان: مدارس ایرانی، دانشگاه‌ها و هزینه‌ها | گروه کاسپین',
+  title: 'تحصیل در ارمنستان: مدارس ایرانی، دانشگاه‌ها و هزینه‌ها',
   description: 'راهنمای کامل تحصیل در ارمنستان برای ایرانیان: مدرسه‌ی شهید فهمیده ایروان، دانشگاه آمریکایی ارمنستان، شهریه و هزینه‌ی زندگی دانشجویی.',
   keywords: 'تحصیل ارمنستان, مدرسه ایرانی ایروان, دانشگاه ارمنستان, شهریه دانشگاه ایروان, اقامت تحصیلی ارمنستان',
   alternates: { canonical: 'https://caspian.am/blog/education-armenia' },
