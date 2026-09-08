@@ -2,7 +2,7 @@
 import { usePathname } from 'next/navigation';
 
 export default function PageNotFound() {
-  const location = usePathname();
+  const pathname = usePathname();
   const pageName = pathname.substring(1);
 
   return (
