@@ -94,7 +94,7 @@ export default function EventsPage({ initialEvents = [] }) {
           <Link href="/retro"
             className="group relative rounded-2xl overflow-hidden border border-primary/25 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
             <div className="relative h-56 overflow-hidden">
-              <img src="/images/retro-stage.jpg" alt="فستیوال Disco Legends" loading="lazy"
+              <img src="/images/retrodesk.jpeg" alt="فستیوال Disco Legends" loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
               <span className="absolute top-3 right-3 bg-primary text-black text-[11px] font-black px-2.5 py-1 rounded-full">
