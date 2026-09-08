@@ -1,5 +1,5 @@
 'use client';
-import { Music, Newspaper, CalendarDays, ArrowLeft } from 'lucide-react';
+import { Music, Newspaper, CalendarDays, ArrowLeft, Info } from 'lucide-react';
 import FestivalsCalendar from '@/components/festivals/FestivalsCalendar';
 import Link from 'next/link';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
