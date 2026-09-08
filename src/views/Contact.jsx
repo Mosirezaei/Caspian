@@ -183,7 +183,7 @@ function ContactContent() {
       <div className="relative pt-14">
         <div className="relative h-48 sm:h-64 overflow-hidden">
           <img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1600&q=80"
-            alt="Contact" className="w-full h-full object-cover opacity-25" loading="lazy" />
+            alt="" className="w-full h-full object-cover opacity-25" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/50 to-background" />
         </div>
       </div>
@@ -193,7 +193,7 @@ function ContactContent() {
         {/* Logo and Contact Title section (Without border and larger, fully responsive) */}
         <div className="text-center space-y-4 -mt-20 sm:-mt-24 relative z-10">
           <div className="inline-block">
-            <img src="/images/logo.webp" alt="Caspian Logo" className="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 object-contain mx-auto drop-shadow-lg" />
+            <img src="/images/logo.webp" alt="لوگوی کاسپین گروه" className="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 object-contain mx-auto drop-shadow-lg" />
           </div>
           <div>
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}

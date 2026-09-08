@@ -14,7 +14,7 @@ export default function ContactFooter() {
           <div>
             <div className="mb-4 flex items-center gap-3">
               <img src="/images/contact.webp"
-                alt="Caspian Business Group" width="48" height="48" className="h-12 w-auto object-contain" loading="lazy" />
+                alt="لوگوی کاسپین گروه" width="48" height="48" className="h-12 w-auto object-contain" loading="lazy" />
               <span className="text-xl font-black gold-gradient-text leading-tight">کاسپین گروه</span>
             </div>
             <p className="text-sm text-foreground/50 leading-relaxed">{t.footer.tagline}</p>
