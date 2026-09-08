@@ -1,6 +1,5 @@
 'use client';
-import { Music, Newspaper, CalendarDays, ArrowLeft, Info } from 'lucide-react';
-import FestivalsCalendar from '@/components/festivals/FestivalsCalendar';
+import { Music, Newspaper, CalendarDays, ArrowLeft, Info, PartyPopper } from 'lucide-react';
 import Link from 'next/link';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 import PageSidebar from '@/components/shared/PageSidebar';
@@ -18,6 +17,13 @@ const concerts = [
   { date: '۱۰ اکتبر ۲۰۲۶', name: 'Дурной Вкус (گروه روسی)', venue: 'Muha Bar' },
 ];
 
+
+const upcomingFestivals = [
+  { id: 'gata-fest', name: 'جشنواره گاتا', date: 'سپتامبر', location: 'خاچیک، وایوتس‌دزور' },
+  { id: 'independence-day', name: 'روز استقلال ارمنستان', date: '۲۱ سپتامبر', location: 'سراسر کشور' },
+  { id: 'areni-wine', name: 'جشنواره شراب آرنی', date: 'اوایل اکتبر', location: 'روستای آرنی، وایوتس‌دزور' },
+  { id: 'balloon-fest', name: 'جشنواره بالن هوای گرم', date: 'پاییز', location: 'ایروان، گارنی و آپاران' },
+];
 
 export default function ArmeniaFestivalsEventsNews() {
   useSEO({
@@ -59,8 +65,30 @@ export default function ArmeniaFestivalsEventsNews() {
           </div>
         </div>
 
-        {/* تقویم فستیوال‌ها — کامپوننت مشترک با تب فستیوال‌های صفحه /events */}
-        <FestivalsCalendar idPrefix="blog-" />
+        {/* خلاصه‌ی چند فستیوال نزدیک -- تقویم کامل و همه‌ی جشن‌های سال عمداً اینجا
+            تکرار نمی‌شه، چون همون محتوا کامل تو تب «فستیوال‌ها»ی /events هست؛
+            نگه‌داشتن دو نسخه‌ی کامل و یکسان از تقویم رو دو تا URL جدا باعث
+            محتوای تکراری و رقابت سئو با خودمون می‌شد. */}
+        <section className="mb-14">
+          <h2 className="text-2xl font-bold text-foreground mb-5 flex items-center gap-2">
+            <PartyPopper className="w-5 h-5 text-primary" /> نزدیک‌ترین فستیوال‌ها
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {upcomingFestivals.map((f) => (
+              <div key={f.id} className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                <div className="text-xs text-primary/70 font-semibold">{f.date}</div>
+                <h3 className="font-bold text-foreground text-sm mt-1">{f.name}</h3>
+                <p className="text-foreground/50 text-xs mt-1">{f.location}</p>
+              </div>
+            ))}
+          </div>
+          <Link
+            href="/events"
+            className="mt-4 inline-flex items-center gap-1.5 text-sm text-primary font-semibold hover:underline"
+          >
+            دیدن تقویم کامل فستیوال‌های سال <ArrowLeft className="w-3.5 h-3.5" />
+          </Link>
+        </section>
 
         {/* Upcoming concerts (next 3 months) */}
         <section className="mb-14">
