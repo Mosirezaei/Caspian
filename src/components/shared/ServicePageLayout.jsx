@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { useSEO } from '@/hooks/useSEO';
@@ -8,7 +9,12 @@ import StaticFAQ from './StaticFAQ';
 import ContactFooter from '@/components/home/ContactFooter';
 import PageSidebar from './PageSidebar';
 
-export function ServicePageLayout({ children, titleFa, titleEn, titleRu, subtitleFa, subtitleEn, subtitleRu, heroImage, serviceType }) {
+const SITE_URL = 'https://caspian.am';
+
+export function ServicePageLayout({
+  children, titleFa, titleEn, titleRu, subtitleFa, subtitleEn, subtitleRu,
+  heroImage, serviceType, seoTitle, seoDescription, breadcrumbs,
+}) {
   const { lang } = useLang();
   const isRtl = lang === 'fa';
   const title = lang === 'fa' ? titleFa : lang === 'ru' ? titleRu : titleEn;
@@ -17,14 +23,35 @@ export function ServicePageLayout({ children, titleFa, titleEn, titleRu, subtitl
   // Every page that uses this shared layout automatically gets a unique
   // <title>, meta description and canonical URL (previously ~18 pages had
   // none of these, so Google saw duplicate/generic titles for all of them).
+  // seoTitle/seoDescription let a page opt in to the exact copy already set
+  // in its Next.js `metadata` export (app/.../page.jsx), so the tag Google
+  // indexes on first crawl matches what users see once the client hydrates.
   useSEO({
-    title: title ? `${title} | گروه کاسپین` : undefined,
-    description: subtitle,
+    title: seoTitle || (title ? `${title} | گروه کاسپین` : undefined),
+    description: seoDescription || subtitle,
   });
+
+  // Optional breadcrumb trail (fa only for now — most traffic is Persian).
+  // Renders a visible trail + BreadcrumbList JSON-LD server-rendered in the
+  // initial HTML (no client-only injection), passed explicitly per page.
+  const showBreadcrumbs = isRtl && breadcrumbs && breadcrumbs.length > 0;
 
   return (
     <div dir={isRtl ? 'rtl' : 'ltr'} lang={lang} className="min-h-screen bg-background font-vazir">
       <GlobalNavbar />
+
+      {showBreadcrumbs && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: breadcrumbs.map((b, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            name: b.label,
+            ...(b.href ? { item: `${SITE_URL}${b.href}` } : {}),
+          })),
+        }) }} />
+      )}
 
       {/* Hero */}
       <div className="relative pt-14">
@@ -42,8 +69,23 @@ export function ServicePageLayout({ children, titleFa, titleEn, titleRu, subtitl
         </div>
       </div>
 
+      {showBreadcrumbs && (
+        <nav aria-label="breadcrumb" className="max-w-6xl mx-auto px-4 pt-4 text-xs text-foreground/50 flex items-center gap-1.5 flex-wrap">
+          {breadcrumbs.map((b, i) => (
+            <span key={i} className="flex items-center gap-1.5">
+              {i > 0 && <span className="text-foreground/30">/</span>}
+              {b.href ? (
+                <Link href={b.href} className="hover:text-primary transition-colors">{b.label}</Link>
+              ) : (
+                <span className="text-foreground/80" aria-current="page">{b.label}</span>
+              )}
+            </span>
+          ))}
+        </nav>
+      )}
+
       {/* Content */}
-      <div className="max-w-6xl mx-auto px-4 py-10 pb-10">
+      <main className="max-w-6xl mx-auto px-4 py-10 pb-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
             {children}
@@ -52,7 +94,7 @@ export function ServicePageLayout({ children, titleFa, titleEn, titleRu, subtitl
 
           <PageSidebar serviceType={serviceType} />
         </div>
-      </div>
+      </main>
       <ContactFooter />
     </div>
   );
