@@ -42,9 +42,13 @@ Create an environment file:
 Add required variables:
 
 ```env
-VITE_APP_NAME=Caspian Group
-VITE_API_URL=your_backend_url
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+ALANCHAND_API_TOKEN=your_alanchand_api_token
+CRON_SECRET=your_cron_secret
 ```
+
+See `.env.example` for details on each variable.
 
 
 ## Run Development Server
@@ -63,12 +67,17 @@ npm run build
 
 ## Project Structure
 
+This project is built on **Next.js (App Router)**. Route files live under `app/`,
+while most page content/logic lives in matching components under `src/views/`.
+
 ```
+app/                # Next.js routes (App Router) — one folder per URL, each with page.jsx
 src/
-├── components/
-├── pages/
-├── lib/
-└── assets/
+├── components/     # Shared and feature components (ui/, shared/, home/, ...)
+├── views/          # Page-level components rendered by app/**/page.jsx
+├── data/           # Static content, site links, blog post data
+├── lib/            # Client-side helpers (i18n, language context, utils)
+└── api/            # Supabase client
 ```
 
 
