@@ -20,11 +20,11 @@ export const FESTIVALS = [
     desc: 'یکی از طولانی‌ترین دوره‌های جشن در ارمنستان. میدان جمهوری و خیابان‌های مرکزی ایروان با چراغ‌ها، درخت‌های کریسمس و بازارهای فصلی تزئین می‌شوند. مناسب برای خانواده‌ها و گردشگران زمستانی.', image: { url: '/images/festivals/new-year-republic-square.webp', credit: 'کاسپین گروپ' } },
   { id: 'christmas', month: 1, star: 5, nameFa: 'کریسمس ارمنی و عید ظهور', nameEn: 'Armenian Christmas', date: '۶ ژانویه (ثابت)', location: 'سراسر ارمنستان، مراسم اصلی در اچمیادزین',
     desc: 'کلیسای حواری ارمنی میلاد مسیح و عید ظهور را در ۶ ژانویه جشن می‌گیرد — برخلاف بیشتر کلیساهای جهان. مراسم مذهبی، حضور در کلیسا و آیین «آب مقدس» از بخش‌های مهم این روز هستند.',
-    image: { url: 'https://images.unsplash.com/photo-1768553088949-516c53f7abb7?w=1200&q=80', credit: 'Jack Sparrow / Unsplash License' } },
+    image: { url: '/images/festivals/armenian-christmas.webp', alt: 'مراسم کریسمس ارمنی و عید ظهور در کلیسای ارمنستان با حضور اسقف‌ها' } },
   { id: 'post-christmas', month: 1, star: 1, nameFa: 'روز یادبود پس از کریسمس و ظهور', nameEn: 'Day after Christmas', date: '۷ ژانویه', location: 'سراسر ارمنستان', desc: 'در تقویم ارمنستان به‌عنوان روز یادبود پس از کریسمس و ظهور شناخته می‌شود.', image: null },
 
   { id: 'trndez', month: 2, star: 5, nameFa: 'ترندز', nameEn: 'Trndez / Tiarnndaraj', date: '۱۴ فوریه (۲۰۲۶: ۱۴ فوریه)', location: 'سراسر ارمنستان',
-    desc: 'یکی از جذاب‌ترین جشن‌های سنتی ارمنستان؛ شب جشن آتش‌های بزرگ روشن می‌شوند و مردم دورشان جمع می‌شوند. در سنت ارمنی با پاکی، نور، عشق و برکت زوج‌های تازه‌ازدواج‌کرده پیوند دارد. کلیسا این روز را جشن تقدیم مسیح در معبد هم می‌داند.', image: { url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Trndez%20in%20Dadivanq.jpg', credit: 'Wikimedia Commons — Wiki Loves Folklore 2020 Armenia' } },
+    desc: 'یکی از جذاب‌ترین جشن‌های سنتی ارمنستان؛ شب جشن آتش‌های بزرگ روشن می‌شوند و مردم دورشان جمع می‌شوند. در سنت ارمنی با پاکی، نور، عشق و برکت زوج‌های تازه‌ازدواج‌کرده پیوند دارد. کلیسا این روز را جشن تقدیم مسیح در معبد هم می‌داند.', image: { url: '/images/festivals/trndez-bonfire.webp', alt: 'آتش‌افروزی جشن ترندز در میدان کلیسای ایروان با حضور جمعیت' } },
   { id: 'amasia-winter', month: 2, star: 2, nameFa: 'جشن زمستانی آماسیا (−۴۶ درجه)', nameEn: 'Amasia -46°C Winter Festival', date: 'اواخر فوریه (متغیر)', location: 'آماسیا، استان شیراک',
     desc: 'جشن زمستانی و ورزشی در یکی از سردترین مناطق ارمنستان؛ اسنوموبیل، اسکی و سورتمه‌سواری همراه با موسیقی و فضای جشن.', image: null },
 
