@@ -1,6 +1,28 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
+// Minimal HTML-entity escaping for values interpolated into a Telegram
+// message sent with parse_mode: 'HTML' -- without this, a comment
+// containing "<" or "&" would break the message's formatting (and in
+// principle let someone inject fake tags/links into what you read).
+function escapeHtml(str) {
+  return String(str)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;');
+}
+
+// Turns "/blog/armenia-tourism-guide" into a short clickable label
+// ("armenia-tourism-guide") linking to the full page. Falls back to the
+// site root for an empty/root path.
+function pageLink(pagePath) {
+  const path = pagePath || '/';
+  const segments = path.split('/').filter(Boolean);
+  const label = segments.length ? segments[segments.length - 1] : 'صفحه اصلی';
+  const url = `https://caspian.am${path}`;
+  return `<a href="${url}">${escapeHtml(label)}</a>`;
+}
+
 // Accepts a new page comment/question, stores it as 'pending' via the
 // submit_page_comment() RPC (this route only ever holds the public anon
 // key, same pattern as /api/cron/sync-events), then notifies the admin on
@@ -9,7 +31,7 @@ import { createClient } from '@supabase/supabase-js';
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { page_path, lang, name, message, website } = body || {};
+    const { page_path, lang, name, message, website, telegram_id, whatsapp, email } = body || {};
 
     // Honeypot: a real visitor never fills this hidden field. Bots that
     // blindly fill every input will trip it -- return a plain 200 so the
@@ -32,11 +54,19 @@ export async function POST(request) {
     }
     const supabase = createClient(supabaseUrl, supabaseKey);
 
+    // Contact fields (telegram_id/whatsapp/email) are stored in the
+    // separate page_comment_contacts table, which has RLS enabled with NO
+    // policies at all -- unlike page_comments, there is no way to read it
+    // through the public anon key, from any client, ever. Only this
+    // SECURITY DEFINER function can write to it.
     const { data: newId, error: insertError } = await supabase.rpc('submit_page_comment', {
       p_page_path: page_path || '/',
       p_lang: lang || 'fa',
       p_name: name || null,
       p_message: message,
+      p_telegram_id: telegram_id || null,
+      p_whatsapp: whatsapp || null,
+      p_email: email || null,
     });
 
     if (insertError) {
@@ -51,20 +81,30 @@ export async function POST(request) {
     const chatId = process.env.TELEGRAM_CHAT_ID;
     if (botToken && chatId) {
       try {
-        const text = [
+        const lines = [
           '💬 نظر/سوال جدید',
-          `صفحه: ${page_path || '/'}`,
-          name ? `اسم: ${name}` : null,
-          '',
-          message,
-        ].filter(Boolean).join('\n');
+          `صفحه: ${pageLink(page_path)}`,
+          `اسم: ${escapeHtml(name || '-')}`,
+          `متن پیام: "${escapeHtml(message)}"`,
+        ];
+
+        const contactLines = [
+          telegram_id ? `آیدی تلگرام: ${escapeHtml(telegram_id)}` : null,
+          whatsapp ? `واتساپ: ${escapeHtml(whatsapp)}` : null,
+          email ? `ایمیل: ${escapeHtml(email)}` : null,
+        ].filter(Boolean);
+
+        if (contactLines.length) {
+          lines.push('', '📞 اطلاعات تماس (فقط برای شما — کاربر نمی‌بینه):', ...contactLines);
+        }
 
         const tgRes = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             chat_id: chatId,
-            text,
+            text: lines.join('\n'),
+            parse_mode: 'HTML',
             reply_markup: {
               inline_keyboard: [[
                 { text: '✅ تایید', callback_data: 'approve' },

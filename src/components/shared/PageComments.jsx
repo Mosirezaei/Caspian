@@ -2,7 +2,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 import { createClient } from '@supabase/supabase-js';
-import { MessageCircle, Send, CheckCircle2 } from 'lucide-react';
+import { MessageCircle, Send, CheckCircle2, ChevronDown } from 'lucide-react';
 import { useLang } from '@/lib/LanguageContext';
 
 // Anon-key client only -- this component never sees a service-role key.
@@ -22,6 +22,11 @@ const T = {
     subheading: 'پیامتون رو تیم کاسپین می‌بینه و در سریع‌ترین زمان جواب می‌ده.',
     namePh: 'اسم (اختیاری)',
     messagePh: 'نظر یا سوالتون رو اینجا بنویسید...',
+    contactToggle: 'می‌خواید مستقیم باهاتون تماس بگیریم؟ (اختیاری)',
+    contactNote: 'این اطلاعات فقط برای تیم کاسپین ارسال می‌شه؛ هیچ‌وقت رو سایت یا برای کاربرهای دیگه نمایش داده نمی‌شه.',
+    telegramPh: 'آیدی تلگرام',
+    whatsappPh: 'شماره واتساپ',
+    emailPh: 'ایمیل',
     submit: 'ارسال',
     sending: 'در حال ارسال...',
     sent: 'پیامتون ثبت شد و بعد از بررسی منتشر می‌شه. ممنون از وقتی که گذاشتید!',
@@ -34,6 +39,11 @@ const T = {
     subheading: 'The Caspian team reads every message and replies as soon as possible.',
     namePh: 'Name (optional)',
     messagePh: 'Write your comment or question here...',
+    contactToggle: 'Want us to contact you directly? (optional)',
+    contactNote: 'This info is only ever sent to the Caspian team; it is never shown on the site or to other users.',
+    telegramPh: 'Telegram ID',
+    whatsappPh: 'WhatsApp number',
+    emailPh: 'Email',
     submit: 'Send',
     sending: 'Sending...',
     sent: 'Your message was submitted and will appear after review. Thanks for reaching out!',
@@ -46,6 +56,11 @@ const T = {
     subheading: 'Команда Caspian читает каждое сообщение и отвечает как можно скорее.',
     namePh: 'Имя (необязательно)',
     messagePh: 'Напишите свой комментарий или вопрос здесь...',
+    contactToggle: 'Хотите, чтобы мы связались с вами напрямую? (необязательно)',
+    contactNote: 'Эта информация отправляется только команде Caspian и никогда не показывается на сайте или другим пользователям.',
+    telegramPh: 'Telegram ID',
+    whatsappPh: 'Номер WhatsApp',
+    emailPh: 'Email',
     submit: 'Отправить',
     sending: 'Отправка...',
     sent: 'Ваше сообщение отправлено и появится после проверки. Спасибо!',
@@ -67,6 +82,10 @@ export default function PageComments() {
   const [message, setMessage] = useState('');
   const [website, setWebsite] = useState(''); // honeypot -- must stay empty
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
+  const [showContact, setShowContact] = useState(false);
+  const [telegramId, setTelegramId] = useState('');
+  const [whatsapp, setWhatsapp] = useState('');
+  const [email, setEmail] = useState('');
 
   const hidden = !pathname || pathname.startsWith('/admin');
 
@@ -99,12 +118,18 @@ export default function PageComments() {
       const res = await fetch('/api/comments', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ page_path: pathname, lang, name, message, website }),
+        body: JSON.stringify({
+          page_path: pathname, lang, name, message, website,
+          telegram_id: telegramId, whatsapp, email,
+        }),
       });
       if (!res.ok) throw new Error('failed');
       setStatus('sent');
       setName('');
       setMessage('');
+      setTelegramId('');
+      setWhatsapp('');
+      setEmail('');
     } catch {
       setStatus('error');
     }
@@ -153,6 +178,47 @@ export default function PageComments() {
             rows={4}
             className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm text-foreground placeholder:text-foreground/35 focus:outline-none focus:border-primary/40 resize-none"
           />
+
+          <div>
+            <button
+              type="button"
+              onClick={() => setShowContact((v) => !v)}
+              className="flex items-center gap-1.5 text-xs text-foreground/45 hover:text-foreground/70 transition"
+            >
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showContact ? 'rotate-180' : ''}`} />
+              {t.contactToggle}
+            </button>
+            {showContact && (
+              <div className="mt-3 space-y-2 p-3 rounded-xl bg-white/[0.03] border border-white/10">
+                <p className="text-[11px] text-foreground/40 leading-relaxed">{t.contactNote}</p>
+                <input
+                  type="text"
+                  value={telegramId}
+                  onChange={(e) => setTelegramId(e.target.value)}
+                  placeholder={t.telegramPh}
+                  maxLength={100}
+                  className="w-full px-3.5 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-foreground placeholder:text-foreground/35 focus:outline-none focus:border-primary/40"
+                />
+                <input
+                  type="text"
+                  value={whatsapp}
+                  onChange={(e) => setWhatsapp(e.target.value)}
+                  placeholder={t.whatsappPh}
+                  maxLength={40}
+                  className="w-full px-3.5 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-foreground placeholder:text-foreground/35 focus:outline-none focus:border-primary/40"
+                />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={t.emailPh}
+                  maxLength={200}
+                  className="w-full px-3.5 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-foreground placeholder:text-foreground/35 focus:outline-none focus:border-primary/40"
+                />
+              </div>
+            )}
+          </div>
+
           {status === 'error' && <p className="text-xs text-red-400">{t.error}</p>}
           <button
             type="submit"

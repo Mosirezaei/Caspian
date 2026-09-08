@@ -107,7 +107,7 @@ export async function POST(request) {
 
         const suffix = action === 'approved' ? '✅ منتشر شد' : '❌ رد شد';
         await callTelegram('editMessageText', {
-          chat_id: chatId, message_id: messageId, text: `${baseText}\n\n${suffix}`,
+          chat_id: chatId, message_id: messageId, text: `${baseText}\n\n${suffix}`, parse_mode: 'HTML',
         });
         await callTelegram('editMessageReplyMarkup', {
           chat_id: chatId, message_id: messageId,
@@ -157,7 +157,7 @@ export async function POST(request) {
           p_secret: secret,
         });
         await callTelegram('editMessageText', {
-          chat_id: chatId, message_id: messageId, text: `${baseText}\n\n🗑 حذف شد`,
+          chat_id: chatId, message_id: messageId, text: `${baseText}\n\n🗑 حذف شد`, parse_mode: 'HTML',
         });
         await callTelegram('editMessageReplyMarkup', {
           chat_id: chatId, message_id: messageId, reply_markup: { inline_keyboard: [] },
