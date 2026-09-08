@@ -18,7 +18,7 @@ function Content() {
       serviceType="visa-russia">
 
       <div className="rounded-2xl overflow-hidden mb-6 aspect-video relative">
-        <img src="https://images.unsplash.com/photo-1513326738677-b964603b136d?w=1200&q=80" alt="Moscow Red Square Russia" className="w-full h-full object-cover" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1513326738677-b964603b136d?w=1200&q=80" alt={isFa ? 'میدان سرخ مسکو، مقصد سفر با ویزای روسیه' : isRu ? 'Красная площадь, Москва' : 'Moscow Red Square, Russia'} className="w-full h-full object-cover" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
         <div className="absolute bottom-4 start-4 flex items-center gap-2">
           <img src="https://flagcdn.com/w80/ru.webp" alt="Russia flag" className="h-6 rounded shadow" />
