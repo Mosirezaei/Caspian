@@ -3,7 +3,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '@/lib/LanguageContext';
 import GlobalNavbar from '@/components/shared/GlobalNavbar';
-import ContactFooter from '@/components/home/ContactFooter';
 import { 
   Plane, 
   Calendar, 
@@ -677,7 +676,6 @@ ${tripType === 'round' ? `🛬 Return: ${formData.returnDate || 'Not specified'}
 
       {/* فوتر سراسری */}
       <div className="mt-16 bg-[#0a0a0a] border-t border-white/10">
-        <ContactFooter />
       </div>
     </div>
   );

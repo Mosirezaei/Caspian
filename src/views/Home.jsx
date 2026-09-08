@@ -8,7 +8,6 @@ import AboutSection from '@/components/home/AboutSection';
 // TicketSection removed - ticket booking is in HeroSection
 import WhySection from '@/components/home/WhySection';
 import ContactFormSection from '@/components/home/ContactFormSection';
-import ContactFooter from '@/components/home/ContactFooter';
 import WhatsAppButton from '@/components/home/WhatsAppButton';
 import ArticlesSection from '@/components/home/ArticlesSection';
 import Link from 'next/link';
@@ -56,7 +55,6 @@ function HomeContent() {
         <WhySection />
         <ContactFormSection />
       </main>
-      <ContactFooter />
       <WhatsAppButton />
     </div>
   );

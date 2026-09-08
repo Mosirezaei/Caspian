@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { useLang } from '@/lib/LanguageContext';
 import GlobalNavbar from '@/components/shared/GlobalNavbar';
-import ContactFooter from '@/components/home/ContactFooter';
 
 function FestsContent() {
   const { lang } = useLang();
@@ -456,7 +455,6 @@ ${stCount > 0 ? `🎫 Կանգնած տոմս: ${stCount} ($${(stCount * prices.
       </div>
 
       <div className="mt-16 bg-[#0a0a0a] border-t border-white/10">
-        <ContactFooter />
       </div>
     </div>
   );

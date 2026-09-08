@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLang } from '@/lib/LanguageContext';
 import GlobalNavbar from '@/components/shared/GlobalNavbar';
-import ContactFooter from '@/components/home/ContactFooter';
 import ConsultModal from '@/components/home/ConsultModal';
 import {
   Award, Globe, CheckCircle,
@@ -322,7 +321,6 @@ function AboutContent() {
         </motion.div>
       </div>
 
-      <ContactFooter />
       <ConsultModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </div>
   );

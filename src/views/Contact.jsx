@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLang } from '@/lib/LanguageContext';
 import GlobalNavbar from '@/components/shared/GlobalNavbar';
-import ContactFooter from '@/components/home/ContactFooter';
 import {
   Phone, MessageCircle, Send, Instagram, MapPin,
   Clock, Globe, Building2, CheckCircle, Loader2
@@ -332,7 +331,6 @@ function ContactContent() {
         </div>
       </div>
 
-      <ContactFooter />
     </div>
   );
 }

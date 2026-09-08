@@ -6,7 +6,6 @@ import { LanguageProvider, useLang } from '@/lib/LanguageContext';
 import { useSEO } from '@/hooks/useSEO';
 import GlobalNavbar from './GlobalNavbar';
 import StaticFAQ from './StaticFAQ';
-import ContactFooter from '@/components/home/ContactFooter';
 import PageSidebar from './PageSidebar';
 
 const SITE_URL = 'https://caspian.am';
@@ -95,7 +94,6 @@ export function ServicePageLayout({
           <PageSidebar serviceType={serviceType} />
         </div>
       </main>
-      <ContactFooter />
     </div>
   );
 }

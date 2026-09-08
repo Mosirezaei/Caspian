@@ -4,6 +4,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { getQueryClient } from '@/lib/query-client';
 import { LanguageProvider } from '@/lib/LanguageContext';
 import PageComments from '@/components/shared/PageComments';
+import ContactFooter from '@/components/home/ContactFooter';
 
 export default function Providers({ children }) {
   // Use useState to ensure QueryClient is stable across renders
@@ -14,6 +15,7 @@ export default function Providers({ children }) {
       <LanguageProvider>
         {children}
         <PageComments />
+        <ContactFooter />
       </LanguageProvider>
     </QueryClientProvider>
   );
