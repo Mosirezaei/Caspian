@@ -267,7 +267,7 @@ export default function EventsPage({ initialEvents = [] }) {
             {/* Image */}
             {selectedEvent.image && (
               <div className="h-52 overflow-hidden">
-                <img src={selectedEvent.image} alt="" className="w-full h-full object-cover" />
+                <img src={selectedEvent.image} alt={selectedEvent.titleFa || selectedEvent.titleEn || selectedEvent.title || ''} className="w-full h-full object-cover" />
               </div>
             )}
 

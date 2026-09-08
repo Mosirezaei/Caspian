@@ -21,11 +21,11 @@ const CATEGORY_GRADIENT = {
   news: 'from-fuchsia-500/25 to-fuchsia-500/5', apartment: 'from-teal-500/25 to-teal-500/5',
 };
 
-function CardThumb({ category, thumbnail }) {
+function CardThumb({ category, thumbnail, title }) {
   if (thumbnail) {
     return (
       <div className="w-24 sm:w-28 shrink-0 rounded-xl overflow-hidden border border-white/10">
-        <img src={thumbnail} alt="" className="w-full h-full object-cover" loading="lazy" />
+        <img src={thumbnail} alt={title || ''} className="w-full h-full object-cover" loading="lazy" />
       </div>
     );
   }
@@ -116,7 +116,7 @@ function BlogArchiveInner() {
                       </span>
                     </div>
                   </div>
-                  <CardThumb category={post.category} thumbnail={post.thumbnail} />
+                  <CardThumb category={post.category} thumbnail={post.thumbnail} title={c.title} />
                 </Link>
               );
             })}
