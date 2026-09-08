@@ -1,18 +1,19 @@
 import VisaRussia from '@/views/service/VisaRussia';
+import { FAQ_DATA } from '@/data/faqData';
 
 export const metadata = {
-  title: 'ویزای روسیه ۲۰۲۶ | eVisa یا سفارت ایروان',
-  description: 'ویزای روسیه از ایروان: eVisa 70-110 دلار، ۴ روز کاری، تا ۱۶ روز اقامت. ویزای سفارت 130-160 دلار، تا ۳۰ روز. دعوتنامه رسمی فراهم می‌شود.',
-  keywords: 'ویزای روسیه, اخذ ویزای روسیه, قیمت ویزای روسیه, ویزای توریستی روسیه, ویزای روسیه برای ایرانیان, دعوتنامه روسیه, اخذ ویزای روسیه از طریق ارمنستان برای ایرانیان, مدارک لازم برای ویزای فوری روسیه, دعوتنامه توریستی روسیه چیست, هزینه و زمان صدور ویزای تجاری روسیه, شرایط گرفتن ویزای کاری روسیه برای ایرانیان, ویزای الکترونیکی روسیه, تفاوت ویزای توریستی و تجاری روسیه, راهنمای سفر به روسیه با ویزای گردشگری',
+  title: 'ویزای توریستی روسیه برای ایرانیان | شرایط، مدارک و هزینه ۲۰۲۶',
+  description: 'ویزای توریستی روسیه از ایروان: eVisa از ۷۰ دلار در ۴ روز کاری یا ویزای سفارت تا ۳۰ روز اقامت. مدارک، هزینه، دعوتنامه رسمی و مراحل کامل درخواست.',
+  keywords: 'ویزای روسیه, اخذ ویزای روسیه, قیمت ویزای روسیه, ویزای توریستی روسیه, ویزای روسیه برای ایرانیان, دعوتنامه روسیه, اخذ ویزای روسیه از طریق ارمنستان برای ایرانیان, مدارک لازم برای ویزای فوری روسیه, دعوتنامه توریستی روسیه چیست, ویزای الکترونیکی روسیه, تفاوت ویزای توریستی و تجاری روسیه, راهنمای سفر به روسیه با ویزای گردشگری',
   alternates: { canonical: 'https://caspian.am/visa/russia' },
   openGraph: {
-    title: 'ویزای روسیه ۲۰۲۶ | eVisa یا سفارت ایروان',
-    description: 'eVisa: 70-110 دلار، ۴ روز. سفارت: 130-160 دلار، ۳۰ روز اقامت.',
+    title: 'ویزای توریستی روسیه برای ایرانیان | شرایط، مدارک و هزینه',
+    description: 'eVisa از ۷۰ دلار در ۴ روز، یا ویزای سفارت تا ۳۰ روز اقامت — راهنمای کامل و دعوتنامه رسمی.',
     url: 'https://caspian.am/visa/russia',
   },
 };
 
-const schema = {
+const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'ویزای توریستی روسیه',
@@ -22,10 +23,21 @@ const schema = {
   offers: { '@type': 'AggregateOffer', priceCurrency: 'USD', lowPrice: '70', highPrice: '160' },
 };
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ_DATA['visa-russia-tourist'].map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <VisaRussia />
     </>
   );
