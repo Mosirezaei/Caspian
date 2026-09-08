@@ -38,6 +38,21 @@ const nextConfig = {
       { source: '/travel/flight', destination: '/travel/flight-bus', permanent: true },
       { source: '/travel/bus',    destination: '/travel/flight-bus', permanent: true },
       { source: '/travel/festivals', destination: '/events', permanent: true },
+
+      // Old URLs still indexed/getting impressions in Google Search Console
+      // as of 2026-09-08 but with no matching page anymore -- redirect each
+      // to the closest current equivalent so anyone clicking through from
+      // an old Google result lands on-topic instead of a 404.
+      { source: '/residency/armenia',          destination: '/residency/business',        permanent: true },
+      { source: '/student-visa/armenia',       destination: '/residency/student',         permanent: true },
+      { source: '/services/student-admission', destination: '/residency/student',         permanent: true },
+      { source: '/travel/armenia-guide',       destination: '/blog/armenia-tourism-guide', permanent: true },
+      { source: '/services',                   destination: '/',                          permanent: true },
+      { source: '/residency/uae',              destination: '/contact',                   permanent: true },
+      { source: '/visa/schengen',              destination: '/contact',                   permanent: true },
+      { source: '/visa/romania',               destination: '/contact',                   permanent: true },
+      { source: '/visa/embassy-usa',           destination: '/contact',                   permanent: true },
+      { source: '/visa/embassy-canada',        destination: '/contact',                   permanent: true },
     ];
   },
 };
