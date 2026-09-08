@@ -3,6 +3,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { Search, Calendar, Music, Ticket, MapPin, Loader2, X, MessageCircle, ExternalLink } from 'lucide-react';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
 import Link from 'next/link';
+import FestivalsCalendar from '@/components/festivals/FestivalsCalendar';
 
 export default function EventsPage({ initialEvents = [] }) {
   // Seeded from the server component's own fetch (used for the page's
@@ -15,6 +16,7 @@ export default function EventsPage({ initialEvents = [] }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [activeTab, setActiveTab] = useState('concerts');
 
   useEffect(() => {
     async function fetchEvents() {
@@ -88,6 +90,20 @@ export default function EventsPage({ initialEvents = [] }) {
           <p className="text-foreground/60 mt-2">کنسرت، فستیوال، نمایشگاه، رقص و باله</p>
         </div>
 
+        {/* Top-level tabs */}
+        <div className="flex justify-center gap-2 mb-8">
+          <button type="button" onClick={() => setActiveTab('concerts')}
+            className={`px-5 py-2.5 rounded-xl text-sm font-bold transition ${activeTab === 'concerts' ? 'bg-primary text-black' : 'bg-white/5 border border-white/10 text-foreground/60 hover:border-primary/30'}`}>
+            کنسرت‌ها و رویدادها
+          </button>
+          <button type="button" onClick={() => setActiveTab('festivals')}
+            className={`px-5 py-2.5 rounded-xl text-sm font-bold transition ${activeTab === 'festivals' ? 'bg-primary text-black' : 'bg-white/5 border border-white/10 text-foreground/60 hover:border-primary/30'}`}>
+            فستیوال‌ها
+          </button>
+        </div>
+
+{activeTab === 'concerts' && (
+<>
         {/* Featured / Pinned Events — کاسپین این دو رویداد رو مستقیم مدیریت می‌کنه */}
         <div className="grid sm:grid-cols-2 gap-5 mb-10">
           {/* Disco Legends / Retro Stage */}
@@ -141,12 +157,12 @@ export default function EventsPage({ initialEvents = [] }) {
               className="w-full pr-10 pl-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm text-foreground placeholder:text-foreground/30 focus:border-primary/40 focus:outline-none" />
           </div>
           <div className="flex gap-2 flex-wrap">
-            <button onClick={() => setSelectedCategory('all')}
+            <button type="button" onClick={() => setSelectedCategory('all')}
               className={`px-3 py-2 rounded-xl text-xs font-bold transition ${selectedCategory === 'all' ? 'bg-primary text-black' : 'bg-white/5 border border-white/10 text-foreground/60 hover:border-primary/30'}`}>
               همه
             </button>
             {categories.map((label) => (
-              <button key={label} onClick={() => setSelectedCategory(label)}
+              <button type="button" key={label} onClick={() => setSelectedCategory(label)}
                 className={`px-3 py-2 rounded-xl text-xs font-bold transition ${selectedCategory === label ? 'bg-primary text-black' : 'bg-white/5 border border-white/10 text-foreground/60 hover:border-primary/30'}`}>
                 {label}
               </button>
@@ -227,6 +243,15 @@ export default function EventsPage({ initialEvents = [] }) {
             })}
           </div>
         )}
+</>
+)}
+
+{activeTab === 'festivals' && (
+          <div className="mb-10">
+            <FestivalsCalendar idPrefix="events-" />
+          </div>
+        )}
+
       </main>
 
       {/* Detail Modal */}
