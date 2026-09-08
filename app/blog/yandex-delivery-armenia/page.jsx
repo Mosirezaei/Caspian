@@ -3,7 +3,7 @@ import JsonLd from '@/components/shared/JsonLd';
 import { articleSchema } from '@/lib/schema';
 
 export const metadata = {
-  title: 'کار با یاندکس دلیوری در ارمنستان | پیک، درآمد و ثبت‌نام | گروه کاسپین',
+  title: 'کار با یاندکس دلیوری در ارمنستان | پیک، درآمد و ثبت‌نام',
   description: 'راهنمای کامل کار با یاندکس دلیوری و یاندکس ایتس در ارمنستان: پیک موتوری، دوچرخه یا خودرو — درآمد ۸ تا ۱۵ هزار درام روزانه، مدارک لازم و الزامات قانونی.',
   keywords: 'یاندکس دلیوری ارمنستان, پیک موتوری ایروان, یاندکس ایتس ارمنستان, کار پیک ارمنستان, درآمد دلیوری ایروان',
   alternates: { canonical: 'https://caspian.am/blog/yandex-delivery-armenia' },
