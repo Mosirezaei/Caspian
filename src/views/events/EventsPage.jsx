@@ -2,6 +2,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Search, Calendar, Music, Ticket, MapPin, Loader2, X, MessageCircle, ExternalLink } from 'lucide-react';
 import GlobalNavbar from '@/components/shared/GlobalNavbar.jsx';
+import Link from 'next/link';
 
 export default function EventsPage({ initialEvents = [] }) {
   // Seeded from the server component's own fetch (used for the page's
@@ -85,6 +86,50 @@ export default function EventsPage({ initialEvents = [] }) {
             <span className="gold-gradient-text">رویدادها و کنسرت‌های ایروان</span>
           </h1>
           <p className="text-foreground/60 mt-2">کنسرت، فستیوال، نمایشگاه، رقص و باله</p>
+        </div>
+
+        {/* Featured / Pinned Events — کاسپین این دو رویداد رو مستقیم مدیریت می‌کنه */}
+        <div className="grid sm:grid-cols-2 gap-5 mb-10">
+          {/* Disco Legends / Retro Stage */}
+          <Link href="/retro"
+            className="group relative rounded-2xl overflow-hidden border border-primary/25 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
+            <div className="relative h-56 overflow-hidden">
+              <img src="/images/retro-stage.jpg" alt="فستیوال Disco Legends" loading="lazy"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+              <span className="absolute top-3 right-3 bg-primary text-black text-[11px] font-black px-2.5 py-1 rounded-full">
+                رزرو مستقیم از کاسپین
+              </span>
+              <div className="absolute bottom-0 right-0 left-0 p-4">
+                <h3 className="font-black text-foreground text-lg group-hover:text-primary transition-colors">
+                  فستیوال Disco Legends
+                </h3>
+                <p className="text-xs text-foreground/70 mt-1">Retro Stage · بلیط ایستاده، نشسته و افترپارتی</p>
+                <p className="text-sm font-bold text-primary mt-2">بلیط از ۴۰ دلار</p>
+              </div>
+            </div>
+          </Link>
+
+          {/* Ebi Live in Yerevan */}
+          <a href="https://wa.me/37433149327?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D9%85%DB%8C%E2%80%8C%D8%AE%D9%88%D8%A7%D9%85%20%D8%A8%D8%B1%D8%A7%DB%8C%20%DA%A9%D9%86%D8%B3%D8%B1%D8%AA%20%D8%A7%D8%A8%DB%8C%20%D8%AF%D8%B1%20%D8%A7%DB%8C%D8%B1%D9%88%D8%A7%D9%86%20(16%20%D8%B4%D9%87%D8%B1%DB%8C%D9%88%D8%B1)%20%D8%A8%D9%84%DB%8C%D8%B7%20%D8%A8%D8%AE%D8%B1%D9%85"
+            target="_blank" rel="noopener noreferrer"
+            className="group relative rounded-2xl overflow-hidden border border-primary/25 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
+            <div className="relative h-56 overflow-hidden">
+              <img src="/images/events/ebi-yerevan-2026.webp" alt="کنسرت زنده ابی در ایروان" loading="lazy"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+              <span className="absolute top-3 right-3 bg-primary text-black text-[11px] font-black px-2.5 py-1 rounded-full">
+                رزرو مستقیم از کاسپین
+              </span>
+              <div className="absolute bottom-0 right-0 left-0 p-4">
+                <h3 className="font-black text-foreground text-lg group-hover:text-primary transition-colors">
+                  کنسرت زنده ابی در ایروان
+                </h3>
+                <p className="text-xs text-foreground/70 mt-1">۱۶ شهریور (۲۵ شهریور ۱۴۰۵) · مجتمع کارن دمیرچیان</p>
+                <p className="text-sm font-bold text-primary mt-2">از ۱۰۹ تا ۶۹۹ دلار</p>
+              </div>
+            </div>
+          </a>
         </div>
 
         {/* Filters */}
