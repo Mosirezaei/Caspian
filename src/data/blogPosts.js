@@ -434,17 +434,17 @@ export const blogPosts = [
 export const CATEGORY_LABELS = {
   fa: {
     residency: 'اقامت و مهاجرت', company: 'ثبت شرکت و مالی', work: 'کار و اشتغال',
-    life: 'زندگی در ایروان', education: 'تحصیل', tourism: 'گردشگری و دیدنی‌ها', news: 'اخبار و فستیوال‌ها',
+    life: 'زندگی در ایروان', education: 'تحصیل', tourism: 'گردشگری و دیدنی‌ها', news: 'اخبار و فستیوال‌ها', apartment: 'اجاره و خرید ملک',
     shopping: 'خرید در ارمنستان',
   },
   en: {
     residency: 'Residency & Immigration', company: 'Company Registration & Finance', work: 'Work & Employment',
-    life: 'Life in Yerevan', education: 'Education', tourism: 'Tourism & Sights', news: 'News & Festivals',
+    life: 'Life in Yerevan', education: 'Education', tourism: 'Tourism & Sights', news: 'News & Festivals', apartment: 'Rent & Buy Property',
     shopping: 'Shopping in Armenia',
   },
   ru: {
     residency: 'ВНЖ и миграция', company: 'Регистрация компаний и финансы', work: 'Работа и трудоустройство',
-    life: 'Жизнь в Ереване', education: 'Образование', tourism: 'Туризм и достопримечательности', news: 'Новости и фестивали',
+    life: 'Жизнь в Ереване', education: 'Образование', tourism: 'Туризм и достопримечательности', news: 'Новости и фестивали', apartment: 'Аренда и покупка недвижимости',
     shopping: 'Шопинг в Армении',
   },
 };
