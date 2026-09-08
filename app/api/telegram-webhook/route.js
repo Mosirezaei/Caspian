@@ -51,39 +51,6 @@ export async function GET(request) {
     return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
   }
 
-  // One-time cleanup helper for comments that predate the delete-comment
-  // button (so their Telegram messages have no way to trigger it):
-  //   ?key=...&cleanup_ids=31,33,34
-  // Deletes each row (by telegram_message_id) and marks the Telegram
-  // message itself as deleted. Removed again once no longer needed.
-  const cleanupIds = searchParams.get('cleanup_ids');
-  if (cleanupIds) {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-    const { createClient } = await import('@supabase/supabase-js');
-    const supabase = createClient(supabaseUrl, supabaseKey);
-    const botToken = process.env.TELEGRAM_BOT_TOKEN;
-    const chatId = process.env.TELEGRAM_CHAT_ID;
-    const results = [];
-    for (const idStr of cleanupIds.split(',')) {
-      const id = Number(idStr.trim());
-      if (!id) continue;
-      const { error } = await supabase.rpc('delete_page_comment', {
-        p_telegram_message_id: id,
-        p_secret: process.env.TELEGRAM_WEBHOOK_SECRET,
-      });
-      if (!error && botToken && chatId) {
-        await fetch(`https://api.telegram.org/bot${botToken}/editMessageReplyMarkup`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chat_id: chatId, message_id: id, reply_markup: { inline_keyboard: [] } }),
-        });
-      }
-      results.push({ id, error: error?.message || null });
-    }
-    return NextResponse.json({ results });
-  }
-
   const botToken = process.env.TELEGRAM_BOT_TOKEN;
   const res = await fetch(`https://api.telegram.org/bot${botToken}/setWebhook`, {
     method: 'POST',
