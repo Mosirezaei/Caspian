@@ -27,7 +27,6 @@ export default function ArmeniaFestivalsEventsNews() {
     path: '/blog/armenia-festivals-events-news',
   });
 
-  const visibleFestivals = activeMonth === 'all' ? FESTIVALS : FESTIVALS.filter(f => f.month === activeMonth);
 
   return (
     <div className="min-h-screen" dir="rtl">
