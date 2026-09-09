@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'انتخاب حسابدار در ارمنستان؛ نکات مهم پیش از همکاری',description:'اطلاعات کلی درباره انتخاب حسابدار شرکت در ارمنستان.'}; export default function Page(){return <PracticalGuideArticle articleKey="accountant"/>;}

@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'انحلال یا غیرفعال‌کردن شرکت در ارمنستان',description:'بررسی کلی تصمیم توقف فعالیت شرکت.'}; export default function Page(){return <PracticalGuideArticle articleKey="companyClosure"/>;}

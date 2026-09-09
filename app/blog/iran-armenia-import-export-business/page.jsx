@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'واردات و صادرات میان ایران و ارمنستان',description:'اطلاعات کلی درباره بررسی تجارت ایران و ارمنستان.'}; export default function Page(){return <PracticalGuideArticle articleKey="tradeIranArmenia"/>;}

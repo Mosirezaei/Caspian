@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'شماره و پرونده مالیاتی شرکت در ارمنستان',description:'اطلاعات کلی درباره پرونده مالیاتی شرکت.'}; export default function Page(){return <PracticalGuideArticle articleKey="taxProfile"/>;}

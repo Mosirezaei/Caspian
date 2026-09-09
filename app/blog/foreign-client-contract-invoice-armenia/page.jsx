@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'قرارداد و فاکتور برای مشتری خارجی',description:'اطلاعات کلی برای شرکت‌های ارمنستانی دارای مشتری خارجی.'}; export default function Page(){return <PracticalGuideArticle articleKey="foreignContracts"/>;}

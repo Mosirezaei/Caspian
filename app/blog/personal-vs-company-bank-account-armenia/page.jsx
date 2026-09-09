@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'حساب بانکی شخصی و شرکتی در ارمنستان',description:'اهمیت تفکیک امور بانکی شخصی و شرکت.'}; export default function Page(){return <PracticalGuideArticle articleKey="bankingSeparation"/>;}
