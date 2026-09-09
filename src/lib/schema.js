@@ -91,20 +91,11 @@ export function hotelServiceSchema(hotels) {
     description: 'رزرو هتل‌های ۳، ۴ و ۵ ستاره در ایروان با واچر رسمی برای ویزا',
     provider: { '@type': 'Organization', name: 'Caspian Business Group', url: SITE_URL, telephone: `+${WHATSAPP_BOOKING}` },
     areaServed: { '@type': 'City', name: 'Yerevan' },
-    offers: {
-      '@type': 'AggregateOffer',
-      priceCurrency: 'USD',
-      lowPrice: String(Math.min(...hotels.map((h) => h.price))),
-      highPrice: String(Math.max(...hotels.map((h) => h.price))),
-      offerCount: hotels.length,
-    },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'هتل‌های قابل رزرو در ایروان',
       itemListElement: hotels.map((h) => ({
         '@type': 'Offer',
-        priceCurrency: 'USD',
-        price: String(h.price),
         itemOffered: {
           '@type': 'LodgingBusiness',
           name: h.name,
@@ -131,13 +122,6 @@ export function apartmentServiceSchema(locations) {
     description: 'اجاره آپارتمان مبله روزانه و ماهانه در ایروان ارمنستان با پرداخت ریالی',
     provider: { '@type': 'Organization', name: 'Caspian Business Group', url: SITE_URL, telephone: '+37433149327' },
     areaServed: locations.map((name) => ({ '@type': 'Place', name, containedInPlace: { '@type': 'Country', name: 'Armenia' } })),
-    offers: {
-      '@type': 'AggregateOffer',
-      priceCurrency: 'USD',
-      lowPrice: '30',
-      highPrice: '300',
-      description: 'اجاره روزانه از ۳۰ دلار، ماهانه از ۳۰۰ دلار',
-    },
   };
 }
 

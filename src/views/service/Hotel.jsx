@@ -161,7 +161,6 @@ function StarBadge({ count }) {
 }
 
 function HotelCard({ hotel, lang }) {
-  const price = lang === 'fa' ? `از ~$${hotel.price}/شب دبل` : lang === 'ru' ? `от ~$${hotel.price}/ночь` : `from ~$${hotel.price}/night`;
   const location = lang === 'fa' ? hotel.location : lang === 'ru' ? hotel.locationRu : hotel.locationEn;
   const desc = lang === 'fa' ? hotel.descFa : lang === 'ru' ? hotel.descRu : hotel.descEn;
   return (
@@ -172,7 +171,6 @@ function HotelCard({ hotel, lang }) {
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
         <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between">
           <span className="text-white font-bold text-base drop-shadow">{hotel.name}</span>
-          <span className="bg-primary/90 text-background text-xs font-bold px-2 py-1 rounded-lg">{price}</span>
         </div>
       </div>
       <div className="p-4">
@@ -189,11 +187,6 @@ function HotelCategorySection({ stars, hotels, lang }) {
     en: { 3: '3-Star Hotels — Budget Quality', 4: '4-Star Hotels — High Comfort', 5: '5-Star Hotels — Luxury' },
     ru: { 3: '3-звёздочные — бюджет', 4: '4-звёздочные — комфорт', 5: '5-звёздочные — люкс' },
   };
-  const priceNote = {
-    fa: { 3: 'میانگین اتاق دبل: ۴۵ تا ۶۵ دلار/شب', 4: 'میانگین اتاق دبل: ۱۰۰ تا ۱۵۰ دلار/شب', 5: 'میانگین اتاق دبل: ۱۹۰ تا ۲۵۰+ دلار/شب' },
-    en: { 3: 'Avg double: $45–$65/night', 4: 'Avg double: $100–$150/night', 5: 'Avg double: $190–$250+/night' },
-    ru: { 3: 'Двухместный: $45–$65/ночь', 4: '$100–$150/ночь', 5: '$190–$250+/ночь' },
-  };
   return (
     <div className="mb-10">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
@@ -201,7 +194,6 @@ function HotelCategorySection({ stars, hotels, lang }) {
           <StarBadge count={stars} />
           <h2 className="text-lg font-black text-foreground">{sectionTitle[lang]?.[stars]}</h2>
         </div>
-        <span className="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">{priceNote[lang]?.[stars]}</span>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {hotels.map((h, i) => <HotelCard key={i} hotel={h} lang={lang} />)}
@@ -215,7 +207,7 @@ const FAQS = {
     { q: 'چطور هتل رزرو کنم؟', a: 'نام هتل، تاریخ ورود و خروج و تعداد نفرات را در واتساپ ارسال کنید. تیم کاسپین ظرف چند ساعت قیمت دقیق را تأیید، رزرو می‌کند و واچر رسمی صادر می‌کند.' },
     { q: 'آیا واچر هتل برای ویزا معتبر است؟', a: 'بله. واچر صادرشده توسط کاسپین مهر رسمی دارد، تاریخ دقیق و نام کامل مسافر در آن ذکر است و توسط سفارتخانه‌های شینگن، روسیه و سایر مقاصد پذیرفته می‌شود.' },
     { q: 'روش پرداخت چیست؟', a: 'واریز ریالی به حساب داخل ایران، دلار نقد یا رمزارز USDT. نیازی به کارت بین‌المللی نیست.' },
-    { q: 'قیمت‌ها بسته به فصل فرق دارد؟', a: 'بله. فصل اوج (خرداد تا شهریور و تعطیلات نوروز) قیمت‌ها ۲۰ تا ۴۰ درصد بالاتر است. رزرو حداقل ۴ تا ۶ هفته قبل توصیه می‌شود. بهار و پاییز بهترین ترکیب قیمت و آب‌وهوا را دارند.' },
+    { q: 'هزینه رزرو در فصل‌های مختلف فرق دارد؟', a: 'بله. تابستان، تعطیلات نوروز و زمان رویدادهای بزرگ معمولاً پرتقاضاترند و ظرفیت زودتر تکمیل می‌شود. در زمستان و بخش‌هایی از پاییز، انتخاب‌های بیشتری ممکن است در دسترس باشد. مبلغ نهایی فقط پس از بررسی تاریخ، نوع اتاق و شرایط هتل اعلام می‌شود.' },
     { q: 'لغو رزرو چطور است؟', a: 'شرایط لغو بسته به هتل و نوع رزرو متفاوت است. کاسپین امکان رزرو با شرایط لغو رایگان (مناسب زمانی که نتیجه ویزا مشخص نیست) را نیز فراهم می‌کند.' },
     { q: 'آیا ترانسفر فرودگاه هم هماهنگ می‌شود؟', a: 'بله، ترانسفر از فرودگاه زوارتنوتس مستقیم به هتل قابل هماهنگی است.' },
   ],
@@ -223,7 +215,7 @@ const FAQS = {
     { q: 'How do I book a hotel?', a: 'Send the hotel name, check-in/out dates, and number of guests via WhatsApp. Caspian\'s team confirms pricing within hours, completes the booking, and issues an official voucher.' },
     { q: 'Is the hotel voucher accepted for visa applications?', a: 'Yes. The voucher issued by Caspian carries an official stamp, lists exact dates and the traveler\'s full name, and is accepted by Schengen embassies, the Russian embassy, and other missions.' },
     { q: 'What are the payment options?', a: 'Rial bank transfer to an Iranian account, cash USD, or USDT. No international card needed.' },
-    { q: 'Do prices vary by season?', a: 'Yes. Peak season (June–September and Nowruz holidays) can be 20–40% higher. Book at least 4–6 weeks ahead. Spring and autumn offer the best price-weather combination.' },
+    { q: 'Do booking costs vary by season?', a: 'Yes. Summer, Nowruz holidays, and major event dates are usually in higher demand. Winter and parts of autumn may offer more availability. The final amount is confirmed only after dates, room type, and hotel conditions are checked.' },
   ],
   ru: [
     { q: 'Как забронировать отель?', a: 'Напишите в WhatsApp название отеля, даты и количество гостей. Команда Caspian подтвердит цену и выдаст официальный ваучер.' },
@@ -269,19 +261,14 @@ function HotelContent() {
   const isFa = lang === 'fa';
   const isRu = lang === 'ru';
 
-  const note = {
-    fa: '* قیمت‌ها میانگین تخمینی برای اتاق دبل در فصل معمولی هستند. در فصل اوج (تابستان، نوروز) ۲۰ تا ۴۰ درصد بیشتر می‌شود.',
-    en: '* Prices are estimated averages for a double room in regular season. Peak season (summer, Nowruz) may be 20–40% higher.',
-    ru: '* Ориентировочные средние цены для двухместного номера. В пиковый сезон на 20–40% выше.',
-  };
 
   return (
     <ServicePageLayout
       titleEn="Hotel Booking in Yerevan, Armenia"
       titleFa="رزرو هتل در ایروان و ارمنستان"
       titleRu="Бронирование отелей в Армении"
-      subtitleEn="3, 4 & 5-star hotels — official voucher, best prices via Caspian Group"
-      subtitleFa="هتل‌های ۳، ۴ و ۵ ستاره — واچر رسمی، بهترین قیمت از طریق کاسپین"
+      subtitleEn="3, 4 & 5-star hotels — official voucher and date-based availability check"
+      subtitleFa="هتل‌های ۳، ۴ و ۵ ستاره — واچر رسمی و بررسی ظرفیت بر اساس تاریخ سفر"
       subtitleRu="Отели 3, 4 и 5 звёзд — официальный ваучер, лучшие цены"
       heroImage="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200&q=80"
       serviceType="hotel"
@@ -305,7 +292,7 @@ function HotelContent() {
 
         <InfoBlock title="انتخاب هتل بر اساس هدف سفر شما">
           <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">سفر گردشگری کوتاه‌مدت (۳ تا ۷ شب)</h3>
-          <p className="mb-3">هتل‌های ۳ ستاره مرکز شهر (مانند اربونی، دوین، کاسکاد) انتخابی هوشمندانه هستند. موقعیت مرکزی به شما امکان می‌دهد بدون نیاز به تاکسی اکثر جاذبه‌های شهر را پیاده ببینید. قیمت اتاق دبل در این هتل‌ها بین ۴۵ تا ۶۵ دلار در شب است.</p>
+          <p className="mb-3">هتل‌های ۳ ستاره مرکز شهر (مانند اربونی، دوین و کاسکاد) برای سفرهای کوتاه انتخابی کاربردی هستند. موقعیت مرکزی به شما امکان می‌دهد بیشتر جاذبه‌های شهر را پیاده ببینید. ظرفیت و شرایط هر هتل با توجه به تاریخ سفر بررسی می‌شود.</p>
 
           <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">سفر تجاری یا جلسه با شرکا</h3>
           <p className="mb-3">هتل‌های ۴ ستاره در محور میدان جمهوری (ماریوت، رادیسون بلو، بست وسترن کنگره) فاصله کمی از اکثر ادارات دولتی، سفارتخانه‌ها و مراکز تجاری دارند. سرویس ترانسفر فرودگاهی معمولاً در این هتل‌ها رایگان است یا با قیمت مناسب ارائه می‌شود.</p>
@@ -318,7 +305,7 @@ function HotelContent() {
           <p className="mb-3">آب‌وهوا و قیمت هتل‌های ایروان در طول سال تفاوت قابل توجهی دارند:</p>
           <CheckList items={[
             'بهار (اردیبهشت و خرداد) — آب‌وهوای ایده‌آل، قیمت‌های معقول، شهر سرسبز. بهترین زمان',
-            'تابستان (تیر تا شهریور) — فصل اوج گردشگری، قیمت‌ها ۲۰ تا ۴۰ درصد بالاتر. حداقل ۶ هفته قبل رزرو کنید',
+            'تابستان (تیر تا شهریور) — فصل اوج گردشگری و تقاضای بالاتر؛ بهتر است زودتر برای بررسی ظرفیت اقدام کنید',
             'پاییز (مهر و آبان) — آب‌وهوای عالی، قیمت‌های خوب، شلوغی کمتر',
             'نوروز (فروردین) — فصل اوج مسافران ایرانی. بعضی هتل‌ها ۳ ماه قبل رزرو می‌شوند',
             'زمستان (دی و بهمن) — زمستان سرد، تخفیف‌های ویژه. مناسب کسانی که به فضای برفی علاقه دارند',
@@ -414,7 +401,6 @@ function HotelContent() {
       <HotelCategorySection stars={4} hotels={HOTELS[4]} lang={lang} />
       <HotelCategorySection stars={5} hotels={HOTELS[5]} lang={lang} />
 
-      <p className="text-xs text-foreground/40 text-center mt-2 mb-6">{note[lang]}</p>
 
       {/* بخش اختصاصی سوالات متداول هتل */}
       <HotelFAQ />

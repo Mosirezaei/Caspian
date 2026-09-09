@@ -15,9 +15,9 @@ const SERVICES = {
     href: '/travel/hotel', icon: '🏨',
   },
   apartment: {
-    fa: { title: 'اجاره آپارتمان مبله', desc: 'روزانه از ۳۰ دلار، ماهانه از ۳۰۰ دلار' },
-    en: { title: 'Furnished Apartment Rental', desc: 'Daily from $30, monthly from $300' },
-    ru: { title: 'Аренда квартиры в Ереване', desc: 'Посуточно от $30, помесячно от $300' },
+    fa: { title: 'رزرو آپارتمان مبله', desc: 'اقامت کوتاه‌مدت و ماهانه با هماهنگی تاریخ سفر' },
+    en: { title: 'Furnished Apartment Booking', desc: 'Short- and monthly stays tailored to travel dates' },
+    ru: { title: 'Бронирование квартиры в Ереване', desc: 'Краткосрочное и помесячное проживание по датам поездки' },
     href: '/travel/apartment', icon: '🏠',
   },
   residency: {
