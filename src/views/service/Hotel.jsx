@@ -28,7 +28,7 @@ const HOTELS = {
     },
     {
       name: 'Hotel Dvin',
-      location: 'بلوار مشروتیان، مرکز شهر', locationEn: 'Mesrobian Boulevard, city center', locationRu: 'Бульвар Месробян, центр города',
+      location: 'بلوار مشروطیان، مرکز شهر', locationEn: 'Mesrobian Boulevard, city center', locationRu: 'Бульвар Месробян, центр города',
       price: 48,
       image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=75',
       descFa: 'هتل دوین با موقعیت مرکزی عالی، اتاق‌های تمیز و نزدیکی به رستوران‌ها و مراکز خرید، یکی از محبوب‌ترین انتخاب‌های ۳ ستاره در ایروان است.',
@@ -107,7 +107,7 @@ const HOTELS = {
       location: 'خیابان آرامی، قلب شهر', locationEn: 'Arami Street, heart of the city', locationRu: 'Улица Арами, сердце города',
       price: 250,
       image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=75',
-      descFa: 'الکساندر لاکچری کالکشن زیباترین هتل ۵ ستاره ایروان. ساختمانی تاریخی با طراحی داخلی بین‌المللی، اسپا جهانی، بار بام‌بام و رستوران فاین‌دایننگ.',
+      descFa: 'الکساندر لاکچری کالکشن زیباترین هتل ۵ ستاره ایروان. ساختمانی تاریخی با طراحی داخلی بین‌المللی، اسپای جهانی، بار بام‌بام و رستوران فاین‌دایننگ.',
       descEn: 'The Alexander Luxury Collection is Yerevan\'s most beautiful 5-star hotel. Historic building, world-class spa, rooftop bar, and fine dining.',
       descRu: 'The Alexander Luxury Collection — самый красивый 5-звёздочный отель Еревана с международным интерьером и мировым спа.',
     },
@@ -140,7 +140,7 @@ const HOTELS = {
     },
     {
       name: 'Grand Hotel Yerevan',
-      location: 'بلوار مشروتیان، مشرف به آرارات', locationEn: 'Mesrobian Blvd, overlooking Ararat', locationRu: 'Бульвар Месробян, с видом на Арарат',
+      location: 'بلوار مشروطیان، مشرف به آرارات', locationEn: 'Mesrobian Blvd, overlooking Ararat', locationRu: 'Бульвар Месробян, с видом на Арарат',
       price: 240,
       image: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=75',
       descFa: 'گرند هتل ایروان با چشم‌اندازی حیرت‌انگیز از کوه آرارات، جاکوزی در سوئیت‌ها، باشگاه ورزشی VIP و رستوران بام‌بام با موزیک زنده.',
@@ -284,6 +284,7 @@ function HotelContent() {
       subtitleFa="هتل‌های ۳، ۴ و ۵ ستاره — واچر رسمی، بهترین قیمت از طریق کاسپین"
       subtitleRu="Отели 3, 4 и 5 звёзд — официальный ваучер, лучшие цены"
       heroImage="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200&q=80"
+      serviceType="hotel"
       showFaq={false}>
 
       {isFa && <>
