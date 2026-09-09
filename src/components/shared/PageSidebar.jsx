@@ -14,6 +14,15 @@ const t = {
   ru: { cta: 'Бесплатная консультация', ctaSub: 'Есть вопрос? Напишите нам в WhatsApp' },
 };
 
+// متن جدا برای صفحات هتل/تور — همون درخواستی که قبلاً واسه بنر پایین صفحه هم استفاده شده.
+const tBooking = {
+  fa: { cta: 'بررسی قیمت و جزییات بیشتر', ctaSub: 'همین حالا با کارشناسان ما در واتساپ چت کن' },
+  en: { cta: 'Check Pricing & Details', ctaSub: 'Chat with our team on WhatsApp right now' },
+  ru: { cta: 'Узнать цену и подробности', ctaSub: 'Напишите нашей команде в WhatsApp прямо сейчас' },
+};
+
+const BOOKING_FLOW_TYPES = new Set(['hotel', 'tour']);
+
 /**
  * PageSidebar — ساید‌بار مشترک همه‌ی صفحات محتوایی سایت (مقالات وبلاگ و صفحات سرویس).
  * یه کامپوننت واحد، جای دو نسخه‌ی جدا (BlogSidebar + ساید‌بار inline تو ServicePageLayout).
@@ -25,7 +34,8 @@ const t = {
  */
 export default function PageSidebar({ tags, currentPath, serviceType }) {
   const { lang } = useLang();
-  const tt = t[lang] || t.fa;
+  const isBookingFlow = BOOKING_FLOW_TYPES.has(serviceType);
+  const tt = (isBookingFlow ? tBooking : t)[lang] || (isBookingFlow ? tBooking.fa : t.fa);
   const pathname = usePathname();
   const path = currentPath || pathname || '';
   const usefulLinksTags = (tags && tags.length > 0) ? tags : (SERVICE_TYPE_TAGS[serviceType] || SERVICE_TYPE_TAGS.default);
@@ -33,17 +43,35 @@ export default function PageSidebar({ tags, currentPath, serviceType }) {
 
   return (
     <aside className="lg:sticky lg:top-20 lg:self-start space-y-5">
-      <div className="p-5 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 border border-primary/20">
-        <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-3">
-          <MessageCircle className="w-5 h-5 text-primary" />
+      {isBookingFlow ? (
+        <div className="relative p-5 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/5 to-transparent border border-primary/25 overflow-hidden">
+          <div className="absolute -top-8 -right-8 w-28 h-28 rounded-full bg-primary/10 blur-2xl pointer-events-none" />
+          <div className="relative">
+            <div className="relative w-10 h-10 rounded-full bg-green-500/15 flex items-center justify-center mb-3 ring-1 ring-green-500/30">
+              <MessageCircle className="w-5 h-5 text-green-400" />
+              <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-400 ring-2 ring-background animate-pulse" />
+            </div>
+            <h3 className="font-black text-foreground text-sm mb-1">{tt.cta}</h3>
+            <p className="text-xs text-foreground/60 mb-4 leading-relaxed">{tt.ctaSub}</p>
+            <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-gradient-to-l from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 transition text-white text-xs font-bold shadow-lg shadow-green-600/20">
+              <MessageCircle className="w-4 h-4" /> WhatsApp
+            </a>
+          </div>
         </div>
-        <h3 className="font-bold text-foreground text-sm mb-1">{tt.cta}</h3>
-        <p className="text-xs text-foreground/60 mb-4 leading-relaxed">{tt.ctaSub}</p>
-        <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-green-600 hover:bg-green-500 transition text-white text-xs font-bold">
-          <MessageCircle className="w-4 h-4" /> WhatsApp
-        </a>
-      </div>
+      ) : (
+        <div className="p-5 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 border border-primary/20">
+          <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-3">
+            <MessageCircle className="w-5 h-5 text-primary" />
+          </div>
+          <h3 className="font-bold text-foreground text-sm mb-1">{tt.cta}</h3>
+          <p className="text-xs text-foreground/60 mb-4 leading-relaxed">{tt.ctaSub}</p>
+          <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-green-600 hover:bg-green-500 transition text-white text-xs font-bold">
+            <MessageCircle className="w-4 h-4" /> WhatsApp
+          </a>
+        </div>
+      )}
 
       {tags && tags.length > 0 && (
         <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
