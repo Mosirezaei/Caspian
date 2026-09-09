@@ -1,3 +1,3 @@
 import StrategicArticle from '@/views/blog/StrategicArticle';
-export const metadata = { title: 'منابع معتبر اخبار ارمنستان؛ چطور خبر درست را از شایعه جدا کنیم؟', description: 'راهنمای بررسی اخبار برای مهاجران و کسب‌وکارها.', alternates: { canonical: 'https://caspian.am/blog/reliable-armenia-news-sources' } };
+export const metadata = { title: 'اخبار مهم ارمنستان برای ایرانیان | اقامت، سفر، بانک و کسب‌وکار', description: 'خبرهای اثرگذار ارمنستان برای ایرانیان را چگونه از منبع رسمی پیگیری و در تصمیم‌های اقامت، سفر و کسب‌وکار استفاده کنیم؟', alternates: { canonical: 'https://caspian.am/blog/reliable-armenia-news-sources' } };
 export default function Page(){ return <StrategicArticle articleKey="news" />; }
