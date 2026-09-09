@@ -7,8 +7,10 @@ import { useSEO } from '@/hooks/useSEO';
 import GlobalNavbar from './GlobalNavbar';
 import StaticFAQ from './StaticFAQ';
 import PageSidebar from './PageSidebar';
+import WhatsAppBottomCTA from './WhatsAppBottomCTA';
 
 const SITE_URL = 'https://caspian.am';
+const BOOKING_FLOW_TYPES = new Set(['hotel', 'tour']);
 
 export function ServicePageLayout({
   children, titleFa, titleEn, titleRu, subtitleFa, subtitleEn, subtitleRu,
@@ -88,6 +90,11 @@ export function ServicePageLayout({
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
             {children}
+            {BOOKING_FLOW_TYPES.has(serviceType) && (
+              <div className="mt-8">
+                <WhatsAppBottomCTA serviceType={serviceType} />
+              </div>
+            )}
             {serviceType && <StaticFAQ serviceType={serviceType} />}
           </div>
 
