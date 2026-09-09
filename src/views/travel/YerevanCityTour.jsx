@@ -6,6 +6,7 @@ import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import RelatedContent from '@/components/shared/RelatedContent.jsx';
 import { useSEO } from '@/hooks/useSEO';
 import TourBookingWidget from '@/components/shared/TourBookingWidget.jsx';
+import { WHATSAPP_BOOKING } from '@/lib/contact';
 
 export default function YerevanCityTour() {
   useSEO({
@@ -180,7 +181,7 @@ export default function YerevanCityTour() {
                 <h3 className="text-lg font-black text-foreground mb-2">همین حالا جای خودت رو رزرو کن</h3>
                 <p className="text-sm text-foreground/60 mb-5">برای رزرو آنلاین، اطلاعات بیشتر یا هماهنگی تاریخ، در واتساپ با ما در ارتباط باش</p>
                 <a
-                  href="https://wa.me/37433149327?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D9%85%DB%8C%E2%80%8C%D8%AE%D9%88%D8%A7%D9%85%20%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87%20%D8%AA%D9%88%D8%B1%20%D8%B4%D9%87%D8%B1%DB%8C%20%D8%A7%DB%8C%D8%B1%D9%88%D8%A7%D9%86%20%D8%A7%D8%B7%D9%84%D8%A7%D8%B9%D8%A7%D8%AA%20%D8%A8%DB%8C%D8%B4%D8%AA%D8%B1%DB%8C%20%D8%A8%DA%AF%DB%8C%D8%B1%D9%85"
+                  href={`https://wa.me/${WHATSAPP_BOOKING}?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D9%85%DB%8C%E2%80%8C%D8%AE%D9%88%D8%A7%D9%85%20%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87%20%D8%AA%D9%88%D8%B1%20%D8%B4%D9%87%D8%B1%DB%8C%20%D8%A7%DB%8C%D8%B1%D9%88%D8%A7%D9%86%20%D8%A7%D8%B7%D9%84%D8%A7%D8%B9%D8%A7%D8%AA%20%D8%A8%DB%8C%D8%B4%D8%AA%D8%B1%DB%8C%20%D8%A8%DA%AF%DB%8C%D8%B1%D9%85`}
                   target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-gradient-to-l from-primary to-yellow-500 text-black font-black px-8 py-3.5 rounded-xl shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300"
                 >
@@ -193,7 +194,7 @@ export default function YerevanCityTour() {
 
             <aside className="space-y-6">
               <div className="glass-panel rounded-2xl p-5 lg:sticky lg:top-20">
-                <PageSidebar tags={['tourism', 'yerevan', 'city-tour', 'tour']} />
+                <PageSidebar tags={['tourism', 'yerevan', 'city-tour', 'tour']} serviceType="tour" />
               </div>
             </aside>
           </div>
