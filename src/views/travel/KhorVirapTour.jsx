@@ -8,6 +8,7 @@ import PageSidebar from '@/components/shared/PageSidebar';
 import RelatedServices from '@/components/shared/RelatedServices';
 import RelatedContent from '@/components/shared/RelatedContent';
 import TourInquiryWidget from '@/components/shared/TourInquiryWidget';
+import { WHATSAPP_BOOKING } from '@/lib/contact';
 
 export default function KhorVirapTour() {
   return (
@@ -81,11 +82,11 @@ export default function KhorVirapTour() {
           </article>
 
           <aside className="lg:sticky lg:top-24 h-fit space-y-5">
-            <PageSidebar tags={['خور ویراپ', 'کوه آرارات', 'تور یک‌روزه', 'تاریخ ارمنستان', 'جاذبه‌های ارمنستان']} />
+            <PageSidebar tags={['خور ویراپ', 'کوه آرارات', 'تور یک‌روزه', 'تاریخ ارمنستان', 'جاذبه‌های ارمنستان']} serviceType="tour" />
             <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
               <Phone className="w-5 h-5 text-primary mb-2" />
               <p className="font-bold mb-3">برای هماهنگی و مشاوره تور</p>
-              <a href="tel:+37433149327" className="font-black text-primary">+374 33 149327</a>
+              <a href={`tel:+${WHATSAPP_BOOKING}`} className="font-black text-primary">+374 33 149329</a>
             </div>
           </aside>
         </div>
