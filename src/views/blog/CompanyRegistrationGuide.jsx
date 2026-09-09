@@ -5,9 +5,9 @@ import PageSidebar from '@/components/shared/PageSidebar';
 import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import { useSEO } from '@/hooks/useSEO';
 
-const heroImg = '/images/company/yerevan-city-center.webp';
-const bankImg = '/images/company/yerevan-bank-building.webp';
-const dramImg = '/images/company/armenian-dram-currency.webp';
+const heroImg = 'https://images.unsplash.com/photo-1521790797524-b2497295b8a0?w=1600&q=82&auto=format&fit=crop';
+const bankImg = 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&q=80&auto=format&fit=crop';
+const dramImg = 'https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=1200&q=80&auto=format&fit=crop';
 
 export default function CompanyRegistrationGuide() {
   useSEO({
@@ -23,7 +23,7 @@ export default function CompanyRegistrationGuide() {
 
       <div className="relative pt-14">
         <div className="relative h-56 sm:h-72 overflow-hidden">
-          <img src={heroImg} alt="مرکز شهر ایروان" className="w-full h-full object-cover opacity-40" loading="lazy" />
+          <img src={heroImg} alt="امضای اسناد و آغاز ثبت شرکت در ارمنستان" className="w-full h-full object-cover opacity-40" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/60 to-background" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
             <h1 className="text-3xl sm:text-4xl font-black text-foreground mb-2">
@@ -56,10 +56,10 @@ export default function CompanyRegistrationGuide() {
           </div>
         </section>
 
-        {/* عکس بانک */}
+        {/* عکس بررسی مدارک شرکت */}
         <div className="rounded-2xl overflow-hidden mb-6">
-          <img src={bankImg} alt="ساختمان بانکی ایروان" className="w-full h-48 sm:h-64 object-cover" loading="lazy" />
-          <p className="text-xs text-foreground/40 text-center py-2">ساختمان‌های مالی و بانکی ایروان — عکس: ویکی‌مدیا کامنز</p>
+          <img src={bankImg} alt="جلسه بررسی مدارک و ثبت شرکت در ارمنستان" className="w-full h-48 sm:h-64 object-cover" loading="lazy" />
+          <p className="text-xs text-foreground/40 text-center py-2">بررسی مدارک و برنامه‌ریزی ثبت شرکت</p>
         </div>
 
         {/* بخش ۲: هزینه‌ها */}
@@ -108,10 +108,10 @@ export default function CompanyRegistrationGuide() {
           </div>
         </section>
 
-        {/* عکس درام */}
+        {/* عکس اسناد مالی */}
         <div className="rounded-2xl overflow-hidden mb-6">
-          <img src={dramImg} alt="درام ارمنی — واحد پول ارمنستان" className="w-full h-48 sm:h-56 object-cover object-top" loading="lazy" />
-          <p className="text-xs text-foreground/40 text-center py-2">درام ارمنی (AMD) — واحد پول رسمی ارمنستان | عکس: ویکی‌مدیا کامنز</p>
+          <img src={dramImg} alt="اسناد مالی و حسابداری شرکت در ارمنستان" className="w-full h-48 sm:h-56 object-cover object-top" loading="lazy" />
+          <p className="text-xs text-foreground/40 text-center py-2">اسناد مالی و حسابداری شرکت</p>
         </div>
 
         {/* بخش ۴: مالیات */}
