@@ -148,9 +148,9 @@ export default function PageComments() {
           {t.sent}
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-3 mb-10">
-          {/* Honeypot: real visitors never see or fill this field. Positioned
-              off-screen (not display:none) and unreachable by tab order. */}
+        <form onSubmit={handleSubmit} className="relative space-y-3 mb-10">
+          {/* Honeypot: real visitors never see or fill this field. It remains
+              in the form, without expanding the document width. */}
           <input
             type="text"
             name="website"
@@ -158,7 +158,7 @@ export default function PageComments() {
             onChange={(e) => setWebsite(e.target.value)}
             tabIndex={-1}
             autoComplete="off"
-            className="absolute -left-[9999px] w-px h-px opacity-0"
+            className="absolute left-0 top-0 w-px h-px opacity-0 pointer-events-none"
             aria-hidden="true"
           />
           <input
