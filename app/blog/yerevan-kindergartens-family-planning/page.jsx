@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'مهدکودک‌های ایروان و برنامه‌ریزی خانواده',description:'معیارهای انتخاب مهدکودک در ایروان.'}; export default function Page(){return <PracticalGuideArticle articleKey="kindergarten"/>;}

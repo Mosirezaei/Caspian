@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'وام و خرید اقساطی برای خارجی‌ها در ارمنستان',description:'نکات تصمیم‌گیری درباره تعهدات اعتباری در ارمنستان.'}; export default function Page(){return <PracticalGuideArticle articleKey="loansInstallments"/>;}

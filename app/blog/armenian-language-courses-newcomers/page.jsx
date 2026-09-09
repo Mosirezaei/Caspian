@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'دوره زبان ارمنی برای تازه‌واردها',description:'انتخاب دوره بر پایه هدف زندگی و کار.'}; export default function Page(){return <PracticalGuideArticle articleKey="armenianCourses"/>;}

@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'حساب و کارت بانکی در ارمنستان برای خارجی‌ها',description:'اطلاعات کلی درباره تصمیم افتتاح حساب شخصی.'}; export default function Page(){return <PracticalGuideArticle articleKey="bankPersonal"/>;}

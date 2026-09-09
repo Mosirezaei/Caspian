@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'ارسال پول میان ایران و ارمنستان',description:'آگاهی از ریسک‌های انتقال پول و تصمیم امن.'}; export default function Page(){return <PracticalGuideArticle articleKey="moneyTransfer"/>;}

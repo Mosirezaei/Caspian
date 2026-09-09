@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'خرید و ثبت خودرو در ارمنستان برای خارجی‌ها',description:'راهنمای تصمیم‌گیری درباره خرید خودرو در ارمنستان.'}; export default function Page(){return <PracticalGuideArticle articleKey="carRegistration"/>;}

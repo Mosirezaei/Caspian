@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'تعطیلات رسمی ارمنستان و برنامه‌ریزی',description:'اهمیت بررسی تقویم به‌روز تعطیلات رسمی ارمنستان.'}; export default function Page(){return <PracticalGuideArticle articleKey="holidays"/>;}

@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'آب، برق، گاز و اینترنت در ایروان',description:'بررسی خدمات شهری و هزینه‌های جانبی زندگی در ایروان.'}; export default function Page(){return <PracticalGuideArticle articleKey="utilities"/>;}

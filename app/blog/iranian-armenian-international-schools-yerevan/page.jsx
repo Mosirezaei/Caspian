@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'مقایسه مدارس ایرانی، ارمنی و بین‌المللی ایروان',description:'انتخاب مدرسه بر پایه نیاز کودک و خانواده.'}; export default function Page(){return <PracticalGuideArticle articleKey="schoolComparison"/>;}

@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'خدمات اضطراری و پزشکی در ارمنستان',description:'آمادگی پیش از موقعیت اضطراری در ارمنستان.'}; export default function Page(){return <PracticalGuideArticle articleKey="emergencyMedical"/>;}

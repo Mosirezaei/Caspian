@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'ارزشیابی مدارک تحصیلی در ارمنستان',description:'بررسی پیش از تصمیم برای ادامه تحصیل یا کار.'}; export default function Page(){return <PracticalGuideArticle articleKey="credentialEvaluation"/>;}

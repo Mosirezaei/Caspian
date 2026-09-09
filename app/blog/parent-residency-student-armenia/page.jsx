@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'اقامت والدین همراه دانش‌آموز یا دانشجو در ارمنستان',description:'برنامه‌ریزی خانواده برای تحصیل و اقامت.'}; export default function Page(){return <PracticalGuideArticle articleKey="parentResidency"/>;}
