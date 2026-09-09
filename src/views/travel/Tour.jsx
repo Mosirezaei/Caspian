@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useLang } from '@/lib/LanguageContext';
 import { ServicePageLayout, InfoBlock, CheckList } from '@/components/shared/ServicePageLayout';
 import { MessageCircle, PartyPopper, Users, Car, Hotel, Sunrise, CalendarDays, MapPin } from 'lucide-react';
+import { WHATSAPP_BOOKING } from '@/lib/contact';
 
 const EVENTS = {
   fa: {
@@ -189,7 +190,7 @@ function TourContent() {
             </div>
           ))}
         </div>
-        <a href="https://wa.me/37433149327" target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 font-black text-black hover:bg-yellow-500 transition-colors">
+        <a href={`https://wa.me/${WHATSAPP_BOOKING}`} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 font-black text-black hover:bg-yellow-500 transition-colors">
           <MessageCircle className="w-5 h-5" /> {ev.cta}
         </a>
       </section>
@@ -202,7 +203,7 @@ function TourContent() {
 
       <InfoBlock title={t.seasonTitle}><CheckList items={t.season} /></InfoBlock>
 
-      <a href="https://wa.me/37433149327?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D9%85%DB%8C%E2%80%8C%D8%AE%D9%88%D8%A7%D9%85%20%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87%20%D8%AA%D9%88%D8%B1%20%D8%A7%D8%B1%D9%85%D9%86%D8%B3%D8%AA%D8%A7%D9%86%20%D9%85%D8%B4%D8%A7%D9%88%D8%B1%D9%87%20%D8%A8%DA%AF%DB%8C%D8%B1%D9%85" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 w-full py-4 px-6 rounded-2xl bg-primary text-black font-black hover:bg-yellow-500 transition-all duration-300 shadow-lg mt-6">
+      <a href={`https://wa.me/${WHATSAPP_BOOKING}?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D9%85%DB%8C%E2%80%8C%D8%AE%D9%88%D8%A7%D9%85%20%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87%20%D8%AA%D9%88%D8%B1%20%D8%A7%D8%B1%D9%85%D9%86%D8%B3%D8%AA%D8%A7%D9%86%20%D9%85%D8%B4%D8%A7%D9%88%D8%B1%D9%87%20%D8%A8%DA%AF%DB%8C%D8%B1%D9%85`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 w-full py-4 px-6 rounded-2xl bg-primary text-black font-black hover:bg-yellow-500 transition-all duration-300 shadow-lg mt-6">
         <MessageCircle className="w-5 h-5" />{t.cta}
       </a>
     </ServicePageLayout>
