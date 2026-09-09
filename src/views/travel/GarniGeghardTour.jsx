@@ -6,6 +6,7 @@ import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import RelatedContent from '@/components/shared/RelatedContent.jsx';
 import { useSEO } from '@/hooks/useSEO';
 import TourBookingWidget from '@/components/shared/TourBookingWidget.jsx';
+import { WHATSAPP_BOOKING } from '@/lib/contact';
 
 export default function GarniGeghardTour() {
   useSEO({
@@ -102,7 +103,7 @@ export default function GarniGeghardTour() {
                 <h2 className="text-xl font-black text-foreground mb-4">راهنمای کامل جاذبه‌های مسیر گارنی و گغارد</h2>
                 <div className="space-y-4 text-foreground/75 leading-loose text-sm sm:text-base">
                   <p>
-                    استان کوتایک ارمنستان به دلیل نزدیکی به پایتخت و دارا بودن مجموعه‌ای کم‌نظیر از آثار باستانی پیش از مسیحیت، بناهای مقدس قرون‌وسطایی و پدیده‌های ژئوتوریسمی، یکی از مهم‌ترین محورهای گردشگری این کشور محسوب می‌شود. در ادامه با جزئیات تاریخی و ساختاری این سه مقصد بی‌نظیر آشنا می‌شویم.
+                    استان کوتایک ارمنستان به دلیل نزدیکی به پایتخت و دارا بودن مجموعه‌ای کم‌نظیر از آثار باستانی پیش از مسیحیت، بناهای مقدس قرون‌وسطایی و پدیده‌های ژئوتوریسمی، یکی از مهم‌ترین محورهای گردشگری این کشور محسوب می‌شود. در ادامه با جزئیات تاریخی و ساختاری این سه مقصد بی‌نظیر آشنا می‌شوییم.
                   </p>
 
                   <h3 className="text-lg font-bold text-foreground mt-6">۱. معبد باستانی گارنی (Temple of Garni)</h3>
@@ -110,7 +111,7 @@ export default function GarniGeghardTour() {
                     معبد گارنی در حدود ۳۰ کیلومتری شرق ایروان، بر فراز دماغه‌ای صخره‌ای و مشرف به دره عمیق رودخانه آزات جای گرفته است.
                   </p>
                   <p>
-                    <b className="text-foreground">تاریخچه و کاربری:</b> این معبد در نیمه دوم قرن اول میلادی (حدود سال ۷۷ میلادی) توسط پادشاه تیرداد اول اشکانی ساخته شد و به میهر (ایزد خورشید در باورهای کهن مهرپرستی/میترائیسم) تقدیم شده بود. پس از پذیرش مسیحیت به عنوان دین رسمی ارمنستان در سال ۳۰۱ میلادی و تخریب اکثر معابد پاگان، گارنی به دلیل موقعیت استراتژیک، آب‌وهوای ییلاقی و کاربرد آن به عنوان اقامتگاه تابستانی خاندان سلطنتی (خواهر پادشاه خسرویدوخت) از تخریب در امان ماند.
+                    <b className="text-foreground">تاریخچه و کاربرد:</b> این معبد در نیمه دوم قرن اول میلادی (حدود سال ۷۷ میلادی) توسط پادشاه تیرداد اول اشکانی ساخته شد و به میهر (ایزد خورشید در باورهای کهن مهرپرستی/میترائیسم) تقدیم شده بود. پس از پذیرش مسیحیت به عنوان دین رسمی ارمنستان در سال ۳۰۱ میلادی و تخریب اکثر معابد پاگان، گارنی به دلیل موقعیت استراتژیک، آب‌وهوای ییلاقی و کاربرد آن به عنوان اقامتگاه تابستانی خاندان سلطنتی (خواهر پادشاه خسرویدوخت) از تخریب در امان ماند.
                   </p>
                   <p>
                     <b className="text-foreground">سبک معماری:</b> این سازه تنها معبد به سبک کلاسیک یونانی-رومی (هلنیستی) است که در سراسر قفقاز برپا مانده است. بنا روی سکویی با پله‌های بلند از سنگ بازالت سیاه ساخته شده و دورادور آن را ۲۴ ستون باریک یونانی از نوع یونی (Ionic) احاطه کرده‌اند که نمادی از ۲۴ ساعت شبانه‌روز هستند. سقف و دیوارهای داخلی معبد با نقش‌برجسته‌های پیچک انگور و انار تزئین شده است.
@@ -128,10 +129,10 @@ export default function GarniGeghardTour() {
 
                   <h3 className="text-lg font-bold text-foreground mt-6">۲. صومعه گغارد (Geghard Monastery)</h3>
                   <p>
-                    صومعه گغارد در انتهای دره صخره‌ای آزات قرار دارد و یکی از شکوهمندترین بناهای مذهبی ثبت‌شده در میراث جهانی یونسکو است.
+                    صومعه گغارد در انتهای دره صخره‌ای آزات قرار دارد و یکی از شکوه‌مندترین بناهای مذهبی ثبت‌شده در میراث جهانی یونسکو است.
                   </p>
                   <p>
-                    <b className="text-foreground">وجه تسمیه و نیزه مقدس:</b> نام کامل این صومعه «گغارداوانک» به معنای «صومعه نیزه» است. بنا بر روایات تاریخی، نیزه‌ای که به پهلوی عیسی مسیح در زمان مصلوب شدن زده شد (نیزه مقدس یا لانگینوس)، توسط تادئوس قدیس به ارمنستان آورده شد و قرن‌ها در این صومعه نگهداری می‌شد؛ این اثر تاریخی امروزه در موزه کلیسای جامع اچمیادزین قرار دارد.
+                    <b className="text-foreground">وجه تسمیه و نیزه مقدس:</b> نام کامل این صومعه «گغارداوانک» به معنای «صومعه نیزه» است. بنا بر روایات تاریخی، نیزه‌ای که به پهلوی عیسی مسیح در زمان مصلوب شدن زده شد (نیزه مقدس یا لانگینوس)، توسط تادئوس قدیس به ارمنستان آورده شد و قرن‌ها در این صومعه نگهداری می‌شد؛ این اثر تاریخی امروزه در موزه کلیسای جامع اچمیازین قرار دارد.
                   </p>
                   <p>
                     <b className="text-foreground">معماری دست‌کند صخره‌ای:</b> بخش چشمگیری از این مجموعه شامل سالن‌های کلیسایی، مقبره‌ها و حجره‌های راهبان است که مستقیماً در دل صخره‌های گرانیتی کوه حفر و تراشیده شده‌اند. معماران قرون‌وسطایی بدون استفاده از ملات، ستون‌ها، محراب‌ها و گنبدهای سنگی را از دل کوه بیرون کشیده‌اند.
@@ -169,7 +170,7 @@ export default function GarniGeghardTour() {
                 <h3 className="text-lg font-black text-foreground mb-2">همین حالا جای خودت رو رزرو کن</h3>
                 <p className="text-sm text-foreground/60 mb-5">برای رزرو آنلاین، اطلاعات بیشتر یا هماهنگی تاریخ، در واتساپ با ما در ارتباط باش</p>
                 <a
-                  href="https://wa.me/37433149327?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D9%85%DB%8C%E2%80%8C%D8%AE%D9%88%D8%A7%D9%85%20%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87%20%D8%AA%D9%88%D8%B1%20%DA%AF%D8%A7%D8%B1%D9%86%DB%8C%D8%8C%20%DA%AF%D8%BA%D8%A7%D8%B1%D8%AF%20%D9%88%20%D8%B3%D9%85%D9%81%D9%88%D9%86%DB%8C%20%D8%B3%D9%86%DA%AF%E2%80%8C%D9%87%D8%A7%20%D8%A7%D8%B7%D9%84%D8%A7%D8%B9%D8%A7%D8%AA%20%D8%A8%DB%8C%D8%B4%D8%AA%D8%B1%DB%8C%20%D8%A8%DA%AF%DB%8C%D8%B1%D9%85"
+                  href={`https://wa.me/${WHATSAPP_BOOKING}?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D9%85%DB%8C%E2%80%8C%D8%AE%D9%88%D8%A7%D9%85%20%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87%20%D8%AA%D9%88%D8%B1%20%DA%AF%D8%A7%D8%B1%D9%86%DB%8C%D8%8C%20%DA%AF%D8%BA%D8%A7%D8%B1%D8%AF%20%D9%88%20%D8%B3%D9%85%D9%81%D9%88%D9%86%DB%8C%20%D8%B3%D9%86%DA%AF%E2%80%8C%D9%87%D8%A7%20%D8%A7%D8%B7%D9%84%D8%A7%D8%B9%D8%A7%D8%AA%20%D8%A8%DB%8C%D8%B4%D8%AA%D8%B1%DB%8C%20%D8%A8%DA%AF%DB%8C%D8%B1%D9%85`}
                   target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-gradient-to-l from-primary to-yellow-500 text-black font-black px-8 py-3.5 rounded-xl shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300"
                 >
@@ -182,7 +183,7 @@ export default function GarniGeghardTour() {
 
             <aside className="space-y-6">
               <div className="glass-panel rounded-2xl p-5 lg:sticky lg:top-20">
-                <PageSidebar tags={['tourism', 'garni', 'geghard', 'tour']} />
+                <PageSidebar tags={['tourism', 'garni', 'geghard', 'tour']} serviceType="tour" />
               </div>
             </aside>
           </div>
