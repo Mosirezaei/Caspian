@@ -8,6 +8,7 @@ import PageSidebar from '@/components/shared/PageSidebar';
 import RelatedServices from '@/components/shared/RelatedServices';
 import RelatedContent from '@/components/shared/RelatedContent';
 import TourInquiryWidget from '@/components/shared/TourInquiryWidget';
+import WhatsAppBottomCTA from '@/components/shared/WhatsAppBottomCTA';
 import { WHATSAPP_BOOKING } from '@/lib/contact';
 
 export default function KhorVirapTour() {
@@ -76,9 +77,9 @@ export default function KhorVirapTour() {
               <p>یکی از دلایل اصلی محبوبیت خور ویراپ، چشم‌انداز گسترده آن به آرارات است. در روزهای صاف می‌توان نمای باشکوه ماسیس، یعنی آرارات بزرگ، و سیس، آرارات کوچک، را در افق دید. صبح‌ها معمولاً برای عکاسی و دید بهتر شرایط مناسبی دارند، هرچند شفافیت منظره به آب‌وهوا وابسته است.</p>
               <h3>۴. آرتاشات؛ پایتخت باستانی در نزدیکی خور ویراپ</h3>
               <p>در اطراف خور ویراپ بقایای آرتاشات، یکی از پایتخت‌های مهم ارمنستان باستان، قرار دارد. این شهر در سده دوم پیش از میلاد در دوره آرتاشس یکم شکل گرفت و در تاریخ ارمنستان جایگاه مهمی داشت. قرار گرفتن این محوطه تاریخی در نزدیکی خور ویراپ، این سفر یک‌روزه را برای علاقه‌مندان به تاریخ و تمدن جذاب‌تر می‌کند.</p>
-              <h3>جمع‌بندی</h3>
-              <p>خور ویراپ ترکیبی از تاریخ، معنویت، معماری و طبیعت است؛ مقصدی که در یک سفر کوتاه از ایروان می‌توان در آن با بخشی از تاریخ مسیحیت ارمنستان آشنا شد، فضای سیاه‌چال تاریخی را دید و در هوای صاف از چشم‌انداز کوه آرارات لذت برد.</p>
             </section>
+
+            <WhatsAppBottomCTA serviceType="tour" />
           </article>
 
           <aside className="lg:sticky lg:top-24 h-fit space-y-5">
