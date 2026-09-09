@@ -6,6 +6,7 @@ import RelatedServices from '@/components/shared/RelatedServices.jsx';
 import RelatedContent from '@/components/shared/RelatedContent.jsx';
 import { useSEO } from '@/hooks/useSEO';
 import TourInquiryWidget from '@/components/shared/TourInquiryWidget.jsx';
+import WhatsAppBottomCTA from '@/components/shared/WhatsAppBottomCTA.jsx';
 
 export default function DilijanTour() {
   useSEO({
@@ -148,6 +149,7 @@ export default function DilijanTour() {
                 <TourInquiryWidget tourName="تور دیلیجان" />
               </div>
 
+              <WhatsAppBottomCTA serviceType="tour" />
 
             </article>
 
