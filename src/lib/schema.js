@@ -1,3 +1,5 @@
+import { WHATSAPP_BOOKING } from './contact';
+
 const SITE_URL = 'https://caspian.am';
 const LOGO_URL = 'https://caspian.am/images/logo.webp';
 const DEFAULT_OG_IMAGE = 'https://caspian.am/images/GoogleSearch.png';
@@ -87,7 +89,7 @@ export function hotelServiceSchema(hotels) {
     '@type': 'Service',
     name: 'رزرو هتل در ایروان ارمنستان',
     description: 'رزرو هتل‌های ۳، ۴ و ۵ ستاره در ایروان با واچر رسمی برای ویزا',
-    provider: { '@type': 'Organization', name: 'Caspian Business Group', url: SITE_URL, telephone: '+37433149327' },
+    provider: { '@type': 'Organization', name: 'Caspian Business Group', url: SITE_URL, telephone: `+${WHATSAPP_BOOKING}` },
     areaServed: { '@type': 'City', name: 'Yerevan' },
     offers: {
       '@type': 'AggregateOffer',
@@ -149,7 +151,7 @@ export function tourSchema({ name, description, itineraryPlaces, events }) {
     '@type': 'TouristTrip',
     name,
     description,
-    provider: { '@type': 'Organization', name: 'Caspian Business Group', url: SITE_URL, telephone: '+37433149327' },
+    provider: { '@type': 'Organization', name: 'Caspian Business Group', url: SITE_URL, telephone: `+${WHATSAPP_BOOKING}` },
     touristType: ['Leisure', 'Cultural', 'Music Festival'],
     itinerary: itineraryPlaces.map((p) => ({ '@type': 'TouristAttraction', name: p.name, description: p.desc })),
     url: `${SITE_URL}/travel/tour`,

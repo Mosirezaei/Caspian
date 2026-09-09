@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { X, Plus, Minus, Calendar, Users, MessageCircle } from 'lucide-react';
+import { WHATSAPP_BOOKING } from '@/lib/contact';
 
 /**
  * TourBookingWidget — دکمه طلایی رزرو تور + مودال فرم رزرو.
@@ -13,7 +14,7 @@ export default function TourBookingWidget({
   adultPrice = 15000,
   childPrice = 12000,
   currency = 'درام',
-  whatsappNumber = '37433149327',
+  whatsappNumber = WHATSAPP_BOOKING,
 }) {
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState('');

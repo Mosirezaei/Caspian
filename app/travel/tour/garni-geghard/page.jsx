@@ -1,5 +1,6 @@
 import GarniGeghardTour from '@/views/travel/GarniGeghardTour';
 import JsonLd from '@/components/shared/JsonLd';
+import { WHATSAPP_BOOKING } from '@/lib/contact';
 
 export const metadata = {
   title: 'تور یک‌روزه گارنی، گغارد و سمفونی سنگ‌ها | گروه کاسپین',
@@ -19,7 +20,7 @@ const schema = {
   '@type': 'TouristTrip',
   name: 'تور یک‌روزه گارنی، گغارد و سمفونی سنگ‌ها',
   description: 'تور یک‌روزه شامل معبد باستانی گارنی، صومعه صخره‌ای گغارد (میراث جهانی یونسکو)، پدیده زمین‌شناسی سمفونی سنگ‌ها و تجربه پخت نان سنتی لواش، با ترانسفر، راهنمای فارسی‌زبان و ناهار کامل.',
-  provider: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am', telephone: '+37433149327' },
+  provider: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am', telephone: `+${WHATSAPP_BOOKING}` },
   touristType: ['Historical', 'Cultural', 'Day Trip'],
   itinerary: [
     { '@type': 'TouristAttraction', name: 'Temple of Garni', description: 'تنها معبد هلنیستی باقی‌مانده در قفقاز، ساخته‌شده در قرن اول میلادی' },

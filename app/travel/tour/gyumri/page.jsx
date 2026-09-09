@@ -1,5 +1,6 @@
 import GyumriTour from '@/views/travel/GyumriTour';
 import JsonLd from '@/components/shared/JsonLd';
+import { WHATSAPP_BOOKING } from '@/lib/contact';
 
 export const metadata = {
   title: 'تور یک‌روزه تاریخی و هنری گیومری، پایتخت فرهنگی ارمنستان | گروه کاسپین',
@@ -19,7 +20,7 @@ const schema = {
   '@type': 'TouristTrip',
   name: 'تور یک‌روزه تاریخی و هنری گیومری، پایتخت فرهنگی ارمنستان',
   description: 'تور یک‌روزه شامل قلعه سیاه (Sev Berd)، میدان وارتانانتس و کلیسای هفت زخم، محله تاریخی کومایری، کلیسای ناجی مقدس و موزه معماری و زندگی شهری گیومری، با ترانسفر، راهنمای فارسی‌زبان و ناهار کامل.',
-  provider: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am', telephone: '+37433149327' },
+  provider: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am', telephone: `+${WHATSAPP_BOOKING}` },
   touristType: ['Historical', 'Cultural', 'Art', 'Day Trip'],
   itinerary: [
     { '@type': 'TouristAttraction', name: 'Black Fortress (Sev Berd)', description: 'دژ نظامی دایره‌ای امپراتوری روسیه با چشم‌انداز دشت شیراک' },

@@ -1,5 +1,6 @@
 import KhorVirapTour from '@/views/travel/KhorVirapTour';
 import JsonLd from '@/components/shared/JsonLd';
+import { WHATSAPP_BOOKING } from '@/lib/contact';
 
 export const metadata = {
   title: 'تور یک‌روزه خور ویراپ و چشم‌انداز کوه آرارات | گروه کاسپین',
@@ -19,7 +20,7 @@ const schema = {
   '@type': 'TouristTrip',
   name: 'تور یک‌روزه خور ویراپ و چشم‌انداز کوه آرارات',
   description: 'تور یک‌روزه از ایروان به صومعه تاریخی خور ویراپ، سیاه‌چال گریگور روشنگر و دشت آرارات، همراه با ترانسفر، راهنمای فارسی‌زبان و ناهار.',
-  provider: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am', telephone: '+37433149327' },
+  provider: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am', telephone: `+${WHATSAPP_BOOKING}` },
   touristType: ['Historical', 'Cultural', 'Religious', 'Day Trip'],
   itinerary: [
     { '@type': 'TouristAttraction', name: 'Khor Virap Monastery', description: 'صومعه تاریخی خور ویراپ در دشت آرارات با چشم‌انداز مستقیم کوه آرارات' },

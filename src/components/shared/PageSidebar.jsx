@@ -6,6 +6,7 @@ import RelatedServices from './RelatedServices';
 import SeoFooterLinks from './SeoFooterLinks';
 import { usePathname } from 'next/navigation';
 import { SERVICE_TYPE_TAGS } from '@/data/siteLinks';
+import { getWhatsAppNumber } from '@/lib/contact';
 
 const t = {
   fa: { cta: 'مشاوره رایگان', ctaSub: 'سوالی داری؟ همین حالا با کارشناسان ما در واتساپ چت کن' },
@@ -28,6 +29,7 @@ export default function PageSidebar({ tags, currentPath, serviceType }) {
   const pathname = usePathname();
   const path = currentPath || pathname || '';
   const usefulLinksTags = (tags && tags.length > 0) ? tags : (SERVICE_TYPE_TAGS[serviceType] || SERVICE_TYPE_TAGS.default);
+  const whatsappNumber = getWhatsAppNumber(serviceType);
 
   return (
     <aside className="lg:sticky lg:top-20 lg:self-start space-y-5">
@@ -37,7 +39,7 @@ export default function PageSidebar({ tags, currentPath, serviceType }) {
         </div>
         <h3 className="font-bold text-foreground text-sm mb-1">{tt.cta}</h3>
         <p className="text-xs text-foreground/60 mb-4 leading-relaxed">{tt.ctaSub}</p>
-        <a href="https://wa.me/37433149327" target="_blank" rel="noopener noreferrer"
+        <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-green-600 hover:bg-green-500 transition text-white text-xs font-bold">
           <MessageCircle className="w-4 h-4" /> WhatsApp
         </a>

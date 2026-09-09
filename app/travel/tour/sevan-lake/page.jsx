@@ -1,5 +1,6 @@
 import SevanLakeTour from '@/views/travel/SevanLakeTour';
 import JsonLd from '@/components/shared/JsonLd';
+import { WHATSAPP_BOOKING } from '@/lib/contact';
 
 export const metadata = {
   title: 'تور یک‌روزه دریاچه سوان و دره گل‌ها (تساغکادزور) | گروه کاسپین',
@@ -19,7 +20,7 @@ const schema = {
   '@type': 'TouristTrip',
   name: 'تور یک‌روزه دریاچه سوان و دره گل‌ها (تساغکادزور)',
   description: 'تور یک‌روزه شامل تله‌سیژ تساغکادزور (دره گل‌ها)، صومعه کچاریس، دریاچه سوان و صومعه سواناوانک، با ترانسفر، راهنمای فارسی‌زبان و ناهار کامل.',
-  provider: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am', telephone: '+37433149327' },
+  provider: { '@type': 'Organization', name: 'Caspian Business Group', url: 'https://caspian.am', telephone: `+${WHATSAPP_BOOKING}` },
   touristType: ['Nature', 'Cultural', 'Day Trip'],
   itinerary: [
     { '@type': 'TouristAttraction', name: 'Tsaghkadzor Ropeway (Flower Valley)', description: 'تله‌سیژ روباز و دشت‌های پر از گل وحشی' },

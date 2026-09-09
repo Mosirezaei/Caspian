@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { X, Plus, Minus, Calendar, Users, MessageCircle } from 'lucide-react';
+import { WHATSAPP_BOOKING } from '@/lib/contact';
 
 /**
  * TourInquiryWidget — دکمه «استعلام قیمت آنلاین» + مودال فرم.
@@ -14,7 +15,7 @@ import { X, Plus, Minus, Calendar, Users, MessageCircle } from 'lucide-react';
  */
 export default function TourInquiryWidget({
   tourName,
-  whatsappNumber = '37433149327',
+  whatsappNumber = WHATSAPP_BOOKING,
 }) {
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState('');
