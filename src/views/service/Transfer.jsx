@@ -33,13 +33,22 @@ function Content() {
           ]} />
         </InfoBlock>
 
-        <InfoBlock title="اگر فقط ترانسفر می‌خواهید">
-          <p className="mb-3">برای درخواست ترانسفر مستقل، می‌توانید از تاکسی‌های رسمی فرودگاه یا اپلیکیشن‌های تاکسی اینترنتی استفاده کنید. این گزینه‌ها مستقیماً توسط خود شما رزرو و پرداخت می‌شوند.</p>
-          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">تاکسی آنلاین (Yandex Go / GG Taxi)</h3>
-          <p className="mb-3">پس از ورود، می‌توانید از اپلیکیشن برای درخواست خودرو استفاده کنید. زمان رسیدن، هزینه و روش پرداخت به شرایط همان لحظه بستگی دارد.</p>
+        <InfoBlock title="ترانسفر برای مشتریان کاسپین">
+          <p className="mb-4">کاسپین ترانسفر خالی یا تاکسی مستقل انجام نمی‌دهد. اگر هتل، آپارتمان یا دیگر خدمات سفر خود را از کاسپین دریافت کنید، ترانسفر فرودگاه یا ترمینال شما به‌صورت رایگان و هماهنگ‌شده انجام می‌شود.</p>
 
-          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">تاکسی رسمی فرودگاه</h3>
-          <p>تاکسی‌های رسمی در محدوده خروجی ترمینال در دسترس‌اند و می‌توانید پیش از حرکت، مقصد و مبلغ را با راننده یا دفتر مربوط هماهنگ کنید.</p>
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">تاکسی‌های اینترنتی</h3>
+          <p className="mb-4">در یاندکس، هزینه با توجه به مسیر، ترافیک شهری و ساعت‌های مختلف روز متغیر است. مبلغ نهایی را پیش از تأیید سفر در خود اپلیکیشن بررسی کنید.</p>
+          <div className="flex flex-col sm:flex-row gap-3 mb-5">
+            <a href="https://play.google.com/store/apps/details?id=com.yandex.yandexgo" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-xl bg-primary px-4 py-3 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90">
+              دانلود Yandex Go برای اندروید
+            </a>
+            <a href="https://apps.apple.com/app/yandex-go-taxi-and-delivery/id472650686" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-xl border border-primary/40 px-4 py-3 text-sm font-bold text-foreground transition-colors hover:bg-primary/10">
+              دانلود Yandex Go برای آیفون
+            </a>
+          </div>
+
+          <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">تاکسی‌های فرودگاه</h3>
+          <p>تاکسی‌های خروجی فرودگاه نیز نرخ ثابت و یکسانی ندارند و مبلغ پیشنهادی ممکن است از راننده‌ای به راننده دیگر متفاوت باشد. مانند هر فرودگاه دیگری، پیش از حرکت مقصد و قیمت نهایی را با راننده قطعی کنید.</p>
         </InfoBlock>
 
         <InfoBlock title="ترانسفر در کنار خدمات اقامتی و سفر">
