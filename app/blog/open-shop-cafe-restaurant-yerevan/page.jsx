@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'راه‌اندازی فروشگاه، کافه یا رستوران در ایروان',description:'اطلاعات کلی و مشاوره‌محور برای کسب‌وکار حضوری در ایروان.'}; export default function Page(){return <PracticalGuideArticle articleKey="localBusiness"/>;}

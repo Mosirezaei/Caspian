@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'قرارداد کاری و حقوق کارکنان در ارمنستان',description:'اطلاعات کلی درباره بررسی ساختار همکاری و قرارداد کاری.'}; export default function Page(){return <PracticalGuideArticle articleKey="employmentContract"/>;}

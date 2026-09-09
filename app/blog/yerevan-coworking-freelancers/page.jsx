@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'فضای کار اشتراکی در ایروان برای فریلنسرها',description:'نکات انتخاب فضای کار بر اساس سبک کار.'}; export default function Page(){return <PracticalGuideArticle articleKey="coworking"/>;}

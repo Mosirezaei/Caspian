@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'استخدام نیروی محلی در ارمنستان',description:'نکات مدیریتی پیش از تشکیل تیم در ارمنستان.'}; export default function Page(){return <PracticalGuideArticle articleKey="localHiring"/>;}

@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'فرصت‌های کاری برای فارسی‌زبانان در ایروان',description:'راهنمای تصمیم‌گیری برای انتخاب واقع‌بینانه مسیر کار.'}; export default function Page(){return <PracticalGuideArticle articleKey="persianJobs"/>;}

@@ -1,0 +1,1 @@
+import PracticalGuideArticle from '@/views/blog/PracticalGuideArticle'; export const metadata={title:'راه‌اندازی کسب‌وکار آنلاین از ارمنستان',description:'اطلاعات کلی برای ارزیابی کسب‌وکار آنلاین.'}; export default function Page(){return <PracticalGuideArticle articleKey="onlineBusiness"/>;}
