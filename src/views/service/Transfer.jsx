@@ -39,10 +39,10 @@ function Content() {
           <h3 className="text-base font-bold text-foreground/90 mt-3 mb-1">تاکسی‌های اینترنتی</h3>
           <p className="mb-4">در یاندکس، هزینه با توجه به مسیر، ترافیک شهری و ساعت‌های مختلف روز متغیر است. مبلغ نهایی را پیش از تأیید سفر در خود اپلیکیشن بررسی کنید.</p>
           <div className="flex flex-col sm:flex-row gap-3 mb-5">
-            <a href="https://play.google.com/store/apps/details?id=com.yandex.yandexgo" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-xl bg-primary px-4 py-3 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90">
+            <a href="https://play.google.com/store/apps/details?id=ru.yandex.taxi&hl=ru" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-xl bg-primary px-4 py-3 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90">
               دانلود Yandex Go برای اندروید
             </a>
-            <a href="https://apps.apple.com/app/yandex-go-taxi-and-delivery/id472650686" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-xl border border-primary/40 px-4 py-3 text-sm font-bold text-foreground transition-colors hover:bg-primary/10">
+            <a href="https://apps.apple.com/am/app/yandex-go-taxi-food-delivery/id472650686" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-xl border border-primary/40 px-4 py-3 text-sm font-bold text-foreground transition-colors hover:bg-primary/10">
               دانلود Yandex Go برای آیفون
             </a>
           </div>
